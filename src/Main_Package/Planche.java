@@ -5,19 +5,10 @@
  */
 package Main_Package;
 
-import java.awt.Graphics2D;
-import javax.swing.JPanel;
-
 /**
  *
  * @author SABOU350
  */
-public class AfficheurEtagere2D extends JPanel{
-    private Etagere etagere;
-    private Graphics2D graphics; 
-
-    public AfficheurEtagere2D() { 
-        
-    }
+public class Planche {
     
 }

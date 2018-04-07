@@ -12,29 +12,29 @@ package Main_Package;
 public class Caisson {
     
     private Etage etageparent;
-    private float largeur_rel;
+    private double largeur_rel;
     private Piece piecehaut;
-
+    
     /**
      * @return the largeur_rel
      */
-    public float getLargeur_rel() {
+    public double getLargeur_rel() {
         return largeur_rel;
     }
 
     /**
      * @param largeur_rel the largeur_rel to set
      */
-    public void setLargeur_rel(float largeur_rel) {
+    public void setLargeur_rel(double largeur_rel) {
         this.largeur_rel = largeur_rel;
     }
     /**
      * 
      * @param h_rel
-     * @param etageparent 
      */
     
-    Caisson(float h_rel, Etage etageparent){
+    Caisson(double l_rel){
+        this.largeur_rel = l_rel;
         
     }
     

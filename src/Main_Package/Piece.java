@@ -10,9 +10,9 @@ package Main_Package;
  * @author SABOU350
  */
 public class Piece {
-    private float hauteur;
-    private float largeur;
-    private float epaisseur;
+    private double hauteur;
+    private double largeur;
+    private double epaisseur;
     private boolean estepaisse;
     private Coord_Coins[] listecoins;
    
@@ -22,46 +22,53 @@ public class Piece {
     /**
      * @return the hauteur
      */
-    public float getHauteur() {
+    public double getHauteur() {
         return hauteur;
     }
 
     /**
      * @param hauteur the hauteur to set
      */
-    public void setHauteur(float hauteur) {
+    public void setHauteur(double hauteur) {
         this.hauteur = hauteur;
     }
 
     /**
      * @return the largeur
      */
-    public float getLargeur() {
+    public double getLargeur() {
         return largeur;
     }
 
     /**
      * @param largeur the largeur to set
      */
-    public void setLargeur(float largeur) {
+    public void setLargeur(double largeur) {
         this.largeur = largeur;
     }
 
     /**
      * @return the epaisseur
      */
-    public float getEpaisseur() {
+    public double getEpaisseur() {
         return epaisseur;
     }
 
     /**
      * @param epaisseur the epaisseur to set
      */
-    public void setEpaisseur(float epaisseur) {
+    public void setEpaisseur(double epaisseur) {
         this.epaisseur = epaisseur;
     }
 
-    public Piece(float hauteur, float largeur, float epaisseur, boolean estepaisse) {
+    /**
+     *
+     * @param hauteur
+     * @param largeur
+     * @param epaisseur
+     * @param estepaisse
+     */
+    public Piece(double hauteur, double largeur, double epaisseur, boolean estepaisse) {
         this.hauteur = hauteur;
         this.largeur = largeur;
         this.epaisseur = epaisseur;

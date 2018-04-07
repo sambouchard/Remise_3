@@ -4,23 +4,24 @@
  * and open the template in the editor.
  */
 package Main_Package;
-import java.util.Arrays;
 
 /**
  *
  * @author SABOU350
  */
 public class Etagere {
-    private float hauteur;
-    private float largeur;
-    private float profondeur;
+    private double hauteur;
+    private double largeur;
+    private double profondeur;
     private int nb_etages;
     private Etage[] listeetages;
     private boolean estferme;
+    private boolean piecedepasse;
     private Piece piecegauche;
     private Piece piecedroite;
     private Piece piecehaut;
     private Piece piecebas;
+    private Piece piecearriere;
     private boolean estepaisse;
     
     
@@ -33,7 +34,7 @@ public class Etagere {
      * @param estfermee
      * @create etagere object
      */
-    public Etagere(float hauteur, float largeur, float profondeur, int nb_etages,boolean estfermee) {
+    public Etagere(double hauteur, double largeur, double profondeur, int nb_etages,boolean estfermee) {
         setHauteur(hauteur);
         setLargeur(largeur);
         setProfondeur(profondeur);
@@ -46,6 +47,12 @@ public class Etagere {
             this.listeetages[i] = unetage;   
         }
         
+       this.piecebas = new Piece(getProfondeur(),getLargeur(),1.5*2.54,false);
+       this.piecehaut = new Piece(getProfondeur(),getLargeur(),1.5*2.54,false);
+       this.piecegauche = new Piece(getHauteur(), getProfondeur(), 1.5*2.54, false);
+       this.piecedroite = new Piece(getHauteur(), getProfondeur(), 1.5*2.54, false);
+
+       
        /* this.piecehaut = new Piece();
         this.piecebas = new Piece();
         this.piecedroite = new Piece();
@@ -57,42 +64,42 @@ public class Etagere {
     /**
      * @return the hauteur
      */
-    public float getHauteur() {
+    public double getHauteur() {
         return hauteur;
     }
     
     /**
      * @param hauteur the hauteur to set
      */
-    public void setHauteur(float hauteur) {
+    public void setHauteur(double hauteur) {
         this.hauteur = hauteur;
     }
 
     /**
      * @return the largeur
      */
-    public float getLargeur() {
+    public double getLargeur() {
         return largeur;
     }
 
     /**
      * @param largeur the largeur to set
      */
-    public void setLargeur(float largeur) {
+    public void setLargeur(double largeur) {
         this.largeur = largeur;
     }
 
     /**
      * @return the profondeur
      */
-    public float getProfondeur() {
+    public double getProfondeur() {
         return profondeur;
     }
 
     /**
      * @param profondeur the profondeur to set
      */
-    public void setProfondeur(float profondeur) {
+    public void setProfondeur(double profondeur) {
         this.profondeur = profondeur;
     }
 
@@ -114,7 +121,7 @@ public class Etagere {
      * 
      * @param h_relative
      */
-    public void ajouteetage(float h_relative){
+    public void ajouteetage(double h_relative){
         Etage newetage = new Etage(h_relative);
         for( int i = 0; i < getNb_etages(); i++){
             listeetages[i].setHauteur_rel(listeetages[i].getHauteur_rel()-(h_relative/getNb_etages())); 
@@ -136,9 +143,10 @@ public class Etagere {
     
     /**
      * 
+     * @param etageid
      */
     public void enleveetage(int etageid){
-        float h_relajouter = listeetages[etageid].getHauteur_rel();
+        double h_relajouter = listeetages[etageid].getHauteur_rel();
         listeetages[etageid] = null;
         for( int i = 0; i < getNb_etages() ; i++){
             if( listeetages[i] != null){
@@ -162,6 +170,20 @@ public class Etagere {
         
     }
     
+    public void ModifieHauteurRelEtage(int indice, double New_h){
+        double difference = this.listeetages[indice].getHauteur_rel() - New_h;
+        this.listeetages[indice].setHauteur_rel(New_h);
+        if(indice == this.listeetages.length - 1){
+                this.listeetages[indice - 1].setHauteur_rel(hauteur);
+            
+        }
+        else if( 0 == indice) {
+            this.listeetages[1].setHauteur_rel(this.listeetages[1].getHauteur_rel() - difference);
+        }
+        else{
+            
+        }
+    }
     
     
 }
