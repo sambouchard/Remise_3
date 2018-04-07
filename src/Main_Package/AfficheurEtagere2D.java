@@ -20,4 +20,23 @@ public class AfficheurEtagere2D extends JPanel{
         
     }
     
+    public void dessinerCaissons(){
+        for(Etage etage: etagere.getListeetages()){
+            for(Caisson caisson: etage.getListecaissons()){
+                
+            }
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
 }

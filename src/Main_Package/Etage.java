@@ -10,6 +10,8 @@ package Main_Package;
  * @author SABOU350
  */
 public class Etage {
+
+
     private double hauteur_rel;
     private Caisson[] listecaissons;
     private int Nb_Caisson;
@@ -51,11 +53,11 @@ public class Etage {
                 newlist[i] = newcaisson;
             }
             else{
-                newlist[i] = this.listecaissons[i];
+                newlist[i] = this.getListecaissons()[i];
             }
         }
         setNb_Caisson(getNb_Caisson()+1);
-        this.listecaissons = newlist;
+        this.setListecaissons(newlist);
         
     }
     
@@ -64,20 +66,20 @@ public class Etage {
      * @param indice
      */
     public void SupprimeCaisson(int indice){
-        double larg_rel = this.listecaissons[indice].getLargeur_rel();
-        this.listecaissons[indice] = null;
+        double larg_rel = this.getListecaissons()[indice].getLargeur_rel();
+        this.getListecaissons()[indice] = null;
         Caisson [] newlist = new Caisson[getNb_Caisson()-1];
         int j = 0;
         for(int i = 0; i < getNb_Caisson() ; i++){
-            if(this.listecaissons[i] != null){
-                this.listecaissons[i].setLargeur_rel(this.listecaissons[i].getLargeur_rel()+(larg_rel/getNb_Caisson()-1));
-                newlist[j] = this.listecaissons[i];
+            if(this.getListecaissons()[i] != null){
+                this.getListecaissons()[i].setLargeur_rel(this.getListecaissons()[i].getLargeur_rel()+(larg_rel/getNb_Caisson()-1));
+                newlist[j] = this.getListecaissons()[i];
                 j++;
             }
             
         }
         setNb_Caisson(getNb_Caisson()-1);
-        this.listecaissons = newlist;
+        this.setListecaissons(newlist);
         
        
     }
@@ -96,7 +98,19 @@ public class Etage {
         this.Nb_Caisson = Nb_Caisson;
     }
     
-    
+    /**
+     * @return the listecaissons
+     */
+    public Caisson[] getListecaissons() {
+        return listecaissons;
+    }
+
+    /**
+     * @param listecaissons the listecaissons to set
+     */
+    public void setListecaissons(Caisson[] listecaissons) {
+        this.listecaissons = listecaissons;
+    }
     
     
 }
