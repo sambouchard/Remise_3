@@ -429,12 +429,7 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 System.out.println("OKAY");
-                /**new UI_3Dtagere().setVisible(true);
-                 * 
-                 */
-                
-                AfficheurEtagere2D monafficheur = new AfficheurEtagere2D();
-                monafficheur.setName("Drawing Panel");
+                new UI_3Dtagere().setVisible(true);
             }
         });
     }

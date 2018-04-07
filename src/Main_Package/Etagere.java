@@ -150,7 +150,7 @@ public class Etagere {
         listeetages[etageid] = null;
         for( int i = 0; i < getNb_etages() ; i++){
             if( listeetages[i] != null){
-                listeetages[i].setHauteur_rel(getHauteur()+(h_relajouter/getNb_etages()-1));
+                listeetages[i].setHauteur_rel(getHauteur()+(h_relajouter/(getNb_etages()-1)));
             }
         }
         Etage[] newlist = new Etage[getNb_etages()-1];
