@@ -112,6 +112,11 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         });
 
         jButton5.setText("Supprimer caisson");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Ajouter étage");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +126,11 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         });
 
         jButton7.setText("Ajouter caisson");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Onglet_etageLayout = new javax.swing.GroupLayout(Onglet_etage);
         Onglet_etage.setLayout(Onglet_etageLayout);
@@ -609,7 +619,9 @@ public class UI_3Dtagere extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        this.control.enleveetage(selectedEtageid);
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -620,6 +632,22 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         DrawingPanel.clearView();
         DrawingPanel.repaint();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        
+        double mesure = Double.parseDouble(jTextField6.getText());
+        control.ajouteCaisson(mesure,selectedEtageid);
+        jTextField6.setText("");
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your han        
+        this.control.enleveCaisson(selectedCaissonid,selectedEtageid);
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -747,6 +775,6 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private javax.swing.JRadioButton mesure_metrique_bouton;
     // End of variables declaration//GEN-END:variables
     private AfficheurEtagere2D DrawingPanel;
-    private int selectedCaisson;
-    private int selectedEtage;
+    private int selectedCaissonid = -1;
+    private int selectedEtageid = -1;
 }
