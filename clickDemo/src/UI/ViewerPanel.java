@@ -39,6 +39,8 @@ public class ViewerPanel extends javax.swing.JPanel {
                 for (Shape element: ElementsList) {
                     if (element.contains(evt.getPoint())) {
                         JOptionPane.showMessageDialog(null, "Clicked " + element.getClass().getName());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Clicked outside");
                     }
                 }
             }
