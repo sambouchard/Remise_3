@@ -96,9 +96,9 @@ public class Controleur {
         
     }
     
-    public void setEtagere(Etagere etagere2){
-        this.etagere = etagere2;
-    }
+//    public void setEtagere(Etagere etagere2){
+//        this.etagere = etagere2;
+//    }
     
     
     public void calculCoordEtage(){
@@ -187,14 +187,6 @@ public class Controleur {
             
         }
     }
-
-    /**
-     * @return the etagere
-     */
-    public Etagere getEtagere() {
-        return etagere;
-    }
-
     /**
      * @param etagere the etagere to set
      */

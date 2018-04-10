@@ -74,13 +74,11 @@ public class AfficheurEtagere2D extends JPanel {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 super.mouseClicked(evt);
+                
                 for (Integer i = 0; i < etagere.getNb_etages(); i++) {
                     Etage currentEtage = etagere.getListeetages()[i];
                     if (currentEtage.getRectangle().contains(evt.getPoint())) {
                         parent.setSelectedEtage(currentEtage, i);
-                    } else {
-                        parent.setSelectedEtage(null, -1);
-                        parent.setSelectedCaisson(null, -1);
                     }
                     for (Integer j = 0; j < currentEtage.getNb_Caisson(); j++) {
                         Caisson currentCaisson = currentEtage.getListecaissons()[j];

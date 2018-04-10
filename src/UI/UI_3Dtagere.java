@@ -95,8 +95,8 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         mesure_imperiale_bouton = new javax.swing.JRadioButton();
         mesure_metrique_bouton = new javax.swing.JRadioButton();
         DrawingPanelContainer = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        PropsTextPane = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        PropsTextPane = new javax.swing.JTextArea();
         MenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -108,7 +108,6 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         jLabel4.setText("Hauteur relative  de l'étage");
 
         jLabel5.setText("Largeur relative du caisson");
-
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,12 +157,6 @@ public class UI_3Dtagere extends javax.swing.JFrame {
             }
         });
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout Onglet_etageLayout = new javax.swing.GroupLayout(Onglet_etage);
         Onglet_etage.setLayout(Onglet_etageLayout);
         Onglet_etageLayout.setHorizontalGroup(
@@ -195,16 +188,6 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40)
-                .addComponent(jButton2)
-                .addContainerGap(197, Short.MAX_VALUE))
                 .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
@@ -467,7 +450,9 @@ public class UI_3Dtagere extends javax.swing.JFrame {
             .addGap(0, 659, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(PropsTextPane);
+        PropsTextPane.setColumns(20);
+        PropsTextPane.setRows(5);
+        jScrollPane2.setViewportView(PropsTextPane);
 
         jMenu1.setText("Fichier");
         MenuBar.add(jMenu1);
@@ -483,10 +468,12 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(DrawingPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jChoixmesures_window, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Menudemodification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -500,8 +487,8 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Menudemodification, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap(180, Short.MAX_VALUE))
         );
 
@@ -575,19 +562,7 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         this.control.ajouteEtagere(mesure);
         hrelative_newEtage.setText("");
     }//GEN-LAST:event_addEtagebuttonActionPerformed
-
-    private void addCaissonbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCaissonbuttonActionPerformed
-        double  mesure = Double.parseDouble(lrelative_newCaisson.getText());
-        if  (!this.control.getmesure()) {
-           mesure = (double) (mesure / 3.28084);
-        }
-        this.control.ajouteCaisson(mesure);
-        lrelative_newCaisson.setText("");
-//        double mesure = Double.parseDouble(hrelative_newEtage.getText());
-//
-//        this.control.ajouteEtagere(mesure);
-//        hrelative_newEtage.setText("");
-    }//GEN-LAST:event_addEtagebuttonActionPerformed
+                                         
 
     private void addCaissonbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCaissonbuttonActionPerformed
 //        double  mesure = Double.parseDouble(lrelative_newCaisson.getText());
@@ -655,14 +630,14 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_hauteur_textKeyPressed
 
-    private void hrelative_etageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hrelative_etageKeyPressed
+    private void hrelative_etageKeyPressed(java.awt.event.KeyEvent evt) {                                           
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             double mesure = Double.parseDouble(hrelative_etage.getText());
             //TODO
         }        // TODO add your handling code here:
-    }//GEN-LAST:event_hrelative_etageKeyPressed
+    }                                          
 
-    private void lrelative_caissonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lrelative_caissonKeyPressed
+    private void lrelative_caissonKeyPressed(java.awt.event.KeyEvent evt) {                                             
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             double mesure = Double.parseDouble(hrelative_etage.getText());
             //TODO
@@ -677,22 +652,8 @@ public class UI_3Dtagere extends javax.swing.JFrame {
 //            this.control.setEtagereHauteur(mesure);
 //            System.out.print(mesure);
 //        }
-    }//GEN-LAST:event_hauteur_textKeyPressed
+    }                                       
 
-    private void hrelative_etageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hrelative_etageKeyPressed
-//        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-//            double mesure = Double.parseDouble(hrelative_etage.getText());
-//            //TODO
-//        }        // TODO add your handling code here:
-    }//GEN-LAST:event_hrelative_etageKeyPressed
-
-    private void lrelative_caissonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lrelative_caissonKeyPressed
-//        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-//            double mesure = Double.parseDouble(hrelative_etage.getText());
-//            //TODO
-//        }        // TODO add your handling code here:
-
-    }//GEN-LAST:event_lrelative_caissonKeyPressed
 
     private void supprimer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimer_buttonActionPerformed
 //        if (itemselected == caisson) {
@@ -883,7 +844,7 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private javax.swing.JPanel Onglet_dispositon;
     private javax.swing.JPanel Onglet_etage;
     private javax.swing.JLabel Profondeur_label;
-    private javax.swing.JTextPane PropsTextPane;
+    private javax.swing.JTextArea PropsTextPane;
     private javax.swing.JLabel hauteur_label;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -906,7 +867,7 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
