@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 /**
  *
@@ -42,15 +43,10 @@ public class AfficheurEtagere2D extends JPanel {
     
     public AfficheurEtagere2D(Etagere etagere) {
         this.etagere = etagere;
-
     }
     public void setEtagere(Etagere etagere) {
         this.etagere = etagere;
 
-    }
-    
-    public List<Rectangle2D.Double> getRectListe() {
-        return rectliste;
     }
     
     public void drawing() {

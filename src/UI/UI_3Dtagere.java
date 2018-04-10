@@ -1,7 +1,11 @@
 package UI;
+
 import Main_Package.*;
 import java.awt.event.*;
 import java.awt.geom.Rectangle2D;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
@@ -24,7 +28,7 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private Integer selectedEtageId;
     private Caisson selectedCaisson;
     private Etage selectedEtage;
-    
+  
     /**
      * Creates new form UI_3Dtagere
      */
@@ -57,10 +61,14 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         Onglet_etage = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         Onglet_ListePieces = new javax.swing.JPanel();
         list2 = new java.awt.List();
         jLabel1 = new javax.swing.JLabel();
@@ -101,14 +109,49 @@ public class UI_3Dtagere extends javax.swing.JFrame {
 
         jLabel5.setText("Largeur relative du caisson");
 
-        jButton1.setText("Ajouteur un Étage");
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Supprimer étage");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Supprimer caisson");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Ajouter étage");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Ajouter caisson");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Ajuster la hauteur");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ajouteur un Caisson");
+        jButton2.setText("Ajuster la largeur");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -126,24 +169,25 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         Onglet_etageLayout.setHorizontalGroup(
             Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Onglet_etageLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Onglet_etageLayout.createSequentialGroup()
-                        .addContainerGap()
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Onglet_etageLayout.createSequentialGroup()
                         .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)))
-                    .addGroup(Onglet_etageLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
-                    .addGroup(Onglet_etageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Onglet_etageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(299, Short.MAX_VALUE))
+                            .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1)
+                            .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)))))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         Onglet_etageLayout.setVerticalGroup(
             Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,6 +205,24 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jButton2)
                 .addContainerGap(197, Short.MAX_VALUE))
+                .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(50, 50, 50)
+                .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton6))
+                .addGap(40, 40, 40)
+                .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton7))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         Menudemodification.addTab("Étages", Onglet_etage);
@@ -471,15 +533,16 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         description += "Etage : " + selectedEtageId + "\n";
         description += "Caisson : " + selectedCaissonId + "\n";
         setPropertiesText(description);
+
     }
     
     public void largeur_change(KeyEvent enter){
         
     }
+  
     public void setPropertiesText(String props) {
         PropsTextPane.setText(props);
     }
-    
     private void mesure_imperiale_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesure_imperiale_boutonActionPerformed
         //this.control.setmesure(false);
     }//GEN-LAST:event_mesure_imperiale_boutonActionPerformed
@@ -520,6 +583,19 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         }
         this.control.ajouteCaisson(mesure);
         lrelative_newCaisson.setText("");
+//        double mesure = Double.parseDouble(hrelative_newEtage.getText());
+//
+//        this.control.ajouteEtagere(mesure);
+//        hrelative_newEtage.setText("");
+    }//GEN-LAST:event_addEtagebuttonActionPerformed
+
+    private void addCaissonbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCaissonbuttonActionPerformed
+//        double  mesure = Double.parseDouble(lrelative_newCaisson.getText());
+//        if  (!this.control.getmesure()) {
+//           mesure = (double) (mesure / 3.28084);
+//        }
+//        this.control.ajouteCaisson(mesure);
+//        lrelative_newCaisson.setText("");
     }//GEN-LAST:event_addCaissonbuttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -555,10 +631,19 @@ public class UI_3Dtagere extends javax.swing.JFrame {
             this.control.setEtagereLargeur(mesure);
         System.out.println(mesure);
         }
+//        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+//            double mesure = Double.parseDouble(largeur_text.getText());
+//            if  (!this.control.getmesure()) {
+//                mesure = (double) (mesure / 3.28084);
+//            }
+//            this.control.setEtagereLargeur(mesure);
+//        System.out.println(mesure);
+//        }
         
     }//GEN-LAST:event_largeur_textKeyPressed
 
     private void hauteur_textKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hauteur_textKeyPressed
+
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             double mesure = Double.parseDouble(hauteur_text.getText());
             if  (this.control.getmesure()) {
@@ -582,6 +667,31 @@ public class UI_3Dtagere extends javax.swing.JFrame {
             double mesure = Double.parseDouble(hrelative_etage.getText());
             //TODO
         }        // TODO add your handling code here:
+
+//        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+//            double mesure = Double.parseDouble(hauteur_text.getText());
+//            if  (this.control.getmesure()) {
+//            } else {
+//                mesure = (double) (mesure / 3.28084);
+//            }
+//            this.control.setEtagereHauteur(mesure);
+//            System.out.print(mesure);
+//        }
+    }//GEN-LAST:event_hauteur_textKeyPressed
+
+    private void hrelative_etageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hrelative_etageKeyPressed
+//        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+//            double mesure = Double.parseDouble(hrelative_etage.getText());
+//            //TODO
+//        }        // TODO add your handling code here:
+    }//GEN-LAST:event_hrelative_etageKeyPressed
+
+    private void lrelative_caissonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lrelative_caissonKeyPressed
+//        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+//            double mesure = Double.parseDouble(hrelative_etage.getText());
+//            //TODO
+//        }        // TODO add your handling code here:
+
     }//GEN-LAST:event_lrelative_caissonKeyPressed
 
     private void supprimer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimer_buttonActionPerformed
@@ -635,6 +745,49 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.control.enleveetage(selectedEtageid);
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        double mesure = Double.parseDouble(jTextField5.getText());
+        control.ajouteEtage(mesure);
+        jTextField5.setText("");
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        
+        double mesure = Double.parseDouble(jTextField6.getText());
+        control.ajouteCaisson(mesure,selectedEtageid);
+        jTextField6.setText("");
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your han        
+        this.control.enleveCaisson(selectedCaissonid,selectedEtageid);
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Ajuster caisson
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Ajuster étage
+        double mesure = Double.parseDouble(jTextField5.getText());
+        
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -735,6 +888,10 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPanel jChoixmesures_window;
     private javax.swing.JLabel jLabel1;

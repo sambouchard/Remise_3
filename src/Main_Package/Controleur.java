@@ -10,14 +10,19 @@ package Main_Package;
  * @author SABOU350
  */
 public class Controleur {
+
+    /**
+     * @return the etagere
+     */
+    public Etagere getEtagere() {
+        return etagere;
+    }
     private Etagere etagere;
     private boolean mesuremetrique;
     private AfficheurEtagere2D afficheur;
     private Piece ListePiece[];
     private double y_reference = AfficheurEtagere2D.yReference;
     private double x_reference = AfficheurEtagere2D.xReference;
-    
-    
     public Controleur(Etagere etagere, boolean mesuremetrique) {
         this.etagere = etagere;
         this.mesuremetrique = mesuremetrique;
@@ -40,21 +45,33 @@ public class Controleur {
      * 
      */
     public void enleveetage(int id){
-        getEtagere().enleveetage(id);
+        if (id==-1){
+            return;
+        }
+        else {
+            getEtagere().enleveetage(id);
+        }
     /**
      * 
      */
     }
-    public void enleveCaisson(int id){
-        //TODO
+    public void enleveCaisson(int caissonid, int etageid){
+        if (caissonid==-1 || etageid==-1){
+            return;
+
+        }
+        else{
+            getEtagere().getListeetages()[etageid].SupprimeCaisson(caissonid);
+        }
+
     }
-    public void ajouteEtagere(double h_rel){
+    public void ajouteEtage(double h_rel){
         getEtagere().ajouteetage(h_rel);
         
     }
-    public void ajouteCaisson(double l_rel){
-        //TODO
-    }
+    public void ajouteCaisson(double l_rel, int index){
+        getEtagere().getListeetages()[index].AjouteCaisson(l_rel);
+      
     public void setEtagereLargeur(double largeur){
         getEtagere().setLargeur(largeur);
     }
@@ -79,7 +96,9 @@ public class Controleur {
         
     }
     
-    
+    public void setEtagere(Etagere etagere2){
+        this.etagere = etagere2;
+    }
     
     
     public void calculCoordEtage(){
