@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fjlac/Desktop/Université/Hiver%202018/GLOO/Livrable%203/Sam/Remise_3-etagere/src/UI/UI_3Dtagere.java</file>
-            <file>file:/C:/Users/fjlac/Desktop/Université/Hiver%202018/GLOO/Livrable%203/Sam/Remise_3-etagere/src/Main_Package/Controleur.java</file>
-            <file>file:/C:/Users/fjlac/Desktop/Université/Hiver%202018/GLOO/Livrable%203/Sam/Remise_3-etagere/src/Main_Package/Etagere.java</file>
-            <file>file:/C:/Users/fjlac/Desktop/Université/Hiver%202018/GLOO/Livrable%203/Sam/Remise_3-etagere/src/Main_Package/test.java</file>
-            <file>file:/C:/Users/fjlac/Desktop/Université/Hiver%202018/GLOO/Livrable%203/Sam/Remise_3-etagere/src/Main_Package/AfficheurEtagere2D.java</file>
+            <file>file:/Users/charlesc/Developer/Remise_3/src/Main_Package/AfficheurEtagere2D.java</file>
+            <file>file:/Users/charlesc/Developer/Remise_3/src/Main_Package/Caisson.java</file>
+            <file>file:/Users/charlesc/Developer/Remise_3/src/Main_Package/Etagere.java</file>
+            <file>file:/Users/charlesc/Developer/Remise_3/src/UI/UI_3Dtagere.java</file>
+            <file>file:/Users/charlesc/Developer/Remise_3/src/Main_Package/Etage.java</file>
+            <file>file:/Users/charlesc/Developer/Remise_3/src/Main_Package/Controleur.java</file>
+            <file>file:/Users/charlesc/Developer/Remise_3/src/Main_Package/Coord_Coins.java</file>
         </group>
     </open-files>
 </project-private>

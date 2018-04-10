@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.List;
+import UI.UI_3Dtagere;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -28,23 +29,20 @@ import java.awt.event.MouseWheelListener;
 public class AfficheurEtagere2D extends JPanel {
     private boolean shouldClear = false; 
     private Etagere etagere;
-    private double xReference = 0;
-    private double yReference = 0;
+    public static double xReference = 0;
+    public static double yReference = 0;
     private double ep2 = 15; // Épaisseur d'une des deux planches du périmètre double
-    static double ep3 = 10; // Épaisseur d'une des trois planches du périmètre triple.
+    static double ep3 = 10; // Épaisseur d'une des trois planches du périmètre triple
     private double magnificier;
     private List<Rectangle2D.Double> rectliste = new ArrayList();
 
 
 
-    public AfficheurEtagere2D(){
-        initListeners();
+    public AfficheurEtagere2D() {
     }
     
     public AfficheurEtagere2D(Etagere etagere) {
         this.etagere = etagere;
-        initListeners();
-
     }
     public void setEtagere(Etagere etagere) {
         this.etagere = etagere;
@@ -71,16 +69,24 @@ public class AfficheurEtagere2D extends JPanel {
         }
     }
     
-    private void initListeners() {
+    public void initListeners(UI_3Dtagere parent) {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 super.mouseClicked(evt);
-                for (Rectangle2D element: rectliste) {
-                    if (element.getBounds().contains(evt.getPoint())) {
-                        // an element was clicekd
+                for (Integer i = 0; i < etagere.getNb_etages(); i++) {
+                    Etage currentEtage = etagere.getListeetages()[i];
+                    if (currentEtage.getRectangle().contains(evt.getPoint())) {
+                        parent.setSelectedEtage(currentEtage, i);
                     } else {
-                        // was not clicked
+                        parent.setSelectedEtage(null, -1);
+                        parent.setSelectedCaisson(null, -1);
+                    }
+                    for (Integer j = 0; j < currentEtage.getNb_Caisson(); j++) {
+                        Caisson currentCaisson = currentEtage.getListecaissons()[j];
+                        if (currentCaisson.getRectangle().contains(evt.getPoint())) {
+                            parent.setSelectedCaisson(currentCaisson, j);
+                        }
                     }
                 }
             }
@@ -96,6 +102,7 @@ public class AfficheurEtagere2D extends JPanel {
      * 
      * @param g 
      */
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
         if (etagere != null) {
