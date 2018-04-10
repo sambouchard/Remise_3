@@ -1,6 +1,12 @@
 package UI;
 import Main_Package.*;
-import java.awt.Graphics2D;
+import java.awt.event.*;
+import java.awt.geom.Rectangle2D;
+import javax.swing.JFrame;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+        
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,14 +19,31 @@ import java.awt.Graphics2D;
  * @author SABOU350
  */
 public class UI_3Dtagere extends javax.swing.JFrame {
-
+    public Controleur control;
+    private Integer selectedCaissonId;
+    private Integer selectedEtageId;
+    private Caisson selectedCaisson;
+    private Etage selectedEtage;
+    
     /**
      * Creates new form UI_3Dtagere
      */
     public UI_3Dtagere() {
         initComponents();
+        initCustomComponents();
+        control = new Controleur(null, true);
+        ButtonGroup Group_Triple = new ButtonGroup();
+        Group_Triple.add(jRadioButton1);
+        Group_Triple.add(jRadioButton2);
+        ButtonGroup Group_style = new ButtonGroup();
+        Group_style.add(jRadioButton3);
+        Group_style.add(jRadioButton4);
+        ButtonGroup Group_mesure = new ButtonGroup();
+        Group_mesure.add(mesure_imperiale_bouton);
+        Group_mesure.add(mesure_metrique_bouton);
+        
     }
-
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +54,17 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private void initComponents() {
 
         Menudemodification = new javax.swing.JTabbedPane();
+        Onglet_etage = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        Onglet_ListePieces = new javax.swing.JPanel();
+        list2 = new java.awt.List();
+        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         Onglet_dispositon = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         largeur_label = new javax.swing.JLabel();
@@ -44,21 +78,17 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        Onglet_etage = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
-        jLabel5 = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        Onglet_ListePieces = new javax.swing.JPanel();
-        list2 = new java.awt.List();
-        jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        CreerEtagere = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jChoixmesures_window = new javax.swing.JPanel();
         mesure_imperiale_bouton = new javax.swing.JRadioButton();
         mesure_metrique_bouton = new javax.swing.JRadioButton();
-        DrawingPanel = new javax.swing.JPanel();
+        DrawingPanelContainer = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        PropsTextPane = new javax.swing.JTextPane();
         MenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -67,119 +97,9 @@ public class UI_3Dtagere extends javax.swing.JFrame {
 
         Menudemodification.setToolTipText("");
 
-        jTextField1.setText("jTextField1");
+        jLabel4.setText("Hauteur relative  de l'étage");
 
-        largeur_label.setText("Largeur");
-
-        jTextField2.setText("jTextField2");
-
-        hauteur_label.setText("Hauteur");
-
-        Profondeur_label.setText("Profondeur");
-
-        jTextField3.setText("jTextField3");
-
-        jLabel2.setText("Épaisseur");
-
-        jRadioButton1.setText("Double");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton2.setText("Triple");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Style");
-
-        jRadioButton3.setText("Ouverte");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton4.setText("Fermée");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Onglet_dispositonLayout = new javax.swing.GroupLayout(Onglet_dispositon);
-        Onglet_dispositon.setLayout(Onglet_dispositonLayout);
-        Onglet_dispositonLayout.setHorizontalGroup(
-            Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Onglet_dispositonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
-                        .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Onglet_dispositonLayout.createSequentialGroup()
-                                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(largeur_label, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(hauteur_label, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Profondeur_label))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(100, 273, Short.MAX_VALUE))
-                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton4))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        Onglet_dispositonLayout.setVerticalGroup(
-            Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Onglet_dispositonLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(largeur_label, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hauteur_label))
-                .addGap(18, 18, 18)
-                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Profondeur_label)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
-                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel3))
-                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jRadioButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton4)))
-                .addContainerGap(157, Short.MAX_VALUE))
-        );
-
-        Menudemodification.addTab("Disposition", Onglet_dispositon);
-
-        jLabel4.setText("Hauteur Relative  de l'étage");
-
-        jLabel5.setText("Largeur Relative du Caisson");
+        jLabel5.setText("Largeur relative du caisson");
 
         jButton1.setText("Ajouteur un Étage");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -195,15 +115,16 @@ public class UI_3Dtagere extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Onglet_etageLayout = new javax.swing.GroupLayout(Onglet_etage);
         Onglet_etage.setLayout(Onglet_etageLayout);
         Onglet_etageLayout.setHorizontalGroup(
             Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Onglet_etageLayout.createSequentialGroup()
-                .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 275, Short.MAX_VALUE))
             .addGroup(Onglet_etageLayout.createSequentialGroup()
                 .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Onglet_etageLayout.createSequentialGroup()
@@ -215,8 +136,14 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addGroup(Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
+                    .addGroup(Onglet_etageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Onglet_etageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
         Onglet_etageLayout.setVerticalGroup(
             Onglet_etageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,16 +151,16 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(jButton1)
                 .addGap(40, 40, 40)
                 .addComponent(jButton2)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         Menudemodification.addTab("Étages", Onglet_etage);
@@ -261,7 +188,7 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                     .addGroup(Onglet_ListePiecesLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         Onglet_ListePiecesLayout.setVerticalGroup(
             Onglet_ListePiecesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,6 +203,157 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         );
 
         Menudemodification.addTab("Liste Pieces", Onglet_ListePieces);
+
+        jTextField1.setToolTipText("");
+
+        largeur_label.setText("Largeur");
+
+        hauteur_label.setText("Hauteur");
+
+        Profondeur_label.setText("Profondeur");
+
+        jLabel2.setText("Épaisseur");
+
+        jRadioButton1.setText("Double");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setSelected(true);
+        jRadioButton2.setText("Triple");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Dépasse");
+
+        jRadioButton3.setSelected(true);
+        jRadioButton3.setText("Oui");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton4.setText("Non");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+
+        CreerEtagere.setText("Créer Étagère");
+        CreerEtagere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreerEtagereActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Panneau arrière");
+
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Nombre d'étages");
+
+        jTextField4.setText("1");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Onglet_dispositonLayout = new javax.swing.GroupLayout(Onglet_dispositon);
+        Onglet_dispositon.setLayout(Onglet_dispositonLayout);
+        Onglet_dispositonLayout.setHorizontalGroup(
+            Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                        .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox1)
+                                    .addComponent(jRadioButton3)
+                                    .addComponent(jRadioButton2)
+                                    .addComponent(jRadioButton1)
+                                    .addComponent(jRadioButton4)))
+                            .addComponent(jLabel7))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                        .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(CreerEtagere)
+                                .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                                    .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(largeur_label, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(hauteur_label, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Profondeur_label))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                        .addComponent(jTextField1)
+                                        .addComponent(jTextField3)))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(100, 338, Short.MAX_VALUE))))
+        );
+        Onglet_dispositonLayout.setVerticalGroup(
+            Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(largeur_label, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hauteur_label))
+                .addGap(18, 18, 18)
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Profondeur_label)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jRadioButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton1)
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel3))
+                    .addGroup(Onglet_dispositonLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jRadioButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton4)))
+                .addGap(19, 19, 19)
+                .addGroup(Onglet_dispositonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jCheckBox1))
+                .addGap(19, 19, 19)
+                .addComponent(CreerEtagere)
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+
+        Menudemodification.addTab("Disposition", Onglet_dispositon);
 
         jChoixmesures_window.setBorder(javax.swing.BorderFactory.createTitledBorder("Choix des mesures"));
         jChoixmesures_window.setOpaque(false);
@@ -314,18 +392,20 @@ public class UI_3Dtagere extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        DrawingPanel.setBackground(new java.awt.Color(255, 255, 153));
+        DrawingPanelContainer.setBackground(new java.awt.Color(255, 255, 153));
 
-        javax.swing.GroupLayout DrawingPanelLayout = new javax.swing.GroupLayout(DrawingPanel);
-        DrawingPanel.setLayout(DrawingPanelLayout);
-        DrawingPanelLayout.setHorizontalGroup(
-            DrawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout DrawingPanelContainerLayout = new javax.swing.GroupLayout(DrawingPanelContainer);
+        DrawingPanelContainer.setLayout(DrawingPanelContainerLayout);
+        DrawingPanelContainerLayout.setHorizontalGroup(
+            DrawingPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 572, Short.MAX_VALUE)
         );
-        DrawingPanelLayout.setVerticalGroup(
-            DrawingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        DrawingPanelContainerLayout.setVerticalGroup(
+            DrawingPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 659, Short.MAX_VALUE)
         );
+
+        jScrollPane1.setViewportView(PropsTextPane);
 
         jMenu1.setText("Fichier");
         MenuBar.add(jMenu1);
@@ -339,64 +419,222 @@ public class UI_3Dtagere extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DrawingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DrawingPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jChoixmesures_window, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Menudemodification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Menudemodification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jChoixmesures_window, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
-                        .addComponent(DrawingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(DrawingPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Menudemodification, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Menudemodification, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap(180, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mesure_imperiale_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesure_imperiale_boutonActionPerformed
+    private void initCustomComponents() {
+        DrawingPanel = new AfficheurEtagere2D();
+        DrawingPanelContainer.add(DrawingPanel);
         
+        DrawingPanel.setSize(DrawingPanelContainer.getSize());
+        DrawingPanel.initListeners(this);
+    }
+    
+    public void setSelectedEtage(Etage etage, Integer idx) {
+        this.selectedEtage = etage;
+        this.selectedEtageId = idx;
+        onNewSelection();
+    }
+    public void setSelectedCaisson(Caisson caisson, Integer idx) {
+        this.selectedCaisson = caisson;
+        this.selectedCaissonId = idx;
+        onNewSelection();
+    }
+    
+    public void onNewSelection() {
+        String description;
+        description = "Vous avez selectionné:\n";
+        description += "Etage : " + selectedEtageId + "\n";
+        description += "Caisson : " + selectedCaissonId + "\n";
+        setPropertiesText(description);
+    }
+    
+    public void largeur_change(KeyEvent enter){
+        
+    }
+    public void setPropertiesText(String props) {
+        PropsTextPane.setText(props);
+    }
+    
+    private void mesure_imperiale_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesure_imperiale_boutonActionPerformed
+        //this.control.setmesure(false);
     }//GEN-LAST:event_mesure_imperiale_boutonActionPerformed
 
     private void mesure_metrique_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesure_metrique_boutonActionPerformed
-            // TODO add your handling code here:
+        //this.control.setmesure(true);
     }//GEN-LAST:event_mesure_metrique_boutonActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
+        //this.control.setisTriple(false);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
+        //this.control.setisTriple(true);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
+        //this.control.style_background(false);
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        // TODO add your handling code here:
+        //this.control.style_background(true);
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void addEtagebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEtagebuttonActionPerformed
+        double mesure = Double.parseDouble(hrelative_newEtage.getText());
+        if  (!this.control.getmesure()) {
+            mesure = (double) (mesure / 3.28084);
+        }
+        this.control.ajouteEtagere(mesure);
+        hrelative_newEtage.setText("");
+    }//GEN-LAST:event_addEtagebuttonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void addCaissonbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCaissonbuttonActionPerformed
+        double  mesure = Double.parseDouble(lrelative_newCaisson.getText());
+        if  (!this.control.getmesure()) {
+           mesure = (double) (mesure / 3.28084);
+        }
+        this.control.ajouteCaisson(mesure);
+        lrelative_newCaisson.setText("");
+    }//GEN-LAST:event_addCaissonbuttonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jRadioButton2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jRadioButton2FocusGained
+        this.control.setisTriple(true); 
+    }//GEN-LAST:event_jRadioButton2FocusGained
+
+    private void jRadioButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jRadioButton1FocusGained
+        this.control.setisTriple(false);
+    }//GEN-LAST:event_jRadioButton1FocusGained
+
+    private void jRadioButton3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jRadioButton3FocusGained
+        this.control.style_background(false);
+    }//GEN-LAST:event_jRadioButton3FocusGained
+
+    private void jRadioButton4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jRadioButton4FocusGained
+        this.control.style_background(true);
+    }//GEN-LAST:event_jRadioButton4FocusGained
+
+    private void mesure_imperiale_boutonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mesure_imperiale_boutonFocusGained
+        this.control.setmesure(false); 
+    }//GEN-LAST:event_mesure_imperiale_boutonFocusGained
+    
+    private void largeur_textKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_largeur_textKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            double mesure = Double.parseDouble(largeur_text.getText());
+            if  (!this.control.getmesure()) {
+                mesure = (double) (mesure / 3.28084);
+            }
+            this.control.setEtagereLargeur(mesure);
+        System.out.println(mesure);
+        }
+        
+    }//GEN-LAST:event_largeur_textKeyPressed
+
+    private void hauteur_textKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hauteur_textKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            double mesure = Double.parseDouble(hauteur_text.getText());
+            if  (this.control.getmesure()) {
+            } else {
+                mesure = (double) (mesure / 3.28084);
+            }
+            this.control.setEtagereHauteur(mesure);
+            System.out.print(mesure);
+        }
+    }//GEN-LAST:event_hauteur_textKeyPressed
+
+    private void hrelative_etageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hrelative_etageKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            double mesure = Double.parseDouble(hrelative_etage.getText());
+            //TODO
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_hrelative_etageKeyPressed
+
+    private void lrelative_caissonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lrelative_caissonKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            double mesure = Double.parseDouble(hrelative_etage.getText());
+            //TODO
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_lrelative_caissonKeyPressed
+
+    private void supprimer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimer_buttonActionPerformed
+//        if (itemselected == caisson) {
+//            this.control.enlevecaisson();
+//        }
+//        else{
+//            this.control.enleveetage();
+//        }// TODO add your handling code here:
+    }//GEN-LAST:event_supprimer_buttonActionPerformed
+
+    private void CreerEtagereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreerEtagereActionPerformed
+        // TODO add your handling code here:
+
+        String hauteur = jTextField1.getText();
+        String largeur = jTextField2.getText();
+        double haut = Double.parseDouble(hauteur);
+        double larg = Double.parseDouble(largeur);
+        boolean perimetre;
+        if (jRadioButton2.isSelected()){
+            perimetre = true;
+        }
+        else{
+            perimetre = false;
+        }
+        boolean depasse;
+        if (jRadioButton3.isSelected()){
+            depasse = true;
+        }
+        else{
+            depasse = false;
+        }        
+        boolean panneauArriere = jCheckBox1.isSelected();
+        String nbetages = jTextField4.getText();
+        int etages = Integer.parseInt(nbetages);
+        Etagere etagere = new Etagere(haut, larg, 3, etages, perimetre, depasse, panneauArriere);
+        this.control.setEtagere(etagere);
+        DrawingPanel.setEtagere(etagere);
+        DrawingPanel.clearView();
+        DrawingPanel.repaint();
+    }//GEN-LAST:event_CreerEtagereActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -424,47 +662,104 @@ public class UI_3Dtagere extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(UI_3Dtagere.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+       
         /* Create and display the form */
+        
+//        Etagere etagere = new Etagere(400, 400, 300, 2, true, true,true);
+//        DrawingPanelContainer = new AfficheurEtagere2D();
+//        DrawingPanel.setBackground(Color.BLACK);
+//        System.out.println(DrawingPanel.getAlignmentX());
+//        System.out.println(DrawingPanel.getAlignmentY());
+//        etagere.ajouteetage(0.5);
+//        etagere.getListeetages()[0].AjouteCaisson(0.5);
+//        AfficheurEtagere2D afficheur = new AfficheurEtagere2D(etagere);
+//        JFrame Jf = new JFrame();
+//        Jf.setTitle("Test");
+//        Jf.setSize(2000,2000);
+//        Jf.setVisible(true);
+//        Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        Jf.add(afficheur);
+//        afficheur.drawing();
+//        //AfficheurEtagere2D afficheur = new AfficheurEtagere2D(etagere);
+//
+//        etagere.getListeetages()[0].AjouteCaisson(0.2);
+//        etagere.getListeetages()[0].AjouteCaisson(0.2);
+//        etagere.getListeetages()[0].AjouteCaisson(0.2);
+//        etagere.getListeetages()[0].AjouteCaisson(0.4);
+//        etagere.getListeetages()[1].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[1].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[1].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[2].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[2].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[2].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[3].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[3].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[3].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[4].AjouteCaisson(1);
+//        etagere.getListeetages()[4].AjouteCaisson(1.0/3.0);
+//        etagere.getListeetages()[4].AjouteCaisson(0.8);
+
+
+        
+        //etagere.getListeetages()[2].AjouteCaisson(50);
+        //JFrame Jf = new JFrame();
+        //Jf.setTitle("Test");
+        //Jf.setSize(6000,6000);
+        //Jf.setVisible(true);
+        //Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Jf.add(afficheur);
+        //afficheur.drawing();
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+//                Etagere etagere = new Etagere(400, 400, 300, 2, true, true);
+//                AfficheurEtagere2D afficheur = new AfficheurEtagere2D(etagere);
+//                Controleur controleur = new Controleur(etagere, true);
+                
                 System.out.println("OKAY");
                 new UI_3Dtagere().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel DrawingPanel;
+    private javax.swing.JButton CreerEtagere;
+    private static javax.swing.JPanel DrawingPanelContainer;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JTabbedPane Menudemodification;
     private javax.swing.JPanel Onglet_ListePieces;
     private javax.swing.JPanel Onglet_dispositon;
     private javax.swing.JPanel Onglet_etage;
     private javax.swing.JLabel Profondeur_label;
+    private javax.swing.JTextPane PropsTextPane;
     private javax.swing.JLabel hauteur_label;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPanel jChoixmesures_window;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel largeur_label;
     private java.awt.List list2;
     private javax.swing.JRadioButton mesure_imperiale_bouton;
     private javax.swing.JRadioButton mesure_metrique_bouton;
     // End of variables declaration//GEN-END:variables
+    private AfficheurEtagere2D DrawingPanel;
 }

@@ -11,7 +11,7 @@ package Main_Package;
  */
 public class Etagere {
     private double hauteur;
-    private double largeur;
+    static public double largeur;
     private double profondeur;
     private int nb_etages;
     private Etage[] listeetages;
@@ -22,7 +22,7 @@ public class Etagere {
     private Piece piecehaut;
     private Piece piecebas;
     private Piece piecearriere;
-    private boolean estepaisse;
+    private boolean perimetretriple;
     
     
     
@@ -34,16 +34,19 @@ public class Etagere {
      * @param estfermee
      * @create etagere object
      */
-    public Etagere(double hauteur, double largeur, double profondeur, int nb_etages,boolean estfermee) {
+    public Etagere(double hauteur, double largeur, double profondeur, int nb_etages,
+            boolean estfermee,boolean piecedepasse,boolean perimetretriple) {
         setHauteur(hauteur);
         setLargeur(largeur);
         setProfondeur(profondeur);
         setNb_etages(nb_etages);
+        setPiecedepasse(piecedepasse);
+        setPerimetretriple(perimetretriple);
         this.estferme = estfermee;
         this.listeetages = new Etage[this.nb_etages];
-        
+
         for(int i = 0; i < getNb_etages() ; i++){
-            Etage unetage = new Etage(100/getNb_etages());
+            Etage unetage = new Etage(1.0/this.getNb_etages());
             this.listeetages[i] = unetage;   
         }
         
@@ -124,7 +127,7 @@ public class Etagere {
     public void ajouteetage(double h_relative){
         Etage newetage = new Etage(h_relative);
         for( int i = 0; i < getNb_etages(); i++){
-            listeetages[i].setHauteur_rel(listeetages[i].getHauteur_rel()-(h_relative/getNb_etages())); 
+            getListeetages()[i].setHauteur_rel(getListeetages()[i].getHauteur_rel()-(h_relative/getNb_etages())); 
         }
         setNb_etages(getNb_etages()+1);
         Etage[] newlist = new Etage[getNb_etages()];
@@ -133,10 +136,10 @@ public class Etagere {
                 newlist[i] = newetage;
             }
             else{
-                newlist[i]  = this.listeetages[i];
+                newlist[i]  = this.getListeetages()[i];
             }
         }
-        this.listeetages = newlist;
+        this.setListeetages(newlist);
         
    
     }
@@ -146,44 +149,101 @@ public class Etagere {
      * @param etageid
      */
     public void enleveetage(int etageid){
-        double h_relajouter = listeetages[etageid].getHauteur_rel();
-        listeetages[etageid] = null;
+        double h_relajouter = getListeetages()[etageid].getHauteur_rel();
+        getListeetages()[etageid] = null;
         for( int i = 0; i < getNb_etages() ; i++){
-            if( listeetages[i] != null){
-                listeetages[i].setHauteur_rel(getHauteur()+(h_relajouter/(getNb_etages()-1)));
+            if( getListeetages()[i] != null){
+                getListeetages()[i].setHauteur_rel(getHauteur()+(h_relajouter/(getNb_etages()-1)));
             }
         }
         Etage[] newlist = new Etage[getNb_etages()-1];
         int j = 0;
         for( int i = 0; i < getNb_etages() ; i++){
-            if(listeetages[i] == null){
+            if(getListeetages()[i] == null){
                
             }
             else{
-                newlist[j] = this.listeetages[i];
+                newlist[j] = this.getListeetages()[i];
                 j++;
             }
         }
-        this.listeetages = newlist;
+        this.setListeetages(newlist);
         setNb_etages(getNb_etages()-1);
 
         
     }
     
     public void ModifieHauteurRelEtage(int indice, double New_h){
-        double difference = this.listeetages[indice].getHauteur_rel() - New_h;
-        this.listeetages[indice].setHauteur_rel(New_h);
-        if(indice == this.listeetages.length - 1){
-                this.listeetages[indice - 1].setHauteur_rel(hauteur);
+        double difference = this.getListeetages()[indice].getHauteur_rel() - New_h;
+        this.getListeetages()[indice].setHauteur_rel(New_h);
+        if(indice == this.getListeetages().length - 1){
+            this.getListeetages()[indice - 1].setHauteur_rel(hauteur);
             
         }
         else if( 0 == indice) {
-            this.listeetages[1].setHauteur_rel(this.listeetages[1].getHauteur_rel() - difference);
+            this.getListeetages()[1].setHauteur_rel(this.getListeetages()[1].getHauteur_rel() - difference);
         }
         else{
             
         }
     }
+
+    /**
+     * @return the listeetages
+     */
+    public Etage[] getListeetages() {
+        return listeetages;
+    }
+
+    /**
+     * @param listeetages the listeetages to set
+     */
+    public void setListeetages(Etage[] listeetages) {
+        this.listeetages = listeetages;
+    }
+
+    /**
+     * @return the piecedepasse
+     */
+    public boolean isPiecedepasse() {
+        return piecedepasse;
+    }
+
+    /**
+     * @param piecedepasse the piecedepasse to set
+     */
+    public void setPiecedepasse(boolean piecedepasse) {
+        this.piecedepasse = piecedepasse;
+    }
+
+    /**
+     * @return the perimetretriple
+     */
+    public boolean isPerimetretriple() {
+        return perimetretriple;
+    }
+
+    /**
+     * @param perimetretriple the perimetretriple to set
+     */
+    public void setPerimetretriple(boolean perimetretriple) {
+        this.perimetretriple = perimetretriple;
+    }
+
+    /**
+     * @return the estferme
+     */
+    public boolean isEstferme() {
+        return estferme;
+    }
+
+    /**
+     * @param estferme the estferme to set
+     */
+    public void setestferme(boolean estferme) {
+        this.estferme = estferme;
+    }
     
     
 }
+
