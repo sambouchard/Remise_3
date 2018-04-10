@@ -62,43 +62,91 @@ public class Etage {
      * @param l_rel
      */
 
-    public void AjouteCaisson(double l_rel) {
+    public void AjouteCaisson(double l_rel){
+        espacedisponible -= l_rel + 3*ep3/(largeur-6*ep3);
         Caisson newcaisson;
-        newcaisson = new Caisson(l_rel);
-
-        Caisson[] newlist = new Caisson[getNb_Caisson() + 1];
-        int j = 0;
-        for (int i = 0; i < getNb_Caisson() + 1; i++) {
-            if (i == getNb_Caisson()) {
-                newlist[i] = newcaisson;
-            } else {
-                newlist[i] = this.getListecaissons()[i];
+        if(debordement == true){
+            newcaisson = new Caisson(0);
+            this.listecaissons[listecaissons.length-1].setLargeur_rel(l_rel);
+            for(int i=0 ; i < getNb_Caisson()-1 ; i++){
+                //this.listecaissons[i].setLargeur_rel(this.listecaissons[i].getLargeur_rel()*(1-(l_rel/(getNb_Caisson()*100))));
+                this.listecaissons[i].setLargeur_rel((1-l_rel)*this.listecaissons[i].getLargeur_rel());
+                
             }
+            
         }
-        setNb_Caisson(getNb_Caisson() + 1);
-        this.setListecaissons(newlist);
+        //Premier débordement, on redistribue la largeur relative manquante du caisson du bout dans le reste des caissons existants.
+        else if (espacedisponible<=0){
+            
+            newcaisson = new Caisson(0);
+            for(int i=0 ; i < getNb_Caisson()-1 ; i++){
+                //this.listecaissons[i].setLargeur_rel(this.listecaissons[i].getLargeur_rel()*(1-((l_rel-this.listecaissons[listecaissons.length-1].getLargeur_rel())/(getNb_Caisson()*100))));
+                this.listecaissons[i].setLargeur_rel((1-(l_rel-this.listecaissons[listecaissons.length-1].getLargeur_rel()))*this.listecaissons[i].getLargeur_rel());
+            }
+            this.listecaissons[listecaissons.length-1].setLargeur_rel(l_rel);
+            debordement = true;
+        }
+        else{
+            newcaisson = new Caisson(espacedisponible);
+            listecaissons[listecaissons.length-1].setLargeur_rel(l_rel);
+            
+        }
 
+        Caisson[] newlist  = new Caisson[getNb_Caisson()+1];
+        for(int i = 0; i < getNb_Caisson() ; i++){
+            newlist[i] = this.listecaissons[i];
+        }
+        newlist[newlist.length-1] = newcaisson;
+        setNb_Caisson(getNb_Caisson()+1);
+        this.listecaissons = newlist;
+        
     }
     
     /**
-     *
+     * 
      * @param indice
      */
-    public void SupprimeCaisson(int indice) {
-        double larg_rel = this.getListecaissons()[indice].getLargeur_rel();
-        this.getListecaissons()[indice] = null;
-        Caisson[] newlist = new Caisson[getNb_Caisson() - 1];
-        int j = 0;
-        for (int i = 0; i < getNb_Caisson(); i++) {
-            if (this.getListecaissons()[i] != null) {
-                this.getListecaissons()[i].setLargeur_rel(this.getListecaissons()[i].getLargeur_rel() + (larg_rel / (getNb_Caisson() - 1)));
-                newlist[j] = this.getListecaissons()[i];
-                j++;
-            }
-
+    public void SupprimeCaisson(int indice){
+        if (indice==0 && getNb_Caisson() == 1){
+            throw new IllegalStateException("Vous ne pouvez pas supprimer le seul caisson existant.");
         }
-        setNb_Caisson(getNb_Caisson() - 1);
-        this.setListecaissons(newlist);
+        
+        try{
+            double larg_rel = this.listecaissons[indice].getLargeur_rel();
+            espacedisponible += larg_rel;
+            if (espacedisponible>0){
+                debordement = false;
+            }
+            Caisson [] newlist = new Caisson[getNb_Caisson()-1];
+            if(debordement == true){
+                this.listecaissons[indice] = null;
+                
+                int j = 0;
+                for(int i = 0; i < getNb_Caisson() ; i++){
+                    if(this.listecaissons[i] != null){
+                        this.listecaissons[i].setLargeur_rel(this.listecaissons[i].getLargeur_rel()+(larg_rel/(getNb_Caisson()-1)));
+                        newlist[j] = this.listecaissons[i];
+                        j++;
+                    }
+                }
+            }
+            else{
+                this.listecaissons[indice] = null;
+                listecaissons[listecaissons.length-1].setLargeur_rel(espacedisponible);
+                int j = 0;
+                for(int i = 0; i < getNb_Caisson() ; i++){
+                    if(this.listecaissons[i] != null){
+                        newlist[j] = this.listecaissons[i];
+                        j++;
+                    }
+                }
+            }
+            setNb_Caisson(getNb_Caisson()-1);
+            this.listecaissons = newlist;            
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            throw new IllegalStateException("Ce caisson n'existe pas");
+        }
 
     }
 
