@@ -250,8 +250,19 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         Menudemodification.addTab("Liste Pieces", Onglet_ListePieces);
 
         jTextField1.setToolTipText("");
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         largeur_label.setText("Largeur");
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         hauteur_label.setText("Hauteur");
 
@@ -667,8 +678,8 @@ public class UI_3Dtagere extends javax.swing.JFrame {
     private void CreerEtagereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreerEtagereActionPerformed
         // TODO add your handling code here:
 
-        String hauteur = jTextField1.getText();
-        String largeur = jTextField2.getText();
+        String largeur = jTextField1.getText();
+        String hauteur = jTextField2.getText();
         double haut = Double.parseDouble(hauteur);
         double larg = Double.parseDouble(largeur);
         boolean perimetre;
@@ -749,6 +760,24 @@ public class UI_3Dtagere extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            double mesure = Double.parseDouble(jTextField1.getText());
+            this.control.setEtagereLargeur(mesure);
+            DrawingPanel.clearView();
+            DrawingPanel.repaint();
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            double mesure = Double.parseDouble(jTextField2.getText());
+                this.control.setEtagereHauteur(mesure);
+                DrawingPanel.clearView();
+                DrawingPanel.repaint();
+            }
+    }//GEN-LAST:event_jTextField2KeyPressed
 
     /**
      * @param args the command line arguments
