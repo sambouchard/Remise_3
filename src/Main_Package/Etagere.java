@@ -10,10 +10,8 @@ package Main_Package;
  * @author SABOU350
  */
 public class Etagere {
-
-
     private double hauteur;
-    private double largeur;
+    static public double largeur;
     private double profondeur;
     private int nb_etages;
     private Etage[] listeetages;
@@ -24,7 +22,7 @@ public class Etagere {
     private Piece piecehaut;
     private Piece piecebas;
     private Piece piecearriere;
-    private boolean estepaisse;
+    private boolean perimetretriple;
     
     
     
@@ -36,16 +34,19 @@ public class Etagere {
      * @param estfermee
      * @create etagere object
      */
-    public Etagere(double hauteur, double largeur, double profondeur, int nb_etages,boolean estfermee) {
+    public Etagere(double hauteur, double largeur, double profondeur, int nb_etages,
+            boolean estfermee,boolean piecedepasse,boolean perimetretriple) {
         setHauteur(hauteur);
         setLargeur(largeur);
         setProfondeur(profondeur);
         setNb_etages(nb_etages);
+        setPiecedepasse(piecedepasse);
+        setPerimetretriple(perimetretriple);
         this.estferme = estfermee;
         this.listeetages = new Etage[this.nb_etages];
-        
+
         for(int i = 0; i < getNb_etages() ; i++){
-            Etage unetage = new Etage(100/getNb_etages());
+            Etage unetage = new Etage(1.0/this.getNb_etages());
             this.listeetages[i] = unetage;   
         }
         
@@ -186,7 +187,7 @@ public class Etagere {
             
         }
     }
-    
+
     /**
      * @return the listeetages
      */
@@ -200,6 +201,49 @@ public class Etagere {
     public void setListeetages(Etage[] listeetages) {
         this.listeetages = listeetages;
     }
+
+    /**
+     * @return the piecedepasse
+     */
+    public boolean isPiecedepasse() {
+        return piecedepasse;
+    }
+
+    /**
+     * @param piecedepasse the piecedepasse to set
+     */
+    public void setPiecedepasse(boolean piecedepasse) {
+        this.piecedepasse = piecedepasse;
+    }
+
+    /**
+     * @return the perimetretriple
+     */
+    public boolean isPerimetretriple() {
+        return perimetretriple;
+    }
+
+    /**
+     * @param perimetretriple the perimetretriple to set
+     */
+    public void setPerimetretriple(boolean perimetretriple) {
+        this.perimetretriple = perimetretriple;
+    }
+
+    /**
+     * @return the estferme
+     */
+    public boolean isEstferme() {
+        return estferme;
+    }
+
+    /**
+     * @param estferme the estferme to set
+     */
+    public void setestferme(boolean estferme) {
+        this.estferme = estferme;
+    }
     
     
 }
+
