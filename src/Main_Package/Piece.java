@@ -5,6 +5,8 @@
  */
 package Main_Package;
 
+import java.util.List;
+
 /**
  *
  * @author SABOU350
@@ -12,9 +14,10 @@ package Main_Package;
 public class Piece {
     private double hauteur;
     private double largeur;
-    private double epaisseur;
+    private double profondeur;
     private boolean estepaisse;
-    private Coord_Coins[] listecoins;
+    private String nom;
+    private List<Coord_Coins> listecoins ;
    
 
     
@@ -50,29 +53,29 @@ public class Piece {
     /**
      * @return the epaisseur
      */
-    public double getEpaisseur() {
-        return epaisseur;
+    public double getProfondeur() {
+        return profondeur;
     }
 
     /**
-     * @param epaisseur the epaisseur to set
+     * @param Profondeur
      */
-    public void setEpaisseur(double epaisseur) {
-        this.epaisseur = epaisseur;
+    public void setProfondeur(double Profondeur) {
+        this.profondeur = profondeur;
     }
 
     /**
      *
      * @param hauteur
      * @param largeur
-     * @param epaisseur
+     * @param profondeur
      * @param estepaisse
      */
-    public Piece(double hauteur, double largeur, double epaisseur, boolean estepaisse) {
+    public Piece(double hauteur, double largeur, double profondeur,String nom) {
         this.hauteur = hauteur;
         this.largeur = largeur;
-        this.epaisseur = epaisseur;
-        this.estepaisse = estepaisse;
+        this.profondeur = profondeur;
+        this.nom = nom;
     }
     /**
      * 

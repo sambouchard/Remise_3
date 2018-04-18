@@ -20,13 +20,12 @@ public class Controleur {
     private Etagere etagere;
     private boolean mesuremetrique;
     private AfficheurEtagere2D afficheur;
-    private Piece ListePiece[];
     private double y_reference = AfficheurEtagere2D.yReference;
     private double x_reference = AfficheurEtagere2D.xReference;
-    public Controleur(Etagere etagere, boolean mesuremetrique) {
-        this.etagere = etagere;
-        this.mesuremetrique = mesuremetrique;
-        this.afficheur = new AfficheurEtagere2D(this.getEtagere());
+    
+    
+    public Controleur() {
+        
 
     }
     /**
@@ -37,6 +36,17 @@ public class Controleur {
     }
     public void setmesure(boolean isMetrique) {
         this.mesuremetrique = isMetrique;
+    }
+    public void genererPiecePerimetreBas(){
+        if(this.etagere.isPerimetretriple()){
+            
+        }
+        else if(!(this.etagere.isPerimetretriple())){
+            
+        }
+    }
+    public void CreerEtagere(double longeur,double largeur, double profondeur){
+        
     }
     public boolean getmesure() {
         return mesuremetrique;
@@ -71,7 +81,13 @@ public class Controleur {
     }
     public void ajouteCaisson(double l_rel, int index){
         getEtagere().getListeetages()[index].AjouteCaisson(l_rel);
+       
+    }
       
+    /**
+     *
+     * @param largeur
+     */
     public void setEtagereLargeur(double largeur){
         getEtagere().setLargeur(largeur);
     }
@@ -96,9 +112,6 @@ public class Controleur {
         
     }
     
-//    public void setEtagere(Etagere etagere2){
-//        this.etagere = etagere2;
-//    }
     
     
     public void calculCoordEtage(){

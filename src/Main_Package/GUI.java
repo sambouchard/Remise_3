@@ -1,22 +1,23 @@
+package Main_Package;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
 
-import java.awt.Dimension;
+import javax.swing.JFrame;
 
 /**
  *
- * @author charlesc
+ * @author SABOU350
  */
-public class ViewerFrame extends javax.swing.JFrame {
+public class GUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewerFrame
+     * Creates new form GUI
      */
-    public ViewerFrame() {
+    public GUI() {
         initComponents();
     }
 
@@ -29,41 +30,38 @@ public class ViewerFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        view = new ViewerPanel();
+        Afficheur2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("3Dtagère");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setExtendedState(MAXIMIZED_BOTH);
+        setName("MainWindow"); // NOI18N
 
-        view.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout viewLayout = new javax.swing.GroupLayout(view);
-        view.setLayout(viewLayout);
-        viewLayout.setHorizontalGroup(
-            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+        javax.swing.GroupLayout Afficheur2Layout = new javax.swing.GroupLayout(Afficheur2);
+        Afficheur2.setLayout(Afficheur2Layout);
+        Afficheur2Layout.setHorizontalGroup(
+            Afficheur2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        viewLayout.setVerticalGroup(
-            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
+        Afficheur2Layout.setVerticalGroup(
+            Afficheur2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 1123, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 843, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -83,26 +81,39 @@ public class ViewerFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            ViewerFrame frame = new ViewerFrame();
-            frame.setMinimumSize(MIN_DIMENSIONS);
-            frame.setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Etagere etagere = new Etagere(400, 400, 300, 5, true,true,false);
+                AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
+                afficheur.setEtagere(etagere);
+                GUI gui = new GUI();
+                gui.setVisible(true);
+                gui.add(afficheur);
+                afficheur.drawing();
+                
+                JFrame Jf = new JFrame();
+        Jf.setTitle("Test");
+        Jf.setSize(6000,6000);
+        Jf.setVisible(true);
+        Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Jf.add(afficheur);
+        afficheur.drawing();
+            }
         });
     }
-    
-    private final static Dimension MIN_DIMENSIONS = new Dimension(500, 500);
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel view;
+    private javax.swing.JPanel Afficheur2;
     // End of variables declaration//GEN-END:variables
 }

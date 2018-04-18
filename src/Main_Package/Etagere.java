@@ -5,6 +5,9 @@
  */
 package Main_Package;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  *
  * @author SABOU350
@@ -17,12 +20,10 @@ public class Etagere {
     private Etage[] listeetages;
     private boolean estferme;
     private boolean piecedepasse;
-    private Piece piecegauche;
-    private Piece piecedroite;
-    private Piece piecehaut;
-    private Piece piecebas;
-    private Piece piecearriere;
+    private List<Piece> Liste_piece;
     private boolean perimetretriple;
+    private double epaisseurTriple = 0.5 * 2.54;
+    private double epaisseurDouble = 0.75 * 2.54;
     
     
     
@@ -49,18 +50,11 @@ public class Etagere {
             Etage unetage = new Etage(1.0/this.getNb_etages());
             this.listeetages[i] = unetage;   
         }
+        this.Liste_piece = new ArrayList();
+        GenererPieces();
         
-       this.piecebas = new Piece(getProfondeur(),getLargeur(),1.5*2.54,false);
-       this.piecehaut = new Piece(getProfondeur(),getLargeur(),1.5*2.54,false);
-       this.piecegauche = new Piece(getHauteur(), getProfondeur(), 1.5*2.54, false);
-       this.piecedroite = new Piece(getHauteur(), getProfondeur(), 1.5*2.54, false);
-
-       
-       /* this.piecehaut = new Piece();
-        this.piecebas = new Piece();
-        this.piecedroite = new Piece();
-        this.piecegauche = new Piece();
-        */
+        
+        
         
     }
 
@@ -70,6 +64,92 @@ public class Etagere {
     public double getHauteur() {
         return hauteur;
     }
+    
+    public void GenererPieces(){
+        Liste_piece.clear();
+        if(isPerimetretriple()){
+            GenererPiecePerimetreBasTriple();
+            GenererPiecesPerimetreHautTriple();
+            GenererPiecesPerimetreCote();
+        }
+        else if(!(isPerimetretriple())){
+            GenererPiecesPerimetreBasDouble();
+            GenererPiecsePerimetreHautDouble();
+            GenererPiecesPerimetreCote();
+        }
+    }
+    
+    
+    
+    private void GenererPiecesPerimetreBasDouble(){
+        Piece piecebas = new Piece(epaisseurDouble,this.largeur - 2 *epaisseurDouble,this.profondeur,"Piece du bas");
+        this.Liste_piece.add(piecebas);     
+    }
+    
+    
+    private void GenererPiecePerimetreBasTriple(){
+        Piece piecebas = new Piece(epaisseurTriple,this.largeur - 2* (epaisseurTriple),this.profondeur,"Piece du bas1");
+        Piece pieceba2 = new Piece(epaisseurTriple,this.largeur - 4 *(epaisseurTriple),this.profondeur,"Piece du bas2");
+        this.Liste_piece.add(piecebas);
+        this.Liste_piece.add(pieceba2);
+
+    }
+    
+    
+    
+    private void GenererPiecsePerimetreHautDouble(){
+        if(isPiecedepasse()){
+            Piece piecehaut = new Piece(epaisseurDouble,this.largeur,this.profondeur,"Piece du haut");
+            this.Liste_piece.add(piecehaut);
+        }
+        else if(!(isPiecedepasse())){
+            Piece piecehaut = new Piece(epaisseurDouble,this.largeur-2*epaisseurDouble,this.profondeur,"Piece du haut");
+            this.Liste_piece.add(piecehaut);
+        }
+    }
+    
+    
+    
+    private void GenererPiecesPerimetreHautTriple(){
+        if(isPiecedepasse()){
+            Piece piecehaut = new Piece(epaisseurTriple,this.largeur,this.profondeur,"Piece du haut1");
+            Piece piecehaut1 = new Piece(epaisseurTriple,this.largeur - 2*(0.5*2.54),this.profondeur,"Piece du haut2");
+            this.Liste_piece.add(piecehaut);
+            this.Liste_piece.add(piecehaut1);
+            
+        }
+        else if(!(isPiecedepasse())){
+            Piece piecehaut = new Piece(epaisseurTriple,this.largeur - 2*(epaisseurTriple),this.profondeur,"Piece du haut1");
+            Piece piecehaut1 = new Piece(epaisseurTriple,this.largeur - 2*(epaisseurTriple),this.profondeur,"Piece du haut2");
+            this.Liste_piece.add(piecehaut);
+            this.Liste_piece.add(piecehaut1);
+        }
+    }
+    
+    private void GenererPiecesPerimetreCote(){
+        double epaisseur = 0;
+        if(isPerimetretriple()){
+            epaisseur = epaisseurTriple;
+        }
+        else if(!(isPerimetretriple())){
+            epaisseur = epaisseurDouble;
+        }
+        if(isPiecedepasse()){
+            Piece piecegauche = new Piece(this.hauteur - epaisseur, epaisseur, this.profondeur, "Piece de gauche");
+            Piece piecedroite = new Piece(this.hauteur - epaisseur, epaisseur, this.profondeur, "Piece de droite");
+            this.Liste_piece.add(piecegauche);
+            this.Liste_piece.add(piecedroite);
+        }
+        else if(!(isPiecedepasse())){
+            Piece piecegauche = new Piece(this.hauteur, epaisseur, this.profondeur, "Piece de gauche");
+            Piece piecedroite = new Piece(this.hauteur, epaisseur, this.profondeur, "Piece de droite");
+            this.Liste_piece.add(piecedroite);
+            this.Liste_piece.add(piecegauche);
+        }
+    }
+   
+    
+    
     
     /**
      * @param hauteur the hauteur to set

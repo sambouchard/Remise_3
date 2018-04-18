@@ -19,25 +19,13 @@ import javax.swing.JFrame;
  */
 public class test {
     public static void main(String[] args){
-        Etagere etagere = new Etagere(400, 400, 300, 5, true,true,false);
-        AfficheurEtagere2D afficheur = new AfficheurEtagere2D(etagere);
+        Etagere etagere = new Etagere(400, 400, 300, 5, true,true,true);
+        AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
+        afficheur.setEtagere(etagere);
         
-            etagere.getListeetages()[0].AjouteCaisson(0.2);
-            etagere.getListeetages()[0].AjouteCaisson(0.2);
-            etagere.getListeetages()[0].AjouteCaisson(0.2);
-            etagere.getListeetages()[0].AjouteCaisson(0.4);
-            etagere.getListeetages()[1].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[1].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[1].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[2].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[2].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[2].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[3].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[3].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[3].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[4].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[4].AjouteCaisson(1.0/3.0);
-            etagere.getListeetages()[4].AjouteCaisson(1.0/3.0);
+            
+            
+            
         
         //etagere.getListeetages()[2].AjouteCaisson(50);
         JFrame Jf = new JFrame();
