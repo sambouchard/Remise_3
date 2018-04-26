@@ -120,6 +120,13 @@ public class AfficheurEtagere2D extends JPanel  {
 
         dessinerEtages(g2d);
         dessinerCaissons(g2d);
+        for(Piece piece : this.etagere.getListe_piece()){
+            piece.setRect((piece.getDrawingcoin().getCoord_x()+300)*1.5, (piece.getDrawingcoin().getCoord_y()+300)*1.5, piece.getLargeur()*1.5, piece.getHauteur()*1.5);
+            g2d.setColor(Color.BLUE);
+            g2d.fill(piece);
+            System.out.println(piece.getNom());
+            System.out.println(piece.toString());
+        }
         
         for (Rectangle2D.Double rectangle : this.getRectliste()) {
             g2d.setColor(Color.RED);

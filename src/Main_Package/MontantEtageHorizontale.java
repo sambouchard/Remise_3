@@ -13,8 +13,10 @@ import java.util.List;
  */
 public class MontantEtageHorizontale {
     private List<Piece> Liste_piece;
+    private Piece piecemilieu;
 
-    public MontantEtageHorizontale() {
+    public MontantEtageHorizontale(Piece piecemilieu) {
+        this.piecemilieu = piecemilieu;
         
     }
     

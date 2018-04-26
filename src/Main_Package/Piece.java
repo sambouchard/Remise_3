@@ -6,6 +6,7 @@
 package Main_Package;
 
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,15 +14,47 @@ import java.util.List;
  * @author SABOU350
  */
 public class Piece extends Rectangle2D.Double{
+
+    /**
+     * @return the nom
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * @param nom the nom to set
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * @return the drawingcoin
+     */
+    public Coord_Coins getDrawingcoin() {
+        return drawingcoin;
+    }
+
+    /**
+     * @param drawingcoin the drawingcoin to set
+     */
+    public void setDrawingcoin(Coord_Coins drawingcoin) {
+        this.drawingcoin = drawingcoin;
+    }
     private double hauteur;
     private double largeur;
     private double profondeur;
     private String nom;
-    private List<Coord_Coins> listecoins ;
+    private List<Coord_Coins> listecoins = new ArrayList();
+    private Coord_Coins drawingcoin;
    
 
     
-    
+    public void ajouteCoin(double x, double y, double z) {
+        Coord_Coins coin = new Coord_Coins(x, y, z);
+        listecoins.add(coin);
+    }
     /**
      * @return the hauteur
      */

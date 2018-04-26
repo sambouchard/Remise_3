@@ -10,14 +10,14 @@ package Main_Package;
  * @author SABOU350
  */
 public class Coord_Coins {
-    private float coord_x;
-    private float coord_y;
-    private float coord_z;
+    private double coord_x;
+    private double coord_y;
+    private double coord_z;
 
     /**
      * @return the coord_x
      */
-    public float getCoord_x() {
+    public double getCoord_x() {
         return coord_x;
     }
 
@@ -31,7 +31,7 @@ public class Coord_Coins {
     /**
      * @return the coord_y
      */
-    public float getCoord_y() {
+    public double getCoord_y() {
         return coord_y;
     }
 
@@ -45,7 +45,7 @@ public class Coord_Coins {
     /**
      * @return the coord_z
      */
-    public float getCoord_z() {
+    public double getCoord_z() {
         return coord_z;
     }
 
@@ -55,5 +55,12 @@ public class Coord_Coins {
     public void setCoord_z(float coord_z) {
         this.coord_z = coord_z;
     }
+
+    public Coord_Coins(double coord_x, double coord_y, double coord_z) {
+        this.coord_x = coord_x;
+        this.coord_y = coord_y;
+        this.coord_z = coord_z;
+    }
+    
     
 }
