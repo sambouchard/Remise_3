@@ -34,7 +34,6 @@ public class AfficheurEtagere2D extends JPanel  {
     static public double yReference = 100;
     private double ep2 = 15; // Épaisseur d'une des deux planches du périmètre double
     static double ep3 = 10; // Épaisseur d'une des trois planches du périmètre triple.
-    private double magnificier;
     private double scale = 1.0;
     private AffineTransform tx = new AffineTransform();
     private Graphics2D g2d;
@@ -101,36 +100,36 @@ public class AfficheurEtagere2D extends JPanel  {
      * 
      * @param g 
      */
-//    @Override
-//    public void paintComponent(Graphics g) {
-//        super.paintComponents(g);
-//        g2d = (Graphics2D) g;
-//        if (shouldClear) {
-//            g2d.dispose();
-//            shouldClear = false;
-//        }
-//        if (getEtagere().isPerimetretriple() == true) {
-//            paint_ptrible(g2d);
-//            paint_pbas_triple(g2d);
-//
-//        } else if (getEtagere().isPerimetretriple() == false) {
-//            paint_pdouble(g2d);
-//            paint_pbas_double(g2d);
-//
-//        }
-//
-//        dessinerEtages(g2d);
-//        dessinerCaissons(g2d);
-//        
-//        for (Rectangle2D.Double rectangle : this.getRectliste()) {
-//            g2d.setColor(Color.RED);
-//            g2d.fill(tx.createTransformedShape(rectangle));
-//            g2d.setColor(Color.BLACK);
-//            g2d.draw(rectangle);
-//                    
-//        }
-//
-//    }
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponents(g);
+        g2d = (Graphics2D) g;
+        if (shouldClear) {
+            g2d.dispose();
+            shouldClear = false;
+        }
+        if (getEtagere().isPerimetretriple() == true) {
+            paint_ptrible(g2d);
+            paint_pbas_triple(g2d);
+
+        } else if (getEtagere().isPerimetretriple() == false) {
+            paint_pdouble(g2d);
+            paint_pbas_double(g2d);
+
+        }
+
+        dessinerEtages(g2d);
+        dessinerCaissons(g2d);
+        
+        for (Rectangle2D.Double rectangle : this.getRectliste()) {
+            g2d.setColor(Color.RED);
+            g2d.fill(tx.createTransformedShape(rectangle));
+            g2d.setColor(Color.BLACK);
+            g2d.draw(rectangle);
+                    
+        }
+
+    }
 
     public void paint_pbas_triple(Graphics2D g2d) {
         double ep = 10;

@@ -77,6 +77,7 @@ public class Etagere {
             GenererPiecsePerimetreHautDouble();
             GenererPiecesPerimetreCote();
         }
+        GenererPiecesEtagesHorizontale();
     }
     
     
@@ -323,7 +324,20 @@ public class Etagere {
     public void setestferme(boolean estferme) {
         this.estferme = estferme;
     }
-    
-    
+
+    private void GenererPiecesEtagesHorizontale() {
+        int compteuretages = 0;
+        if(isPerimetretriple()){
+             for(int i = 0; i < this.getNb_etages() - 1; i++){ 
+                 
+            }
+            
+        }
+        if(!(isPerimetretriple())){
+            for(int i = 0; i < this.getNb_etages() - 1; i++){ 
+            
+            }
+        }
+    }  
 }
 

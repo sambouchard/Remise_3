@@ -5,17 +5,17 @@
  */
 package Main_Package;
 
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 /**
  *
  * @author SABOU350
  */
-public class Piece {
+public class Piece extends Rectangle2D.Double{
     private double hauteur;
     private double largeur;
     private double profondeur;
-    private boolean estepaisse;
     private String nom;
     private List<Coord_Coins> listecoins ;
    

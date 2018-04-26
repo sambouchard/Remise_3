@@ -24,6 +24,7 @@ public class Controleur {
     private double x_reference = AfficheurEtagere2D.xReference;
     
     
+    
     public Controleur() {
         
 
@@ -31,23 +32,14 @@ public class Controleur {
     /**
      * 
      */
+    
     public void style_background(boolean estferme){
         getEtagere().setestferme(estferme);
     }
     public void setmesure(boolean isMetrique) {
         this.mesuremetrique = isMetrique;
     }
-    public void genererPiecePerimetreBas(){
-        if(this.etagere.isPerimetretriple()){
-            
-        }
-        else if(!(this.etagere.isPerimetretriple())){
-            
-        }
-    }
-    public void CreerEtagere(double longeur,double largeur, double profondeur){
-        
-    }
+    
     public boolean getmesure() {
         return mesuremetrique;
     }
