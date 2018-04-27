@@ -5,20 +5,58 @@
  */
 package Main_Package;
 
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 /**
  *
  * @author SABOU350
  */
-public class Piece {
+public class Piece extends Rectangle2D.Double{
+
+    /**
+     * @return the nom
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * @param nom the nom to set
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * @return the drawingcoin
+     */
+    public Coord_Coins getDrawingcoin() {
+        return drawingcoin;
+    }
+
+    /**
+     * @param drawingcoin the drawingcoin to set
+     */
+    public void setDrawingcoin(Coord_Coins drawingcoin) {
+        this.drawingcoin = drawingcoin;
+    }
     private double hauteur;
     private double largeur;
-    private double epaisseur;
-    private boolean estepaisse;
-    private Coord_Coins[] listecoins;
+    private double profondeur;
+    private String nom;
+    private List<Coord_Coins> listecoins = new ArrayList();
+    private Coord_Coins drawingcoin;
    
 
     
-    
+    public void ajouteCoin(double x, double y, double z) {
+        Coord_Coins coin = new Coord_Coins(x, y, z);
+        listecoins.add(coin);
+    }
     /**
      * @return the hauteur
      */
@@ -50,29 +88,29 @@ public class Piece {
     /**
      * @return the epaisseur
      */
-    public double getEpaisseur() {
-        return epaisseur;
+    public double getProfondeur() {
+        return profondeur;
     }
 
     /**
-     * @param epaisseur the epaisseur to set
+     * @param Profondeur
      */
-    public void setEpaisseur(double epaisseur) {
-        this.epaisseur = epaisseur;
+    public void setProfondeur(double Profondeur) {
+        this.profondeur = profondeur;
     }
 
     /**
      *
      * @param hauteur
      * @param largeur
-     * @param epaisseur
+     * @param profondeur
      * @param estepaisse
      */
-    public Piece(double hauteur, double largeur, double epaisseur, boolean estepaisse) {
+    public Piece(double hauteur, double largeur, double profondeur,String nom) {
         this.hauteur = hauteur;
         this.largeur = largeur;
-        this.epaisseur = epaisseur;
-        this.estepaisse = estepaisse;
+        this.profondeur = profondeur;
+        this.nom = nom;
     }
     /**
      * 
