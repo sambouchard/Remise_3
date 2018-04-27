@@ -5,7 +5,6 @@
  */
 package Main_Package;
 
-import static Main_Package.AfficheurEtagere2D.ep3;
 import static Main_Package.Etagere.largeur;
 import java.awt.geom.Rectangle2D;
 import java.lang.IllegalStateException;

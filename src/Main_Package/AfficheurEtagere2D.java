@@ -23,32 +23,28 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
-
+import java.awt.event.MouseAdapter;
 
 /**
  *
  * @author SABOU350
  */
-public class AfficheurEtagere2D extends JPanel  {
+public class AfficheurEtagere2D extends JPanel {
 
     private Etagere etagere;
-    private boolean shouldClear;
-    static public double xReference = 100;
-    static public double yReference = 100;
-    private double ep2 = 15; // Épaisseur d'une des deux planches du périmètre double
-    static double ep3 = 10; // Épaisseur d'une des trois planches du périmètre triple.
     private double scale = 1.0;
-    private AffineTransform tx = new AffineTransform();
     private Graphics2D g2d;
-
-    private List<Rectangle2D.Double> rectliste = new ArrayList();
+    private AffineTransform tx = new AffineTransform();
+    
+     Movingadapter ma = new Movingadapter();
 
     public AfficheurEtagere2D() {
+        this.addMouseMotionListener(ma);
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
-                for(Piece piece: etagere.getListe_piece()){
-                    if(piece.contains(me.getX(), me.getY())){
+                for (Piece piece : etagere.getListe_piece()) {
+                    if (piece.contains(me.getX(), me.getY())) {
                         System.out.println(piece.getNom());
                         System.out.println(piece.getMinX());
                         System.out.println(piece.getMaxX());
@@ -57,40 +53,39 @@ public class AfficheurEtagere2D extends JPanel  {
             }
 
             @Override
-            public void mousePressed(MouseEvent me) {
+            public void mousePressed(MouseEvent m) {
                 
             }
 
             @Override
             public void mouseReleased(MouseEvent me) {
-                
+
             }
 
             @Override
             public void mouseEntered(MouseEvent me) {
-               
+
             }
 
             @Override
             public void mouseExited(MouseEvent me) {
-                
+
             }
         });
-        this.etagere = new Etagere(10, 10, 10, 4, true,false,true);
+        this.addMouseWheelListener(new ZoomHandler());
+        this.addMouseListener(ma);
+        
     }
 
     public void drawing() {
         repaint();
     }
 
-    /**
-     *
-     * @param e
-     */
-   
-   
+    private class ZoomHandler implements MouseWheelListener {
 
-        //@Override
+        double scale = 1.0;
+
+        @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
             if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
 
@@ -109,64 +104,61 @@ public class AfficheurEtagere2D extends JPanel  {
                 tx.translate(p1.getX(), p1.getY());
                 tx.scale(scale, scale);
                 tx.translate(-p2.getX(), -p2.getY());
-                
-                
-                g2d.setColor(Color.yellow);
-                
-                    for (Rectangle2D.Double rectangle : this.getRectliste()) {
-                        System.out.println("Main_Package.AfficheurEtagere2D.mouseWheelMoved()");
-                g2d.clearRect((int) rectangle.getX(), (int) rectangle.getY(), (int) rectangle.getWidth(), (int) rectangle.getHeight());
-                g2d.draw(tx.createTransformedShape(rectangle));
-            }       
-                
-               //clearView(); 
-               this.repaint();
-                
-                
+
+                AfficheurEtagere2D.this.revalidate();
+                AfficheurEtagere2D.this.repaint();
             }
         }
-        
-        public void clearView() {
-            shouldClear = true;    
-            this.repaint();;
+    }
+
+    private class Movingadapter extends MouseAdapter {
+
+        private int x;
+
+        private int y;
+
+        public void mousePressed(MouseEvent e) {
+            x = e.getX();
+            y = e.getY();
         }
+
+        public void mouseDragged(MouseEvent e) {
+
+            int dx = e.getX() - x;
+            int dy = e.getY() - y;
+            for(Piece piece:etagere.getListe_piece()){
+                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x()+dx/20 );
+                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy/20 );
+            }
+            
+            
+            repaint();
+        }
+
+    }
+
     /**
-     * 
-     * @param g 
+     *
+     * @param g
      */
     @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponents(g);
+    public void paint(Graphics g) {
+        super.paint(g);
         g2d = (Graphics2D) g;
-        if (shouldClear) {
-            g2d.dispose();
-            shouldClear = false;
-        }
-        
-        for(Piece piece : this.etagere.getListe_piece()){
-            piece.setRect((piece.getDrawingcoin().getCoord_x())*10, (piece.getDrawingcoin().getCoord_y())*10, piece.getLargeur()*10, piece.getHauteur()*10 );
+        if (this.etagere != null) {
+
+            for (Piece piece : this.etagere.getListe_piece()) {
+                piece.setRect((piece.getDrawingcoin().getCoord_x()) * 10, (piece.getDrawingcoin().getCoord_y()) * 10, piece.getLargeur() * 10, piece.getHauteur() * 10);
+                g2d.setColor(Color.BLACK);
+                g2d.draw(tx.createTransformedShape(piece));
+
+            }
+        } else {
             g2d.setColor(Color.BLACK);
-            g2d.draw(piece);
-            
-            
+            Rectangle2D.Double rect = new Rectangle2D.Double(50, 50, 50, 50);
+            g2d.fill(rect);
         }
 
-    }
-
-   
-
-    /**
-     * @return the rectliste
-     */
-    public List<Rectangle2D.Double> getRectliste() {
-        return rectliste;
-    }
-
-    /**
-     * @param rectliste the rectliste to set
-     */
-    public void setRectliste(List<Rectangle2D.Double> rectliste) {
-        this.rectliste = rectliste;
     }
 
     /**
@@ -181,6 +173,8 @@ public class AfficheurEtagere2D extends JPanel  {
      */
     public void setEtagere(Etagere etagere) {
         this.etagere = etagere;
+        revalidate();
+        repaint();
     }
 
 }

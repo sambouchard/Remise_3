@@ -337,30 +337,19 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             Controleur controleur = new Controleur();
             
             Etagere etagere = new Etagere(Double.parseDouble(this.Hauteur_field.getText()),Double.parseDouble(this.Largeur_field.getText())
-                    ,Double.parseDouble(this.Profondeur_field.getText()) , 4, true,false,true);
+                    ,Double.parseDouble(this.Profondeur_field.getText()) , 1, true,false,true);
             controleur.setEtagere(etagere);
+            
         AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
         afficheur.setEtagere(etagere);
+        controleur.setAfficheur(afficheur);
+        
         GUI gui = new GUI();
-        gui.setControleur1(controleur);
         gui.setAfficheurEtagere2D1(afficheur);
-        gui.getAfficheurEtagere2D1().repaint();
+        for(Piece piece:gui.getAfficheurEtagere2D1().getEtagere().getListe_piece()){
+            System.out.println(piece.getNom());
+        }
                 gui.setVisible(true);
-                
-        
-            
-            
-            
-        
-        
-        JFrame Jf = new JFrame();
-        Jf.setTitle("Test");
-        Jf.setSize(1000,1000);
-        Jf.setVisible(true);
-        Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Jf.add(afficheur);
-        afficheur.drawing();
-        
         }
     }//GEN-LAST:event_CreateEtagereButtonMouseClicked
 

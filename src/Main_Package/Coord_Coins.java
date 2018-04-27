@@ -24,7 +24,7 @@ public class Coord_Coins {
     /**
      * @param coord_x the coord_x to set
      */
-    public void setCoord_x(float coord_x) {
+    public void setCoord_x(double coord_x) {
         this.coord_x = coord_x;
     }
 
@@ -38,7 +38,7 @@ public class Coord_Coins {
     /**
      * @param coord_y the coord_y to set
      */
-    public void setCoord_y(float coord_y) {
+    public void setCoord_y(double coord_y) {
         this.coord_y = coord_y;
     }
 
@@ -52,7 +52,7 @@ public class Coord_Coins {
     /**
      * @param coord_z the coord_z to set
      */
-    public void setCoord_z(float coord_z) {
+    public void setCoord_z(double coord_z) {
         this.coord_z = coord_z;
     }
 
