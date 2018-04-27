@@ -23,6 +23,9 @@
                 <Property name="text" type="java.lang.String" value="Nouveau"/>
                 <Property name="actionCommand" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuItem2MouseClicked"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>

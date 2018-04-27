@@ -57,7 +57,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         Hauteur_label = new javax.swing.JLabel();
         Largeur_label = new javax.swing.JLabel();
         Profondeur_label = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        CreateEtagereButton = new javax.swing.JButton();
         Perimetredouble_radio = new javax.swing.JRadioButton();
         Perimetretriple_radio = new javax.swing.JRadioButton();
 
@@ -150,11 +150,11 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
 
         Profondeur_label.setText("Cm");
 
-        jButton1.setText("Créer Étagère");
-        jButton1.setEnabled(false);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        CreateEtagereButton.setText("Créer Étagère");
+        CreateEtagereButton.setEnabled(false);
+        CreateEtagereButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                CreateEtagereButtonMouseClicked(evt);
             }
         });
 
@@ -206,7 +206,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
                         .addGap(52, 52, 52))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(159, 159, 159)
-                .addComponent(jButton1)
+                .addComponent(CreateEtagereButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -237,7 +237,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
                     .addComponent(Mesureimp_radio)
                     .addComponent(Perimetretriple_radio))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(CreateEtagereButton)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -306,9 +306,9 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
 
     private void Profondeur_fieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Profondeur_fieldCaretUpdate
         if (!(Hauteur_field.getText().equals("")) && !(Largeur_field.getText().equals("")) && !(Profondeur_field.getText().equals(""))) {
-            jButton1.setEnabled(true);
+            CreateEtagereButton.setEnabled(true);
         } else {
-            jButton1.setEnabled(false);
+            CreateEtagereButton.setEnabled(false);
         }
 
 // TODO add your handling code here:
@@ -316,55 +316,46 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
 
     private void Largeur_fieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Largeur_fieldCaretUpdate
         if (!(Hauteur_field.getText().equals("")) && !(Largeur_field.getText().equals("")) && !(Profondeur_field.getText().equals(""))) {
-            jButton1.setEnabled(true);
+            CreateEtagereButton.setEnabled(true);
         } else {
-            jButton1.setEnabled(false);
+            CreateEtagereButton.setEnabled(false);
         }
     }//GEN-LAST:event_Largeur_fieldCaretUpdate
 
     private void Hauteur_fieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Hauteur_fieldCaretUpdate
         if (!(Hauteur_field.getText().equals("")) && !(Largeur_field.getText().equals("")) && !(Profondeur_field.getText().equals(""))) {
-            jButton1.setEnabled(true);
+            CreateEtagereButton.setEnabled(true);
         } else {
-            jButton1.setEnabled(false);
+            CreateEtagereButton.setEnabled(false);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_Hauteur_fieldCaretUpdate
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        if (jButton1.isEnabled() == true) {
-            if (Perimetredouble_radio.isSelected()) {
-                GUI gui = new GUI();
-                Controleur controleur = new Controleur();
-                Etagere etagere = new Etagere(Double.parseDouble(Hauteur_field.getText()) * 20,
-                        Double.parseDouble(Largeur_field.getText()) * 20, Double.parseDouble(Profondeur_field.getText()) * 20,
-                        1, false, true, false);
-                etagere.getListeetages()[0].AjouteCaisson(1);
-                AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
-                afficheur.setEtagere(etagere);
-                gui.setVisible(true);
-                gui.add(afficheur);
-                afficheur.drawing();
-            }
-            if (Perimetretriple_radio.isSelected()) {
-                GUI gui = new GUI();
-                Controleur controleur = new Controleur();
-                Etagere etagere = new Etagere(Double.parseDouble(Hauteur_field.getText()) * 20,
-                        Double.parseDouble(Largeur_field.getText()) * 20, Double.parseDouble(Profondeur_field.getText()) * 20,
-                        1, false, true, true);
-                etagere.getListeetages()[0].AjouteCaisson(1);
+    private void CreateEtagereButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateEtagereButtonMouseClicked
+        if (CreateEtagereButton.isEnabled() == true) {
 
-                AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
-                afficheur.setEtagere(etagere);
-                gui.setVisible(true);
-                gui.add(afficheur);
-                afficheur.drawing();
+            
+            Controleur controleur = new Controleur();
+            controleur.setEtagere(new Etagere(Double.parseDouble(Hauteur_field.getText()),
+                    Double.parseDouble(Largeur_field.getText()), Double.parseDouble(Profondeur_field.getText()),
+                    1, false, true, Perimetretriple_radio.isSelected()));
+            AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
+            afficheur.setEtagere(new Etagere(Double.parseDouble(Hauteur_field.getText()),
+                    Double.parseDouble(Largeur_field.getText()), Double.parseDouble(Profondeur_field.getText()),
+                    1, false, true, false));
+            JFrame Jf = new JFrame();
+        Jf.setTitle("Test");
+        Jf.setSize(1000,1000);
+        Jf.setVisible(true);
+        Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Jf.add(afficheur);
+        afficheur.drawing();
+            
 
-            }
             //System.out.println(Double.parseDouble(Hauteur_field.getText()));
 //            System.out.println(Double.parseDouble(Largeur_field.getText()));
 //            System.out.println(Double.parseDouble(Profondeur_field.getText()));
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_CreateEtagereButtonMouseClicked
 
     private void Perimetredouble_radioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Perimetredouble_radioActionPerformed
         // TODO add your handling code here:
@@ -410,6 +401,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CreateEtagereButton;
     private javax.swing.JTextField Hauteur_field;
     private javax.swing.JLabel Hauteur_label;
     private javax.swing.JTextField Largeur_field;
@@ -422,7 +414,6 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
     private javax.swing.JLabel Profondeur_label;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup group_perimetre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

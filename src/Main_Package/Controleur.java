@@ -33,6 +33,7 @@ public class Controleur {
      * 
      */
     
+    
     public void style_background(boolean estferme){
         getEtagere().setestferme(estferme);
     }

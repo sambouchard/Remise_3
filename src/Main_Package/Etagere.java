@@ -95,10 +95,9 @@ public class Etagere {
     }
 
     private void GenererPiecePerimetreBasTriple() {
-        Piece piecebas = new Piece(epaisseurTriple, this.largeur - 2 * (epaisseurTriple), this.profondeur, "Piece du bas1");
-        Piece pieceba2 = new Piece(epaisseurTriple, this.largeur - 4 * (epaisseurTriple), this.profondeur, "Piece du bas2");
+        Piece piecebas = new Piece(epaisseurTriple, this.largeur - 2 * (epaisseurTriple), this.profondeur, "Piece du bas 1");
+        piecebas.setDrawingcoin(new Coord_Coins(epaisseurTriple, this.hauteur - epaisseurTriple, 0));
         this.getListe_piece().add(piecebas);
-        this.getListe_piece().add(pieceba2);
 
     }
 
@@ -126,13 +125,17 @@ public class Etagere {
     private void GenererPiecesPerimetreHautTriple() {
         if (isPiecedepasse()) {
             Piece piecehaut = new Piece(epaisseurTriple, this.largeur, this.profondeur, "Piece du haut1");
+            piecehaut.setDrawingcoin(new Coord_Coins(0, 0, 0));
             Piece piecehaut1 = new Piece(epaisseurTriple, this.largeur - 2 * (0.5 * 2.54), this.profondeur, "Piece du haut2");
+            piecehaut1.setDrawingcoin(new Coord_Coins(epaisseurTriple, epaisseurTriple, 0));
             this.getListe_piece().add(piecehaut);
             this.getListe_piece().add(piecehaut1);
 
         } else if (!(isPiecedepasse())) {
-            Piece piecehaut = new Piece(epaisseurTriple, this.largeur - 2 * (epaisseurTriple), this.profondeur, "Piece du haut1");
-            Piece piecehaut1 = new Piece(epaisseurTriple, this.largeur - 2 * (epaisseurTriple), this.profondeur, "Piece du haut2");
+            Piece piecehaut = new Piece(epaisseurTriple, this.largeur - 2 * (epaisseurTriple), this.profondeur, "Piece du haut 1");
+            piecehaut.setDrawingcoin(new Coord_Coins(epaisseurTriple, 0, 0));
+            Piece piecehaut1 = new Piece(epaisseurTriple, this.largeur - 2 * (epaisseurTriple), this.profondeur, "Piece du haut 2");
+            piecehaut1.setDrawingcoin(new Coord_Coins(epaisseurTriple, epaisseurTriple, 0));
             this.getListe_piece().add(piecehaut);
             this.getListe_piece().add(piecehaut1);
         }
@@ -335,17 +338,26 @@ public class Etagere {
             double hauteurdispo = this.getHauteur() - 6 * epaisseurTriple - 3 * (this.getNb_etages() - 1) * epaisseurTriple;
             double largeur = this.largeur - 2 * epaisseurTriple;
             for (Etage etage : this.getListeetages()) {
-                Piece piece = new Piece(epaisseurTriple, largeur, profondeur, "Piece milieu Montant" + compteuretages);
+                Piece piece = new Piece(epaisseurTriple, largeur, profondeur, "Piece milieu Montant " + compteuretages);
                 piece.setDrawingcoin(new Coord_Coins(epaisseurTriple, xRef+etage.getHauteur_rel()*hauteurdispo, hauteur));
                 compteuretages++;
                 xRef+=etage.getHauteur_rel()*hauteurdispo+3*epaisseurTriple;
+                Liste_piece.add(piece);
             }
 
         }
         if (!(isPerimetretriple())) {
+            double xRef = 2 * epaisseurDouble;
+            double hauteurdispo = this.getHauteur() - 4 * epaisseurDouble - 3 * (this.getNb_etages() - 1) * epaisseurTriple;
+            double largeur = this.largeur - 2 * epaisseurDouble;
             
             
-            for (int i = 0; i < this.getNb_etages() - 1; i++) {
+            for (Etage etage : this.getListeetages()) {
+                Piece piece = new Piece(epaisseurTriple, largeur, profondeur, "Piece milieu Montant " + compteuretages);
+                piece.setDrawingcoin(new Coord_Coins(epaisseurTriple, xRef+etage.getHauteur_rel()*hauteurdispo, hauteur));
+                compteuretages++;
+                xRef+=etage.getHauteur_rel()*hauteurdispo+3*epaisseurTriple;
+                Liste_piece.add(piece);
 
             }
         }

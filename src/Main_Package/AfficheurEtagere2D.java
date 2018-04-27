@@ -12,6 +12,8 @@ package Main_Package;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
+
 
 /**
  *
@@ -41,7 +44,36 @@ public class AfficheurEtagere2D extends JPanel  {
     private List<Rectangle2D.Double> rectliste = new ArrayList();
 
     public AfficheurEtagere2D() {
-        
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                for(Piece piece: etagere.getListe_piece()){
+                    if(piece.contains(me.getX(), me.getY())){
+                        System.out.println(piece.getNom());
+                    }
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+               
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                
+            }
+        });
     }
 
     public void drawing() {
@@ -121,11 +153,11 @@ public class AfficheurEtagere2D extends JPanel  {
         dessinerEtages(g2d);
         dessinerCaissons(g2d);
         for(Piece piece : this.etagere.getListe_piece()){
-            piece.setRect((piece.getDrawingcoin().getCoord_x()+300)*1.5, (piece.getDrawingcoin().getCoord_y()+300)*1.5, piece.getLargeur()*1.5, piece.getHauteur()*1.5);
+            piece.setRect((piece.getDrawingcoin().getCoord_x())*10+200, (piece.getDrawingcoin().getCoord_y())*10+200, piece.getLargeur()*10, piece.getHauteur()*10);
+            g2d.setColor(Color.BLACK);
+            g2d.draw(piece);
             g2d.setColor(Color.BLUE);
             g2d.fill(piece);
-            System.out.println(piece.getNom());
-            System.out.println(piece.toString());
         }
         
         for (Rectangle2D.Double rectangle : this.getRectliste()) {

@@ -193,6 +193,11 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuItem2.setText("Nouveau");
         jMenuItem2.setActionCommand("");
+        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem2MouseClicked(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Sauvegarder");
@@ -356,6 +361,11 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+        new CreateNewEtagereWindow().setVisible(true);
+        System.out.println("Main_Package.GUI.jMenuItem2MouseClicked()");
+    }//GEN-LAST:event_jMenuItem2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -395,14 +405,6 @@ public class GUI extends javax.swing.JFrame {
                 afficheur.drawing();
                 
                 JFrame Jf = new JFrame();
-//        Jf.setTitle("Test");
-//        Jf.setSize(6000,6000);
-//        Jf.setVisible(true);
-//        Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        Jf.add(afficheur);
-//        afficheur.drawing();
-//            }
-//        });
             }
             });
     }
