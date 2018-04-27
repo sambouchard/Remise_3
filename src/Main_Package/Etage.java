@@ -5,7 +5,6 @@
  */
 package Main_Package;
 
-import static Main_Package.AfficheurEtagere2D.ep3;
 import static Main_Package.Etagere.largeur;
 import java.awt.geom.Rectangle2D;
 import java.lang.IllegalStateException;
@@ -16,7 +15,7 @@ import java.lang.IllegalStateException;
  *
  * @author SABOU350
  */
-public class Etage {
+public class Etage extends Rectangle2D.Double{
 
     /**
      * @return the listecaissons
@@ -180,5 +179,8 @@ public class Etage {
     public void setY2(double y2) {
         this.y2 = y2;
     }
+
+    
+    
 
 }
