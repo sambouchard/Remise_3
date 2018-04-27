@@ -16,7 +16,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Rectangle2D;
 import javax.swing.JPanel;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -24,6 +23,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.event.MouseAdapter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,11 +44,16 @@ public class AfficheurEtagere2D extends JPanel {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
+                Point2D pointInEtagereCoordSpace;
+                try {
+                    pointInEtagereCoordSpace = tx.inverseTransform(me.getPoint(), null);
+                } catch (NoninvertibleTransformException ex) {
+                    Logger.getLogger(AfficheurEtagere2D.class.getName()).log(Level.SEVERE, null, ex);
+                    return;
+                }
                 for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                    if (piece.contains(me.getX(), me.getY())) {
-                        System.out.println(piece.getNom());
-                        System.out.println(piece.getLargeur());
-                        System.out.println(piece.getHauteur());
+                    if (piece.contains(pointInEtagereCoordSpace)) {
+                        Controleur.getInstance().setPieceSelectionner(piece);
                     }
                 }
             }
@@ -123,7 +129,6 @@ public class AfficheurEtagere2D extends JPanel {
         }
 
         public void mouseDragged(MouseEvent e) {
-
             int dx = e.getX() - x;
             int dy = e.getY() - y;
 //            for(Piece piece: Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()){
@@ -134,8 +139,8 @@ public class AfficheurEtagere2D extends JPanel {
 //                }
 //            }
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 20);
-                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 20);
+                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 50);
+                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 50);
             }
             repaint();
 
@@ -157,13 +162,7 @@ public class AfficheurEtagere2D extends JPanel {
                 piece.setRect((piece.getDrawingcoin().getCoord_x()) * 10, (piece.getDrawingcoin().getCoord_y()) * 10, piece.getLargeur() * 10, piece.getHauteur() * 10);
                 g2d.setColor(Color.BLACK);
                 g2d.draw(tx.createTransformedShape(piece));
-
             }
-        } else {
-            g2d.setColor(Color.BLACK);
-            Rectangle2D.Double rect = new Rectangle2D.Double(50, 50, 50, 50);
-            g2d.fill(rect);
         }
-
     }
 }

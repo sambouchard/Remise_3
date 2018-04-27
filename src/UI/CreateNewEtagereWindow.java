@@ -324,6 +324,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
                     Double.parseDouble(this.Profondeur_field.getText()), 1, true, false, true);
             this.setVisible(false);
+            this.remove(this);
         }
     }//GEN-LAST:event_CreateEtagereButtonMouseClicked
 

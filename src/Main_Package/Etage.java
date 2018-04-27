@@ -101,7 +101,6 @@ public class Etage extends Rectangle2D.Double {
         }
         setNb_Caisson(getNb_Caisson() - 1);
         this.setListecaissons(newlist);
-
     }
 
     /**
