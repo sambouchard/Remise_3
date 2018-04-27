@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Main_Package;
 
 /**
@@ -10,6 +5,7 @@ package Main_Package;
  * @author SABOU350
  */
 public class Coord_Coins {
+
     private double coord_x;
     private double coord_y;
     private double coord_z;
@@ -61,6 +57,5 @@ public class Coord_Coins {
         this.coord_y = coord_y;
         this.coord_z = coord_z;
     }
-    
-    
+
 }

@@ -14,6 +14,15 @@ import java.awt.geom.Rectangle2D;
 public class Caisson {
 
     /**
+     *
+     * @param h_rel
+     */
+
+    Caisson(double l_rel) {
+        this.largeur_rel = l_rel;
+
+    }
+    /**
      * @return the x1
      */
     public double getX1() {
@@ -68,41 +77,32 @@ public class Caisson {
     public void setY2(double y2) {
         this.y2 = y2;
     }
-    
-    private Etage etageparent;
+
+    private Etage etageParent;
     private double largeur_rel;
-    private Piece piecehaut;
+    private Piece pieceHaut;
     private double x1;
     private double x2;
     private double y1;
     private double y2;
-    
+
     /**
      * @return the largeur_rel
      */
-    public double getLargeur_rel() {
+    public double getLargeurRel() {
         return largeur_rel;
     }
 
     /**
      * @param largeur_rel the largeur_rel to set
      */
-    public void setLargeur_rel(double largeur_rel) {
+    public void setLargeurRel(double largeur_rel) {
         this.largeur_rel = largeur_rel;
     }
-    /**
-     * 
-     * @param h_rel
-     */
-    
-    Caisson(double l_rel){
-        this.largeur_rel = l_rel;
-        
-    }
-    
+
     public Rectangle2D getRectangle() {
         Rectangle2D rect = new Rectangle2D.Double(getX1(), getY1(), getX2(), getY2());
         return rect;
     }
-    
+
 }
