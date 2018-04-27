@@ -1,53 +1,17 @@
-package Main_Package;
+package UI;
+
+import Main_Package.Controleur;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-import javax.swing.JFrame;
-
 /**
  *
  * @author SABOU350
  */
 public class GUI extends javax.swing.JFrame {
-
-    /**
-     * @return the afficheurEtagere2D1
-     */
-    public Main_Package.AfficheurEtagere2D getAfficheurEtagere2D1() {
-        return afficheurEtagere2D1;
-    }
-
-    /**
-     * @param afficheurEtagere2D1 the afficheurEtagere2D1 to set
-     */
-    public void setAfficheurEtagere2D1(Main_Package.AfficheurEtagere2D afficheurEtagere2D1) {
-        this.afficheurEtagere2D1 = afficheurEtagere2D1;
-        this.AfficheurContainer.revalidate();
-        this.AfficheurContainer.repaint();
-        
-    }
-
-    /**
-     * @return the afficheurEtagere2D1
-     */
-   
-    /**
-     * @return the controleur1
-     */
-    public Main_Package.Controleur getControleur1() {
-        return controleur1;
-    }
-
-    /**
-     * @param controleur1 the controleur1 to set
-     */
-    public void setControleur1(Main_Package.Controleur controleur1) {
-        this.controleur1 = controleur1;
-    }
 
     /**
      * Creates new form GUI
@@ -68,7 +32,6 @@ public class GUI extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        controleur1 = new Main_Package.Controleur();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -91,7 +54,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
         AfficheurContainer = new javax.swing.JPanel();
-        afficheurEtagere2D1 = new Main_Package.AfficheurEtagere2D();
+        afficheur = new UI.AfficheurEtagere2D();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -229,34 +192,28 @@ public class GUI extends javax.swing.JFrame {
 
         AfficheurContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        afficheurEtagere2D1.setEtagere(controleur1.getEtagere());
+        Controleur.getInstance().setAfficheur(afficheur);
 
-        javax.swing.GroupLayout afficheurEtagere2D1Layout = new javax.swing.GroupLayout(afficheurEtagere2D1);
-        afficheurEtagere2D1.setLayout(afficheurEtagere2D1Layout);
-        afficheurEtagere2D1Layout.setHorizontalGroup(
-            afficheurEtagere2D1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+        javax.swing.GroupLayout afficheurLayout = new javax.swing.GroupLayout(afficheur);
+        afficheur.setLayout(afficheurLayout);
+        afficheurLayout.setHorizontalGroup(
+            afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 686, Short.MAX_VALUE)
         );
-        afficheurEtagere2D1Layout.setVerticalGroup(
-            afficheurEtagere2D1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 327, Short.MAX_VALUE)
+        afficheurLayout.setVerticalGroup(
+            afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout AfficheurContainerLayout = new javax.swing.GroupLayout(AfficheurContainer);
         AfficheurContainer.setLayout(AfficheurContainerLayout);
         AfficheurContainerLayout.setHorizontalGroup(
             AfficheurContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AfficheurContainerLayout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
-                .addComponent(afficheurEtagere2D1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
+            .addComponent(afficheur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         AfficheurContainerLayout.setVerticalGroup(
             AfficheurContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AfficheurContainerLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(afficheurEtagere2D1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(afficheur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Fichier");
@@ -441,9 +398,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
-        
-    }//GEN-LAST:event_jMenuItem2MouseClicked
 
+    }//GEN-LAST:event_jMenuItem2MouseClicked
     /**
      * @param args the command line arguments
      */
@@ -474,28 +430,21 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 GUI gui = new GUI();
                 gui.setVisible(true);
-//                Etagere etagere = new Etagere(60, 60, 60, 4, true,false,true);
-//        AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
-//        afficheur.setEtagere(etagere);
-//        gui.setAfficheurEtagere2D1(afficheur);
-//        gui.revalidate();
-//        gui.repaint();
-                
-                
-                
+
+                CreateNewEtagereWindow popup = new CreateNewEtagereWindow();
+                popup.setVisible(true);
             }
-            });
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AfficheurContainer;
-    private Main_Package.AfficheurEtagere2D afficheurEtagere2D1;
+    private UI.AfficheurEtagere2D afficheur;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private Main_Package.Controleur controleur1;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton5;
