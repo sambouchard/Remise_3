@@ -335,25 +335,32 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
 
             
             Controleur controleur = new Controleur();
-            controleur.setEtagere(new Etagere(Double.parseDouble(Hauteur_field.getText()),
-                    Double.parseDouble(Largeur_field.getText()), Double.parseDouble(Profondeur_field.getText()),
-                    1, false, true, Perimetretriple_radio.isSelected()));
-            AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
-            afficheur.setEtagere(new Etagere(Double.parseDouble(Hauteur_field.getText()),
-                    Double.parseDouble(Largeur_field.getText()), Double.parseDouble(Profondeur_field.getText()),
-                    1, false, true, false));
-            JFrame Jf = new JFrame();
+            
+            Etagere etagere = new Etagere(Double.parseDouble(this.Hauteur_field.getText()),Double.parseDouble(this.Largeur_field.getText())
+                    ,Double.parseDouble(this.Profondeur_field.getText()) , 4, true,false,true);
+            controleur.setEtagere(etagere);
+        AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
+        afficheur.setEtagere(etagere);
+        GUI gui = new GUI();
+        gui.setControleur1(controleur);
+        gui.setAfficheurEtagere2D1(afficheur);
+        gui.getAfficheurEtagere2D1().repaint();
+                gui.setVisible(true);
+                
+        
+            
+            
+            
+        
+        
+        JFrame Jf = new JFrame();
         Jf.setTitle("Test");
         Jf.setSize(1000,1000);
         Jf.setVisible(true);
         Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Jf.add(afficheur);
         afficheur.drawing();
-            
-
-            //System.out.println(Double.parseDouble(Hauteur_field.getText()));
-//            System.out.println(Double.parseDouble(Largeur_field.getText()));
-//            System.out.println(Double.parseDouble(Profondeur_field.getText()));
+        
         }
     }//GEN-LAST:event_CreateEtagereButtonMouseClicked
 

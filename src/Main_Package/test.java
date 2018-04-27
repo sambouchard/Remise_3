@@ -19,7 +19,7 @@ import javax.swing.JFrame;
  */
 public class test {
     public static void main(String[] args){
-        Etagere etagere = new Etagere(60, 60, 60, 5, true,false,false);
+        Etagere etagere = new Etagere(60, 60, 60, 4, true,false,true);
         AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
         afficheur.setEtagere(etagere);
         

@@ -16,7 +16,7 @@ import java.lang.IllegalStateException;
  *
  * @author SABOU350
  */
-public class Etage {
+public class Etage extends Rectangle2D.Double{
 
     /**
      * @return the listecaissons
@@ -180,5 +180,8 @@ public class Etage {
     public void setY2(double y2) {
         this.y2 = y2;
     }
+
+    
+    
 
 }
