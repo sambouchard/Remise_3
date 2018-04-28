@@ -4,7 +4,7 @@ package Main_Package;
  *
  * @author SABOU350
  */
-public class Coord_Coins {
+public class Coord_Coins implements java.io.Serializable{
 
     private double coord_x;
     private double coord_y;

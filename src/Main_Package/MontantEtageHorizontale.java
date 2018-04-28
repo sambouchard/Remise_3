@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author SABOU350
  */
-public class MontantEtageHorizontale {
+public class MontantEtageHorizontale implements java.io.Serializable{
 
     private List<Piece> Liste_piece;
     private final Piece pieceMilieu;

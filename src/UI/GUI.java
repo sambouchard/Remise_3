@@ -78,7 +78,8 @@ public class GUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuBtnNouveau = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        MenuSauvegarder = new javax.swing.JMenuItem();
+        MenuCharger = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -328,8 +329,21 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(MenuBtnNouveau);
 
-        jMenuItem3.setText("Sauvegarder");
-        jMenu1.add(jMenuItem3);
+        MenuSauvegarder.setText("Sauvegarder");
+        MenuSauvegarder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuSauvegarderActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuSauvegarder);
+
+        MenuCharger.setText("Charger");
+        MenuCharger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuChargerActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuCharger);
 
         jMenuBar1.add(jMenu1);
 
@@ -661,6 +675,14 @@ public class GUI extends javax.swing.JFrame {
             PPiece_Cmlabel.setText("Po");
         }
     }//GEN-LAST:event_Imperial_ButtonStateChanged
+
+    private void MenuSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSauvegarderActionPerformed
+        Controleur.getInstance().sauvegarderEtagere();
+    }//GEN-LAST:event_MenuSauvegarderActionPerformed
+
+    private void MenuChargerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuChargerActionPerformed
+        Controleur.getInstance().chargerEtagere();
+    }//GEN-LAST:event_MenuChargerActionPerformed
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);
@@ -720,6 +742,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel Largeur_Label;
     private javax.swing.JTextField Largeur_TextField;
     private javax.swing.JMenuItem MenuBtnNouveau;
+    private javax.swing.JMenuItem MenuCharger;
+    private javax.swing.JMenuItem MenuSauvegarder;
     private javax.swing.JRadioButton Metrique_Button;
     private javax.swing.JLabel PPiece_Cmlabel;
     private javax.swing.JTextField ProfondeurPieceSelecrtionneField;
@@ -747,7 +771,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -1124,14 +1147,14 @@ public class GUI extends javax.swing.JFrame {
      * @return the jMenuItem3
      */
     public javax.swing.JMenuItem getjMenuItem3() {
-        return jMenuItem3;
+        return MenuSauvegarder;
     }
 
     /**
      * @param jMenuItem3 the jMenuItem3 to set
      */
     public void setjMenuItem3(javax.swing.JMenuItem jMenuItem3) {
-        this.jMenuItem3 = jMenuItem3;
+        this.MenuSauvegarder = jMenuItem3;
     }
 
     /**

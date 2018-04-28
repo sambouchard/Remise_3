@@ -13,7 +13,7 @@ import java.awt.geom.Rectangle2D;
  *
  * @author SABOU350
  */
-public class Etage extends Rectangle2D.Double {
+public class Etage extends Rectangle2D.Double implements java.io.Serializable{
 
     /**
      * @return the listecaissons

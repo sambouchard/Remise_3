@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
  *
  * @author SABOU350
  */
-public class Caisson {
+public class Caisson implements java.io.Serializable{
 
     /**
      *

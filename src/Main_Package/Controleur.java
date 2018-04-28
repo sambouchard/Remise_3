@@ -8,7 +8,14 @@ package Main_Package;
 import UI.AfficheurEtagere2D;
 import UI.GUI;
 import java.awt.Component;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import sun.security.util.SecurityConstants;
 
 /**
@@ -187,5 +194,44 @@ public class Controleur {
             System.out.println("Undo etagere nexiste pas");
         }
     }
+    
+    public void sauvegarderEtagere(){
+      String nom = (String)JOptionPane.showInputDialog(null, "Nommez votre étagère");
+
+      if (!nom.isEmpty()) {
+        try {
+          FileOutputStream fileout = new FileOutputStream("etageresSauvegardees\\" + nom + ".ser");
+          ObjectOutputStream out = new ObjectOutputStream(fileout);
+          out.writeObject(etagere);
+          out.close();
+          fileout.close();
+        } catch (IOException i) {
+          JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être sauvegardée.");
+        }
+      }
+
+    }
+
+    public void chargerEtagere(){
+
+      File etageresSauvegardees = new File("etageresSauvegardees\\");
+
+      String[] listeEnregistrees = etageresSauvegardees.list();
+
+      String nom = (String)JOptionPane.showInputDialog(null, "Choisissez votre étagère.", "Charger une étagère", JOptionPane.PLAIN_MESSAGE, null, listeEnregistrees, null);
+      if (!nom.isEmpty()) {
+        try {
+          FileInputStream fileIn = new FileInputStream("etageresSauvegardees\\" + nom);
+          ObjectInputStream in = new ObjectInputStream(fileIn);
+          Etagere etagerechargee = (Etagere) in.readObject();
+          setEtagere(etagerechargee);
+                    in.close();
+          fileIn.close();
+        } catch (IOException | ClassNotFoundException i){
+          JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être chargée.");
+        }
+      }
+    }
+
             
 }

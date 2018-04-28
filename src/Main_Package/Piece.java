@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author SABOU350
  */
-public class Piece extends Rectangle2D.Double {
+public class Piece extends Rectangle2D.Double implements java.io.Serializable{
 
     /**
      * @return the nom
