@@ -179,10 +179,15 @@ public class AfficheurEtagere2D extends JPanel {
             g2d = (Graphics2D) g;
             if (Controleur.getInstance().getEtagere() != null) {
 
-                for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
+                Controleur.getInstance().getEtagere().getListe_piece().stream().map((piece) -> {
                     piece.setRect((piece.getDrawingcoin().getCoord_x()) * 10, (piece.getDrawingcoin().getCoord_y()) * 10, piece.getLargeur() * 10, piece.getHauteur() * 10);
-
-                }
+                return piece;
+            }).map((piece) -> {
+                g2d.setColor(Color.BLACK);
+                return piece;
+            }).forEachOrdered((piece) -> {
+                                   g2d.draw(tx.createTransformedShape(piece));
+            });
             }
         }
     }
