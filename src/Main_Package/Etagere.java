@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author SABOU350
  */
-public class Etagere {
+public class Etagere implements java.io.Serializable{
 
     /**
      * @return the Liste_Piece_Etage_Horizontale

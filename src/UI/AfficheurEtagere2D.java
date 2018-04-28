@@ -10,6 +10,7 @@
 package UI;
 
 import Main_Package.Controleur;
+import Main_Package.Coord_Coins;
 import Main_Package.Piece;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -80,6 +81,7 @@ public class AfficheurEtagere2D extends JPanel {
         });
         this.addMouseWheelListener(new ZoomHandler());
         this.addMouseListener(ma);
+        
 
     }
 
@@ -128,7 +130,12 @@ public class AfficheurEtagere2D extends JPanel {
             x = e.getX();
             y = e.getY();
         }
-
+        @Override
+        public void mouseMoved(MouseEvent e){
+            if(Controleur.getInstance().getEtagere()!= null){
+                
+            }
+        }
         @Override
         public void mouseDragged(MouseEvent e) {
             int dx = e.getX() - x;
@@ -150,8 +157,9 @@ public class AfficheurEtagere2D extends JPanel {
                 }
             }
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 50);
-                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 50);
+                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx/10 );
+                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy/10 );
+                Controleur.getInstance().getAfficheur().redraw();
 
 //            for(Piece piece: etagere.getListe_Piece_Etage_Horizontale()){
 //                if(piece.contains(x, y)){
@@ -161,7 +169,7 @@ public class AfficheurEtagere2D extends JPanel {
 //                }
 //            }
             
-            repaint();
+//            Controleur.getInstance().getAfficheur().redraw();
 
         }
 
@@ -180,7 +188,7 @@ public class AfficheurEtagere2D extends JPanel {
             if (Controleur.getInstance().getEtagere() != null) {
 
                 Controleur.getInstance().getEtagere().getListe_piece().stream().map((piece) -> {
-                    piece.setRect((piece.getDrawingcoin().getCoord_x()) * 10, (piece.getDrawingcoin().getCoord_y()) * 10, piece.getLargeur() * 10, piece.getHauteur() * 10);
+                    piece.setRect((piece.getDrawingcoin().getCoord_x()) , (piece.getDrawingcoin().getCoord_y()) , piece.getLargeur() , piece.getHauteur() );
                 return piece;
             }).map((piece) -> {
                 g2d.setColor(Color.BLACK);

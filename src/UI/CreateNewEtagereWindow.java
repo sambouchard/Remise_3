@@ -145,7 +145,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
 
         group_perimetre.add(Perimetredouble_radio);
         Perimetredouble_radio.setSelected(true);
-        Perimetredouble_radio.setText("Périmètre double");
+        Perimetredouble_radio.setLabel("Périmètre triple");
         Perimetredouble_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Perimetredouble_radioActionPerformed(evt);
@@ -153,7 +153,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         });
 
         group_perimetre.add(Perimetretriple_radio);
-        Perimetretriple_radio.setText("Périmetre triple");
+        Perimetretriple_radio.setLabel("Périmetre double");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -320,9 +320,10 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
     private void CreateEtagereButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateEtagereButtonMouseClicked
         if (CreateEtagereButton.isEnabled() == true) {
             boolean isInMeters = Mesuremetrique_radio.isSelected();
+            System.out.println(isInMeters);
             Controleur.getInstance().setMesureMetrique(isInMeters);
             Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
-                    Double.parseDouble(this.Profondeur_field.getText()), 1, true, false, true);
+                    Double.parseDouble(this.Profondeur_field.getText()), 6, true, false, Perimetredouble_radio.isSelected());
             Controleur.getInstance().updatevue();
             this.setVisible(false);
             this.remove(this);

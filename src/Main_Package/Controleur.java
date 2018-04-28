@@ -23,6 +23,18 @@ public class Controleur {
     private static final Controleur instance = new Controleur();
     private Piece pieceSelectionner = null;
     private GUI Vue;
+    private boolean ajouteetageMode;
+    private boolean ajouteCaissonMode;
+
+    public Etagere getUndoEtagere() {
+        return UndoEtagere;
+    }
+
+    public void setUndoEtagere() {
+        Etagere newetaGere = this.etagere;
+        this.UndoEtagere = newetaGere;
+    }
+    private Etagere UndoEtagere;
 
     public GUI getVue() {
         return Vue;
@@ -139,7 +151,8 @@ public class Controleur {
     }
 
     public void setEtagereHauteur(double hauteur) {
-        getEtagere().setHauteur(hauteur);
+        setUndoEtagere();
+        etagere.setHauteur(hauteur);
         etagere.GenererPieces();
     }
     public void setEtagereProfondeur(double profondeur) {
@@ -164,4 +177,15 @@ public class Controleur {
     public void setAfficheur(AfficheurEtagere2D afficheur) {
         this.afficheur = afficheur;
     }
+    
+    public void undo(){
+        if(this.UndoEtagere != null){
+            this.setEtagere(this.UndoEtagere);
+            afficheur.redraw();
+        }
+        else{
+            System.out.println("Undo etagere nexiste pas");
+        }
+    }
+            
 }
