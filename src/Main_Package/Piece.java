@@ -8,14 +8,12 @@ package Main_Package;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  *
  * @author SABOU350
  */
-public class Piece extends Rectangle2D.Double{
+public class Piece extends Rectangle2D.Double {
 
     /**
      * @return the nom
@@ -50,13 +48,12 @@ public class Piece extends Rectangle2D.Double{
     private String nom;
     private List<Coord_Coins> listecoins = new ArrayList();
     private Coord_Coins drawingcoin;
-   
 
-    
     public void ajouteCoin(double x, double y, double z) {
         Coord_Coins coin = new Coord_Coins(x, y, z);
         listecoins.add(coin);
     }
+
     /**
      * @return the hauteur
      */
@@ -106,16 +103,14 @@ public class Piece extends Rectangle2D.Double{
      * @param profondeur
      * @param estepaisse
      */
-    public Piece(double hauteur, double largeur, double profondeur,String nom) {
+    public Piece(double hauteur, double largeur, double profondeur, String nom) {
         this.hauteur = hauteur;
         this.largeur = largeur;
         this.profondeur = profondeur;
         this.nom = nom;
     }
     /**
-     * 
+     *
      */
-    
 
-    
 }

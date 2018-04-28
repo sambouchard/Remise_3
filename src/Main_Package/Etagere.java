@@ -22,7 +22,8 @@ public class Etagere {
     }
 
     /**
-     * @param Liste_Piece_Etage_Horizontale the Liste_Piece_Etage_Horizontale to set
+     * @param Liste_Piece_Etage_Horizontale the Liste_Piece_Etage_Horizontale to
+     * set
      */
     public void setListe_Piece_Etage_Horizontale(List<Piece> Liste_Piece_Etage_Horizontale) {
         this.Liste_Piece_Etage_Horizontale = Liste_Piece_Etage_Horizontale;
@@ -357,8 +358,10 @@ public class Etagere {
             double xlargeur = this.largeur - 2 * epaisseurTriple;
             double xRef = epaisseurTriple;
             for (Etage etage : this.getListeetages()) {
+
                 xRef = epaisseurTriple;
                 double largeurdispo = this.getLargeur() - 6 * epaisseurTriple - (etage.getListecaissons().length - 1) * 3 * epaisseurTriple;
+
 
                 Piece pieceHorizontaleGauche = new Piece(etage.getHauteur_rel() * hauteurdispo,
                         epaisseurTriple, profondeur, "Piece gauche 1 Etage " + compteuretages);
@@ -378,6 +381,7 @@ public class Etagere {
                 Liste_piece.add(pieceHorizontaleGauche);
                 Liste_piece.add(pieceHorizontaleGauche1);
                 if (compteuretages != getNb_etages() - 1) {
+
                     if(etage.getListecaissons().length==1){
                         Piece piece = new Piece(epaisseurTriple, xlargeur, profondeur, "Piece bas Caisson 0 etage " + compteuretages);
                             piece.setDrawingcoin(new Coord_Coins(xRef, yRef+etage.getHauteur_rel()*hauteurdispo, 0));
@@ -385,7 +389,7 @@ public class Etagere {
                     }
                     else{
                         for(int i = 0; i < etage.getListecaissons().length ; i++){
-                            Piece piece = new Piece(epaisseurTriple, etage.getListecaissons()[i].getLargeur_rel()*
+                            Piece piece = new Piece(epaisseurTriple, etage.getListecaissons()[i].getLargeurRel()*
                                     largeurdispo, profondeur, "Piece bas Caisson " + i + " etage " + compteuretages);
                             piece.setDrawingcoin(new Coord_Coins(xRef, yRef+etage.getHauteur_rel()*hauteurdispo, 0));
                             Liste_piece.add(piece);

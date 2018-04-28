@@ -5,17 +5,15 @@
  */
 package Main_Package;
 
-import static Main_Package.Etagere.largeur;
 import java.awt.geom.Rectangle2D;
-import java.lang.IllegalStateException;
 
 /**
- * 
- * 
+ *
+ *
  *
  * @author SABOU350
  */
-public class Etage extends Rectangle2D.Double{
+public class Etage extends Rectangle2D.Double {
 
     /**
      * @return the listecaissons
@@ -67,7 +65,6 @@ public class Etage extends Rectangle2D.Double{
      *
      * @param l_rel
      */
-
     public void AjouteCaisson(double l_rel) {
         Caisson newcaisson;
         newcaisson = new Caisson(l_rel);
@@ -84,19 +81,19 @@ public class Etage extends Rectangle2D.Double{
         this.setListecaissons(newlist);
 
     }
-    
+
     /**
      *
      * @param indice
      */
     public void SupprimeCaisson(int indice) {
-        double larg_rel = this.getListecaissons()[indice].getLargeur_rel();
+        double larg_rel = this.getListecaissons()[indice].getLargeurRel();
         this.getListecaissons()[indice] = null;
         Caisson[] newlist = new Caisson[getNb_Caisson() - 1];
         int j = 0;
         for (int i = 0; i < getNb_Caisson(); i++) {
             if (this.getListecaissons()[i] != null) {
-                this.getListecaissons()[i].setLargeur_rel(this.getListecaissons()[i].getLargeur_rel() + (larg_rel / (getNb_Caisson() - 1)));
+                this.getListecaissons()[i].setLargeurRel(this.getListecaissons()[i].getLargeurRel() + (larg_rel / (getNb_Caisson() - 1)));
                 newlist[j] = this.getListecaissons()[i];
                 j++;
             }
@@ -104,7 +101,6 @@ public class Etage extends Rectangle2D.Double{
         }
         setNb_Caisson(getNb_Caisson() - 1);
         this.setListecaissons(newlist);
-
     }
 
     /**
@@ -120,10 +116,12 @@ public class Etage extends Rectangle2D.Double{
     public void setNb_Caisson(int Nb_Caisson) {
         this.Nb_Caisson = Nb_Caisson;
     }
+
     public Rectangle2D getRectangle() {
-            Rectangle2D rect = new Rectangle2D.Double(getX1(), getY1(), getX2(), getY2());
-            return rect;
-        }
+        Rectangle2D rect = new Rectangle2D.Double(getX1(), getY1(), getX2(), getY2());
+        return rect;
+    }
+
     /**
      * @return the x1
      */
@@ -179,8 +177,5 @@ public class Etage extends Rectangle2D.Double{
     public void setY2(double y2) {
         this.y2 = y2;
     }
-
-    
-    
 
 }

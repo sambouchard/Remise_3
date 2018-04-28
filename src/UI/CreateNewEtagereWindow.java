@@ -3,30 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main_Package;
+package UI;
 
 import Main_Package.Controleur;
-import javax.swing.JFrame;
 
 /**
  *
  * @author SABOU350
  */
 public class CreateNewEtagereWindow extends javax.swing.JFrame {
-
-    /**
-     * @return the controleur
-     */
-    public Controleur getControleur() {
-        return controleur;
-    }
-
-    /**
-     * @param controleur the controleur to set
-     */
-    public void setControleur(Controleur controleur) {
-        this.controleur = controleur;
-    }
 
     /**
      * Creates new form CreateNewEtagereWindow
@@ -266,6 +251,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             Largeur_label.setText("Cm");
             Hauteur_label.setText("Cm");
             Profondeur_label.setText("Cm");
+            Controleur.getInstance().setMesureMetrique(true);
         }
     }//GEN-LAST:event_Mesuremetrique_radioItemStateChanged
 
@@ -274,6 +260,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             Largeur_label.setText("Po");
             Hauteur_label.setText("Po");
             Profondeur_label.setText("Po");
+            Controleur.getInstance().setMesureMetrique(false);
         }
     }//GEN-LAST:event_Mesureimp_radioItemStateChanged
 
@@ -332,24 +319,12 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
 
     private void CreateEtagereButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateEtagereButtonMouseClicked
         if (CreateEtagereButton.isEnabled() == true) {
-
-            
-            Controleur controleur = new Controleur();
-            
-            Etagere etagere = new Etagere(Double.parseDouble(this.Hauteur_field.getText()),Double.parseDouble(this.Largeur_field.getText())
-                    ,Double.parseDouble(this.Profondeur_field.getText()) , 1, true,false,true);
-            controleur.setEtagere(etagere);
-            
-        AfficheurEtagere2D afficheur = new AfficheurEtagere2D();
-        afficheur.setEtagere(etagere);
-        controleur.setAfficheur(afficheur);
-        
-        GUI gui = new GUI();
-        gui.setAfficheurEtagere2D1(afficheur);
-        for(Piece piece:gui.getAfficheurEtagere2D1().getEtagere().getListe_piece()){
-            System.out.println(piece.getNom());
-        }
-                gui.setVisible(true);
+            boolean isInMeters = Mesuremetrique_radio.isSelected();
+            Controleur.getInstance().setMesureMetrique(isInMeters);
+            Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
+                    Double.parseDouble(this.Profondeur_field.getText()), 2, true, false, true);
+            this.setVisible(false);
+            this.remove(this);
         }
     }//GEN-LAST:event_CreateEtagereButtonMouseClicked
 
@@ -414,5 +389,4 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
-    private Controleur controleur;
 }

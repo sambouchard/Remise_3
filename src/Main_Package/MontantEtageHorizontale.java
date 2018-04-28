@@ -12,14 +12,13 @@ import java.util.List;
  * @author SABOU350
  */
 public class MontantEtageHorizontale {
+
     private List<Piece> Liste_piece;
-    private Piece piecemilieu;
+    private final Piece pieceMilieu;
 
     public MontantEtageHorizontale(Piece piecemilieu) {
-        this.piecemilieu = piecemilieu;
-        
+        this.pieceMilieu = piecemilieu;
+
     }
-    
-    
-    
+
 }
