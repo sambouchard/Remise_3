@@ -133,6 +133,7 @@ public class AfficheurEtagere2D extends JPanel {
         public void mouseDragged(MouseEvent e) {
             int dx = e.getX() - x;
             int dy = e.getY() - y;
+
             
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
                 Point2D p1 = e.getPoint();
@@ -151,11 +152,21 @@ public class AfficheurEtagere2D extends JPanel {
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                 piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 50);
                 piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 50);
-            }
+
+//            for(Piece piece: etagere.getListe_Piece_Etage_Horizontale()){
+//                if(piece.contains(x, y)){
+//                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy );
+//                    repaint();
+//                    break;
+//                }
+//            }
+            
             repaint();
 
         }
 
+    }
+        
     }
 
     /**
@@ -165,14 +176,13 @@ public class AfficheurEtagere2D extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g2d = (Graphics2D) g;
-        if (Controleur.getInstance().getEtagere() != null) {
+            g2d = (Graphics2D) g;
+            if (Controleur.getInstance().getEtagere() != null) {
 
-            for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                piece.setRect((piece.getDrawingcoin().getCoord_x()) * 10, (piece.getDrawingcoin().getCoord_y()) * 10, piece.getLargeur() * 10, piece.getHauteur() * 10);
-                g2d.setColor(Color.BLACK);
-                g2d.draw(tx.createTransformedShape(piece));
+                for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
+                    piece.setRect((piece.getDrawingcoin().getCoord_x()) * 10, (piece.getDrawingcoin().getCoord_y()) * 10, piece.getLargeur() * 10, piece.getHauteur() * 10);
+
+                }
             }
         }
     }
-}

@@ -356,7 +356,12 @@ public class Etagere {
             double yRef = 3 * epaisseurTriple;
             double hauteurdispo = this.getHauteur() - 6 * epaisseurTriple - 3 * (this.getNb_etages() - 1) * epaisseurTriple;
             double xlargeur = this.largeur - 2 * epaisseurTriple;
+            double xRef = epaisseurTriple;
             for (Etage etage : this.getListeetages()) {
+
+                xRef = epaisseurTriple;
+                double largeurdispo = this.getLargeur() - 6 * epaisseurTriple - (etage.getListecaissons().length - 1) * 3 * epaisseurTriple;
+
 
                 Piece pieceHorizontaleGauche = new Piece(etage.getHauteur_rel() * hauteurdispo,
                         epaisseurTriple, profondeur, "Piece gauche 1 Etage " + compteuretages);
@@ -376,6 +381,22 @@ public class Etagere {
                 Liste_piece.add(pieceHorizontaleGauche);
                 Liste_piece.add(pieceHorizontaleGauche1);
                 if (compteuretages != getNb_etages() - 1) {
+
+                    if(etage.getListecaissons().length==1){
+                        Piece piece = new Piece(epaisseurTriple, xlargeur, profondeur, "Piece bas Caisson 0 etage " + compteuretages);
+                            piece.setDrawingcoin(new Coord_Coins(xRef, yRef+etage.getHauteur_rel()*hauteurdispo, 0));
+                            Liste_piece.add(piece);
+                    }
+                    else{
+                        for(int i = 0; i < etage.getListecaissons().length ; i++){
+                            Piece piece = new Piece(epaisseurTriple, etage.getListecaissons()[i].getLargeurRel()*
+                                    largeurdispo, profondeur, "Piece bas Caisson " + i + " etage " + compteuretages);
+                            piece.setDrawingcoin(new Coord_Coins(xRef, yRef+etage.getHauteur_rel()*hauteurdispo, 0));
+                            Liste_piece.add(piece);
+
+                        }
+                            }
+                    /*On Genere la piece du milieu(la plus longue) du montant horizontale*/
                     Piece piece = new Piece(epaisseurTriple, xlargeur, profondeur, "Piece milieu Montant " + compteuretages);
                     piece.setDrawingcoin(new Coord_Coins(epaisseurTriple, yRef + etage.getHauteur_rel() * hauteurdispo + epaisseurTriple, 0));
                     compteuretages++;
