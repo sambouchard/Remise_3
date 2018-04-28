@@ -127,8 +127,8 @@ public class AfficheurEtagere2D extends JPanel {
             int dx = e.getX() - x;
             int dy = e.getY() - y;
             for(Piece piece:etagere.getListe_piece()){
-                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x()+dx/20 );
-                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy/20 );
+                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x()+dx/25);
+                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy/25 );
             }
             
             
@@ -148,7 +148,7 @@ public class AfficheurEtagere2D extends JPanel {
         if (this.etagere != null) {
 
             for (Piece piece : this.etagere.getListe_piece()) {
-                piece.setRect((piece.getDrawingcoin().getCoord_x()) * 10, (piece.getDrawingcoin().getCoord_y()) * 10, piece.getLargeur() * 10, piece.getHauteur() * 10);
+                piece.setRect((piece.getDrawingcoin().getCoord_x())*10 , (piece.getDrawingcoin().getCoord_y())*10 , piece.getLargeur()*10 , piece.getHauteur()*10 );
                 g2d.setColor(Color.BLACK);
                 g2d.draw(tx.createTransformedShape(piece));
 
