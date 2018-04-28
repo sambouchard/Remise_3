@@ -322,7 +322,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             boolean isInMeters = Mesuremetrique_radio.isSelected();
             Controleur.getInstance().setMesureMetrique(isInMeters);
             Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
-                    Double.parseDouble(this.Profondeur_field.getText()), 1, true, false, true);
+                    Double.parseDouble(this.Profondeur_field.getText()), 2, true, false, true);
             this.setVisible(false);
             this.remove(this);
         }

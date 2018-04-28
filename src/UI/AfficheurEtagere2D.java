@@ -123,21 +123,31 @@ public class AfficheurEtagere2D extends JPanel {
 
         private int y;
 
+        @Override
         public void mousePressed(MouseEvent e) {
             x = e.getX();
             y = e.getY();
         }
 
+        @Override
         public void mouseDragged(MouseEvent e) {
             int dx = e.getX() - x;
             int dy = e.getY() - y;
-//            for(Piece piece: Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()){
-//                if(piece.contains(x, y)){
-//                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy );
-//                    repaint();
-//                    break;
-//                }
-//            }
+            
+            for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
+                Point2D p1 = e.getPoint();
+                Point2D p2 = null;
+                try {
+                    p2 = tx.inverseTransform(p1, null);
+                } catch (NoninvertibleTransformException ex) {
+                    return;
+                }
+                if (piece.contains(p2)) {
+                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy);
+                    repaint();
+                    break;
+                }
+            }
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                 piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 50);
                 piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 50);
