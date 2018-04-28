@@ -1,6 +1,11 @@
 package UI;
 
 import Main_Package.Controleur;
+import java.awt.event.KeyEvent;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -35,9 +40,9 @@ public class GUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        HauteurPieceSelecrtionneField = new javax.swing.JTextField();
+        LargeurPieceSelecrtionneField = new javax.swing.JTextField();
+        ProfondeurPieceSelecrtionneField = new javax.swing.JTextField();
         jButton22 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -51,10 +56,19 @@ public class GUI extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
         AfficheurContainer = new javax.swing.JPanel();
         afficheur = new UI.AfficheurEtagere2D();
+        jLabel1 = new javax.swing.JLabel();
+        Profondeur_Label = new javax.swing.JLabel();
+        Hauteur_Label = new javax.swing.JLabel();
+        Largeur_Label = new javax.swing.JLabel();
+        Hauteur_Textfield = new javax.swing.JTextField();
+        Largeur_TextField = new javax.swing.JTextField();
+        Profondeur_TextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuBtnNouveau = new javax.swing.JMenuItem();
@@ -94,12 +108,18 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("Hauteur:");
-        jTextField1.setToolTipText("");
+        HauteurPieceSelecrtionneField.setToolTipText("");
 
-        jTextField2.setText("Largeur:");
-
-        jTextField3.setText("Épaisseur:");
+        ProfondeurPieceSelecrtionneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfondeurPieceSelecrtionneFieldActionPerformed(evt);
+            }
+        });
+        ProfondeurPieceSelecrtionneField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ProfondeurPieceSelecrtionneFieldKeyPressed(evt);
+            }
+        });
 
         jButton22.setText("Undo");
         jButton22.setActionCommand("Imperial ou metrique");
@@ -164,6 +184,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jCheckBox2.setText("Dépasse");
+        jCheckBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox2ItemStateChanged(evt);
+            }
+        });
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox2ActionPerformed(evt);
@@ -187,9 +212,6 @@ public class GUI extends javax.swing.JFrame {
         jTextPane1.setText("Liste de pièces");
         jScrollPane2.setViewportView(jTextPane1);
 
-        jTextPane2.setText("Dimensions de la pièce");
-        jScrollPane3.setViewportView(jTextPane2);
-
         AfficheurContainer.setBackground(new java.awt.Color(255, 255, 255));
         AfficheurContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -200,7 +222,7 @@ public class GUI extends javax.swing.JFrame {
         afficheur.setLayout(afficheurLayout);
         afficheurLayout.setHorizontalGroup(
             afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+            .addGap(0, 928, Short.MAX_VALUE)
         );
         afficheurLayout.setVerticalGroup(
             afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,6 +245,44 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(afficheur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jLabel1.setText("Dimension de l'étagere");
+
+        Profondeur_Label.setText("Profondeur");
+
+        Hauteur_Label.setText("Hauteur");
+
+        Largeur_Label.setText("Largeur");
+
+        Hauteur_Textfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Hauteur_TextfieldActionPerformed(evt);
+            }
+        });
+        Hauteur_Textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hauteur_TextfieldKeyPressed(evt);
+            }
+        });
+
+        Largeur_TextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Largeur_TextFieldActionPerformed(evt);
+            }
+        });
+        Largeur_TextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Largeur_TextFieldKeyPressed(evt);
+            }
+        });
+
+        jLabel2.setText("Hauteur");
+
+        jLabel3.setText("Largeur");
+
+        jLabel4.setText("Profondeur");
+
+        jLabel5.setText("Dimensions de la pièce sélectionnée");
 
         jMenu1.setText("Fichier");
 
@@ -266,39 +326,66 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addComponent(AfficheurContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(75, 75, 75))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addComponent(AfficheurContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(75, 75, 75))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton3)
+                                    .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(Largeur_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(Hauteur_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                                                    .addComponent(Profondeur_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(Hauteur_Textfield, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                                    .addComponent(Largeur_TextField)
+                                                    .addComponent(Profondeur_TextField))))))
+                                .addGap(50, 50, 50)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(HauteurPieceSelecrtionneField)
+                                .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                                .addComponent(ProfondeurPieceSelecrtionneField))
+                            .addGap(139, 139, 139)))
+                    .addComponent(jLabel5))
                 .addGap(21, 21, 21))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(269, 269, 269)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(779, Short.MAX_VALUE)))
+                    .addContainerGap(1132, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +402,21 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jRadioButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioButton2)
-                                .addGap(365, 365, 365)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Hauteur_Label)
+                                    .addComponent(Hauteur_Textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Largeur_Label)
+                                    .addComponent(Largeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Profondeur_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Profondeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(190, 190, 190)
                                 .addComponent(jCheckBox1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCheckBox2)
@@ -323,14 +424,20 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 954, Short.MAX_VALUE)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 964, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(HauteurPieceSelecrtionneField))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)))
                             .addComponent(AfficheurContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
@@ -353,9 +460,19 @@ public class GUI extends javax.swing.JFrame {
                     .addGap(609, 609, 609)))
         );
 
+        Hauteur_Label.getAccessibleContext().setAccessibleDescription("");
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public JLabel getHauteur_Label() {
+        return Hauteur_Label;
+    }
+
+    public void setHauteur_Label(JLabel Hauteur_Label) {
+        this.Hauteur_Label = Hauteur_Label;
+    }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -413,6 +530,48 @@ public class GUI extends javax.swing.JFrame {
              }
         });
     }//GEN-LAST:event_MenuBtnNouveauActionPerformed
+
+    private void Largeur_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Largeur_TextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Largeur_TextFieldActionPerformed
+
+    private void Hauteur_TextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hauteur_TextfieldActionPerformed
+
+    private void ProfondeurPieceSelecrtionneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfondeurPieceSelecrtionneFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldActionPerformed
+
+    private void jCheckBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox2ItemStateChanged
+        if(jCheckBox2.isSelected()){
+            Controleur.getInstance().setDepasse(true);
+        }
+        if(jCheckBox2.isSelected()){
+            Controleur.getInstance().setDepasse(false);        
+        }
+    }//GEN-LAST:event_jCheckBox2ItemStateChanged
+
+    private void Hauteur_TextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()));
+            Controleur.getInstance().getAfficheur().redraw();
+        }
+    }//GEN-LAST:event_Hauteur_TextfieldKeyPressed
+
+    private void Largeur_TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Largeur_TextFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()));
+            Controleur.getInstance().getAfficheur().redraw();
+        }
+    }//GEN-LAST:event_Largeur_TextFieldKeyPressed
+
+    private void ProfondeurPieceSelecrtionneFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getLargeur_TextField().getText()));
+            Controleur.getInstance().getAfficheur().redraw();
+        }
+    }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);
@@ -452,6 +611,7 @@ public class GUI extends javax.swing.JFrame {
 
                 GUI gui = new GUI();
                 gui.setVisible(true);
+                Controleur.getInstance().setVue(gui);
                 promptCreerEtagere();
             }
         });
@@ -459,7 +619,16 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AfficheurContainer;
+    private javax.swing.JTextField HauteurPieceSelecrtionneField;
+    private javax.swing.JLabel Hauteur_Label;
+    private javax.swing.JTextField Hauteur_Textfield;
+    private javax.swing.JTextField LargeurPieceSelecrtionneField;
+    private javax.swing.JLabel Largeur_Label;
+    private javax.swing.JTextField Largeur_TextField;
     private javax.swing.JMenuItem MenuBtnNouveau;
+    private javax.swing.JTextField ProfondeurPieceSelecrtionneField;
+    private javax.swing.JLabel Profondeur_Label;
+    private javax.swing.JTextField Profondeur_TextField;
     private UI.AfficheurEtagere2D afficheur;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -471,6 +640,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -487,11 +661,540 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getHauteur_Textfield() {
+        return Hauteur_Textfield;
+    }
+    
+
+    public void setHauteur_Textfield(JTextField Hauteur_Textfield) {
+        this.Hauteur_Textfield = Hauteur_Textfield;
+    }
+
+    public JTextField getLargeur_TextField() {
+        return Largeur_TextField;
+    }
+
+    public void setLargeur_TextField(JTextField Largeur_TextField) {
+        this.Largeur_TextField = Largeur_TextField;
+    }
+
+    public JTextField getProfondeur_TextField() {
+        return Profondeur_TextField;
+    }
+
+    public void setProfondeur_TextField(JTextField Profondeur_TextField) {
+        this.Profondeur_TextField = Profondeur_TextField;
+    }
+
+    /**
+     * @return the AfficheurContainer
+     */
+    public javax.swing.JPanel getAfficheurContainer() {
+        return AfficheurContainer;
+    }
+
+    /**
+     * @param AfficheurContainer the AfficheurContainer to set
+     */
+    public void setAfficheurContainer(javax.swing.JPanel AfficheurContainer) {
+        this.AfficheurContainer = AfficheurContainer;
+    }
+
+    /**
+     * @return the EpaisseurPieceSelecrtionneField
+     */
+    public javax.swing.JTextField getProfondeurPieceSelecrtionneField() {
+        return ProfondeurPieceSelecrtionneField;
+    }
+
+    /**
+     * @param EpaisseurPieceSelecrtionneField the EpaisseurPieceSelecrtionneField to set
+     */
+    public void setProfondeurPieceSelecrtionneField(javax.swing.JTextField EpaisseurPieceSelecrtionneField) {
+        this.ProfondeurPieceSelecrtionneField = EpaisseurPieceSelecrtionneField;
+    }
+
+    /**
+     * @return the HauteurPieceSelecrtionneField
+     */
+    public javax.swing.JTextField getHauteurPieceSelecrtionneField() {
+        return HauteurPieceSelecrtionneField;
+    }
+
+    /**
+     * @param HauteurPieceSelecrtionneField the HauteurPieceSelecrtionneField to set
+     */
+    public void setHauteurPieceSelecrtionneField(javax.swing.JTextField HauteurPieceSelecrtionneField) {
+        this.HauteurPieceSelecrtionneField = HauteurPieceSelecrtionneField;
+    }
+
+    /**
+     * @return the LargeurPieceSelecrtionneField
+     */
+    public javax.swing.JTextField getLargeurPieceSelecrtionneField() {
+        return LargeurPieceSelecrtionneField;
+    }
+
+    /**
+     * @param LargeurPieceSelecrtionneField the LargeurPieceSelecrtionneField to set
+     */
+    public void setLargeurPieceSelecrtionneField(javax.swing.JTextField LargeurPieceSelecrtionneField) {
+        this.LargeurPieceSelecrtionneField = LargeurPieceSelecrtionneField;
+    }
+
+    /**
+     * @return the Largeur_Label
+     */
+    public javax.swing.JLabel getLargeur_Label() {
+        return Largeur_Label;
+    }
+
+    /**
+     * @param Largeur_Label the Largeur_Label to set
+     */
+    public void setLargeur_Label(javax.swing.JLabel Largeur_Label) {
+        this.Largeur_Label = Largeur_Label;
+    }
+
+    /**
+     * @return the MenuBtnNouveau
+     */
+    public javax.swing.JMenuItem getMenuBtnNouveau() {
+        return MenuBtnNouveau;
+    }
+
+    /**
+     * @param MenuBtnNouveau the MenuBtnNouveau to set
+     */
+    public void setMenuBtnNouveau(javax.swing.JMenuItem MenuBtnNouveau) {
+        this.MenuBtnNouveau = MenuBtnNouveau;
+    }
+
+    /**
+     * @return the Profondeur_Label
+     */
+    public javax.swing.JLabel getProfondeur_Label() {
+        return Profondeur_Label;
+    }
+
+    /**
+     * @param Profondeur_Label the Profondeur_Label to set
+     */
+    public void setProfondeur_Label(javax.swing.JLabel Profondeur_Label) {
+        this.Profondeur_Label = Profondeur_Label;
+    }
+
+    /**
+     * @return the afficheur
+     */
+    public UI.AfficheurEtagere2D getAfficheur() {
+        return afficheur;
+    }
+
+    /**
+     * @param afficheur the afficheur to set
+     */
+    public void setAfficheur(UI.AfficheurEtagere2D afficheur) {
+        this.afficheur = afficheur;
+    }
+
+    /**
+     * @return the buttonGroup1
+     */
+    public javax.swing.ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    /**
+     * @param buttonGroup1 the buttonGroup1 to set
+     */
+    public void setButtonGroup1(javax.swing.ButtonGroup buttonGroup1) {
+        this.buttonGroup1 = buttonGroup1;
+    }
+
+    /**
+     * @return the buttonGroup2
+     */
+    public javax.swing.ButtonGroup getButtonGroup2() {
+        return buttonGroup2;
+    }
+
+    /**
+     * @param buttonGroup2 the buttonGroup2 to set
+     */
+    public void setButtonGroup2(javax.swing.ButtonGroup buttonGroup2) {
+        this.buttonGroup2 = buttonGroup2;
+    }
+
+    /**
+     * @return the jButton21
+     */
+    public javax.swing.JButton getjButton21() {
+        return jButton21;
+    }
+
+    /**
+     * @param jButton21 the jButton21 to set
+     */
+    public void setjButton21(javax.swing.JButton jButton21) {
+        this.jButton21 = jButton21;
+    }
+
+    /**
+     * @return the jButton22
+     */
+    public javax.swing.JButton getjButton22() {
+        return jButton22;
+    }
+
+    /**
+     * @param jButton22 the jButton22 to set
+     */
+    public void setjButton22(javax.swing.JButton jButton22) {
+        this.jButton22 = jButton22;
+    }
+
+    /**
+     * @return the jButton5
+     */
+    public javax.swing.JButton getjButton5() {
+        return jButton5;
+    }
+
+    /**
+     * @param jButton5 the jButton5 to set
+     */
+    public void setjButton5(javax.swing.JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    /**
+     * @return the jButton6
+     */
+    public javax.swing.JButton getjButton6() {
+        return jButton6;
+    }
+
+    /**
+     * @param jButton6 the jButton6 to set
+     */
+    public void setjButton6(javax.swing.JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    /**
+     * @return the jButton7
+     */
+    public javax.swing.JButton getjButton7() {
+        return jButton7;
+    }
+
+    /**
+     * @param jButton7 the jButton7 to set
+     */
+    public void setjButton7(javax.swing.JButton jButton7) {
+        this.jButton7 = jButton7;
+    }
+
+    /**
+     * @return the jButton8
+     */
+    public javax.swing.JButton getjButton8() {
+        return jButton8;
+    }
+
+    /**
+     * @param jButton8 the jButton8 to set
+     */
+    public void setjButton8(javax.swing.JButton jButton8) {
+        this.jButton8 = jButton8;
+    }
+
+    /**
+     * @return the jCheckBox1
+     */
+    public javax.swing.JCheckBox getjCheckBox1() {
+        return jCheckBox1;
+    }
+
+    /**
+     * @param jCheckBox1 the jCheckBox1 to set
+     */
+    public void setjCheckBox1(javax.swing.JCheckBox jCheckBox1) {
+        this.jCheckBox1 = jCheckBox1;
+    }
+
+    /**
+     * @return the jCheckBox2
+     */
+    public javax.swing.JCheckBox getjCheckBox2() {
+        return jCheckBox2;
+    }
+
+    /**
+     * @param jCheckBox2 the jCheckBox2 to set
+     */
+    public void setjCheckBox2(javax.swing.JCheckBox jCheckBox2) {
+        this.jCheckBox2 = jCheckBox2;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @param jLabel1 the jLabel1 to set
+     */
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    /**
+     * @return the jList1
+     */
+    public javax.swing.JList<String> getjList1() {
+        return jList1;
+    }
+
+    /**
+     * @param jList1 the jList1 to set
+     */
+    public void setjList1(javax.swing.JList<String> jList1) {
+        this.jList1 = jList1;
+    }
+
+    /**
+     * @return the jMenu1
+     */
+    public javax.swing.JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    /**
+     * @param jMenu1 the jMenu1 to set
+     */
+    public void setjMenu1(javax.swing.JMenu jMenu1) {
+        this.jMenu1 = jMenu1;
+    }
+
+    /**
+     * @return the jMenu2
+     */
+    public javax.swing.JMenu getjMenu2() {
+        return jMenu2;
+    }
+
+    /**
+     * @param jMenu2 the jMenu2 to set
+     */
+    public void setjMenu2(javax.swing.JMenu jMenu2) {
+        this.jMenu2 = jMenu2;
+    }
+
+    /**
+     * @return the jMenuBar1
+     */
+    public javax.swing.JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    /**
+     * @param jMenuBar1 the jMenuBar1 to set
+     */
+    public void setjMenuBar1(javax.swing.JMenuBar jMenuBar1) {
+        this.jMenuBar1 = jMenuBar1;
+    }
+
+    /**
+     * @return the jMenuItem1
+     */
+    public javax.swing.JMenuItem getjMenuItem1() {
+        return jMenuItem1;
+    }
+
+    /**
+     * @param jMenuItem1 the jMenuItem1 to set
+     */
+    public void setjMenuItem1(javax.swing.JMenuItem jMenuItem1) {
+        this.jMenuItem1 = jMenuItem1;
+    }
+
+    /**
+     * @return the jMenuItem3
+     */
+    public javax.swing.JMenuItem getjMenuItem3() {
+        return jMenuItem3;
+    }
+
+    /**
+     * @param jMenuItem3 the jMenuItem3 to set
+     */
+    public void setjMenuItem3(javax.swing.JMenuItem jMenuItem3) {
+        this.jMenuItem3 = jMenuItem3;
+    }
+
+    /**
+     * @return the jMenuItem4
+     */
+    public javax.swing.JMenuItem getjMenuItem4() {
+        return jMenuItem4;
+    }
+
+    /**
+     * @param jMenuItem4 the jMenuItem4 to set
+     */
+    public void setjMenuItem4(javax.swing.JMenuItem jMenuItem4) {
+        this.jMenuItem4 = jMenuItem4;
+    }
+
+    /**
+     * @return the jMenuItem5
+     */
+    public javax.swing.JMenuItem getjMenuItem5() {
+        return jMenuItem5;
+    }
+
+    /**
+     * @param jMenuItem5 the jMenuItem5 to set
+     */
+    public void setjMenuItem5(javax.swing.JMenuItem jMenuItem5) {
+        this.jMenuItem5 = jMenuItem5;
+    }
+
+    /**
+     * @return the jMenuItem6
+     */
+    public javax.swing.JMenuItem getjMenuItem6() {
+        return jMenuItem6;
+    }
+
+    /**
+     * @param jMenuItem6 the jMenuItem6 to set
+     */
+    public void setjMenuItem6(javax.swing.JMenuItem jMenuItem6) {
+        this.jMenuItem6 = jMenuItem6;
+    }
+
+    /**
+     * @return the jMenuItem7
+     */
+    public javax.swing.JMenuItem getjMenuItem7() {
+        return jMenuItem7;
+    }
+
+    /**
+     * @param jMenuItem7 the jMenuItem7 to set
+     */
+    public void setjMenuItem7(javax.swing.JMenuItem jMenuItem7) {
+        this.jMenuItem7 = jMenuItem7;
+    }
+
+    /**
+     * @return the jRadioButton1
+     */
+    public javax.swing.JRadioButton getjRadioButton1() {
+        return jRadioButton1;
+    }
+
+    /**
+     * @param jRadioButton1 the jRadioButton1 to set
+     */
+    public void setjRadioButton1(javax.swing.JRadioButton jRadioButton1) {
+        this.jRadioButton1 = jRadioButton1;
+    }
+
+    /**
+     * @return the jRadioButton2
+     */
+    public javax.swing.JRadioButton getjRadioButton2() {
+        return jRadioButton2;
+    }
+
+    /**
+     * @param jRadioButton2 the jRadioButton2 to set
+     */
+    public void setjRadioButton2(javax.swing.JRadioButton jRadioButton2) {
+        this.jRadioButton2 = jRadioButton2;
+    }
+
+    /**
+     * @return the jRadioButton3
+     */
+    public javax.swing.JRadioButton getjRadioButton3() {
+        return jRadioButton3;
+    }
+
+    /**
+     * @param jRadioButton3 the jRadioButton3 to set
+     */
+    public void setjRadioButton3(javax.swing.JRadioButton jRadioButton3) {
+        this.jRadioButton3 = jRadioButton3;
+    }
+
+    /**
+     * @return the jRadioButton4
+     */
+    public javax.swing.JRadioButton getjRadioButton4() {
+        return jRadioButton4;
+    }
+
+    /**
+     * @param jRadioButton4 the jRadioButton4 to set
+     */
+    public void setjRadioButton4(javax.swing.JRadioButton jRadioButton4) {
+        this.jRadioButton4 = jRadioButton4;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @param jScrollPane1 the jScrollPane1 to set
+     */
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    /**
+     * @return the jScrollPane2
+     */
+    public javax.swing.JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    /**
+     * @param jScrollPane2 the jScrollPane2 to set
+     */
+    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+   
+
+    /**
+     * @return the jTextPane1
+     */
+    public javax.swing.JTextPane getjTextPane1() {
+        return jTextPane1;
+    }
+
+    /**
+     * @param jTextPane1 the jTextPane1 to set
+     */
+    public void setjTextPane1(javax.swing.JTextPane jTextPane1) {
+        this.jTextPane1 = jTextPane1;
+    }
+
+    
+    
 }

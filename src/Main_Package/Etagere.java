@@ -43,7 +43,7 @@ public class Etagere {
         this.Liste_piece = Liste_piece;
     }
     private double hauteur;
-    static public double largeur;
+    private double largeur;
     private double profondeur;
     private int nb_etages;
     private Etage[] listeetages;
@@ -123,19 +123,13 @@ public class Etagere {
     private void GenererPiecsePerimetreHautDouble() {
         if (isPiecedepasse()) {
             Piece piecehaut = new Piece(epaisseurDouble, this.largeur, this.profondeur, "Piece du haut");
-            piecehaut.ajouteCoin(0, 0, 0);
-            piecehaut.ajouteCoin(0, epaisseurDouble, 0);
-            piecehaut.ajouteCoin(this.largeur, 0, 0);
-            piecehaut.ajouteCoin(this.largeur, epaisseurDouble, 0);
+            
             piecehaut.setDrawingcoin(new Coord_Coins(0, 0, 0));
 
             this.getListe_piece().add(piecehaut);
         } else if (!(isPiecedepasse())) {
             Piece piecehaut = new Piece(epaisseurDouble, this.largeur - 2 * epaisseurDouble, this.profondeur, "Piece du haut");
-            piecehaut.ajouteCoin(epaisseurDouble, 0, 0);
-            piecehaut.ajouteCoin(epaisseurDouble, epaisseurDouble, 0);
-            piecehaut.ajouteCoin(this.largeur - epaisseurDouble, 0, 0);
-            piecehaut.ajouteCoin(this.largeur - epaisseurDouble, epaisseurDouble, 0);
+            
             piecehaut.setDrawingcoin(new Coord_Coins(epaisseurDouble, 0, 0));
             this.getListe_piece().add(piecehaut);
         }
