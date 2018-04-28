@@ -15,6 +15,20 @@ import java.util.ArrayList;
 public class Etagere {
 
     /**
+     * @return the Liste_Piece_Etage_Horizontale
+     */
+    public List<Piece> getListe_Piece_Etage_Horizontale() {
+        return Liste_Piece_Etage_Horizontale;
+    }
+
+    /**
+     * @param Liste_Piece_Etage_Horizontale the Liste_Piece_Etage_Horizontale to set
+     */
+    public void setListe_Piece_Etage_Horizontale(List<Piece> Liste_Piece_Etage_Horizontale) {
+        this.Liste_Piece_Etage_Horizontale = Liste_Piece_Etage_Horizontale;
+    }
+
+    /**
      * @return the Liste_piece
      */
     public List<Piece> getListe_piece() {
@@ -35,6 +49,7 @@ public class Etagere {
     private boolean estferme;
     private boolean piecedepasse;
     private List<Piece> Liste_piece;
+    private List<Piece> Liste_Piece_Etage_Horizontale;
     private boolean perimetretriple;
     private double epaisseurTriple = 0.5 * 2.54;
     private double epaisseurDouble = 0.75 * 2.54;
@@ -63,6 +78,7 @@ public class Etagere {
             this.listeetages[i] = unetage;
         }
         this.Liste_piece = new ArrayList();
+        this.Liste_Piece_Etage_Horizontale = new ArrayList();
         GenererPieces();
 
     }
@@ -76,6 +92,7 @@ public class Etagere {
 
     public void GenererPieces() {
         Liste_piece.clear();
+        Liste_Piece_Etage_Horizontale.clear();
         if (isPerimetretriple()) {
             GenererPiecePerimetreBasTriple();
             GenererPiecesPerimetreHautTriple();
@@ -381,6 +398,7 @@ public class Etagere {
                     compteuretages++;
                     yRef += etage.getHauteur_rel() * hauteurdispo + 3 * epaisseurTriple;
                     Liste_piece.add(piece);
+                    getListe_Piece_Etage_Horizontale().add(piece);
                 }
             }
 
@@ -406,6 +424,7 @@ public class Etagere {
                     compteuretages++;
                     yRef += etage.getHauteur_rel() * hauteurdispo + 3 * epaisseurTriple;
                     Liste_piece.add(piece);
+                    getListe_Piece_Etage_Horizontale().add(piece);
                 }
 
             }

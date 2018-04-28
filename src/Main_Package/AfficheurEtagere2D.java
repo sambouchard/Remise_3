@@ -32,6 +32,7 @@ import java.awt.event.MouseAdapter;
 public class AfficheurEtagere2D extends JPanel {
 
     private Etagere etagere;
+    private Controleur controleur;
     private double scale = 1.0;
     private Graphics2D g2d;
     private AffineTransform tx = new AffineTransform();
@@ -46,8 +47,8 @@ public class AfficheurEtagere2D extends JPanel {
                 for (Piece piece : etagere.getListe_piece()) {
                     if (piece.contains(me.getX(), me.getY())) {
                         System.out.println(piece.getNom());
-                        System.out.println(piece.getMinX());
-                        System.out.println(piece.getMaxX());
+                        System.out.println(piece.getLargeur());
+                        System.out.println(piece.getHauteur());
                     }
                 }
             }
@@ -126,13 +127,21 @@ public class AfficheurEtagere2D extends JPanel {
 
             int dx = e.getX() - x;
             int dy = e.getY() - y;
+//            for(Piece piece: etagere.getListe_Piece_Etage_Horizontale()){
+//                if(piece.contains(x, y)){
+//                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy );
+//                    repaint();
+//                    break;
+//                }
+//            }
             for(Piece piece:etagere.getListe_piece()){
                 piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x()+dx/25);
                 piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy/25 );
             }
-            
-            
             repaint();
+            
+            
+            
         }
 
     }
