@@ -45,7 +45,7 @@ public class Controleur {
         this.ajouteCaissonMode = ajouteCaissonMode;
     }
     private boolean ajouteetageMode ;
-    private boolean ajouteCaissonMode = true;
+    private boolean ajouteCaissonMode;
 
     public Etagere getUndoEtagere() {
         return UndoEtagere;
