@@ -6,6 +6,8 @@
 package Main_Package;
 
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -30,8 +32,8 @@ public class Etage extends Rectangle2D.Double implements java.io.Serializable{
     }
     private double hauteur_rel;
     private Caisson[] listecaissons;
+    private List<Piece> listePieceHorizontale = new ArrayList();
     private int Nb_Caisson;
-    private double espacedisponible = 1;
     boolean debordement = false;
     private double x1;
     private double x2;

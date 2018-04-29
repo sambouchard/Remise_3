@@ -40,22 +40,22 @@ public class GUI extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        AddMontantHorizontal_button = new javax.swing.JButton();
+        DeleteMontant_Button = new javax.swing.JButton();
         HauteurPieceSelecrtionneField = new javax.swing.JTextField();
         LargeurPieceSelecrtionneField = new javax.swing.JTextField();
         ProfondeurPieceSelecrtionneField = new javax.swing.JTextField();
-        jButton22 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        Undo_Buitton = new javax.swing.JButton();
+        Redo_Button = new javax.swing.JButton();
+        PerimetreDouble_Radio = new javax.swing.JRadioButton();
+        PerimatreTriple_Radio = new javax.swing.JRadioButton();
         Metrique_Button = new javax.swing.JRadioButton();
         Imperial_Button = new javax.swing.JRadioButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jButton6 = new javax.swing.JButton();
+        AddMontantVertical_button = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         AfficheurContainer = new javax.swing.JPanel();
@@ -77,6 +77,12 @@ public class GUI extends javax.swing.JFrame {
         Largeur_Cmlabel = new javax.swing.JLabel();
         Profondeur_CMlabel = new javax.swing.JLabel();
         Hauteur_Cmlabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        HauteurRelEtage_Field = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        LargeurRelCaisson_Field = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuBtnNouveau = new javax.swing.JMenuItem();
@@ -103,17 +109,22 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("Verticale");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        AddMontantHorizontal_button.setText("Ajouter Montant Vertical");
+        AddMontantHorizontal_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMontantHorizontal_buttonMouseClicked(evt);
+            }
+        });
+        AddMontantHorizontal_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                AddMontantHorizontal_buttonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Supprimer");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        DeleteMontant_Button.setText("Supprimer");
+        DeleteMontant_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                DeleteMontant_ButtonActionPerformed(evt);
             }
         });
 
@@ -130,45 +141,55 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton22.setText("Undo");
-        jButton22.setActionCommand("Imperial ou metrique");
-        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+        Undo_Buitton.setText("Undo");
+        Undo_Buitton.setActionCommand("Imperial ou metrique");
+        Undo_Buitton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton22MouseClicked(evt);
+                Undo_BuittonMouseClicked(evt);
             }
         });
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
+        Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
-            }
-        });
-
-        jButton21.setText("Redo");
-        jButton21.setActionCommand("Imperial ou metrique");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                Undo_BuittonActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setSelected(true);
-        jRadioButton3.setText("Double");
-        jRadioButton3.setToolTipText("");
-        jRadioButton3.setActionCommand("");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        Redo_Button.setText("Redo");
+        Redo_Button.setActionCommand("Imperial ou metrique");
+        Redo_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                Redo_ButtonActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setText("Triple");
-        jRadioButton4.setToolTipText("");
-        jRadioButton4.setActionCommand("");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(PerimetreDouble_Radio);
+        PerimetreDouble_Radio.setSelected(true);
+        PerimetreDouble_Radio.setText("Double");
+        PerimetreDouble_Radio.setToolTipText("");
+        PerimetreDouble_Radio.setActionCommand("");
+        PerimetreDouble_Radio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                PerimetreDouble_RadioStateChanged(evt);
+            }
+        });
+        PerimetreDouble_Radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                PerimetreDouble_RadioActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(PerimatreTriple_Radio);
+        PerimatreTriple_Radio.setText("Triple");
+        PerimatreTriple_Radio.setToolTipText("");
+        PerimatreTriple_Radio.setActionCommand("");
+        PerimatreTriple_Radio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                PerimatreTriple_RadioStateChanged(evt);
+            }
+        });
+        PerimatreTriple_Radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerimatreTriple_RadioActionPerformed(evt);
             }
         });
 
@@ -226,10 +247,15 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jButton6.setText("Horizontale");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        AddMontantVertical_button.setText("Horizontale");
+        AddMontantVertical_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMontantVertical_buttonMouseClicked(evt);
+            }
+        });
+        AddMontantVertical_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                AddMontantVertical_buttonActionPerformed(evt);
             }
         });
 
@@ -320,6 +346,21 @@ public class GUI extends javax.swing.JFrame {
 
         Hauteur_Cmlabel.setText("Cm");
 
+        jLabel6.setText("Hauteur Relative Étage Sélectionnée");
+
+        HauteurRelEtage_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        HauteurRelEtage_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HauteurRelEtage_FieldActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("%");
+
+        jLabel8.setText("Largeur relative Étage sélectionnée");
+
+        jLabel9.setText("%");
+
         jMenu1.setText("Fichier");
 
         MenuBtnNouveau.setText("Nouveau");
@@ -378,13 +419,12 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Redo_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(Undo_Buitton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(AddMontantHorizontal_button, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(37, 37, 37)
                 .addComponent(AfficheurContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -403,17 +443,12 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Profondeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Hauteur_Textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Largeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox1)
-                                    .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(Largeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Largeur_Cmlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap(8, Short.MAX_VALUE))
+                                .addContainerGap(12, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Profondeur_CMlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap(8, Short.MAX_VALUE))
@@ -423,40 +458,56 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(HauteurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(HPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(Metrique_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(HauteurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(26, 26, 26)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(HPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(PPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(LPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(50, 50, 50))
-                                .addComponent(jLabel5))
+                                .addComponent(PerimatreTriple_Radio, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Imperial_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton3)))
-                        .addContainerGap())))
+                                .addComponent(PerimetreDouble_Radio))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7))
+                            .addComponent(jCheckBox1)
+                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel9)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(269, 269, 269)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1319, Short.MAX_VALUE)))
+                    .addContainerGap(1323, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,12 +519,12 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jRadioButton4)
+                                    .addComponent(PerimatreTriple_Radio)
                                     .addComponent(Metrique_Button))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(Imperial_Button)
-                                    .addComponent(jRadioButton3))
+                                    .addComponent(PerimetreDouble_Radio))
                                 .addGap(41, 41, 41)
                                 .addComponent(jLabel1)
                                 .addGap(32, 32, 32)
@@ -495,13 +546,25 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(Profondeur_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Profondeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Profondeur_CMlabel))
-                                .addGap(199, 199, 199)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addGap(59, 59, 59)
                                 .addComponent(jCheckBox1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCheckBox2)
-                                .addGap(25, 25, 25)
+                                .addGap(19, 19, 19)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 943, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
@@ -524,18 +587,19 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(AfficheurContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(AddMontantHorizontal_button, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(Undo_Buitton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(480, 480, 480)
+                                .addComponent(Redo_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(31, 31, 31))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(751, 751, 751)
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(23, 23, 23)
@@ -549,6 +613,14 @@ public class GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getHauteurRelEtage_Field() {
+        return HauteurRelEtage_Field;
+    }
+
+    public void setHauteurRelEtage_Field(JTextField HauteurRelEtage_Field) {
+        this.HauteurRelEtage_Field = HauteurRelEtage_Field;
+    }
+
     public JLabel getHauteur_Label() {
         return Hauteur_Label;
     }
@@ -561,21 +633,21 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void AddMontantHorizontal_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMontantHorizontal_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_AddMontantHorizontal_buttonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void DeleteMontant_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteMontant_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_DeleteMontant_ButtonActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+    private void Redo_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Redo_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+    }//GEN-LAST:event_Redo_ButtonActionPerformed
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+    private void Undo_BuittonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Undo_BuittonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton22ActionPerformed
+    }//GEN-LAST:event_Undo_BuittonActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
@@ -593,17 +665,17 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Imperial_ButtonActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void PerimetreDouble_RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerimetreDouble_RadioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_PerimetreDouble_RadioActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void PerimatreTriple_RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerimatreTriple_RadioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_PerimatreTriple_RadioActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void AddMontantVertical_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMontantVertical_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_AddMontantVertical_buttonActionPerformed
 
     private void MenuBtnNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBtnNouveauActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -656,10 +728,10 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
 
-    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
+    private void Undo_BuittonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Undo_BuittonMouseClicked
         Controleur.getInstance().undo();
         System.out.println("UI.GUI.jButton22MouseClicked()");
-    }//GEN-LAST:event_jButton22MouseClicked
+    }//GEN-LAST:event_Undo_BuittonMouseClicked
 
     private void Metrique_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Metrique_ButtonStateChanged
         if(Metrique_Button.isSelected()){
@@ -669,6 +741,7 @@ public class GUI extends javax.swing.JFrame {
             HPiece_Cmlabel.setText("Cm");
             LPiece_Cmlabel.setText("Cm");
             PPiece_Cmlabel.setText("Cm");
+            Controleur.getInstance().updatevue();
         }
     }//GEN-LAST:event_Metrique_ButtonStateChanged
 
@@ -680,6 +753,7 @@ public class GUI extends javax.swing.JFrame {
             HPiece_Cmlabel.setText("Po");
             LPiece_Cmlabel.setText("Po");
             PPiece_Cmlabel.setText("Po");
+            Controleur.getInstance().updatevuImperiale();
         }
     }//GEN-LAST:event_Imperial_ButtonStateChanged
 
@@ -705,6 +779,43 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_exporterListePiecesActionPerformed
+
+    private void AddMontantHorizontal_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMontantHorizontal_buttonMouseClicked
+        Controleur.getInstance().setAjouteetageMode(true);
+        if(Controleur.getInstance().isAjouteCaissonMode()){
+            Controleur.getInstance().setAjouteCaissonMode(false);
+            
+        }
+        
+    }//GEN-LAST:event_AddMontantHorizontal_buttonMouseClicked
+
+    private void AddMontantVertical_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMontantVertical_buttonMouseClicked
+        if(Controleur.getInstance().isAjouteCaissonMode()){
+            Controleur.getInstance().setAjouteCaissonMode(false);
+        }
+        if(Controleur.getInstance().isAjouteCaissonMode() == false){
+            Controleur.getInstance().setAjouteCaissonMode(true);
+        }
+        if(Controleur.getInstance().isAjouteetageMode()){
+            Controleur.getInstance().setAjouteetageMode(false);
+        }
+    }//GEN-LAST:event_AddMontantVertical_buttonMouseClicked
+
+    private void HauteurRelEtage_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HauteurRelEtage_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HauteurRelEtage_FieldActionPerformed
+
+    private void PerimatreTriple_RadioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PerimatreTriple_RadioStateChanged
+        if(PerimatreTriple_Radio.isSelected()){
+            Controleur.getInstance().setTriple(true);
+        }
+    }//GEN-LAST:event_PerimatreTriple_RadioStateChanged
+
+    private void PerimetreDouble_RadioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PerimetreDouble_RadioStateChanged
+        if(PerimetreDouble_Radio.isSelected()){
+            Controleur.getInstance().setTriple(false);
+        }
+    }//GEN-LAST:event_PerimetreDouble_RadioStateChanged
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);
@@ -751,15 +862,20 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddMontantHorizontal_button;
+    private javax.swing.JButton AddMontantVertical_button;
     private javax.swing.JPanel AfficheurContainer;
+    private javax.swing.JButton DeleteMontant_Button;
     private javax.swing.JLabel HPiece_Cmlabel;
     private javax.swing.JTextField HauteurPieceSelecrtionneField;
+    private javax.swing.JTextField HauteurRelEtage_Field;
     private javax.swing.JLabel Hauteur_Cmlabel;
     private javax.swing.JLabel Hauteur_Label;
     private javax.swing.JTextField Hauteur_Textfield;
     private javax.swing.JRadioButton Imperial_Button;
     private javax.swing.JLabel LPiece_Cmlabel;
     private javax.swing.JTextField LargeurPieceSelecrtionneField;
+    private javax.swing.JTextField LargeurRelCaisson_Field;
     private javax.swing.JLabel Largeur_Cmlabel;
     private javax.swing.JLabel Largeur_Label;
     private javax.swing.JTextField Largeur_TextField;
@@ -768,20 +884,19 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuSauvegarder;
     private javax.swing.JRadioButton Metrique_Button;
     private javax.swing.JLabel PPiece_Cmlabel;
+    private javax.swing.JRadioButton PerimatreTriple_Radio;
+    private javax.swing.JRadioButton PerimetreDouble_Radio;
     private javax.swing.JTextField ProfondeurPieceSelecrtionneField;
     private javax.swing.JLabel Profondeur_CMlabel;
     private javax.swing.JLabel Profondeur_Label;
     private javax.swing.JTextField Profondeur_TextField;
+    private javax.swing.JButton Redo_Button;
+    private javax.swing.JButton Undo_Buitton;
     private UI.AfficheurEtagere2D afficheur;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JMenuItem exporterListePieces;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
@@ -789,6 +904,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -797,8 +916,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane1;
@@ -973,56 +1090,56 @@ public class GUI extends javax.swing.JFrame {
      * @return the jButton21
      */
     public javax.swing.JButton getjButton21() {
-        return jButton21;
+        return Redo_Button;
     }
 
     /**
      * @param jButton21 the jButton21 to set
      */
     public void setjButton21(javax.swing.JButton jButton21) {
-        this.jButton21 = jButton21;
+        this.Redo_Button = jButton21;
     }
 
     /**
      * @return the jButton22
      */
     public javax.swing.JButton getjButton22() {
-        return jButton22;
+        return Undo_Buitton;
     }
 
     /**
      * @param jButton22 the jButton22 to set
      */
     public void setjButton22(javax.swing.JButton jButton22) {
-        this.jButton22 = jButton22;
+        this.Undo_Buitton = jButton22;
     }
 
     /**
      * @return the jButton5
      */
     public javax.swing.JButton getjButton5() {
-        return jButton5;
+        return DeleteMontant_Button;
     }
 
     /**
      * @param jButton5 the jButton5 to set
      */
     public void setjButton5(javax.swing.JButton jButton5) {
-        this.jButton5 = jButton5;
+        this.DeleteMontant_Button = jButton5;
     }
 
     /**
      * @return the jButton6
      */
     public javax.swing.JButton getjButton6() {
-        return jButton6;
+        return AddMontantVertical_button;
     }
 
     /**
      * @param jButton6 the jButton6 to set
      */
     public void setjButton6(javax.swing.JButton jButton6) {
-        this.jButton6 = jButton6;
+        this.AddMontantVertical_button = jButton6;
     }
 
     /**
@@ -1043,14 +1160,14 @@ public class GUI extends javax.swing.JFrame {
      * @return the jButton8
      */
     public javax.swing.JButton getjButton8() {
-        return jButton8;
+        return AddMontantHorizontal_button;
     }
 
     /**
      * @param jButton8 the jButton8 to set
      */
     public void setjButton8(javax.swing.JButton jButton8) {
-        this.jButton8 = jButton8;
+        this.AddMontantHorizontal_button = jButton8;
     }
 
     /**
@@ -1267,28 +1384,28 @@ public class GUI extends javax.swing.JFrame {
      * @return the jRadioButton3
      */
     public javax.swing.JRadioButton getjRadioButton3() {
-        return jRadioButton3;
+        return PerimetreDouble_Radio;
     }
 
     /**
      * @param jRadioButton3 the jRadioButton3 to set
      */
     public void setjRadioButton3(javax.swing.JRadioButton jRadioButton3) {
-        this.jRadioButton3 = jRadioButton3;
+        this.PerimetreDouble_Radio = jRadioButton3;
     }
 
     /**
      * @return the jRadioButton4
      */
     public javax.swing.JRadioButton getjRadioButton4() {
-        return jRadioButton4;
+        return PerimatreTriple_Radio;
     }
 
     /**
      * @param jRadioButton4 the jRadioButton4 to set
      */
     public void setjRadioButton4(javax.swing.JRadioButton jRadioButton4) {
-        this.jRadioButton4 = jRadioButton4;
+        this.PerimatreTriple_Radio = jRadioButton4;
     }
 
     /**

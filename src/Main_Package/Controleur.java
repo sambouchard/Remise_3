@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,12 +30,31 @@ public class Controleur {
     private Piece pieceSelectionner = null;
     private GUI Vue;
 
+    public Etage getEtageSelectionne() {
+        return etageSelectionne;
+    }
+
+    public void setEtageSelectionne(Etage etageSelectionne) {
+        this.etageSelectionne = etageSelectionne;
+    }
+
+    public Caisson getCaissonSelectionne() {
+        return CaissonSelectionne;
+    }
+
+    public void setCaissonSelectionne(Caisson CaissonSelectionne) {
+        this.CaissonSelectionne = CaissonSelectionne;
+    }
+    private Etage etageSelectionne = null;
+    private Caisson CaissonSelectionne = null;
+
     public boolean isAjouteetageMode() {
         return ajouteetageMode;
     }
 
     public void setAjouteetageMode(boolean ajouteetageMode) {
         this.ajouteetageMode = ajouteetageMode;
+        
     }
 
     public boolean isAjouteCaissonMode() {
@@ -43,8 +64,8 @@ public class Controleur {
     public void setAjouteCaissonMode(boolean ajouteCaissonMode) {
         this.ajouteCaissonMode = ajouteCaissonMode;
     }
-    private boolean ajouteetageMode;
-    private boolean ajouteCaissonMode;
+    private boolean ajouteetageMode = false;
+    private boolean ajouteCaissonMode = false;
 
     public Etagere getUndoEtagere() {
         return UndoEtagere;
@@ -97,14 +118,27 @@ public class Controleur {
         this.etagere = etagere;
         this.afficheur.redraw();
     }
-
+    public void updatevuImperiale(){
+        Double toBeTruncated;
+        this.Vue.getHauteur_Textfield().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getHauteur()/2.54)
+    .setScale(3, RoundingMode.HALF_UP)
+    .doubleValue()));
+        this.Vue.getLargeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getLargeur()/2.54)
+    .setScale(3, RoundingMode.HALF_UP)
+    .doubleValue()));
+        this.Vue.getProfondeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getProfondeur()/2.54)
+    .setScale(3, RoundingMode.HALF_UP)
+    .doubleValue()));
+    }
     public void updatevue() {
         this.Vue.getHauteur_Textfield().setText(String.valueOf(this.etagere.getHauteur()));
         this.Vue.getLargeur_TextField().setText(String.valueOf(this.etagere.getLargeur()));
         this.Vue.getProfondeur_TextField().setText(String.valueOf(this.etagere.getProfondeur()));
+//        this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel()));
 
     }
-
+    
+    
     public void createNewEtagere(double hauteur, double largeur, double profondeur, int nb_etages,
             boolean estfermee, boolean piecedepasse, boolean perimetretriple) {
         Etagere e = new Etagere(hauteur, largeur, profondeur, nb_etages, estfermee, piecedepasse, perimetretriple);
@@ -180,9 +214,7 @@ public class Controleur {
         etagere.GenererPieces();
     }
 
-    public void setisTriple(boolean perimetretriple) {
-        getEtagere().setPerimetretriple(perimetretriple);
-    }
+   
 
     /**
      * @return the afficheur
