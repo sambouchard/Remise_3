@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
-import sun.security.util.SecurityConstants;
 
 /**
  * Singleton Controleur
@@ -44,7 +43,7 @@ public class Controleur {
     public void setAjouteCaissonMode(boolean ajouteCaissonMode) {
         this.ajouteCaissonMode = ajouteCaissonMode;
     }
-    private boolean ajouteetageMode ;
+    private boolean ajouteetageMode;
     private boolean ajouteCaissonMode;
 
     public Etagere getUndoEtagere() {
@@ -84,13 +83,12 @@ public class Controleur {
         this.etagere.GenererPieces();
         this.afficheur.redraw();
     }
-    public void setDepasse(Boolean depasse){
+
+    public void setDepasse(Boolean depasse) {
         this.etagere.setPiecedepasse(depasse);
         this.etagere.GenererPieces();
         this.afficheur.redraw();
     }
-
-
 
     /**
      * @param etagere the etagere to set
@@ -104,8 +102,7 @@ public class Controleur {
         this.Vue.getHauteur_Textfield().setText(String.valueOf(this.etagere.getHauteur()));
         this.Vue.getLargeur_TextField().setText(String.valueOf(this.etagere.getLargeur()));
         this.Vue.getProfondeur_TextField().setText(String.valueOf(this.etagere.getProfondeur()));
-        
-        
+
     }
 
     public void createNewEtagere(double hauteur, double largeur, double profondeur, int nb_etages,
@@ -135,6 +132,7 @@ public class Controleur {
         this.Vue.getLargeurPieceSelecrtionneField().setText(String.valueOf(piece.getLargeur()));
         this.Vue.getHauteurPieceSelecrtionneField().setText(String.valueOf(piece.getHauteur()));
         this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
+        System.out.print(this.getStrListePieces());
     }
 
     /**
@@ -176,6 +174,7 @@ public class Controleur {
         etagere.setHauteur(hauteur);
         etagere.GenererPieces();
     }
+
     public void setEtagereProfondeur(double profondeur) {
         getEtagere().setProfondeur(profondeur);
         etagere.GenererPieces();
@@ -198,54 +197,65 @@ public class Controleur {
     public void setAfficheur(AfficheurEtagere2D afficheur) {
         this.afficheur = afficheur;
     }
-    
-    public void undo(){
-        if(this.UndoEtagere != null){
+
+    public void undo() {
+        if (this.UndoEtagere != null) {
             this.setEtagere(this.UndoEtagere);
             afficheur.redraw();
-        }
-        else{
+        } else {
             System.out.println("Undo etagere nexiste pas");
         }
     }
-    
-    public void sauvegarderEtagere(){
-      String nom = (String)JOptionPane.showInputDialog(null, "Nommez votre étagère");
 
-      if (!nom.isEmpty()) {
-        try {
-          FileOutputStream fileout = new FileOutputStream("etageresSauvegardees\\" + nom + ".ser");
-          ObjectOutputStream out = new ObjectOutputStream(fileout);
-          out.writeObject(etagere);
-          out.close();
-          fileout.close();
-        } catch (IOException i) {
-          JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être sauvegardée.");
+    public void sauvegarderEtagere() {
+        String nom = (String) JOptionPane.showInputDialog(null, "Nommez votre étagère");
+
+        if (!nom.isEmpty()) {
+            try {
+                FileOutputStream fileout = new FileOutputStream("etageresSauvegardees\\" + nom + ".ser");
+                ObjectOutputStream out = new ObjectOutputStream(fileout);
+                out.writeObject(etagere);
+                out.close();
+                fileout.close();
+            } catch (IOException i) {
+                JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être sauvegardée.");
+            }
         }
-      }
 
     }
 
-    public void chargerEtagere(){
+    public void chargerEtagere() {
 
-      File etageresSauvegardees = new File("etageresSauvegardees\\");
+        File etageresSauvegardees = new File("etageresSauvegardees\\");
 
-      String[] listeEnregistrees = etageresSauvegardees.list();
+        String[] listeEnregistrees = etageresSauvegardees.list();
 
-      String nom = (String)JOptionPane.showInputDialog(null, "Choisissez votre étagère.", "Charger une étagère", JOptionPane.PLAIN_MESSAGE, null, listeEnregistrees, null);
-      if (!nom.isEmpty()) {
-        try {
-          FileInputStream fileIn = new FileInputStream("etageresSauvegardees\\" + nom);
-          ObjectInputStream in = new ObjectInputStream(fileIn);
-          Etagere etagerechargee = (Etagere) in.readObject();
-          setEtagere(etagerechargee);
-                    in.close();
-          fileIn.close();
-        } catch (IOException | ClassNotFoundException i){
-          JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être chargée.");
+        String nom = (String) JOptionPane.showInputDialog(null, "Choisissez votre étagère.", "Charger une étagère", JOptionPane.PLAIN_MESSAGE, null, listeEnregistrees, null);
+        if (!nom.isEmpty()) {
+            try {
+                FileInputStream fileIn = new FileInputStream("etageresSauvegardees\\" + nom);
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Etagere etagerechargee = (Etagere) in.readObject();
+                setEtagere(etagerechargee);
+                in.close();
+                fileIn.close();
+            } catch (IOException | ClassNotFoundException i) {
+                JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être chargée.");
+            }
         }
-      }
     }
 
-            
+    /**
+     *
+     * @return A string containing a formated list of all the Pieces, used to export to txt
+     */
+    public String getStrListePieces() {
+        String out;
+        if(mesureMetrique) {
+            out = etagere.toStringMetrique();
+        } else {
+            out = etagere.toStringImperial();
+        }
+        return out;
+    }
 }

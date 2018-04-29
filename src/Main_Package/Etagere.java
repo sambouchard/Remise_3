@@ -7,6 +7,7 @@ package Main_Package;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -83,7 +84,30 @@ public class Etagere implements java.io.Serializable{
         GenererPieces();
 
     }
-
+    
+    
+    public String toStringMetrique() {
+        String out = new String();
+        for (Piece piece : this.Liste_piece) {
+            out += piece.toStringMetrique() + "\n";
+        }
+        for (Piece piece : this.Liste_Piece_Etage_Horizontale) {
+            out += piece.toStringMetrique() + "\n";
+        }
+        return out;
+    }
+    
+    public String toStringImperial() {
+        String out = new String();
+        for (Piece piece : this.Liste_piece) {
+            out += piece.toStringImperial()+ "\n";
+        }
+        for (Piece piece : this.Liste_Piece_Etage_Horizontale) {
+            out += piece.toStringImperial()+ "\n";
+        }
+        return out;
+    }
+    
     /**
      * @return the hauteur
      */

@@ -10,13 +10,10 @@
 package UI;
 
 import Main_Package.Controleur;
-import Main_Package.Coord_Coins;
 import Main_Package.Piece;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.MouseInfo;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
@@ -89,11 +86,11 @@ public class AfficheurEtagere2D extends JPanel {
                         Controleur.getInstance().setPieceSelectionner(piece);
                     }
                 }
-                if(Controleur.getInstance().isAjouteCaissonMode()){
-                    
+                if (Controleur.getInstance().isAjouteCaissonMode()) {
+
                 }
-                if(Controleur.getInstance().isAjouteetageMode()){
-                    
+                if (Controleur.getInstance().isAjouteetageMode()) {
+
                 }
             }
 
@@ -119,7 +116,6 @@ public class AfficheurEtagere2D extends JPanel {
         });
         this.addMouseWheelListener(new ZoomHandler());
         this.addMouseListener(ma);
-        
 
     }
 
@@ -168,38 +164,39 @@ public class AfficheurEtagere2D extends JPanel {
             x = e.getX();
             y = e.getY();
         }
+
         @Override
-        public void mouseMoved(MouseEvent e){
-            if(Controleur.getInstance().getEtagere()!= null){
-                if(Controleur.getInstance().isAjouteetageMode()){
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(e.getX(), e.getY(), 
+        public void mouseMoved(MouseEvent e) {
+            if (Controleur.getInstance().getEtagere() != null) {
+                if (Controleur.getInstance().isAjouteetageMode()) {
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(e.getX(), e.getY(),
                             Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(e.getX(), e.getY()+ 0.5 * 2.5, 
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(e.getX(), e.getY() + 0.5 * 2.5,
                             Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(e.getX(), e.getY()+2*(0.5 * 2.5), 
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(e.getX(), e.getY() + 2 * (0.5 * 2.5),
                             Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
                     repaint();
-                    
+
                 }
-                if(Controleur.getInstance().isAjouteCaissonMode()){
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(e.getX(), e.getY(), 
+                if (Controleur.getInstance().isAjouteCaissonMode()) {
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(e.getX(), e.getY(),
                             0.5 * 2.5, 40));
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(e.getX()+ 0.5 * 2.5, e.getY()- 0.5 * 2.5, 
-                            0.5 * 2.5, 40+0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(e.getX()+2*(0.5 * 2.5), e.getY(), 
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(e.getX() + 0.5 * 2.5, e.getY() - 0.5 * 2.5,
+                            0.5 * 2.5, 40 + 0.5 * 2.5));
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(e.getX() + 2 * (0.5 * 2.5), e.getY(),
                             0.5 * 2.5, 40));
                     repaint();
-                    
+
                 }
-                
+
             }
         }
+
         @Override
         public void mouseDragged(MouseEvent e) {
             int dx = e.getX() - x;
             int dy = e.getY() - y;
 
-            
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
                 Point2D p1 = e.getPoint();
                 Point2D p2 = null;
@@ -215,8 +212,8 @@ public class AfficheurEtagere2D extends JPanel {
                 }
             }
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx/10 );
-                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy/10 );
+                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 10);
+                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 10);
                 Controleur.getInstance().getAfficheur().redraw();
 
 //            for(Piece piece: etagere.getListe_Piece_Etage_Horizontale()){
@@ -226,13 +223,11 @@ public class AfficheurEtagere2D extends JPanel {
 //                    break;
 //                }
 //            }
-            
 //            Controleur.getInstance().getAfficheur().redraw();
+            }
 
         }
 
-    }
-        
     }
 
     /**
@@ -242,39 +237,39 @@ public class AfficheurEtagere2D extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-            g2d = (Graphics2D) g;
-            if (Controleur.getInstance().getEtagere() != null) {
+        g2d = (Graphics2D) g;
+        if (Controleur.getInstance().getEtagere() != null) {
 
-                Controleur.getInstance().getEtagere().getListe_piece().stream().map((piece) -> {
-                    piece.setRect((piece.getDrawingcoin().getCoord_x()) , (piece.getDrawingcoin().getCoord_y()) , piece.getLargeur() , piece.getHauteur() );
+            Controleur.getInstance().getEtagere().getListe_piece().stream().map((piece) -> {
+                piece.setRect((piece.getDrawingcoin().getCoord_x()), (piece.getDrawingcoin().getCoord_y()), piece.getLargeur(), piece.getHauteur());
                 return piece;
             }).map((piece) -> {
                 g2d.setColor(Color.BLACK);
                 return piece;
             }).forEachOrdered((piece) -> {
-                                   g2d.draw(tx.createTransformedShape(piece));
+                g2d.draw(tx.createTransformedShape(piece));
             });
-                if(Controleur.getInstance().isAjouteetageMode()){
-                    g2d.setColor(Color.BLACK);
-                    g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_1));
-                    g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_2));
-                    g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_3));
-                    g2d.setColor(Color.RED);
-                    g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_1));
-                    g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_2));
-                    g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_3));
-                }
-                if(Controleur.getInstance().isAjouteCaissonMode()){
-                    g2d.setColor(Color.BLACK);
-                    g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_1));
-                    g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_2));
-                    g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_3));
-                    g2d.setColor(Color.RED);
-                    g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_1));
-                    g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_2));
-                    g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_3));
-                    
-                }
+            if (Controleur.getInstance().isAjouteetageMode()) {
+                g2d.setColor(Color.BLACK);
+                g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_1));
+                g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_2));
+                g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_3));
+                g2d.setColor(Color.RED);
+                g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_1));
+                g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_2));
+                g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_3));
+            }
+            if (Controleur.getInstance().isAjouteCaissonMode()) {
+                g2d.setColor(Color.BLACK);
+                g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_1));
+                g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_2));
+                g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_3));
+                g2d.setColor(Color.RED);
+                g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_1));
+                g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_2));
+                g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_3));
+
             }
         }
     }
+}

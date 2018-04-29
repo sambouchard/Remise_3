@@ -13,8 +13,11 @@ import java.util.List;
  *
  * @author SABOU350
  */
-public class Piece extends Rectangle2D.Double implements java.io.Serializable{
-
+public class Piece extends Rectangle2D.Double implements java.io.Serializable {
+    public static double IMPERIAL_SCALING_FACTOR = 0.393701;    // 1cm = 0.39 inches
+    public static String IMPERIAL_UNIT = "in.";
+    public static String METRIC_UNIT = "cm";
+    
     /**
      * @return the nom
      */
@@ -46,7 +49,7 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable{
     private double largeur;
     private double profondeur;
     private String nom;
-    private List<Coord_Coins> listecoins = new ArrayList();
+    private List<Coord_Coins> listecoins;
     private Coord_Coins drawingcoin;
 
     public void ajouteCoin(double x, double y, double z) {
@@ -90,9 +93,9 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable{
     }
 
     /**
-     * @param Profondeur
+     * @param profondeur
      */
-    public void setProfondeur(double Profondeur) {
+    public void setProfondeur(double profondeur) {
         this.profondeur = profondeur;
     }
 
@@ -101,16 +104,40 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable{
      * @param hauteur
      * @param largeur
      * @param profondeur
-     * @param estepaisse
+     * @param nom
      */
     public Piece(double hauteur, double largeur, double profondeur, String nom) {
         this.hauteur = hauteur;
         this.largeur = largeur;
         this.profondeur = profondeur;
         this.nom = nom;
+        this.listecoins = new ArrayList();
     }
+
     /**
      *
+     * @return 
      */
 
+    public String toStringMetrique() {
+        String out = new String();
+         out += this.nom + ":\t" +
+                this.hauteur + METRIC_UNIT + " x " +
+                this.largeur + METRIC_UNIT + " x " +
+                this.profondeur + METRIC_UNIT;
+        return out;
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public String toStringImperial() {
+        String out = new String();
+         out += this.nom + ":\t" +
+                this.hauteur * IMPERIAL_SCALING_FACTOR + IMPERIAL_UNIT + " x " +
+                this.largeur * IMPERIAL_SCALING_FACTOR + IMPERIAL_UNIT + " x " +
+                this.profondeur * IMPERIAL_SCALING_FACTOR + IMPERIAL_UNIT;
+        return out;
+    }
 }
