@@ -7,14 +7,12 @@ package Main_Package;
 
 import UI.AfficheurEtagere2D;
 import UI.GUI;
-import java.awt.Component;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import sun.security.util.SecurityConstants;
 
@@ -30,8 +28,24 @@ public class Controleur {
     private static final Controleur instance = new Controleur();
     private Piece pieceSelectionner = null;
     private GUI Vue;
-    private boolean ajouteetageMode;
-    private boolean ajouteCaissonMode;
+
+    public boolean isAjouteetageMode() {
+        return ajouteetageMode;
+    }
+
+    public void setAjouteetageMode(boolean ajouteetageMode) {
+        this.ajouteetageMode = ajouteetageMode;
+    }
+
+    public boolean isAjouteCaissonMode() {
+        return ajouteCaissonMode;
+    }
+
+    public void setAjouteCaissonMode(boolean ajouteCaissonMode) {
+        this.ajouteCaissonMode = ajouteCaissonMode;
+    }
+    private boolean ajouteetageMode ;
+    private boolean ajouteCaissonMode = true;
 
     public Etagere getUndoEtagere() {
         return UndoEtagere;

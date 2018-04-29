@@ -15,6 +15,8 @@ import Main_Package.Piece;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
@@ -24,6 +26,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.event.MouseAdapter;
+import java.awt.geom.Rectangle2D;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +36,35 @@ import java.util.logging.Logger;
  */
 public class AfficheurEtagere2D extends JPanel {
 
+    public void setRectFantomeHorizontal_1(Rectangle2D.Double RectFantomeHorizontal_1) {
+        this.RectFantomeHorizontal_1 = RectFantomeHorizontal_1;
+    }
+
+    public void setRectFantomeHorizontal_2(Rectangle2D.Double RectFantomeHorizontal_2) {
+        this.RectFantomeHorizontal_2 = RectFantomeHorizontal_2;
+    }
+
+    public void setRectFantomeHorizontal_3(Rectangle2D.Double RectFantomeHorizontal_3) {
+        this.RectFantomeHorizontal_3 = RectFantomeHorizontal_3;
+    }
+
+    public void setRectFantomeVertical_1(Rectangle2D.Double RectFantomeVertical_1) {
+        this.RectFantomeVertical_1 = RectFantomeVertical_1;
+    }
+
+    public void setRectFantomeVertical_2(Rectangle2D.Double RectFantomeVertical_2) {
+        this.RectFantomeVertical_2 = RectFantomeVertical_2;
+    }
+
+    public void setRectFantomeVertical_3(Rectangle2D.Double RectFantomeVertical_3) {
+        this.RectFantomeVertical_3 = RectFantomeVertical_3;
+    }
+    private Rectangle2D.Double RectFantomeHorizontal_1;
+    private Rectangle2D.Double RectFantomeHorizontal_2;
+    private Rectangle2D.Double RectFantomeHorizontal_3;
+    private Rectangle2D.Double RectFantomeVertical_1;
+    private Rectangle2D.Double RectFantomeVertical_2;
+    private Rectangle2D.Double RectFantomeVertical_3;
     private final double scale;
     private Graphics2D g2d;
     private AffineTransform tx = new AffineTransform();
@@ -133,6 +165,26 @@ public class AfficheurEtagere2D extends JPanel {
         @Override
         public void mouseMoved(MouseEvent e){
             if(Controleur.getInstance().getEtagere()!= null){
+                if(Controleur.getInstance().isAjouteetageMode()){
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(e.getX(), e.getY(), 
+                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(e.getX(), e.getY()+ 0.5 * 2.5, 
+                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(e.getX(), e.getY()+2*(0.5 * 2.5), 
+                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                    repaint();
+                    
+                }
+                if(Controleur.getInstance().isAjouteCaissonMode()){
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(e.getX(), e.getY(), 
+                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(e.getX(), e.getY()+ 0.5 * 2.5, 
+                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(e.getX(), e.getY()+2*(0.5 * 2.5), 
+                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                    repaint();
+                    
+                }
                 
             }
         }
@@ -196,6 +248,24 @@ public class AfficheurEtagere2D extends JPanel {
             }).forEachOrdered((piece) -> {
                                    g2d.draw(tx.createTransformedShape(piece));
             });
+                if(Controleur.getInstance().isAjouteetageMode()){
+                    Point point = MouseInfo.getPointerInfo().getLocation();
+                    double x = point.getX();
+                    double  y = point.getY();
+                    Rectangle2D.Double rect1 = new Rectangle2D.Double(x, y, Controleur.getInstance().getEtagere().getLargeur(),0.5 * 2.54);
+                    Rectangle2D.Double rect2 = new Rectangle2D.Double(x, y+0.5 * 2.54, Controleur.getInstance().getEtagere().getLargeur(),0.5 * 2.54);
+                    Rectangle2D.Double rect3 = new Rectangle2D.Double(x, y+2*(0.5 * 2.54), Controleur.getInstance().getEtagere().getLargeur(),0.5 * 2.54);
+
+
+                    g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_1));
+                    g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_2));
+                    g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_3));
+                }
+                if(Controleur.getInstance().isAjouteCaissonMode()){
+                    g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_1));
+                    g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_2));
+                    g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_3));
+                }
             }
         }
     }
