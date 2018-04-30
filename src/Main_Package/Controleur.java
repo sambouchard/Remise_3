@@ -54,7 +54,7 @@ public class Controleur {
 
     public void setAjouteetageMode(boolean ajouteetageMode) {
         this.ajouteetageMode = ajouteetageMode;
-        
+
     }
 
     public boolean isAjouteCaissonMode() {
@@ -118,27 +118,70 @@ public class Controleur {
         this.etagere = etagere;
         this.afficheur.redraw();
     }
-    public void updatevuImperiale(){
+
+    public void updatevuImperiale() {
         Double toBeTruncated;
-        this.Vue.getHauteur_Textfield().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getHauteur()/2.54)
-    .setScale(3, RoundingMode.HALF_UP)
-    .doubleValue()));
-        this.Vue.getLargeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getLargeur()/2.54)
-    .setScale(3, RoundingMode.HALF_UP)
-    .doubleValue()));
-        this.Vue.getProfondeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getProfondeur()/2.54)
-    .setScale(3, RoundingMode.HALF_UP)
-    .doubleValue()));
+        this.Vue.getHauteur_Textfield().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getHauteur() / 2.54)
+                .setScale(3, RoundingMode.HALF_UP)
+                .doubleValue()));
+        this.Vue.getLargeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getLargeur() / 2.54)
+                .setScale(3, RoundingMode.HALF_UP)
+                .doubleValue()));
+        this.Vue.getProfondeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getProfondeur() / 2.54)
+                .setScale(3, RoundingMode.HALF_UP)
+                .doubleValue()));
     }
+
     public void updatevue() {
         this.Vue.getHauteur_Textfield().setText(String.valueOf(this.etagere.getHauteur()));
         this.Vue.getLargeur_TextField().setText(String.valueOf(this.etagere.getLargeur()));
         this.Vue.getProfondeur_TextField().setText(String.valueOf(this.etagere.getProfondeur()));
-//        this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel()));
+        if (getEtageSelectionne() != null) {
+            this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel()));
+        }
 
     }
-    
-    
+
+    public void setHrelativeEtageSelectionnee(double newHrel) {
+        if (etageSelectionne.id != etagere.getListeetages().length - 1) {
+            try {
+                double difference = newHrel - etageSelectionne.getHauteur_rel();
+                Double newHrelEtagedessous = etagere.getListeetages()[etageSelectionne.id+1].getHauteur_rel()-difference;
+                if (newHrelEtagedessous < 0) {
+                    throw new ArithmeticException("E est negatif!");
+                }
+                else{
+                    etageSelectionne.setHauteur_rel(newHrel);
+                    etagere.getListeetages()[etageSelectionne.id+1].setHauteur_rel(newHrelEtagedessous);
+                    etagere.GenererPieces();
+                    afficheur.redraw();
+                    
+                }
+            } catch (Exception ex) {
+                System.out.println("error: e est negatif");
+            }
+
+        } else if (etageSelectionne.id == etagere.getListeetages().length - 1) {
+            try {
+                double difference = newHrel - etageSelectionne.getHauteur_rel();
+                Double newHrelEtagedessous = etagere.getListeetages()[etageSelectionne.id - 1].getHauteur_rel()-difference;
+                if (newHrelEtagedessous < 0) {
+                    throw new ArithmeticException("E est negatif!");
+                }
+                else{
+                    etageSelectionne.setHauteur_rel(newHrel);
+                    etagere.getListeetages()[etageSelectionne.id-1].setHauteur_rel(newHrelEtagedessous);
+                    etagere.GenererPieces();
+                    afficheur.redraw();
+                    
+                }
+            } catch (Exception ex) {
+                System.out.println("error: e est negatif");
+            }
+
+        } 
+    }
+
     public void createNewEtagere(double hauteur, double largeur, double profondeur, int nb_etages,
             boolean estfermee, boolean piecedepasse, boolean perimetretriple) {
         Etagere e = new Etagere(hauteur, largeur, profondeur, nb_etages, estfermee, piecedepasse, perimetretriple);
@@ -214,8 +257,6 @@ public class Controleur {
         etagere.GenererPieces();
     }
 
-   
-
     /**
      * @return the afficheur
      */
@@ -279,11 +320,12 @@ public class Controleur {
 
     /**
      *
-     * @return A string containing a formated list of all the Pieces, used to export to txt
+     * @return A string containing a formated list of all the Pieces, used to
+     * export to txt
      */
     public String getStrListePieces() {
         String out;
-        if(mesureMetrique) {
+        if (mesureMetrique) {
             out = etagere.toStringMetrique();
         } else {
             out = etagere.toStringImperial();

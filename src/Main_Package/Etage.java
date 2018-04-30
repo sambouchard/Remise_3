@@ -34,6 +34,23 @@ public class Etage extends Rectangle2D.Double implements java.io.Serializable{
     private Caisson[] listecaissons;
     private List<Piece> listePieceHorizontale = new ArrayList();
     private int Nb_Caisson;
+
+    public List<Piece> getListePieceHorizontale() {
+        return listePieceHorizontale;
+    }
+
+    public void setListePieceHorizontale(List<Piece> listePieceHorizontale) {
+        this.listePieceHorizontale = listePieceHorizontale;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    int id;
     boolean debordement = false;
     private double x1;
     private double x2;

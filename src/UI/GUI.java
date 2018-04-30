@@ -354,10 +354,15 @@ public class GUI extends javax.swing.JFrame {
                 HauteurRelEtage_FieldActionPerformed(evt);
             }
         });
+        HauteurRelEtage_Field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HauteurRelEtage_FieldKeyPressed(evt);
+            }
+        });
 
         jLabel7.setText("%");
 
-        jLabel8.setText("Largeur relative Étage sélectionnée");
+        jLabel8.setText("Largeur relative Caisson sélectionné");
 
         jLabel9.setText("%");
 
@@ -482,8 +487,8 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(PerimetreDouble_Radio))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7))
                             .addComponent(jCheckBox1)
                             .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -499,8 +504,8 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel9)))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -816,6 +821,13 @@ public class GUI extends javax.swing.JFrame {
             Controleur.getInstance().setTriple(false);
         }
     }//GEN-LAST:event_PerimetreDouble_RadioStateChanged
+
+    private void HauteurRelEtage_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HauteurRelEtage_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setHrelativeEtageSelectionnee(Double.parseDouble(HauteurRelEtage_Field.getText()));
+            System.out.println("UI.GUI.HauteurRelEtage_FieldKeyPressed()");
+        }
+    }//GEN-LAST:event_HauteurRelEtage_FieldKeyPressed
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);

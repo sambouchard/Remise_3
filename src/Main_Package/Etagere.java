@@ -377,8 +377,8 @@ public class Etagere implements java.io.Serializable{
             double xlargeur = this.largeur - 2 * epaisseurTriple;
             double xRef = epaisseurTriple;
             for (Etage etage : this.getListeetages()) {
-
                 xRef = epaisseurTriple;
+                
                 double largeurdispo = this.getLargeur() - 6 * epaisseurTriple - (etage.getListecaissons().length - 1) * 3 * epaisseurTriple;
 
 
@@ -399,6 +399,13 @@ public class Etagere implements java.io.Serializable{
                 Liste_piece.add(pieceHorizontaleDroite1);
                 Liste_piece.add(pieceHorizontaleGauche);
                 Liste_piece.add(pieceHorizontaleGauche1);
+                
+                etage.setId(compteuretages);
+                    etage.setX1(xRef);
+                    etage.setX2(this.largeur-epaisseurTriple);
+                    etage.setY1(yRef);
+                    etage.setY2(yRef+etage.getHauteur_rel() * hauteurdispo);
+                    etage.setRect(xRef, yRef, this.largeur-2*epaisseurTriple, etage.getHauteur_rel() * hauteurdispo);
                 if (compteuretages != getNb_etages() - 1) {
 
                     if(etage.getListecaissons().length==1){

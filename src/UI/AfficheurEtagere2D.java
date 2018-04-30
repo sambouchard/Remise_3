@@ -10,6 +10,7 @@
 package UI;
 
 import Main_Package.Controleur;
+import Main_Package.Etage;
 import Main_Package.Piece;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -84,6 +85,13 @@ public class AfficheurEtagere2D extends JPanel {
                 for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                     if (piece.contains(pointInEtagereCoordSpace)) {
                         Controleur.getInstance().setPieceSelectionner(piece);
+                    }
+                }
+                for (Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
+                    if(etage.contains(pointInEtagereCoordSpace)){
+                        Controleur.getInstance().setEtageSelectionne(etage);
+                        System.out.println(etage.getId());
+                        Controleur.getInstance().updatevue();
                     }
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
@@ -214,17 +222,13 @@ public class AfficheurEtagere2D extends JPanel {
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                 piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 10);
                 piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 10);
-                Controleur.getInstance().getAfficheur().redraw();
-
-//            for(Piece piece: etagere.getListe_Piece_Etage_Horizontale()){
-//                if(piece.contains(x, y)){
-//                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y()+dy );
-//                    repaint();
-//                    break;
-//                }
-//            }
-//            Controleur.getInstance().getAfficheur().redraw();
+                
             }
+            for(Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
+                etage.x += dx / 10;
+                etage.y += dx / 10;
+            }
+            Controleur.getInstance().getAfficheur().redraw();
 
         }
 
@@ -239,6 +243,10 @@ public class AfficheurEtagere2D extends JPanel {
         super.paint(g);
         g2d = (Graphics2D) g;
         if (Controleur.getInstance().getEtagere() != null) {
+            for(Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
+                g2d.setColor(Color.RED);
+                g2d.fill(tx.createTransformedShape(etage));
+            }
 
             Controleur.getInstance().getEtagere().getListe_piece().stream().map((piece) -> {
                 piece.setRect((piece.getDrawingcoin().getCoord_x()), (piece.getDrawingcoin().getCoord_y()), piece.getLargeur(), piece.getHauteur());
