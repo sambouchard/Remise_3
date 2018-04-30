@@ -20,5 +20,9 @@ public class MontantEtageHorizontale implements java.io.Serializable{
         this.pieceMilieu = piecemilieu;
 
     }
+    
+    public Piece getPieceMilieu(){
+        return pieceMilieu;
+    }
 
 }

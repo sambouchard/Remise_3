@@ -360,6 +360,11 @@ public class GUI extends javax.swing.JFrame {
         jMenu2.add(exporterListePieces);
 
         jMenuItem5.setText("Plan de coupe");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Modèle 3D de l'étagère");
@@ -705,6 +710,21 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_exporterListePiecesActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+
+        if (JFileChooser.APPROVE_OPTION == ack) {
+            try {
+                Controleur.getInstance().getPlanDeCoupe(explorer.getSelectedFile());
+
+            }catch(Exception ex){
+                
+            }
+        }
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);

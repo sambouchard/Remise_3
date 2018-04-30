@@ -258,4 +258,8 @@ public class Controleur {
         }
         return out;
     }
+    
+    public void getPlanDeCoupe(File file){
+        Export.genererPlanDeCoupe(file);
+    }
 }
