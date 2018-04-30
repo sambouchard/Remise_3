@@ -42,8 +42,16 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable {
     /**
      * @param drawingcoin the drawingcoin to set
      */
-    public void setDrawingcoin(Coord_Coins drawingcoin) {
-        this.drawingcoin = drawingcoin;
+    public void setDrawingcoin(Coord_Coins newdrawingcoin) {
+        this.drawingcoin = newdrawingcoin;
+        setCoinFondHautGauche(newdrawingcoin);
+        this.CoinFaceHautDroit = new Coord_Coins(this.CoinFondHautGauche.getCoord_x()+this.largeur, this.CoinFondHautGauche.getCoord_y(), 0);
+        this.CoinFaceBasGauche = new Coord_Coins(this.CoinFondHautGauche.getCoord_x(), this.CoinFondHautGauche.getCoord_y()+this.hauteur, 0);
+        this.CoinFaceBasDroit = new Coord_Coins(this.CoinFondHautGauche.getCoord_x()+this.largeur, this.CoinFondHautGauche.getCoord_y()+this.hauteur, 0);
+//        this.CoinFondHautGauche = new Coord_Coins(x, y, this.profondeur);
+//        this.CoinFondHautDroit = new Coord_Coins(x, y, this.profondeur);
+//        this.CoinFondBasGauche = new Coord_Coins(x, y, this.profondeur);
+//        this.CoinFondBasDroit = new Coord_Coins(x, y, this.profondeur);
     }
     private double hauteur;
     private double largeur;
@@ -51,6 +59,80 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable {
     private String nom;
     private List<Coord_Coins> listecoins;
     private Coord_Coins drawingcoin;
+
+    public Coord_Coins getCoinFaceHautGauche() {
+        return CoinFaceHautGauche;
+    }
+
+    public void setCoinFaceHautGauche(Coord_Coins CoinFaceHautGauche) {
+        this.CoinFaceHautGauche = CoinFaceHautGauche;
+    }
+
+    public Coord_Coins getCoinFaceHautDroit() {
+        return CoinFaceHautDroit;
+    }
+
+    public void setCoinFaceHautDroit(Coord_Coins CoinFaceHautDroit) {
+        this.CoinFaceHautDroit = CoinFaceHautDroit;
+    }
+
+    public Coord_Coins getCoinFaceBasDroit() {
+        return CoinFaceBasDroit;
+    }
+
+    public void setCoinFaceBasDroit(Coord_Coins CoinFaceBasDroit) {
+        this.CoinFaceBasDroit = CoinFaceBasDroit;
+    }
+
+    public Coord_Coins getCoinFaceBasGauche() {
+        return CoinFaceBasGauche;
+    }
+
+    public void setCoinFaceBasGauche(Coord_Coins CoinFaceBasGauche) {
+        this.CoinFaceBasGauche = CoinFaceBasGauche;
+    }
+
+    public Coord_Coins getCoinFondHautGauche() {
+        return CoinFondHautGauche;
+    }
+
+    public void setCoinFondHautGauche(Coord_Coins CoinFondHautGauche) {
+        this.CoinFondHautGauche = CoinFondHautGauche;
+    }
+
+    public Coord_Coins getCoinFondHautDroit() {
+        return CoinFondHautDroit;
+    }
+
+    public void setCoinFondHautDroit(Coord_Coins CoinFondHautDroit) {
+        this.CoinFondHautDroit = CoinFondHautDroit;
+    }
+
+    public Coord_Coins getCoinFondBasDroit() {
+        return CoinFondBasDroit;
+    }
+
+    public void setCoinFondBasDroit(Coord_Coins CoinFondBasDroit) {
+        this.CoinFondBasDroit = CoinFondBasDroit;
+    }
+
+    public Coord_Coins getCoinFondBasGauche() {
+        return CoinFondBasGauche;
+    }
+
+    public void setCoinFondBasGauche(Coord_Coins CoinFondBasGauche) {
+        this.CoinFondBasGauche = CoinFondBasGauche;
+    }
+    private Coord_Coins CoinFaceHautGauche;
+    private Coord_Coins CoinFaceHautDroit;
+    private Coord_Coins CoinFaceBasDroit;
+    private Coord_Coins CoinFaceBasGauche;
+    private Coord_Coins CoinFondHautGauche;
+    private Coord_Coins CoinFondHautDroit;
+    private Coord_Coins CoinFondBasDroit;
+    private Coord_Coins CoinFondBasGauche;
+    
+    
 
     public void ajouteCoin(double x, double y, double z) {
         Coord_Coins coin = new Coord_Coins(x, y, z);

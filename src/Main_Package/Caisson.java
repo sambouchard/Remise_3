@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
  *
  * @author SABOU350
  */
-public class Caisson implements java.io.Serializable{
+public class Caisson extends Rectangle2D.Double implements java.io.Serializable{
 
     /**
      *
@@ -80,11 +80,19 @@ public class Caisson implements java.io.Serializable{
 
     private Etage etageParent;
     private double largeur_rel;
-    private Piece pieceHaut;
     private double x1;
     private double x2;
     private double y1;
     private double y2;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    private int id;
 
     /**
      * @return the largeur_rel
