@@ -10,6 +10,7 @@
 package UI;
 
 import Main_Package.Controleur;
+import Main_Package.Coord_Coins;
 import Main_Package.Etage;
 import Main_Package.Piece;
 import java.awt.Color;
@@ -87,18 +88,27 @@ public class AfficheurEtagere2D extends JPanel {
                         Controleur.getInstance().setPieceSelectionner(piece);
                     }
                 }
-                for (Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
-                    if(etage.contains(pointInEtagereCoordSpace)){
+                for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
+                    if (etage.contains(pointInEtagereCoordSpace)) {
                         Controleur.getInstance().setEtageSelectionne(etage);
                         System.out.println(etage.getId());
                         Controleur.getInstance().updatevue();
                     }
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
+                    Piece unepiece = new Piece(10, 10, 10, "Random piece");
+                    unepiece.setDrawingcoin(new Coord_Coins(50, 50, 50));
+                    Controleur.getInstance().getEtagere().getListe_piece().add(unepiece);
+                    Controleur.getInstance().getAfficheur().redraw();
 
                 }
                 if (Controleur.getInstance().isAjouteetageMode()) {
-
+                    for(Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
+                        if(etage.contains(RectFantomeHorizontal_1)){
+                            System.out.println(etage.getId());
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -178,21 +188,21 @@ public class AfficheurEtagere2D extends JPanel {
             if (Controleur.getInstance().getEtagere() != null) {
                 if (Controleur.getInstance().isAjouteetageMode()) {
                     Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(e.getX(), e.getY(),
-                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                            Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
                     Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(e.getX(), e.getY() + 0.5 * 2.5,
-                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                            Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
                     Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(e.getX(), e.getY() + 2 * (0.5 * 2.5),
-                            Controleur.getInstance().getEtagere().getLargeur(), 0.5 * 2.5));
+                            Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
                     repaint();
 
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
                     Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(e.getX(), e.getY(),
-                            0.5 * 2.5, 40));
+                            0.5 * 2.5, Controleur.getInstance().getEtageSelectionne().getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur()));
                     Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(e.getX() + 0.5 * 2.5, e.getY() - 0.5 * 2.5,
-                            0.5 * 2.5, 40 + 0.5 * 2.5));
+                            0.5 * 2.5, Controleur.getInstance().getEtageSelectionne().getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur() + 0.5 * 2.5));
                     Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(e.getX() + 2 * (0.5 * 2.5), e.getY(),
-                            0.5 * 2.5, 40));
+                            0.5 * 2.5, Controleur.getInstance().getEtageSelectionne().getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur()));
                     repaint();
 
                 }
@@ -219,15 +229,16 @@ public class AfficheurEtagere2D extends JPanel {
                     break;
                 }
             }
+            for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
+                etage.x += dx;
+                etage.y += dx;
+            }
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                 piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 10);
                 piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 10);
-                
+
             }
-            for(Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
-                etage.x += dx / 10;
-                etage.y += dx / 10;
-            }
+
             Controleur.getInstance().getAfficheur().redraw();
 
         }
@@ -243,7 +254,7 @@ public class AfficheurEtagere2D extends JPanel {
         super.paint(g);
         g2d = (Graphics2D) g;
         if (Controleur.getInstance().getEtagere() != null) {
-            for(Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
+            for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
                 g2d.setColor(Color.RED);
                 g2d.fill(tx.createTransformedShape(etage));
             }
@@ -262,10 +273,21 @@ public class AfficheurEtagere2D extends JPanel {
                 g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_1));
                 g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_2));
                 g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_3));
-                g2d.setColor(Color.RED);
-                g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_1));
-                g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_2));
-                g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_3));
+                for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
+                    if (etage.contains(this.RectFantomeHorizontal_1)) {
+                        g2d.setColor(Color.GREEN);
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_1));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_2));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_3));
+                        break;
+                    } else {
+                        g2d.setColor(Color.RED);
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_1));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_2));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_3));
+                    }
+
+                }
             }
             if (Controleur.getInstance().isAjouteCaissonMode()) {
                 g2d.setColor(Color.BLACK);

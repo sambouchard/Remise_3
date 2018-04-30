@@ -77,7 +77,8 @@ public class Etage extends Rectangle2D.Double implements java.io.Serializable{
      */
     Etage(double h_rel) {
         this.hauteur_rel = h_rel;
-        this.AjouteCaisson(1);
+        this.listecaissons = new Caisson[1];
+        listecaissons[0] = new Caisson(1.0);
     }
 
     /**
