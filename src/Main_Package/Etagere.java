@@ -299,20 +299,6 @@ public class Etagere implements java.io.Serializable{
         setNb_etages(getNb_etages() - 1);
 
     }
-
-    public void ModifieHauteurRelEtage(int indice, double New_h) {
-        double difference = this.getListeetages()[indice].getHauteur_rel() - New_h;
-        this.getListeetages()[indice].setHauteur_rel(New_h);
-        if (indice == this.getListeetages().length - 1) {
-            this.getListeetages()[indice - 1].setHauteur_rel(hauteur);
-
-        } else if (0 == indice) {
-            this.getListeetages()[1].setHauteur_rel(this.getListeetages()[1].getHauteur_rel() - difference);
-        } else {
-
-        }
-    }
-
     /**
      * @return the listeetages
      */
@@ -448,6 +434,12 @@ public class Etagere implements java.io.Serializable{
 
                 Liste_piece.add(pieceHorizontaleDroite);
                 Liste_piece.add(pieceHorizontaleGauche);
+                etage.setId(compteuretages);
+                    etage.setX1(2*epaisseurDouble);
+                    etage.setX2(this.largeur-epaisseurTriple);
+                    etage.setY1(yRef);
+                    etage.setY2(yRef+etage.getHauteur_rel() * hauteurdispo);
+                    etage.setRect(2*epaisseurDouble, yRef, this.largeur-2*epaisseurDouble, etage.getHauteur_rel() * hauteurdispo);
                 if (compteuretages != getNb_etages() - 1) {
                     Piece piece = new Piece(epaisseurTriple, xlargeur, profondeur, "Piece milieu Montant etage " + compteuretages);
                     piece.setDrawingcoin(new Coord_Coins(epaisseurDouble, yRef + etage.getHauteur_rel() * hauteurdispo + epaisseurTriple, 0));
