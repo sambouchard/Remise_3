@@ -1075,21 +1075,7 @@ public class GUI extends javax.swing.JFrame {
     public void setProfondeur_Label(javax.swing.JLabel Profondeur_Label) {
         this.Profondeur_Label = Profondeur_Label;
     }
-
-    /**
-     * @return the afficheur
-     */
-    public UI.AfficheurEtagere2D getAfficheur() {
-        return afficheur;
-    }
-
-    /**
-     * @param afficheur the afficheur to set
-     */
-    public void setAfficheur(UI.AfficheurEtagere2D afficheur) {
-        this.afficheur = afficheur;
-    }
-
+    
     /**
      * @return the buttonGroup1
      */
