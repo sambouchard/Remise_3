@@ -137,7 +137,9 @@ public class Controleur {
         this.Vue.getLargeur_TextField().setText(String.valueOf(this.etagere.getLargeur()));
         this.Vue.getProfondeur_TextField().setText(String.valueOf(this.etagere.getProfondeur()));
         if (getEtageSelectionne() != null) {
-            this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel()));
+            this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(String.valueOf(BigDecimal.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel())
+                .setScale(3, RoundingMode.HALF_UP)
+                .doubleValue())));
         }
 
     }
