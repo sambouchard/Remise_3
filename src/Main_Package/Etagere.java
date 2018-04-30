@@ -139,6 +139,9 @@ public class Etagere implements java.io.Serializable{
         }
         GenererPiecesEtagesHorizontale();
 //        GenerePiecesCaissonsHorizontale();
+        if (estferme) {
+            retraitPourPanneauArriere();
+        }
     }
 
     private void GenererPiecesPerimetreBasDouble() {
@@ -526,6 +529,60 @@ public class Etagere implements java.io.Serializable{
             double yRef = 2*epaisseurDouble;
             for(Etage etage: listeetages){
                 
+            }
+        }
+    }
+    
+    public void retraitPourPanneauArriere(){
+        
+        //On fait une liste de toutes les pièces qui doivent être moins profondes pour accomoder les panneaux arrières. 
+        //Cette liste correspond à toutes les pièces sauf celles du périmètre extérieur, les pièces centrales des étages et les pièces centrales des caissons.
+        
+        List<Piece> listePieces = new ArrayList(Liste_piece);
+        List<Piece> listePieces2 = new ArrayList(Liste_piece);
+        listePieces2.clear();
+        List<Piece> piecesCentralesEtages = Liste_Piece_Etage_Horizontale;
+        
+
+        //On sélectionne seulement les pièces qui doivent être modifiées
+        for (Piece piece: listePieces){
+            for(Piece piece2: piecesCentralesEtages){
+                if (piece2.getNom()==piece.getNom()){
+                    listePieces2.add(piece);
+                    continue;
+                }
+            }
+//faire un autre if pour enlever les pièces centrales des caissons
+            String nom = piece.getNom();
+            if(perimetretriple){            
+                if(nom.contains("Piece du bas 1")||nom.contains("Piece du bas 2")||nom.contains("Piece du haut 1")||nom.contains("Piece du haut 2")
+                        ||nom.contains("Piece de droite")||nom.contains("Piece de gauche")||nom.contains("Piece gauche 1")||nom.contains("Piece Droite 1")){
+                    listePieces2.add(piece);
+                }
+            }
+            else{//Si périmètre double
+                if(nom.contains("Piece du bas")||nom.contains("Piece du haut")||nom.contains("Piece de droite")||nom.contains("Piece de gauche")){
+                    listePieces2.add(piece);
+                }                
+            }
+        }
+        
+        //On modifie la profondeur des pièces pour accomoder le panneau arrière dans chaque caisson.
+        for (Piece piece: listePieces){
+            boolean trouve = false;
+            for (Piece piece2: listePieces2){
+                if (piece.getNom() == piece2.getNom()){
+                    trouve = true;
+                    break;
+                }
+            }
+            if (trouve == false){
+                if(perimetretriple){
+                    piece.setProfondeur(piece.getProfondeur() - epaisseurTriple);
+                }
+                else{
+                    piece.setProfondeur(piece.getProfondeur() - epaisseurDouble);
+                }                
             }
         }
     }

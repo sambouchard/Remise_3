@@ -406,6 +406,11 @@ public class GUI extends javax.swing.JFrame {
         jMenu2.add(exporterListePieces);
 
         jMenuItem5.setText("Plan de coupe");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Modèle 3D de l'étagère");
@@ -785,6 +790,20 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exporterListePiecesActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+
+        if (JFileChooser.APPROVE_OPTION == ack) {
+            try {
+                Controleur.getInstance().getPlanDeCoupe(explorer.getSelectedFile());
+
+            }catch(Exception ex){
+                
+            }
+        }
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     private void AddMontantHorizontal_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMontantHorizontal_buttonMouseClicked
         Controleur.getInstance().setAjouteetageMode(true);
         if(Controleur.getInstance().isAjouteCaissonMode()){
@@ -828,6 +847,7 @@ public class GUI extends javax.swing.JFrame {
             System.out.println("UI.GUI.HauteurRelEtage_FieldKeyPressed()");
         }
     }//GEN-LAST:event_HauteurRelEtage_FieldKeyPressed
+
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);

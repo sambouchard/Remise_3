@@ -330,6 +330,9 @@ public class Controleur {
         return out;
     }
     
+    public void getPlanDeCoupe(File file){
+        Export.genererPlanDeCoupe(file);
+    }
     public void AjouteEtage(Etage etage, double NewY){
         
         etagere.setNb_etages(etagere.getNb_etages()+1);
