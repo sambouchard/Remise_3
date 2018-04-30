@@ -1,12 +1,20 @@
 package UI;
 
 import Main_Package.Controleur;
+import Main_Package.Etagere;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -768,11 +776,37 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Imperial_ButtonStateChanged
 
     private void MenuSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSauvegarderActionPerformed
-        Controleur.getInstance().sauvegarderEtagere();
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+        if (JFileChooser.APPROVE_OPTION == ack) {
+                try {
+                    FileOutputStream fileout = new FileOutputStream(explorer.getSelectedFile().toString()+".ser");
+//                    FileOutputStream fileout = new FileOutputStream("test.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileout);
+                    out.writeObject(Controleur.getInstance().getEtagere());
+                    out.close();
+                    fileout.close();                
+                } catch (Exception ex) {
+                }
+        }
+        
     }//GEN-LAST:event_MenuSauvegarderActionPerformed
 
     private void MenuChargerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuChargerActionPerformed
-        Controleur.getInstance().chargerEtagere();
+        
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+        if (JFileChooser.APPROVE_OPTION == ack) {
+            try {
+                FileInputStream fileIn = new FileInputStream(explorer.getSelectedFile().toString());
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Etagere etagerechargee = (Etagere) in.readObject();
+                Controleur.getInstance().setEtagere(etagerechargee);
+                in.close();
+                fileIn.close();
+            } catch (IOException | ClassNotFoundException i) {
+            }
+        }
     }//GEN-LAST:event_MenuChargerActionPerformed
 
     private void exporterListePiecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exporterListePiecesActionPerformed

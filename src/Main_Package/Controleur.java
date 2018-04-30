@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -277,45 +278,7 @@ public class Controleur {
         }
     }
 
-    public void sauvegarderEtagere() {
-        String nom = (String) JOptionPane.showInputDialog(null, "Nommez votre étagère");
-
-        if (!nom.isEmpty()) {
-            try {
-                FileOutputStream fileout = new FileOutputStream("etageresSauvegardees\\" + nom + ".ser");
-                ObjectOutputStream out = new ObjectOutputStream(fileout);
-                out.writeObject(etagere);
-                out.close();
-                fileout.close();
-            } catch (IOException i) {
-                JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être sauvegardée.");
-            }
-        }
-
-    }
-
-    public void chargerEtagere() {
-
-        File etageresSauvegardees = new File("etageresSauvegardees\\");
-
-        String[] listeEnregistrees = etageresSauvegardees.list();
-
-        String nom = (String) JOptionPane.showInputDialog(null, "Choisissez votre étagère.", "Charger une étagère", JOptionPane.PLAIN_MESSAGE, null, listeEnregistrees, null);
-        if (!nom.isEmpty()) {
-            try {
-                FileInputStream fileIn = new FileInputStream("etageresSauvegardees\\" + nom);
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                Etagere etagerechargee = (Etagere) in.readObject();
-                setEtagere(etagerechargee);
-                in.close();
-                fileIn.close();
-            } catch (IOException | ClassNotFoundException i) {
-                JOptionPane.showMessageDialog(null, "L'étagère n'a pas pu être chargée.");
-            }
-        }
-    }
-
-    /**
+   /**
      *
      * @return A string containing a formated list of all the Pieces, used to
      * export to txt
