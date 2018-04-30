@@ -96,17 +96,13 @@ public class AfficheurEtagere2D extends JPanel {
                     }
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
-                    Piece unepiece = new Piece(10, 10, 10, "Random piece");
-                    unepiece.setDrawingcoin(new Coord_Coins(50, 50, 50));
-                    Controleur.getInstance().getEtagere().getListe_piece().add(unepiece);
-                    Controleur.getInstance().getAfficheur().redraw();
+                    
 
                 }
                 if (Controleur.getInstance().isAjouteetageMode()) {
                     for(Etage etage: Controleur.getInstance().getEtagere().getListeetages()){
                         if(etage.contains(RectFantomeHorizontal_1)){
-                            System.out.println(etage.getId());
-                            break;
+                            Controleur.getInstance().AjouteEtage(etage, RectFantomeHorizontal_1.getY());
                         }
                     }
                 }

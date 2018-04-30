@@ -229,11 +229,6 @@ public class Controleur {
         }
     }
 
-    public void ajouteEtage(double h_rel) {
-        getEtagere().ajouteetage(h_rel);
-
-    }
-
     public void ajouteCaisson(double l_rel, int index) {
         getEtagere().getListeetages()[index].AjouteCaisson(l_rel);
 
@@ -333,5 +328,32 @@ public class Controleur {
             out = etagere.toStringImperial();
         }
         return out;
+    }
+    
+    public void AjouteEtage(Etage etage, double NewY){
+        
+        etagere.setNb_etages(etagere.getNb_etages()+1);
+        double hdispo = etagere.getHauteur() - 6 * etagere.getEpaisseurTriple()-(etagere.getNb_etages()-1)*3*etagere.getEpaisseurTriple();
+        double oldhrel = etage.getHauteur_rel();
+        Double newhrel = (NewY - etage.getY())/hdispo;
+        etage.setHauteur_rel(newhrel);
+        Etage newetage = new Etage(oldhrel-newhrel);
+        Etage [] newlistetage = new Etage[etagere.getNb_etages()] ;
+        int compteur = 0 ; 
+        newlistetage[etage.getId()+1] = newetage;
+        System.err.println(etagere.getListeetages().length);
+        for(Etage etages : etagere.getListeetages()){
+            newlistetage[compteur] = etages;
+            compteur ++;
+        }
+        etagere.setListeetages(newlistetage);
+        
+      
+        
+        etagere.GenererPieces();
+        setAjouteetageMode(false);
+        afficheur.redraw();
+        
+        
     }
 }

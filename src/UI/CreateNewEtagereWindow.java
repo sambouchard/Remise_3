@@ -323,7 +323,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             System.out.println(isInMeters);
             Controleur.getInstance().setMesureMetrique(isInMeters);
             Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
-                    Double.parseDouble(this.Profondeur_field.getText()), 2, true, true, Perimetredouble_radio.isSelected());
+                    Double.parseDouble(this.Profondeur_field.getText()), 1, true, true, Perimetredouble_radio.isSelected());
             Controleur.getInstance().updatevue();
             Controleur.getInstance().setAjouteetageMode(false);
             Controleur.getInstance().setAjouteCaissonMode(false);

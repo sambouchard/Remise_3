@@ -51,6 +51,15 @@ public class Etagere implements java.io.Serializable{
     private boolean estferme;
     private boolean piecedepasse;
     private List<Piece> Liste_piece;
+
+    public List<MontantEtageHorizontal> getListeMontantHorizontal() {
+        return ListeMontantHorizontal;
+    }
+
+    public void setListeMontantHorizontal(List<MontantEtageHorizontal> ListeMontantHorizontal) {
+        this.ListeMontantHorizontal = ListeMontantHorizontal;
+    }
+    private List<MontantEtageHorizontal> ListeMontantHorizontal = new ArrayList();
     private List<Piece> Liste_Piece_Etage_Horizontale;
     private boolean perimetretriple;
     private double epaisseurTriple = 0.5 * 2.54;
@@ -476,6 +485,22 @@ public class Etagere implements java.io.Serializable{
         }
     }
 
+    public double getEpaisseurTriple() {
+        return epaisseurTriple;
+    }
+
+    public void setEpaisseurTriple(double epaisseurTriple) {
+        this.epaisseurTriple = epaisseurTriple;
+    }
+
+    public double getEpaisseurDouble() {
+        return epaisseurDouble;
+    }
+
+    public void setEpaisseurDouble(double epaisseurDouble) {
+        this.epaisseurDouble = epaisseurDouble;
+    }
+
     private void GenerePiecesCaissonsHorizontale(){
         if(isPerimetretriple()){
             double hauteurdispo = this.hauteur - (nb_etages-1)*3*epaisseurTriple-6*epaisseurTriple;
@@ -499,6 +524,9 @@ public class Etagere implements java.io.Serializable{
             double hauteurDispo = this.hauteur - (nb_etages-1)*3*epaisseurTriple-4*epaisseurDouble;
             double xRef;
             double yRef = 2*epaisseurDouble;
+            for(Etage etage: listeetages){
+                
+            }
         }
     }
 }
