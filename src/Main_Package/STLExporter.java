@@ -5,28 +5,49 @@
  */
 package Main_Package;
 
-import java.util.List;
+import geo3D.RectangularPrism;
+import java.util.ArrayList;
 
 /**
  *
  * @author charlesc
  */
 public class STLExporter {
-    private Etagere etagere;
+    private final Etagere etagere;
     
     public STLExporter(Etagere e) {
         this.etagere = e;
     }
     
-    @Override
-    public String toString() {
-        List<Piece> list = this.etagere.getListe_piece();
-        for (Piece p : list) {
-            System.out.println(p.getCoinFaceBasDroit());
-            System.out.println(p.getCoinFaceBasGauche());
-            System.out.println(p.getCoinFaceHautDroit());
-            System.out.println(p.getCoinFaceHautGauche());
+    /**
+     *
+     * @return String of the STL file for the whole etagere
+     */
+    public String getSTL() {
+        String out = new String();
+        out += "solid etagere\n";
+        for (Piece p : this.etagere.getListe_piece()) {
+            RectangularPrism prism = new RectangularPrism(p);
+            out += prism.getSTL();
         }
-        return "";
+        out += "endsolid\n";
+        return out;
+    }
+    
+    /**
+     *
+     * @return An Array of Strings of STL files for each Piece of the Etagere
+     */
+    public ArrayList<String> getPiecesSTLs() {
+        ArrayList<String> stlStrList = new ArrayList<>();
+        for (Piece p: this.etagere.getListe_piece()) {
+            String pieceStl = new String();
+            RectangularPrism prism = new RectangularPrism(p);
+            pieceStl += "solid " + p.getNom().replaceAll("\\s+","") + "\n";
+            pieceStl += prism.getSTL();
+            pieceStl += "endsolid\n";
+            stlStrList.add(pieceStl);
+        }
+        return stlStrList;
     }
 }

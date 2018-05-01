@@ -25,6 +25,19 @@ public class RectangularPrism {
             
     public RectangularPrism() {
     }
+
+    public RectangularPrism(Point3D PtFaceHautGauche, Point3D PtFaceHautDroit, Point3D PtFaceBasDroit, Point3D PtFaceBasGauche, Point3D PtFondHautGauche, Point3D PtFondHautDroit, Point3D PtFondBasDroit, Point3D PtFondBasGauche) {
+        this.PtFaceHautGauche = PtFaceHautGauche;
+        this.PtFaceHautDroit = PtFaceHautDroit;
+        this.PtFaceBasDroit = PtFaceBasDroit;
+        this.PtFaceBasGauche = PtFaceBasGauche;
+        this.PtFondHautGauche = PtFondHautGauche;
+        this.PtFondHautDroit = PtFondHautDroit;
+        this.PtFondBasDroit = PtFondBasDroit;
+        this.PtFondBasGauche = PtFondBasGauche;
+        generateListOfTriangles();
+    }
+    
     
     public RectangularPrism(Piece p) {
         this.PtFaceHautGauche = new Point3D(p.getCoinFaceHautGauche());
