@@ -33,6 +33,15 @@ public class Triangle3D {
         this.p3 = p3;
     }
     
+    public static Triangle3D[] generateTrianglesFromPts(Point3D hautGauche, Point3D hautDroite, Point3D basGauche, Point3D basDroite) {
+        Triangle3D[] tArray = new Triangle3D[2];
+        Triangle3D t1 = new Triangle3D(hautGauche, hautDroite, basGauche);
+        tArray[0] = t1;
+        Triangle3D t2 = new Triangle3D(hautDroite, basGauche, basDroite);
+        tArray[1] = t2;
+        return tArray;
+    }
+    
     public Vector3D getNormal() {
         // See: https://www.khronos.org/opengl/wiki/Calculating_a_Surface_Normal
         Vector3D v1 = p1.vectorize();
