@@ -404,7 +404,6 @@
         <Property name="actionCommand" type="java.lang.String" value="Imperial ou metrique"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Undo_BuittonMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Undo_BuittonActionPerformed"/>
       </Events>
     </Component>

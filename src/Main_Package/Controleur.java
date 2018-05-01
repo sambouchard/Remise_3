@@ -29,7 +29,35 @@ public class Controleur {
     private static final Controleur instance = new Controleur();
     private Piece pieceSelectionner = null;
     private GUI Vue;
-
+    
+    private void didMutateEtagere() {
+        UndoRedoStore.addMutation(etagere);
+        this.afficheur.redraw();
+    }
+    
+    public void undo() {
+        try {
+            Etagere e = UndoRedoStore.undo();
+            this.etagere = e;
+        } catch (IndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Cannot Undo anymore!", "Whoops",
+                                    JOptionPane.ERROR_MESSAGE);
+        }
+       
+        this.afficheur.redraw();
+    }
+    
+    public void redo() {
+        try {
+            Etagere e = UndoRedoStore.redo();
+            this.etagere = e;
+        } catch(IndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Cannot Redo anymore!", "Whoops",
+                                    JOptionPane.ERROR_MESSAGE);
+        }
+        this.afficheur.redraw();
+    }
+    
     public Etage getEtageSelectionne() {
         return etageSelectionne;
     }
@@ -71,10 +99,6 @@ public class Controleur {
         return UndoEtagere;
     }
 
-    public void setUndoEtagere() {
-        Etagere newetaGere = this.etagere;
-        this.UndoEtagere = newetaGere;
-    }
     private Etagere UndoEtagere;
 
     public GUI getVue() {
@@ -116,7 +140,7 @@ public class Controleur {
      */
     public void setEtagere(Etagere etagere) {
         this.etagere = etagere;
-        this.afficheur.redraw();
+        didMutateEtagere();
     }
 
     public void updatevuImperiale() {
@@ -221,17 +245,19 @@ public class Controleur {
         if (id != -1) {
             getEtagere().enleveetage(id);
         }
+        didMutateEtagere();
     }
 
     public void enleveCaisson(int caissonid, int etageid) {
         if (caissonid != -1 || etageid != -1) {
             getEtagere().getListeetages()[etageid].SupprimeCaisson(caissonid);
         }
+        didMutateEtagere();
     }
 
     public void ajouteCaisson(double l_rel, int index) {
         getEtagere().getListeetages()[index].AjouteCaisson(l_rel);
-
+        didMutateEtagere();
     }
 
     /**
@@ -241,17 +267,19 @@ public class Controleur {
     public void setEtagereLargeur(double largeur) {
         getEtagere().setLargeur(largeur);
         etagere.GenererPieces();
+        didMutateEtagere();
     }
 
     public void setEtagereHauteur(double hauteur) {
-        setUndoEtagere();
         etagere.setHauteur(hauteur);
         etagere.GenererPieces();
+        didMutateEtagere();
     }
 
     public void setEtagereProfondeur(double profondeur) {
         getEtagere().setProfondeur(profondeur);
         etagere.GenererPieces();
+        didMutateEtagere();
     }
 
     /**
@@ -266,15 +294,6 @@ public class Controleur {
      */
     public void setAfficheur(AfficheurEtagere2D afficheur) {
         this.afficheur = afficheur;
-    }
-
-    public void undo() {
-        if (this.UndoEtagere != null) {
-            this.setEtagere(this.UndoEtagere);
-            afficheur.redraw();
-        } else {
-            System.out.println("Undo etagere nexiste pas");
-        }
     }
 
     public void sauvegarderEtagere() {
@@ -356,7 +375,6 @@ public class Controleur {
         etagere.GenererPieces();
         setAjouteetageMode(false);
         afficheur.redraw();
-        
-        
+        didMutateEtagere();
     }
 }
