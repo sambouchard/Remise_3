@@ -138,8 +138,8 @@ public class Controleur {
         this.Vue.getProfondeur_TextField().setText(String.valueOf(this.etagere.getProfondeur()));
         if (getEtageSelectionne() != null) {
             this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(String.valueOf(BigDecimal.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel())
-                .setScale(3, RoundingMode.HALF_UP)
-                .doubleValue())));
+                    .setScale(3, RoundingMode.HALF_UP)
+                    .doubleValue())));
         }
 
     }
@@ -148,16 +148,15 @@ public class Controleur {
         if (etageSelectionne.id != etagere.getListeetages().length - 1) {
             try {
                 double difference = newHrel - etageSelectionne.getHauteur_rel();
-                Double newHrelEtagedessous = etagere.getListeetages()[etageSelectionne.id+1].getHauteur_rel()-difference;
+                Double newHrelEtagedessous = etagere.getListeetages()[etageSelectionne.id + 1].getHauteur_rel() - difference;
                 if (newHrelEtagedessous < 0) {
                     throw new ArithmeticException("E est negatif!");
-                }
-                else{
+                } else {
                     etageSelectionne.setHauteur_rel(newHrel);
-                    etagere.getListeetages()[etageSelectionne.id+1].setHauteur_rel(newHrelEtagedessous);
+                    etagere.getListeetages()[etageSelectionne.id + 1].setHauteur_rel(newHrelEtagedessous);
                     etagere.GenererPieces();
                     afficheur.redraw();
-                    
+
                 }
             } catch (Exception ex) {
                 System.out.println("error: e est negatif");
@@ -166,22 +165,21 @@ public class Controleur {
         } else if (etageSelectionne.id == etagere.getListeetages().length - 1) {
             try {
                 double difference = newHrel - etageSelectionne.getHauteur_rel();
-                Double newHrelEtagedessous = etagere.getListeetages()[etageSelectionne.id - 1].getHauteur_rel()-difference;
+                Double newHrelEtagedessous = etagere.getListeetages()[etageSelectionne.id - 1].getHauteur_rel() - difference;
                 if (newHrelEtagedessous < 0) {
                     throw new ArithmeticException("E est negatif!");
-                }
-                else{
+                } else {
                     etageSelectionne.setHauteur_rel(newHrel);
-                    etagere.getListeetages()[etageSelectionne.id-1].setHauteur_rel(newHrelEtagedessous);
+                    etagere.getListeetages()[etageSelectionne.id - 1].setHauteur_rel(newHrelEtagedessous);
                     etagere.GenererPieces();
                     afficheur.redraw();
-                    
+
                 }
             } catch (Exception ex) {
                 System.out.println("error: e est negatif");
             }
 
-        } 
+        }
     }
 
     public void createNewEtagere(double hauteur, double largeur, double profondeur, int nb_etages,
@@ -211,7 +209,6 @@ public class Controleur {
         this.Vue.getLargeurPieceSelecrtionneField().setText(String.valueOf(piece.getLargeur()));
         this.Vue.getHauteurPieceSelecrtionneField().setText(String.valueOf(piece.getHauteur()));
         this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
-        System.out.print(this.getStrListePieces());
     }
 
     /**
@@ -329,60 +326,54 @@ public class Controleur {
         }
         return out;
     }
-    
-    public void getPlanDeCoupe(File file){
+
+    public void getPlanDeCoupe(File file) {
         Export.genererPlanDeCoupe(file);
     }
-    public void AjouteEtage(Etage etage, double NewY){
+
+    public void AjouteEtage(Etage etage, double NewY) {
         double hdispo;
-        etagere.setNb_etages(etagere.getNb_etages()+1);
-        if(etagere.isPerimetretriple()){
-            hdispo = etagere.getHauteur() - 6 * etagere.getEpaisseurTriple()-(etagere.getNb_etages()-1)*3*etagere.getEpaisseurTriple();
+        etagere.setNb_etages(etagere.getNb_etages() + 1);
+        if (etagere.isPerimetretriple()) {
+            hdispo = etagere.getHauteur() - 6 * etagere.getEpaisseurTriple() - (etagere.getNb_etages() - 1) * 3 * etagere.getEpaisseurTriple();
+        } else {
+            hdispo = etagere.getHauteur() - 4 * etagere.getEpaisseurDouble() - (etagere.getNb_etages() - 1) * 3 * etagere.getEpaisseurTriple();
         }
-        else{
-            hdispo = etagere.getHauteur() - 4 * etagere.getEpaisseurDouble()-(etagere.getNb_etages()-1)*3*etagere.getEpaisseurTriple();
-        }
+
         double oldhrel = etage.getHauteur_rel();
-        Double newhrel = (NewY - etage.getY())/hdispo;
+        Double newhrel = (NewY - etage.getY()) / hdispo;
         etage.setHauteur_rel(newhrel);
-        Etage newetage = new Etage(oldhrel-newhrel);
-        Etage [] newlistetage = new Etage[etagere.getNb_etages()] ;
-        int compteur = 0 ; 
-        newlistetage[etage.getId()+1] = newetage;
-        System.err.println(etagere.getListeetages().length);
-        for(Etage etages : etagere.getListeetages()){
-            newlistetage[compteur] = etages;
-            compteur ++;
+        Etage newetage = new Etage(oldhrel - newhrel);
+        Etage[] newlistetage = new Etage[etagere.getNb_etages()];
+        int compteur = 0;
+        newlistetage[etage.getId() + 1] = newetage;
+        newetage.setId(etage.getId() + 1);
+        for (Etage etages : etagere.getListeetages()) {
+            if (etages.getId() <= etage.getId()) {
+                newlistetage[etages.getId()] = etages;
+            }
+            else if(etages.getId()>=newetage.getId()){
+                newlistetage[etages.getId()+1] = etages;
+            }
         }
+
         etagere.setListeetages(newlistetage);
-        
-      
-        
         etagere.GenererPieces();
         setAjouteetageMode(false);
         afficheur.redraw();
-        
-        
+
     }
-    public void AjouteCaisson(Caisson caisson, Etage etage, double NewX){
+
+    public void AjouteCaisson(Caisson caisson, Etage etage, double NewX) {
         double largeur_dispo;
-        etage.setNb_Caisson(etage.getNb_Caisson()+1);
+        etage.setNb_Caisson(etage.getNb_Caisson() + 1);
         double oldLrel = caisson.getLargeurRel();
-        if(etagere.isPerimetretriple()){
-            largeur_dispo = etagere.getLargeur()-6*etagere.getEpaisseurTriple()+(etage.getNb_Caisson()-1)*3*etagere.getEpaisseurTriple();
+        if (etagere.isPerimetretriple()) {
+            largeur_dispo = etagere.getLargeur() - 6 * etagere.getEpaisseurTriple() + (etage.getNb_Caisson() - 1) * 3 * etagere.getEpaisseurTriple();
+        } else {
+            largeur_dispo = etagere.getLargeur() - 4 * etagere.getEpaisseurDouble() + (etage.getNb_Caisson() - 1) * 3 * etagere.getEpaisseurTriple();
         }
-        else{
-            largeur_dispo = etagere.getLargeur()-4*etagere.getEpaisseurDouble()+(etage.getNb_Caisson()-1)*3*etagere.getEpaisseurTriple();
-        }
-        
-        
-        
-        
-        
-      
-        
-        
-        
+
         etagere.GenererPieces();
         setAjouteetageMode(false);
         afficheur.redraw();
