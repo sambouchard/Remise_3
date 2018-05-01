@@ -382,6 +382,7 @@
         <Property name="text" type="java.lang.String" value="Supprimer"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DeleteMontant_ButtonMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteMontant_ButtonActionPerformed"/>
       </Events>
     </Component>
@@ -707,6 +708,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="LargeurRelCaisson_Field">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LargeurRelCaisson_FieldKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>

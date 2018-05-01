@@ -549,7 +549,7 @@ public class Etagere implements java.io.Serializable {
                     Liste_piece.add(piece1);
                     Liste_piece.add(piece2);
                     Liste_piece.add(piece3);
-                    MontantCaissonVertical montant = new MontantCaissonVertical(piece1, piece2, piece3, etage.getListecaissons()[i], etage.getListecaissons()[i+1]);
+                    MontantCaissonVertical montant = new MontantCaissonVertical(piece1, piece2, piece3, etage.getListecaissons()[i], etage.getListecaissons()[i+1],etage);
                     ListeMontantVertical.add(montant);
                     xRef += 3 * epaisseurTriple;
                 }
@@ -577,7 +577,7 @@ public class Etagere implements java.io.Serializable {
                     Liste_piece.add(piece1);
                     Liste_piece.add(piece2);
                     Liste_piece.add(piece3);
-                    MontantCaissonVertical montant = new MontantCaissonVertical(piece1, piece2, piece3, etage.getListecaissons()[i], etage.getListecaissons()[i+1]);
+                    MontantCaissonVertical montant = new MontantCaissonVertical(piece1, piece2, piece3, etage.getListecaissons()[i], etage.getListecaissons()[i+1],etage);
                     ListeMontantVertical.add(montant);
                     xRef += 3 * epaisseurTriple;
                 }

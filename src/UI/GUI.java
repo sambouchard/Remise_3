@@ -122,6 +122,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         DeleteMontant_Button.setText("Supprimer");
+        DeleteMontant_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DeleteMontant_ButtonMouseClicked(evt);
+            }
+        });
         DeleteMontant_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteMontant_ButtonActionPerformed(evt);
@@ -363,6 +368,12 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setText("%");
 
         jLabel8.setText("Largeur relative Caisson sélectionné");
+
+        LargeurRelCaisson_Field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LargeurRelCaisson_FieldKeyPressed(evt);
+            }
+        });
 
         jLabel9.setText("%");
 
@@ -852,9 +863,20 @@ public class GUI extends javax.swing.JFrame {
     private void HauteurRelEtage_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HauteurRelEtage_FieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             Controleur.getInstance().setHrelativeEtageSelectionnee(Double.parseDouble(HauteurRelEtage_Field.getText()));
-            System.out.println("UI.GUI.HauteurRelEtage_FieldKeyPressed()");
         }
     }//GEN-LAST:event_HauteurRelEtage_FieldKeyPressed
+
+    private void DeleteMontant_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteMontant_ButtonMouseClicked
+        if(Controleur.getInstance().getMontantVerticalSelectionne() != null){
+            Controleur.getInstance().SupprimeMontantVertical();
+        }
+    }//GEN-LAST:event_DeleteMontant_ButtonMouseClicked
+
+    private void LargeurRelCaisson_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LargeurRelCaisson_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setLrelativeCaissonSelectionne(Double.parseDouble(LargeurRelCaisson_Field.getText()));
+        }
+    }//GEN-LAST:event_LargeurRelCaisson_FieldKeyPressed
 
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();

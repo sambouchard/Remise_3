@@ -90,6 +90,8 @@ public class AfficheurEtagere2D extends JPanel {
                     for(Piece piece : montant.getListe_pieces()){
                         if(piece.contains(pointInEtagereCoordSpace)){
                             Controleur.getInstance().setMontantVerticalSelectionne(montant);
+                            System.out.println(montant.getCaisson_gauche().getId());
+                            System.out.println(montant.getCaisson_droite().getId());
                         }
                     }
                 }

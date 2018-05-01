@@ -156,6 +156,42 @@ public class Controleur {
         }
 
     }
+    public void setLrelativeCaissonSelectionne(double newLrel){
+        if(CaissonSelectionne.getId() != etageSelectionne.getListecaissons().length-1){
+            try {
+                double difference = newLrel - CaissonSelectionne.getLargeurRel();
+                Double newLrelCaissondroit = etageSelectionne.getListecaissons()[CaissonSelectionne.getId()+ 1].getLargeurRel() - difference;
+                if (newLrelCaissondroit < 0) {
+                    throw new ArithmeticException("E est negatif!");
+                } else {
+                    CaissonSelectionne.setLargeurRel(newLrel);
+                    etageSelectionne.getListecaissons()[CaissonSelectionne.getId() + 1].setLargeurRel(newLrelCaissondroit);
+                    etagere.GenererPieces();
+                    afficheur.redraw();
+
+                }
+            } catch (Exception ex) {
+                System.out.println("error: e est negatif");
+            }
+        }
+        else if(CaissonSelectionne.getId() == etageSelectionne.getListecaissons().length-1){
+            try {
+                double difference = newLrel - CaissonSelectionne.getLargeurRel();
+                Double newLrelCaissondroit = etageSelectionne.getListecaissons()[CaissonSelectionne.getId()- 1].getLargeurRel() - difference;
+                if (newLrelCaissondroit < 0) {
+                    throw new ArithmeticException("E est negatif!");
+                } else {
+                    CaissonSelectionne.setLargeurRel(newLrel);
+                    etageSelectionne.getListecaissons()[CaissonSelectionne.getId() - 1].setLargeurRel(newLrelCaissondroit);
+                    etagere.GenererPieces();
+                    afficheur.redraw();
+
+                }
+            } catch (Exception ex) {
+                System.out.println("error: e est negatif");
+            }
+        }
+    }
 
     public void setHrelativeEtageSelectionnee(double newHrel) {
         if (etageSelectionne.id != etagere.getListeetages().length - 1) {
@@ -396,6 +432,25 @@ public class Controleur {
         etage.setListecaissons(newlistCaisson);
         etagere.GenererPieces();
         setAjouteCaissonMode(false);
+        afficheur.redraw();
+    }
+    
+    public void SupprimeMontantVertical(){
+        MontantVerticalSelectionne.getEtageconteneur().setNb_Caisson(MontantVerticalSelectionne.getEtageconteneur().getNb_Caisson()-1);
+        MontantVerticalSelectionne.getCaisson_gauche().setLargeurRel(MontantVerticalSelectionne.getCaisson_gauche().getLargeurRel()+
+                MontantVerticalSelectionne.getCaisson_droite().getLargeurRel());
+        Caisson[] newlist = new Caisson[MontantVerticalSelectionne.getEtageconteneur().getNb_Caisson()];
+        for(Caisson caisson: MontantVerticalSelectionne.getEtageconteneur().getListecaissons()){
+            if(caisson.getId() < MontantVerticalSelectionne.getCaisson_droite().getId()){
+                newlist[caisson.getId()] = caisson;
+            }
+            else if(caisson.getId()>MontantVerticalSelectionne.getCaisson_droite().getId()){
+                newlist[caisson.getId()-1] = caisson;
+            }
+        }
+        MontantVerticalSelectionne.getEtageconteneur().setListecaissons(newlist);
+        etagere.GenererPieces();
+        setMontantVerticalSelectionne(null);
         afficheur.redraw();
     }
 }

@@ -12,6 +12,15 @@ package Main_Package;
 public class MontantCaissonVertical implements java.io.Serializable{
     private Caisson Caisson_gauche;
     private Caisson Caisson_droite;
+    private Etage etageconteneur;
+
+    public Etage getEtageconteneur() {
+        return etageconteneur;
+    }
+
+    public void setEtageconteneur(Etage etageconteneur) {
+        this.etageconteneur = etageconteneur;
+    }
 
     public Piece[] getListe_pieces() {
         return liste_pieces;
@@ -22,12 +31,13 @@ public class MontantCaissonVertical implements java.io.Serializable{
     }
     private Piece[] liste_pieces = new Piece[3];
 
-    public MontantCaissonVertical(Piece piece1,Piece piece2,Piece piece3,Caisson Caisson_gauche, Caisson Caisson_Droite) {
+    public MontantCaissonVertical(Piece piece1,Piece piece2,Piece piece3,Caisson Caisson_gauche, Caisson Caisson_Droite, Etage etage) {
         this.Caisson_droite = Caisson_Droite;
         this.Caisson_gauche = Caisson_gauche;
         this.liste_pieces[0] = piece1;
         this.liste_pieces[1] = piece2;
         this.liste_pieces[2] = piece3;
+        this.etageconteneur = etage;
     }
 
     public Caisson getCaisson_gauche() {
