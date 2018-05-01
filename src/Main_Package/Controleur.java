@@ -408,7 +408,8 @@ public class Controleur {
         if (JFileChooser.APPROVE_OPTION == ack) {
             try {
                 for (int i = 0; i< STLpieces.size();i++){
-                    FileWriter writer = new FileWriter(explorer.getSelectedFile()+".stl");
+                    int j = i+1;
+                    FileWriter writer = new FileWriter(explorer.getSelectedFile()+Integer.toString(j)+ ".stl");
                     writer.write(STLpieces.get(i));
                     writer.close();
                 }
