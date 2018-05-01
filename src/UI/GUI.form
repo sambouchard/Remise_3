@@ -85,7 +85,7 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="3Dtag&#xe8;re"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Default Cursor"/>
+      <Color id="Curseur par d&#xe9;faut"/>
     </Property>
     <Property name="extendedState" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
       <Connection code="MAXIMIZED_BOTH" type="code"/>
@@ -114,14 +114,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Redo_Button" alignment="0" pref="100" max="32767" attributes="0"/>
-                  <Component id="Undo_Buitton" alignment="0" pref="100" max="32767" attributes="0"/>
-                  <Component id="DeleteMontant_Button" alignment="0" pref="100" max="32767" attributes="0"/>
-                  <Component id="AddMontantVertical_button" alignment="0" pref="100" max="32767" attributes="0"/>
-                  <Component id="AddMontantHorizontal_button" pref="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Redo_Button" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Undo_Buitton" alignment="0" max="32767" attributes="0"/>
+                  <Component id="AddMontantHorizontal_button" min="-2" max="-2" attributes="0"/>
+                  <Component id="AddMontantVertical_button" alignment="0" max="32767" attributes="0"/>
+                  <Component id="DeleteMontant_Button" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="AfficheurContainer" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -149,7 +149,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="Largeur_Cmlabel" max="32767" attributes="0"/>
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <EmptySpace pref="8" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="Profondeur_CMlabel" max="32767" attributes="0"/>
@@ -230,7 +230,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
                   <Component id="jButton7" min="-2" pref="0" max="-2" attributes="0"/>
-                  <EmptySpace pref="1323" max="32767" attributes="0"/>
+                  <EmptySpace pref="1335" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -370,7 +370,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="AddMontantHorizontal_button">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter Montant Vertical"/>
+        <Property name="text" type="java.lang.String" value="Piece Horizontal"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddMontantHorizontal_buttonMouseClicked"/>
@@ -513,7 +513,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="AddMontantVertical_button">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Horizontale"/>
+        <Property name="text" type="java.lang.String" value="Piece Verticale"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddMontantVertical_buttonMouseClicked"/>
@@ -688,7 +688,7 @@
     <Component class="javax.swing.JTextField" name="HauteurRelEtage_Field">
       <Properties>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Curseur par d&#xe9;faut"/>
         </Property>
       </Properties>
       <Events>

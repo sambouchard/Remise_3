@@ -9,6 +9,7 @@
  */
 package UI;
 
+import Main_Package.Caisson;
 import Main_Package.Controleur;
 import Main_Package.Coord_Coins;
 import Main_Package.Etage;
@@ -91,12 +92,23 @@ public class AfficheurEtagere2D extends JPanel {
                 for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
                     if (etage.contains(pointInEtagereCoordSpace)) {
                         Controleur.getInstance().setEtageSelectionne(etage);
-                        System.out.println(etage.getId());
                         Controleur.getInstance().updatevue();
+                    }
+                }
+                for(Etage etage : Controleur.getInstance().getEtagere().getListeetages()){
+                    for(Caisson caisson : etage.getListecaissons()){
+                        if(caisson.contains(pointInEtagereCoordSpace)){
+                            System.out.println(caisson.getId());
+                        }
                     }
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
                     for(Etage etage:Controleur.getInstance().getEtagere().getListeetages()){
+                        for(Caisson caisson : etage.getListecaissons()){
+                            if(caisson.contains(RectFantomeVertical_1.getX(), RectFantomeVertical_1.getY())){
+                                Controleur.getInstance().AjouteCaisson(caisson, etage, RectFantomeVertical_1.getX());
+                            }
+                        }
                     
                 }
 
@@ -228,8 +240,12 @@ public class AfficheurEtagere2D extends JPanel {
                 }
             }
             for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
-                etage.x += dx;
-                etage.y += dx;
+                etage.x += dx/10;
+                etage.y += dy/10;
+                for(Caisson caisson: etage.getListecaissons()){
+                    caisson.x += dx/10;
+                    caisson.y += dy/10;
+                }
             }
             for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                 piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 10);
@@ -253,12 +269,15 @@ public class AfficheurEtagere2D extends JPanel {
         g2d = (Graphics2D) g;
         if (Controleur.getInstance().getEtagere() != null) {
             for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
-                g2d.setColor(Color.RED);
-                g2d.fill(tx.createTransformedShape(etage));
+                g2d.setColor(Color.BLUE);
+                for(Caisson caisson: etage.getListecaissons()){
+                    g2d.fill(tx.createTransformedShape(caisson));
+                }
+//                g2d.fill(tx.createTransformedShape(etage));
             }
 
             Controleur.getInstance().getEtagere().getListe_piece().stream().map((piece) -> {
-                piece.setRect((piece.getDrawingcoin().getCoord_x()), (piece.getDrawingcoin().getCoord_y()), piece.getLargeur(), piece.getHauteur());
+                piece.setRect((piece.getDrawingcoin().getCoord_x())+ 300, (piece.getDrawingcoin().getCoord_y())+300, piece.getLargeur(), piece.getHauteur());
                 return piece;
             }).map((piece) -> {
                 g2d.setColor(Color.BLACK);

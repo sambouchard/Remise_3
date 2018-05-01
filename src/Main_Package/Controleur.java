@@ -345,7 +345,6 @@ public class Controleur {
         etage.setHauteur_rel(newhrel);
         Etage newetage = new Etage(oldhrel - newhrel);
         Etage[] newlistetage = new Etage[etagere.getNb_etages()];
-        int compteur = 0;
         newlistetage[etage.getId() + 1] = newetage;
         newetage.setId(etage.getId() + 1);
         for (Etage etages : etagere.getListeetages()) {
@@ -373,9 +372,24 @@ public class Controleur {
         } else {
             largeur_dispo = etagere.getLargeur() - 4 * etagere.getEpaisseurDouble() + (etage.getNb_Caisson() - 1) * 3 * etagere.getEpaisseurTriple();
         }
-
+        double newLrel = (NewX-caisson.getX())/largeur_dispo;
+        caisson.setLargeurRel(newLrel);
+        Caisson newcaisson = new Caisson(oldLrel-newLrel);
+        Caisson [] newlistCaisson = new Caisson[etage.getNb_Caisson()];
+        newlistCaisson[caisson.getId()+1] = newcaisson;
+        newcaisson.setId(caisson.getId()+1);
+        for(Caisson caissons:etage.getListecaissons()){
+            if(caissons.getId()<=caisson.getId()){
+                newlistCaisson[caissons.getId()] = caissons;
+            }
+            else if(caissons.getId() >= caisson.getId()){
+                newlistCaisson[caissons.getId()+1] = caissons;
+            }
+        }
+        
+        etage.setListecaissons(newlistCaisson);
         etagere.GenererPieces();
-        setAjouteetageMode(false);
+        setAjouteCaissonMode(false);
         afficheur.redraw();
     }
 }

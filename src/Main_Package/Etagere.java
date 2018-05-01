@@ -138,7 +138,7 @@ public class Etagere implements java.io.Serializable{
             GenererPiecesPerimetreCote();
         }
         GenererPiecesEtagesHorizontale();
-//        GenerePiecesCaissonsHorizontale();
+        GenerePiecesCaissonsVerttale();
         if (estferme) {
             retraitPourPanneauArriere();
         }
@@ -400,7 +400,7 @@ public class Etagere implements java.io.Serializable{
             for (Etage etage : this.getListeetages()) {
                 xRef = epaisseurTriple;
                 
-                double largeurdispo = this.getLargeur() - 6 * epaisseurTriple - (etage.getListecaissons().length - 1) * 3 * epaisseurTriple;
+                double largeurdispo = this.getLargeur() - 6 * epaisseurTriple - (etage.getNb_Caisson() - 1) * 3 * epaisseurTriple;
 
 
                 Piece pieceHorizontaleGauche = new Piece(etage.getHauteur_rel() * hauteurdispo,
@@ -426,20 +426,28 @@ public class Etagere implements java.io.Serializable{
                     etage.setX2(this.largeur-epaisseurTriple);
                     etage.setY1(yRef);
                     etage.setY2(yRef+etage.getHauteur_rel() * hauteurdispo);
-                    etage.setRect(xRef, yRef, this.largeur-2*epaisseurTriple, etage.getHauteur_rel() * hauteurdispo);
+                    etage.setRect(xRef + 300, yRef +300, this.largeur-2*epaisseurTriple, etage.getHauteur_rel() * hauteurdispo);
                 if (compteuretages != getNb_etages() - 1) {
-
+                    int compteur_caisson = 0;
                     if(etage.getListecaissons().length==1){
                         Piece piece = new Piece(epaisseurTriple, xlargeur, profondeur, "Piece bas Caisson 0 etage " + compteuretages);
                             piece.setDrawingcoin(new Coord_Coins(xRef, yRef+etage.getHauteur_rel()*hauteurdispo, 0));
                             Liste_piece.add(piece);
+                            etage.getListecaissons()[0].setRect(xRef+2*epaisseurTriple+300, yRef+300, etage.getListecaissons()[0].getLargeurRel()*
+                                    largeurdispo, etage.getHauteur_rel()*hauteurdispo);
                     }
+                    /*On genere les pieces du bas des caissons*/
                     else{
-                        for(int i = 0; i < etage.getListecaissons().length ; i++){
-                            Piece piece = new Piece(epaisseurTriple, etage.getListecaissons()[i].getLargeurRel()*
-                                    largeurdispo, profondeur, "Piece bas Caisson " + i + " etage " + compteuretages);
+                        for(Caisson caisson : etage.getListecaissons()){
+                            caisson.setRect(xRef+2*epaisseurTriple+300, yRef+300, caisson.getLargeurRel()*
+                                    largeurdispo, etage.getHauteur_rel()*hauteurdispo);
+                            caisson.setId(compteur_caisson);
+                            Piece piece = new Piece(epaisseurTriple, caisson.getLargeurRel()*
+                                    largeurdispo, profondeur, "Piece bas Caisson " + compteur_caisson + " etage " + compteuretages);
                             piece.setDrawingcoin(new Coord_Coins(xRef, yRef+etage.getHauteur_rel()*hauteurdispo, 0));
                             Liste_piece.add(piece);
+                            xRef += caisson.getLargeurRel()*largeurdispo+3*epaisseurTriple;
+                            compteur_caisson ++ ;
 
                         }
                             }
@@ -504,21 +512,24 @@ public class Etagere implements java.io.Serializable{
         this.epaisseurDouble = epaisseurDouble;
     }
 
-    private void GenerePiecesCaissonsHorizontale(){
+    private void GenerePiecesCaissonsVerttale(){
         if(isPerimetretriple()){
             double hauteurdispo = this.hauteur - (nb_etages-1)*3*epaisseurTriple-6*epaisseurTriple;
             double xRef;
             double yRef = 3*epaisseurTriple;
             for(Etage etage : listeetages){
-                xRef = epaisseurTriple;
-                double largeurdisponible = this.largeur - 6 * epaisseurTriple - (etage.getListecaissons().length-1) * epaisseurTriple;
-                for(Caisson caisson : etage.getListecaissons()){
-                    Piece piece = new Piece(epaisseurTriple, caisson.getLargeurRel()*largeurdisponible, profondeur, "Piece horizontale haut");
-                    piece.setDrawingcoin(new Coord_Coins(xRef, yRef, 0));
-                    Liste_piece.add(piece);
-                    xRef += caisson.getLargeurRel()*largeurdisponible+epaisseurTriple;
+                if(etage.getListecaissons().length != 1)
+                {
+                    xRef = 3 * epaisseurTriple;
+                    double largeurdisponible = this.largeur - 6 * epaisseurTriple - (etage.getNb_Caisson()-1) * 3 * epaisseurTriple;
+                    for(Caisson caisson : etage.getListecaissons()){
+                        Piece piece1 = new Piece(epaisseurTriple, caisson.getLargeurRel()*largeurdisponible, profondeur, "Piece horizontale haut");
+                        piece1.setDrawingcoin(new Coord_Coins(xRef, yRef, 0));
+                        Liste_piece.add(piece1);
+                        xRef += caisson.getLargeurRel()*largeurdisponible+epaisseurTriple;
+                    }
+                    yRef += etage.getHauteur_rel()*hauteurdispo+3*epaisseurTriple;
                 }
-                yRef += etage.getHauteur_rel()*hauteurdispo+2*epaisseurTriple;
             }
             
             
