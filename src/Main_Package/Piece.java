@@ -48,10 +48,10 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable {
         this.CoinFaceHautDroit = new Coord_Coins(this.CoinFondHautGauche.getCoord_x()+this.largeur, this.CoinFondHautGauche.getCoord_y(), 0);
         this.CoinFaceBasGauche = new Coord_Coins(this.CoinFondHautGauche.getCoord_x(), this.CoinFondHautGauche.getCoord_y()+this.hauteur, 0);
         this.CoinFaceBasDroit = new Coord_Coins(this.CoinFondHautGauche.getCoord_x()+this.largeur, this.CoinFondHautGauche.getCoord_y()+this.hauteur, 0);
-//        this.CoinFondHautGauche = new Coord_Coins(x, y, this.profondeur);
-//        this.CoinFondHautDroit = new Coord_Coins(x, y, this.profondeur);
-//        this.CoinFondBasGauche = new Coord_Coins(x, y, this.profondeur);
-//        this.CoinFondBasDroit = new Coord_Coins(x, y, this.profondeur);
+        this.CoinFondHautGauche = new Coord_Coins(x, y, this.profondeur);
+        this.CoinFondHautDroit = new Coord_Coins(x, y, this.profondeur);
+        this.CoinFondBasGauche = new Coord_Coins(x, y, this.profondeur);
+        this.CoinFondBasDroit = new Coord_Coins(x, y, this.profondeur);
     }
     private double hauteur;
     private double largeur;
