@@ -13,6 +13,7 @@ import Main_Package.Caisson;
 import Main_Package.Controleur;
 import Main_Package.Coord_Coins;
 import Main_Package.Etage;
+import Main_Package.MontantCaissonVertical;
 import Main_Package.Piece;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -27,6 +28,7 @@ import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.event.MouseAdapter;
 import java.awt.geom.Rectangle2D;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -84,6 +86,13 @@ public class AfficheurEtagere2D extends JPanel {
                     Logger.getLogger(AfficheurEtagere2D.class.getName()).log(Level.SEVERE, null, ex);
                     return;
                 }
+                for(MontantCaissonVertical montant:Controleur.getInstance().getEtagere().getListeMontantVertical()){
+                    for(Piece piece : montant.getListe_pieces()){
+                        if(piece.contains(pointInEtagereCoordSpace)){
+                            Controleur.getInstance().setMontantVerticalSelectionne(montant);
+                        }
+                    }
+                }
                 for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                     if (piece.contains(pointInEtagereCoordSpace)) {
                         Controleur.getInstance().setPieceSelectionner(piece);
@@ -98,7 +107,8 @@ public class AfficheurEtagere2D extends JPanel {
                 for(Etage etage : Controleur.getInstance().getEtagere().getListeetages()){
                     for(Caisson caisson : etage.getListecaissons()){
                         if(caisson.contains(pointInEtagereCoordSpace)){
-                            System.out.println(caisson.getId());
+                            Controleur.getInstance().setCaissonSelectionne(caisson);
+                            Controleur.getInstance().updatevue();
                         }
                     }
                 }
@@ -224,33 +234,40 @@ public class AfficheurEtagere2D extends JPanel {
         public void mouseDragged(MouseEvent e) {
             int dx = e.getX() - x;
             int dy = e.getY() - y;
-
-            for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
-                Point2D p1 = e.getPoint();
-                Point2D p2 = null;
-                try {
-                    p2 = tx.inverseTransform(p1, null);
-                } catch (NoninvertibleTransformException ex) {
-                    return;
+            if(Controleur.getInstance().getMontantVerticalSelectionne() == null){
+                for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
+                    Point2D p1 = e.getPoint();
+                    Point2D p2 = null;
+                    try {
+                        p2 = tx.inverseTransform(p1, null);
+                    } catch (NoninvertibleTransformException ex) {
+                        return;
+                    }
+                    if (piece.contains(p2)) {
+                        piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy);
+                        repaint();
+                        break;
+                    }
                 }
-                if (piece.contains(p2)) {
-                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy);
-                    repaint();
-                    break;
+                for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
+                    etage.x += dx/10;
+                    etage.y += dy/10;
+                    for(Caisson caisson: etage.getListecaissons()){
+                        caisson.x += dx/10;
+                        caisson.y += dy/10;
+                    }
+                }
+                for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
+                    piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 10);
+                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 10);
+
                 }
             }
-            for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
-                etage.x += dx/10;
-                etage.y += dy/10;
-                for(Caisson caisson: etage.getListecaissons()){
-                    caisson.x += dx/10;
-                    caisson.y += dy/10;
-                }
-            }
-            for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 10);
-                piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 10);
-
+            if(Controleur.getInstance().getMontantVerticalSelectionne() != null){
+                Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_gauche().setLargeurRel(Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_gauche().getLargeurRel()+dx/200);
+                Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_droite().setLargeurRel(Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_droite().getLargeurRel()-dx/200);
+                Controleur.getInstance().getEtagere().GenererPieces();
+                Controleur.getInstance().getAfficheur().redraw();
             }
 
             Controleur.getInstance().getAfficheur().redraw();

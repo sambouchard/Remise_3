@@ -47,6 +47,15 @@ public class Controleur {
     }
     private Etage etageSelectionne = null;
     private Caisson CaissonSelectionne = null;
+    private MontantCaissonVertical MontantVerticalSelectionne = null;
+
+    public MontantCaissonVertical getMontantVerticalSelectionne() {
+        return MontantVerticalSelectionne;
+    }
+
+    public void setMontantVerticalSelectionne(MontantCaissonVertical MontantVerticalSelectionne) {
+        this.MontantVerticalSelectionne = MontantVerticalSelectionne;
+    }
 
     public boolean isAjouteetageMode() {
         return ajouteetageMode;
@@ -120,7 +129,6 @@ public class Controleur {
     }
 
     public void updatevuImperiale() {
-        Double toBeTruncated;
         this.Vue.getHauteur_Textfield().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getHauteur() / 2.54)
                 .setScale(3, RoundingMode.HALF_UP)
                 .doubleValue()));
@@ -140,6 +148,11 @@ public class Controleur {
             this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(String.valueOf(BigDecimal.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel())
                     .setScale(3, RoundingMode.HALF_UP)
                     .doubleValue())));
+        }
+        if(getCaissonSelectionne()!=null){
+            this.Vue.getLargeurRelCaisson_Field().setText(String.valueOf(BigDecimal.valueOf(Controleur.getInstance().getCaissonSelectionne().getLargeurRel())
+                    .setScale(3, RoundingMode.HALF_UP)
+                    .doubleValue()));
         }
 
     }
@@ -211,14 +224,7 @@ public class Controleur {
         this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
     }
 
-    /**
-     * @param id
-     */
-    public void enleverEtage(int id) {
-        if (id != -1) {
-            getEtagere().enleveetage(id);
-        }
-    }
+    
 
     public void enleveCaisson(int caissonid, int etageid) {
         if (caissonid != -1 || etageid != -1) {

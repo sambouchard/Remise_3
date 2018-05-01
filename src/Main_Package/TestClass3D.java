@@ -28,23 +28,23 @@ public class TestClass3D {
          * code ascii generant chacune des pieces en 3d
         }**
          */
-        Etagere etagere = new Etagere(100, 100, 100, 2, true, true, true);
-        etagere.GenererPieces();
-        try (PrintWriter writer1 = new PrintWriter("Etagere.stl", "UTF-8")) {
-            for (Piece piece : etagere.getListe_piece()) {
-                writer1.println(
-                    "solid test \n"
-                    +"   facet normal 0.000000 -1.000000 0.000000\n"
-                    + "     outer loop\n"
-                    + "       vertex -1.000000 -1.000000 -1.000000\n"
-                    + "       vertex 1.000000 -1.000000 -1.000000\n"
-                    + "       vertex 1.000000 -1.000000 1.000000\n"
-                    + "     endloop\n"
-                    + "   endfacet\n"
-                    + "endsolid\n"
-                );
-            }
-        }
+//        Etagere etagere = new Etagere(100, 100, 100, 2, true, true, true);
+//        etagere.GenererPieces();
+//        try (PrintWriter writer1 = new PrintWriter("Etagere.stl", "UTF-8")) {
+//            for (Piece piece : etagere.getListe_piece()) {
+//                writer1.println(
+//                    "solid test \n"
+//                    +"   facet normal 0.000000 -1.000000 0.000000\n"
+//                    + "     outer loop\n"
+//                    + "       vertex -1.000000 -1.000000 -1.000000\n"
+//                    + "       vertex 1.000000 -1.000000 -1.000000\n"
+//                    + "       vertex 1.000000 -1.000000 1.000000\n"
+//                    + "     endloop\n"
+//                    + "   endfacet\n"
+//                    + "endsolid\n"
+//                );
+//            }
+//        }
         try (PrintWriter writer = new PrintWriter("Cube.stl", "UTF-8")) {
             /**
              * for(Piece piece :

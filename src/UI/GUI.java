@@ -623,6 +623,14 @@ public class GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTextField getLargeurRelCaisson_Field() {
+        return LargeurRelCaisson_Field;
+    }
+
+    public void setLargeurRelCaisson_Field(JTextField LargeurRelCaisson_Field) {
+        this.LargeurRelCaisson_Field = LargeurRelCaisson_Field;
+    }
+
     public JTextField getHauteurRelEtage_Field() {
         return HauteurRelEtage_Field;
     }
@@ -806,7 +814,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
     private void AddMontantHorizontal_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMontantHorizontal_buttonMouseClicked
         Controleur.getInstance().setAjouteetageMode(true);
-        if(Controleur.getInstance().isAjouteCaissonMode()){
+        if(Controleur.getInstance().isAjouteCaissonMode() == true){
             Controleur.getInstance().setAjouteCaissonMode(false);
             
         }
