@@ -143,11 +143,6 @@ public class GUI extends javax.swing.JFrame {
 
         Undo_Buitton.setText("Undo");
         Undo_Buitton.setActionCommand("Imperial ou metrique");
-        Undo_Buitton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Undo_BuittonMouseClicked(evt);
-            }
-        });
         Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Undo_BuittonActionPerformed(evt);
@@ -348,7 +343,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel6.setText("Hauteur Relative Étage Sélectionnée");
 
-        HauteurRelEtage_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        HauteurRelEtage_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         HauteurRelEtage_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HauteurRelEtage_FieldActionPerformed(evt);
@@ -432,8 +427,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Redo_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(Undo_Buitton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(AddMontantHorizontal_button, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(37, 37, 37)
                 .addComponent(AfficheurContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -652,11 +647,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteMontant_ButtonActionPerformed
 
     private void Redo_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Redo_ButtonActionPerformed
-        // TODO add your handling code here:
+        Controleur.getInstance().redo();
     }//GEN-LAST:event_Redo_ButtonActionPerformed
 
     private void Undo_BuittonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Undo_BuittonActionPerformed
-        // TODO add your handling code here:
+        Controleur.getInstance().undo();
     }//GEN-LAST:event_Undo_BuittonActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -737,11 +732,6 @@ public class GUI extends javax.swing.JFrame {
             Controleur.getInstance().getAfficheur().redraw();
         }
     }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
-
-    private void Undo_BuittonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Undo_BuittonMouseClicked
-        Controleur.getInstance().undo();
-        System.out.println("UI.GUI.jButton22MouseClicked()");
-    }//GEN-LAST:event_Undo_BuittonMouseClicked
 
     private void Metrique_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Metrique_ButtonStateChanged
         if(Metrique_Button.isSelected()){
@@ -1470,6 +1460,11 @@ public class GUI extends javax.swing.JFrame {
         this.jTextPane1 = jTextPane1;
     }
 
+    public void enableUndoButton(boolean canUndo) {
+        Undo_Buitton.setEnabled(canUndo);
+    }
     
-    
+    public void enableRedoButton(boolean canRedo) {
+        Redo_Button.setEnabled(canRedo);
+    }
 }
