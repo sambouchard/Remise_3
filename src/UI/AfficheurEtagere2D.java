@@ -96,7 +96,9 @@ public class AfficheurEtagere2D extends JPanel {
                     }
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
+                    for(Etage etage:Controleur.getInstance().getEtagere().getListeetages()){
                     
+                }
 
                 }
                 if (Controleur.getInstance().isAjouteetageMode()) {
@@ -194,11 +196,11 @@ public class AfficheurEtagere2D extends JPanel {
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
                     Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(e.getX(), e.getY(),
-                            0.5 * 2.5, Controleur.getInstance().getEtageSelectionne().getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur()));
+                            0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4));
                     Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(e.getX() + 0.5 * 2.5, e.getY() - 0.5 * 2.5,
-                            0.5 * 2.5, Controleur.getInstance().getEtageSelectionne().getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur() + 0.5 * 2.5));
+                            0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4 + 0.5 * 2.5));
                     Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(e.getX() + 2 * (0.5 * 2.5), e.getY(),
-                            0.5 * 2.5, Controleur.getInstance().getEtageSelectionne().getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur()));
+                            0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4));
                     repaint();
 
                 }
@@ -286,14 +288,36 @@ public class AfficheurEtagere2D extends JPanel {
                 }
             }
             if (Controleur.getInstance().isAjouteCaissonMode()) {
-                g2d.setColor(Color.BLACK);
-                g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_1));
-                g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_2));
-                g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_3));
-                g2d.setColor(Color.RED);
-                g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_1));
-                g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_2));
-                g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_3));
+                for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()){
+                    if(etage.contains(this.RectFantomeVertical_1.getX(), this.RectFantomeVertical_1.getY())){
+                        this.RectFantomeVertical_1.setRect(this.RectFantomeVertical_1.getX(), this.RectFantomeVertical_1.getY(), this.RectFantomeVertical_1.getWidth(), 
+                                etage.getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur()+0.5*2.54);
+                        this.RectFantomeVertical_2.setRect(this.RectFantomeVertical_2.getX(), this.RectFantomeVertical_2.getY(), this.RectFantomeVertical_2.getWidth(), 
+                                etage.getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur()+ 0.5 * 2.54);
+                        this.RectFantomeVertical_3.setRect(this.RectFantomeVertical_3.getX(), this.RectFantomeVertical_3.getY(), this.RectFantomeVertical_3.getWidth(), 
+                                etage.getHauteur_rel()*Controleur.getInstance().getEtagere().getHauteur()+ 0.5 * 2.54);
+                        g2d.setColor(Color.BLACK);
+                        g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_1));
+                        g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_2));
+                        g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_3));
+                        g2d.setColor(Color.GREEN);
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_1));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_2));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_3));
+                        break;
+                        
+                    }
+                    else{
+                        g2d.setColor(Color.BLACK);
+                        g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_1));
+                        g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_2));
+                        g2d.draw(tx.createTransformedShape(this.RectFantomeVertical_3));
+                        g2d.setColor(Color.RED);
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_1));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_2));
+                        g2d.fill(tx.createTransformedShape(this.RectFantomeVertical_3));
+                    }
+                }
 
             }
         }

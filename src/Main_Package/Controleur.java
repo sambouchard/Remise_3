@@ -334,9 +334,14 @@ public class Controleur {
         Export.genererPlanDeCoupe(file);
     }
     public void AjouteEtage(Etage etage, double NewY){
-        
+        double hdispo;
         etagere.setNb_etages(etagere.getNb_etages()+1);
-        double hdispo = etagere.getHauteur() - 6 * etagere.getEpaisseurTriple()-(etagere.getNb_etages()-1)*3*etagere.getEpaisseurTriple();
+        if(etagere.isPerimetretriple()){
+            hdispo = etagere.getHauteur() - 6 * etagere.getEpaisseurTriple()-(etagere.getNb_etages()-1)*3*etagere.getEpaisseurTriple();
+        }
+        else{
+            hdispo = etagere.getHauteur() - 4 * etagere.getEpaisseurDouble()-(etagere.getNb_etages()-1)*3*etagere.getEpaisseurTriple();
+        }
         double oldhrel = etage.getHauteur_rel();
         Double newhrel = (NewY - etage.getY())/hdispo;
         etage.setHauteur_rel(newhrel);
@@ -358,5 +363,28 @@ public class Controleur {
         afficheur.redraw();
         
         
+    }
+    public void AjouteCaisson(Caisson caisson, Etage etage, double NewX){
+        double largeur_dispo;
+        etage.setNb_Caisson(etage.getNb_Caisson()+1);
+        double oldLrel = caisson.getLargeurRel();
+        if(etagere.isPerimetretriple()){
+            largeur_dispo = etagere.getLargeur()-6*etagere.getEpaisseurTriple()+(etage.getNb_Caisson()-1)*3*etagere.getEpaisseurTriple();
+        }
+        else{
+            largeur_dispo = etagere.getLargeur()-4*etagere.getEpaisseurDouble()+(etage.getNb_Caisson()-1)*3*etagere.getEpaisseurTriple();
+        }
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        etagere.GenererPieces();
+        setAjouteetageMode(false);
+        afficheur.redraw();
     }
 }
