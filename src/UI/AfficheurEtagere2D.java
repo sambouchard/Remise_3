@@ -294,6 +294,12 @@ public class AfficheurEtagere2D extends JPanel {
                 }
 //                g2d.fill(tx.createTransformedShape(etage));
             }
+            if(Controleur.getInstance().getMontantVerticalSelectionne()!= null){
+                for(Piece piece:Controleur.getInstance().getMontantVerticalSelectionne().getListe_pieces() ){
+                    g2d.setColor(Color.RED);
+                    g2d.fill(tx.createTransformedShape(piece));
+                }
+            }
 
             Controleur.getInstance().getEtagere().getListe_piece().stream().map((piece) -> {
                 piece.setRect((piece.getDrawingcoin().getCoord_x())+ 300, (piece.getDrawingcoin().getCoord_y())+300, piece.getLargeur(), piece.getHauteur());

@@ -4,9 +4,12 @@ import Main_Package.Controleur;
 import java.awt.event.KeyEvent;
 import java.io.FileWriter;
 import javax.swing.InputVerifier;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /*
@@ -53,11 +56,7 @@ public class GUI extends javax.swing.JFrame {
         Imperial_Button = new javax.swing.JRadioButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         AddMontantVertical_button = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         AfficheurContainer = new javax.swing.JPanel();
         afficheur = new UI.AfficheurEtagere2D();
         jLabel1 = new javax.swing.JLabel();
@@ -79,10 +78,14 @@ public class GUI extends javax.swing.JFrame {
         Hauteur_Cmlabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         HauteurRelEtage_Field = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         LargeurRelCaisson_Field = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        EpaisseurTriple_Field = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        EpaisseurDouble_Field = new javax.swing.JTextField();
+        EpaisseurTriple_Mesure = new javax.swing.JLabel();
+        EpaisseurDouble_Mesure = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuBtnNouveau = new javax.swing.JMenuItem();
@@ -245,13 +248,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Pièce 1", "Pièce 2" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
         AddMontantVertical_button.setText("Piece Verticale");
         AddMontantVertical_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -263,9 +259,6 @@ public class GUI extends javax.swing.JFrame {
                 AddMontantVertical_buttonActionPerformed(evt);
             }
         });
-
-        jTextPane1.setText("Liste de pièces");
-        jScrollPane2.setViewportView(jTextPane1);
 
         AfficheurContainer.setBackground(new java.awt.Color(255, 255, 255));
         AfficheurContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -365,8 +358,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("%");
-
         jLabel8.setText("Largeur relative Caisson sélectionné");
 
         LargeurRelCaisson_Field.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -375,7 +366,19 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("%");
+        jLabel10.setText("Epaisseur Panneau triple");
+
+        jLabel11.setText("Epaisseur panneau double");
+
+        EpaisseurDouble_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EpaisseurDouble_FieldActionPerformed(evt);
+            }
+        });
+
+        EpaisseurTriple_Mesure.setText("Po");
+
+        EpaisseurDouble_Mesure.setText("Po");
 
         jMenu1.setText("Fichier");
 
@@ -478,6 +481,11 @@ public class GUI extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -502,28 +510,23 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(Imperial_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(PerimetreDouble_Radio))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7))
+                            .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBox1)
                             .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(EpaisseurDouble_Field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EpaisseurTriple_Field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EpaisseurDouble_Mesure, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EpaisseurTriple_Mesure, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(269, 269, 269)
@@ -570,24 +573,28 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
+                                .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(59, 59, 59)
                                 .addComponent(jCheckBox1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCheckBox2)
-                                .addGap(19, 19, 19)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 943, Short.MAX_VALUE)
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(EpaisseurTriple_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EpaisseurTriple_Mesure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(EpaisseurDouble_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EpaisseurDouble_Mesure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 957, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -878,6 +885,10 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LargeurRelCaisson_FieldKeyPressed
 
+    private void EpaisseurDouble_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EpaisseurDouble_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EpaisseurDouble_FieldActionPerformed
+
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);
@@ -928,6 +939,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton AddMontantVertical_button;
     private javax.swing.JPanel AfficheurContainer;
     private javax.swing.JButton DeleteMontant_Button;
+    private javax.swing.JTextField EpaisseurDouble_Field;
+    private javax.swing.JLabel EpaisseurDouble_Mesure;
+    private javax.swing.JTextField EpaisseurTriple_Field;
+    private javax.swing.JLabel EpaisseurTriple_Mesure;
     private javax.swing.JLabel HPiece_Cmlabel;
     private javax.swing.JTextField HauteurPieceSelecrtionneField;
     private javax.swing.JTextField HauteurRelEtage_Field;
@@ -962,15 +977,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -978,13 +992,258 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 
     public JTextField getHauteur_Textfield() {
         return Hauteur_Textfield;
+    }
+
+    public JButton getAddMontantHorizontal_button() {
+        return AddMontantHorizontal_button;
+    }
+
+    public void setAddMontantHorizontal_button(JButton AddMontantHorizontal_button) {
+        this.AddMontantHorizontal_button = AddMontantHorizontal_button;
+    }
+
+    public JButton getAddMontantVertical_button() {
+        return AddMontantVertical_button;
+    }
+
+    public void setAddMontantVertical_button(JButton AddMontantVertical_button) {
+        this.AddMontantVertical_button = AddMontantVertical_button;
+    }
+
+    public JButton getDeleteMontant_Button() {
+        return DeleteMontant_Button;
+    }
+
+    public void setDeleteMontant_Button(JButton DeleteMontant_Button) {
+        this.DeleteMontant_Button = DeleteMontant_Button;
+    }
+
+    public JTextField getEpaisseurDouble_Field() {
+        return EpaisseurDouble_Field;
+    }
+
+    public void setEpaisseurDouble_Field(JTextField EpaisseurDouble_Field) {
+        this.EpaisseurDouble_Field = EpaisseurDouble_Field;
+    }
+
+    public JLabel getEpaisseurDouble_Mesure() {
+        return EpaisseurDouble_Mesure;
+    }
+
+    public void setEpaisseurDouble_Mesure(JLabel EpaisseurDouble_Mesure) {
+        this.EpaisseurDouble_Mesure = EpaisseurDouble_Mesure;
+    }
+
+    public JTextField getEpaisseurTriple_Field() {
+        return EpaisseurTriple_Field;
+    }
+
+    public void setEpaisseurTriple_Field(JTextField EpaisseurTriple_Field) {
+        this.EpaisseurTriple_Field = EpaisseurTriple_Field;
+    }
+
+    public JLabel getEpaisseurTriple_Mesure() {
+        return EpaisseurTriple_Mesure;
+    }
+
+    public void setEpaisseurTriple_Mesure(JLabel EpaisseurTriple_Mesure) {
+        this.EpaisseurTriple_Mesure = EpaisseurTriple_Mesure;
+    }
+
+    public JLabel getHPiece_Cmlabel() {
+        return HPiece_Cmlabel;
+    }
+
+    public void setHPiece_Cmlabel(JLabel HPiece_Cmlabel) {
+        this.HPiece_Cmlabel = HPiece_Cmlabel;
+    }
+
+    public JLabel getHauteur_Cmlabel() {
+        return Hauteur_Cmlabel;
+    }
+
+    public void setHauteur_Cmlabel(JLabel Hauteur_Cmlabel) {
+        this.Hauteur_Cmlabel = Hauteur_Cmlabel;
+    }
+
+    public JRadioButton getImperial_Button() {
+        return Imperial_Button;
+    }
+
+    public void setImperial_Button(JRadioButton Imperial_Button) {
+        this.Imperial_Button = Imperial_Button;
+    }
+
+    public JLabel getLPiece_Cmlabel() {
+        return LPiece_Cmlabel;
+    }
+
+    public void setLPiece_Cmlabel(JLabel LPiece_Cmlabel) {
+        this.LPiece_Cmlabel = LPiece_Cmlabel;
+    }
+
+    public JLabel getLargeur_Cmlabel() {
+        return Largeur_Cmlabel;
+    }
+
+    public void setLargeur_Cmlabel(JLabel Largeur_Cmlabel) {
+        this.Largeur_Cmlabel = Largeur_Cmlabel;
+    }
+
+    public JMenuItem getMenuCharger() {
+        return MenuCharger;
+    }
+
+    public void setMenuCharger(JMenuItem MenuCharger) {
+        this.MenuCharger = MenuCharger;
+    }
+
+    public JMenuItem getMenuSauvegarder() {
+        return MenuSauvegarder;
+    }
+
+    public void setMenuSauvegarder(JMenuItem MenuSauvegarder) {
+        this.MenuSauvegarder = MenuSauvegarder;
+    }
+
+    public JRadioButton getMetrique_Button() {
+        return Metrique_Button;
+    }
+
+    public void setMetrique_Button(JRadioButton Metrique_Button) {
+        this.Metrique_Button = Metrique_Button;
+    }
+
+    public JLabel getPPiece_Cmlabel() {
+        return PPiece_Cmlabel;
+    }
+
+    public void setPPiece_Cmlabel(JLabel PPiece_Cmlabel) {
+        this.PPiece_Cmlabel = PPiece_Cmlabel;
+    }
+
+    public JRadioButton getPerimatreTriple_Radio() {
+        return PerimatreTriple_Radio;
+    }
+
+    public void setPerimatreTriple_Radio(JRadioButton PerimatreTriple_Radio) {
+        this.PerimatreTriple_Radio = PerimatreTriple_Radio;
+    }
+
+    public JRadioButton getPerimetreDouble_Radio() {
+        return PerimetreDouble_Radio;
+    }
+
+    public void setPerimetreDouble_Radio(JRadioButton PerimetreDouble_Radio) {
+        this.PerimetreDouble_Radio = PerimetreDouble_Radio;
+    }
+
+    public JLabel getProfondeur_CMlabel() {
+        return Profondeur_CMlabel;
+    }
+
+    public void setProfondeur_CMlabel(JLabel Profondeur_CMlabel) {
+        this.Profondeur_CMlabel = Profondeur_CMlabel;
+    }
+
+    public JButton getRedo_Button() {
+        return Redo_Button;
+    }
+
+    public void setRedo_Button(JButton Redo_Button) {
+        this.Redo_Button = Redo_Button;
+    }
+
+    public JButton getUndo_Buitton() {
+        return Undo_Buitton;
+    }
+
+    public void setUndo_Buitton(JButton Undo_Buitton) {
+        this.Undo_Buitton = Undo_Buitton;
+    }
+
+    public AfficheurEtagere2D getAfficheur() {
+        return afficheur;
+    }
+
+    public void setAfficheur(AfficheurEtagere2D afficheur) {
+        this.afficheur = afficheur;
+    }
+
+    public JMenuItem getExporterListePieces() {
+        return exporterListePieces;
+    }
+
+    public void setExporterListePieces(JMenuItem exporterListePieces) {
+        this.exporterListePieces = exporterListePieces;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public void setjLabel11(JLabel jLabel11) {
+        this.jLabel11 = jLabel11;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
     }
     
 
@@ -1260,19 +1519,7 @@ public class GUI extends javax.swing.JFrame {
         this.jLabel1 = jLabel1;
     }
 
-    /**
-     * @return the jList1
-     */
-    public javax.swing.JList<String> getjList1() {
-        return jList1;
-    }
-
-    /**
-     * @param jList1 the jList1 to set
-     */
-    public void setjList1(javax.swing.JList<String> jList1) {
-        this.jList1 = jList1;
-    }
+    
 
     /**
      * @return the jMenu1
@@ -1459,47 +1706,9 @@ public class GUI extends javax.swing.JFrame {
     /**
      * @return the jScrollPane1
      */
-    public javax.swing.JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    /**
-     * @param jScrollPane1 the jScrollPane1 to set
-     */
-    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
-
-    /**
-     * @return the jScrollPane2
-     */
-    public javax.swing.JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    /**
-     * @param jScrollPane2 the jScrollPane2 to set
-     */
-    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
-        this.jScrollPane2 = jScrollPane2;
-    }
-
    
 
-    /**
-     * @return the jTextPane1
-     */
-    public javax.swing.JTextPane getjTextPane1() {
-        return jTextPane1;
-    }
-
-    /**
-     * @param jTextPane1 the jTextPane1 to set
-     */
-    public void setjTextPane1(javax.swing.JTextPane jTextPane1) {
-        this.jTextPane1 = jTextPane1;
-    }
-
+    
     
     
 }

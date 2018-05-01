@@ -55,6 +55,7 @@ public class Controleur {
 
     public void setMontantVerticalSelectionne(MontantCaissonVertical MontantVerticalSelectionne) {
         this.MontantVerticalSelectionne = MontantVerticalSelectionne;
+        this.afficheur.redraw();
     }
 
     public boolean isAjouteetageMode() {
