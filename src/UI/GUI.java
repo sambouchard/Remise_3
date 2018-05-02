@@ -877,6 +877,9 @@ public class GUI extends javax.swing.JFrame {
         if(Controleur.getInstance().getMontantVerticalSelectionne() != null){
             Controleur.getInstance().SupprimeMontantVertical();
         }
+        else if(Controleur.getInstance().getMontantEtageHorizontalSelectionne()!= null){
+            Controleur.getInstance().SupprimeMontantHorizontal();
+        }
     }//GEN-LAST:event_DeleteMontant_ButtonMouseClicked
 
     private void LargeurRelCaisson_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LargeurRelCaisson_FieldKeyPressed

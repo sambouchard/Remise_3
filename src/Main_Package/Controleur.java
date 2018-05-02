@@ -48,6 +48,17 @@ public class Controleur {
     private Etage etageSelectionne = null;
     private Caisson CaissonSelectionne = null;
     private MontantCaissonVertical MontantVerticalSelectionne = null;
+    private MontantEtageHorizontal montantEtageHorizontalSelectionne = null;
+
+    public MontantEtageHorizontal getMontantEtageHorizontalSelectionne() {
+        return montantEtageHorizontalSelectionne;
+    }
+
+    public void setMontantEtageHorizontalSelectionne(MontantEtageHorizontal montantEtageHorizontal) {
+        this.montantEtageHorizontalSelectionne = montantEtageHorizontal;
+        this.MontantVerticalSelectionne = null;
+        this.afficheur.redraw();
+    }
 
     public MontantCaissonVertical getMontantVerticalSelectionne() {
         return MontantVerticalSelectionne;
@@ -55,6 +66,7 @@ public class Controleur {
 
     public void setMontantVerticalSelectionne(MontantCaissonVertical MontantVerticalSelectionne) {
         this.MontantVerticalSelectionne = MontantVerticalSelectionne;
+        this.montantEtageHorizontalSelectionne = null;
         this.afficheur.redraw();
     }
 
@@ -150,18 +162,19 @@ public class Controleur {
                     .setScale(3, RoundingMode.HALF_UP)
                     .doubleValue())));
         }
-        if(getCaissonSelectionne()!=null){
+        if (getCaissonSelectionne() != null) {
             this.Vue.getLargeurRelCaisson_Field().setText(String.valueOf(BigDecimal.valueOf(Controleur.getInstance().getCaissonSelectionne().getLargeurRel())
                     .setScale(3, RoundingMode.HALF_UP)
                     .doubleValue()));
         }
 
     }
-    public void setLrelativeCaissonSelectionne(double newLrel){
-        if(CaissonSelectionne.getId() != etageSelectionne.getListecaissons().length-1){
+
+    public void setLrelativeCaissonSelectionne(double newLrel) {
+        if (CaissonSelectionne.getId() != etageSelectionne.getListecaissons().length - 1) {
             try {
                 double difference = newLrel - CaissonSelectionne.getLargeurRel();
-                Double newLrelCaissondroit = etageSelectionne.getListecaissons()[CaissonSelectionne.getId()+ 1].getLargeurRel() - difference;
+                Double newLrelCaissondroit = etageSelectionne.getListecaissons()[CaissonSelectionne.getId() + 1].getLargeurRel() - difference;
                 if (newLrelCaissondroit < 0) {
                     throw new ArithmeticException("E est negatif!");
                 } else {
@@ -174,11 +187,10 @@ public class Controleur {
             } catch (Exception ex) {
                 System.out.println("error: e est negatif");
             }
-        }
-        else if(CaissonSelectionne.getId() == etageSelectionne.getListecaissons().length-1){
+        } else if (CaissonSelectionne.getId() == etageSelectionne.getListecaissons().length - 1) {
             try {
                 double difference = newLrel - CaissonSelectionne.getLargeurRel();
-                Double newLrelCaissondroit = etageSelectionne.getListecaissons()[CaissonSelectionne.getId()- 1].getLargeurRel() - difference;
+                Double newLrelCaissondroit = etageSelectionne.getListecaissons()[CaissonSelectionne.getId() - 1].getLargeurRel() - difference;
                 if (newLrelCaissondroit < 0) {
                     throw new ArithmeticException("E est negatif!");
                 } else {
@@ -259,19 +271,6 @@ public class Controleur {
         this.Vue.getLargeurPieceSelecrtionneField().setText(String.valueOf(piece.getLargeur()));
         this.Vue.getHauteurPieceSelecrtionneField().setText(String.valueOf(piece.getHauteur()));
         this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
-    }
-
-    
-
-    public void enleveCaisson(int caissonid, int etageid) {
-        if (caissonid != -1 || etageid != -1) {
-            getEtagere().getListeetages()[etageid].SupprimeCaisson(caissonid);
-        }
-    }
-
-    public void ajouteCaisson(double l_rel, int index) {
-        getEtagere().getListeetages()[index].AjouteCaisson(l_rel);
-
     }
 
     /**
@@ -393,9 +392,8 @@ public class Controleur {
         for (Etage etages : etagere.getListeetages()) {
             if (etages.getId() <= etage.getId()) {
                 newlistetage[etages.getId()] = etages;
-            }
-            else if(etages.getId()>=newetage.getId()){
-                newlistetage[etages.getId()+1] = etages;
+            } else if (etages.getId() >= newetage.getId()) {
+                newlistetage[etages.getId() + 1] = etages;
             }
         }
 
@@ -415,38 +413,36 @@ public class Controleur {
         } else {
             largeur_dispo = etagere.getLargeur() - 4 * etagere.getEpaisseurDouble() + (etage.getNb_Caisson() - 1) * 3 * etagere.getEpaisseurTriple();
         }
-        double newLrel = (NewX-caisson.getX())/largeur_dispo;
+        double newLrel = (NewX - caisson.getX()) / largeur_dispo;
         caisson.setLargeurRel(newLrel);
-        Caisson newcaisson = new Caisson(oldLrel-newLrel);
-        Caisson [] newlistCaisson = new Caisson[etage.getNb_Caisson()];
-        newlistCaisson[caisson.getId()+1] = newcaisson;
-        newcaisson.setId(caisson.getId()+1);
-        for(Caisson caissons:etage.getListecaissons()){
-            if(caissons.getId()<=caisson.getId()){
+        Caisson newcaisson = new Caisson(oldLrel - newLrel);
+        Caisson[] newlistCaisson = new Caisson[etage.getNb_Caisson()];
+        newlistCaisson[caisson.getId() + 1] = newcaisson;
+        newcaisson.setId(caisson.getId() + 1);
+        for (Caisson caissons : etage.getListecaissons()) {
+            if (caissons.getId() <= caisson.getId()) {
                 newlistCaisson[caissons.getId()] = caissons;
-            }
-            else if(caissons.getId() >= caisson.getId()){
-                newlistCaisson[caissons.getId()+1] = caissons;
+            } else if (caissons.getId() >= caisson.getId()) {
+                newlistCaisson[caissons.getId() + 1] = caissons;
             }
         }
-        
+
         etage.setListecaissons(newlistCaisson);
         etagere.GenererPieces();
         setAjouteCaissonMode(false);
         afficheur.redraw();
     }
-    
-    public void SupprimeMontantVertical(){
-        MontantVerticalSelectionne.getEtageconteneur().setNb_Caisson(MontantVerticalSelectionne.getEtageconteneur().getNb_Caisson()-1);
-        MontantVerticalSelectionne.getCaisson_gauche().setLargeurRel(MontantVerticalSelectionne.getCaisson_gauche().getLargeurRel()+
-                MontantVerticalSelectionne.getCaisson_droite().getLargeurRel());
+
+    public void SupprimeMontantVertical() {
+        MontantVerticalSelectionne.getEtageconteneur().setNb_Caisson(MontantVerticalSelectionne.getEtageconteneur().getNb_Caisson() - 1);
+        MontantVerticalSelectionne.getCaisson_gauche().setLargeurRel(MontantVerticalSelectionne.getCaisson_gauche().getLargeurRel()
+                + MontantVerticalSelectionne.getCaisson_droite().getLargeurRel());
         Caisson[] newlist = new Caisson[MontantVerticalSelectionne.getEtageconteneur().getNb_Caisson()];
-        for(Caisson caisson: MontantVerticalSelectionne.getEtageconteneur().getListecaissons()){
-            if(caisson.getId() < MontantVerticalSelectionne.getCaisson_droite().getId()){
+        for (Caisson caisson : MontantVerticalSelectionne.getEtageconteneur().getListecaissons()) {
+            if (caisson.getId() < MontantVerticalSelectionne.getCaisson_droite().getId()) {
                 newlist[caisson.getId()] = caisson;
-            }
-            else if(caisson.getId()>MontantVerticalSelectionne.getCaisson_droite().getId()){
-                newlist[caisson.getId()-1] = caisson;
+            } else if (caisson.getId() > MontantVerticalSelectionne.getCaisson_droite().getId()) {
+                newlist[caisson.getId() - 1] = caisson;
             }
         }
         MontantVerticalSelectionne.getEtageconteneur().setListecaissons(newlist);
@@ -454,4 +450,23 @@ public class Controleur {
         setMontantVerticalSelectionne(null);
         afficheur.redraw();
     }
+
+    public void SupprimeMontantHorizontal() {
+        this.etagere.setNb_etages(this.etagere.getNb_etages() - 1);
+        montantEtageHorizontalSelectionne.getEtage_dessus().setHauteur_rel(montantEtageHorizontalSelectionne.getEtage_dessus().getHauteur_rel()
+                + montantEtageHorizontalSelectionne.getEtage_dessous().getHauteur_rel());
+        Etage[] newlistEtages = new Etage[this.etagere.getNb_etages()];
+        for (Etage etage : this.etagere.getListeetages()) {
+            if (etage.id < montantEtageHorizontalSelectionne.getEtage_dessous().getId()) {
+                newlistEtages[etage.getId()] = etage;
+            } else if (etage.id > montantEtageHorizontalSelectionne.getEtage_dessous().getId()) {
+                newlistEtages[etage.getId() - 1] = etage;
+            }
+        }
+        this.etagere.setListeetages(newlistEtages);
+        etagere.GenererPieces();
+        setMontantEtageHorizontalSelectionne(null);
+        this.afficheur.redraw();
+    }
+
 }
