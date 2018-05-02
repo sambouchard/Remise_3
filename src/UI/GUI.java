@@ -4,21 +4,17 @@ import Main_Package.Controleur;
 import java.awt.Color;
 import Main_Package.Etagere;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import javax.swing.InputVerifier;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -227,11 +223,6 @@ public class GUI extends javax.swing.JFrame {
         Undo_Buitton.setBorderPainted(false);
         Undo_Buitton.setFocusPainted(false);
         Undo_Buitton.setIconTextGap(6);
-        Undo_Buitton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Undo_BuittonMouseClicked(evt);
-            }
-        });
         Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Undo_BuittonActionPerformed(evt);
@@ -304,13 +295,13 @@ public class GUI extends javax.swing.JFrame {
         Hauteur_Label.setText("Hauteur");
 
         Hauteur_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Hauteur_Cmlabel.setText("Cm");
+        Hauteur_Cmlabel.setText("cm");
 
         Largeur_Label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Largeur_Label.setText("Largeur");
 
         Largeur_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Largeur_Cmlabel.setText("Cm");
+        Largeur_Cmlabel.setText("cm");
 
         Largeur_TextField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Largeur_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +323,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         Profondeur_CMlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Profondeur_CMlabel.setText("Cm");
+        Profondeur_CMlabel.setText("cm");
 
         Profondeur_Label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Profondeur_Label.setText("Profondeur");
@@ -463,20 +454,22 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setText("Hauteur");
 
         PPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        PPiece_Cmlabel.setText("Cm");
+        PPiece_Cmlabel.setText("cm");
 
         HPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        HPiece_Cmlabel.setText("Cm");
+        HPiece_Cmlabel.setText("cm");
 
         jLabel3.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         jLabel3.setText("Largeur");
 
         LargeurPieceSelecrtionneField.setEditable(false);
         LargeurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        LargeurPieceSelecrtionneField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         LargeurPieceSelecrtionneField.setBorder(null);
 
         HauteurPieceSelecrtionneField.setEditable(false);
         HauteurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        HauteurPieceSelecrtionneField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         HauteurPieceSelecrtionneField.setToolTipText("");
         HauteurPieceSelecrtionneField.setBorder(null);
 
@@ -485,6 +478,7 @@ public class GUI extends javax.swing.JFrame {
 
         ProfondeurPieceSelecrtionneField.setEditable(false);
         ProfondeurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        ProfondeurPieceSelecrtionneField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         ProfondeurPieceSelecrtionneField.setBorder(null);
         ProfondeurPieceSelecrtionneField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -498,7 +492,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         LPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        LPiece_Cmlabel.setText("Cm");
+        LPiece_Cmlabel.setText("cm");
 
         jLabel4.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         jLabel4.setText("Profondeur");
@@ -895,11 +889,6 @@ public class GUI extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_MenuBtnNouveauActionPerformed
 
-    private void Undo_BuittonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Undo_BuittonMouseClicked
-        Controleur.getInstance().undo();
-        System.out.println("UI.GUI.jButton22MouseClicked()");
-    }//GEN-LAST:event_Undo_BuittonMouseClicked
-
     private void MenuSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSauvegarderActionPerformed
         JFileChooser explorer = new JFileChooser();
         int ack = explorer.showSaveDialog(null);
@@ -1105,12 +1094,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void Metrique_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Metrique_ButtonStateChanged
         if(Metrique_Button.isSelected()){
-            Hauteur_Cmlabel.setText("Cm");
-            Largeur_Cmlabel.setText("Cm");
-            Profondeur_CMlabel.setText("Cm");
-            HPiece_Cmlabel.setText("Cm");
-            LPiece_Cmlabel.setText("Cm");
-            PPiece_Cmlabel.setText("Cm");
+            Hauteur_Cmlabel.setText("cm");
+            Largeur_Cmlabel.setText("cm");
+            Profondeur_CMlabel.setText("cm");
+            HPiece_Cmlabel.setText("cm");
+            LPiece_Cmlabel.setText("cm");
+            PPiece_Cmlabel.setText("cm");
             Controleur.getInstance().updatevue();
         }
     }//GEN-LAST:event_Metrique_ButtonStateChanged
