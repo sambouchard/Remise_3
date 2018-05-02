@@ -377,6 +377,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel10.setText("Épaisseur d'un panneau triple");
 
         EpaisseurTriple_Field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        EpaisseurTriple_Field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EpaisseurTriple_FieldKeyPressed(evt);
+            }
+        });
 
         EpaisseurTriple_Mesure.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         EpaisseurTriple_Mesure.setText("Po");
@@ -388,6 +393,11 @@ public class GUI extends javax.swing.JFrame {
         EpaisseurDouble_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EpaisseurDouble_FieldActionPerformed(evt);
+            }
+        });
+        EpaisseurDouble_Field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EpaisseurDouble_FieldKeyPressed(evt);
             }
         });
 
@@ -1032,14 +1042,23 @@ public class GUI extends javax.swing.JFrame {
     private void jCheckBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox2ItemStateChanged
         if(jCheckBox2.isSelected()){
             Controleur.getInstance().setDepasse(true);
-        }
-        if(jCheckBox2.isSelected()){
+        } else {
             Controleur.getInstance().setDepasse(false);
         }
+        
+        Controleur.getInstance().getEtagere().GenererPieces();
+        Controleur.getInstance().getAfficheur().redraw();
     }//GEN-LAST:event_jCheckBox2ItemStateChanged
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()) {
+            Controleur.getInstance().getEtagere().setestferme(true);
+        } else {
+            Controleur.getInstance().getEtagere().setestferme(false);
+        }
+
+        Controleur.getInstance().getEtagere().GenererPieces();
+        Controleur.getInstance().getAfficheur().redraw();
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void LargeurRelCaisson_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LargeurRelCaisson_FieldKeyPressed
@@ -1207,6 +1226,18 @@ public class GUI extends javax.swing.JFrame {
     private void HauteurPieceSelecrtionneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HauteurPieceSelecrtionneFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HauteurPieceSelecrtionneFieldActionPerformed
+
+    private void EpaisseurDouble_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpaisseurDouble_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().getEtagere().setEpaisseurDouble(Double.parseDouble(EpaisseurDouble_Field.getText()));
+        }
+    }//GEN-LAST:event_EpaisseurDouble_FieldKeyPressed
+
+    private void EpaisseurTriple_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpaisseurTriple_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().getEtagere().setEpaisseurTriple(Double.parseDouble(EpaisseurTriple_Field.getText()));
+        }
+    }//GEN-LAST:event_EpaisseurTriple_FieldKeyPressed
 
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
