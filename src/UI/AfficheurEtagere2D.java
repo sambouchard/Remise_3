@@ -276,14 +276,14 @@ public class AfficheurEtagere2D extends JPanel {
             prevDraggedY = p2.getY();
             
             if(Controleur.getInstance().getMontantVerticalSelectionne() == null && Controleur.getInstance().getMontantEtageHorizontalSelectionne() == null){
-                for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
-                    
-                    if (piece.contains(p2)) {
-                        piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy);
-                        repaint();
-                        break;
-                    }
-                }
+//                for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
+//                    
+//                    if (piece.contains(p2)) {
+//                        piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy);
+//                        repaint();
+//                        break;
+//                    }
+//                }
                 for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
                     etage.x += dx;
                     etage.y += dy;
@@ -309,7 +309,6 @@ public class AfficheurEtagere2D extends JPanel {
                 Controleur.getInstance().getAfficheur().redraw();
             }
             Controleur.getInstance().getAfficheur().redraw();
-
         }
 
     }

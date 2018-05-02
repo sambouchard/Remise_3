@@ -366,8 +366,14 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         if (CreateEtagereButton.isEnabled()) {
             boolean isInMeters = Mesuremetrique_radio.isSelected();
             Controleur.getInstance().setMesureMetrique(isInMeters);
-            Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
+            if (isInMeters) {
+                Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
                     Double.parseDouble(this.Profondeur_field.getText()), 1, false, true, Perimetredouble_radio.isSelected());
+            } else {
+                Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()) * 2.54, Double.parseDouble(this.Largeur_field.getText()) * 2.54,
+                    Double.parseDouble(this.Profondeur_field.getText()) * 2.54, 1, false, true, Perimetredouble_radio.isSelected());
+            }
+            
             Controleur.getInstance().updatevue();
             Controleur.getInstance().setAjouteetageMode(false);
             Controleur.getInstance().setAjouteCaissonMode(false);

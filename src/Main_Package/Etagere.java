@@ -269,7 +269,7 @@ public class Etagere implements java.io.Serializable {
         if (isPiecedepasse()) {
             Piece piecehaut = new Piece(epaisseurTriple, this.largeur, this.profondeur, "Piece du haut1");
             piecehaut.setDrawingcoin(new Coord_Coins(0, 0, 0));
-            Piece piecehaut1 = new Piece(epaisseurTriple, this.largeur - 2 * (0.5 * 2.54), this.profondeur, "Piece du haut2");
+            Piece piecehaut1 = new Piece(epaisseurTriple, this.largeur - 2 * epaisseurTriple, this.profondeur, "Piece du haut2");
             piecehaut1.setDrawingcoin(new Coord_Coins(epaisseurTriple, epaisseurTriple, 0));
             this.getListe_piece().add(piecehaut);
             this.getListe_piece().add(piecehaut1);
