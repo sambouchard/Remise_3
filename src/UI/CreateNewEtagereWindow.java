@@ -379,7 +379,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             Controleur.getInstance().setAjouteCaissonMode(false);
             Controleur.getInstance().setCaissonSelectionne(null);
             Controleur.getInstance().setEtageSelectionne(null);
-//            Controleur.getInstance().setPieceSelectionner(null);
+            Controleur.getInstance().setPieceSelectionner(null);
             this.setVisible(false);
             this.remove(this);
         }

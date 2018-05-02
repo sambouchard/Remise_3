@@ -294,6 +294,9 @@ public class Controleur {
     }
 
     public void setPieceSelectionner(Piece piece) {
+        if (piece == null) {
+            return;
+        }
         pieceSelectionner = piece;
         if (mesureMetrique) {
             this.Vue.getLargeurPieceSelecrtionneField().setText(String.format("%.2f", piece.getLargeur()));
