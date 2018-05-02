@@ -7,6 +7,9 @@ package Main_Package;
 
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -27,13 +30,16 @@ public class Feuille {
     public int indexactuel;
     public List<Piece> listepiecesphysiques = new ArrayList();
     public List<Rectangle2D> tempListeEspaceLibre = new ArrayList();
+    public boolean isdouble = false;
 
     
-    public Feuille(){
+    public Feuille(Boolean estdouble){
         Rectangle2D.Double vide = new Rectangle2D.Double(0,0,largeur,hauteur);
         listeEspaceLibre.add(vide);
+        isdouble = estdouble;
     }
     
+    //La méthode a été remplacée par ajouter2()
     public boolean ajouter(Rectangle2D rect){
         boolean fits = false;
         
@@ -148,6 +154,21 @@ public class Feuille {
                 }
             }
         }
+        Collections.sort(tempListeEspaceLibre, new Comparator<Rectangle2D>() {
+            @Override
+            public int compare(Rectangle2D p1, Rectangle2D p2) {
+                double[] p1valeurs = {p1.getHeight(),p1.getWidth()};
+                double[] p2valeurs = {p2.getHeight(),p2.getWidth()};
+                Arrays.sort(p1valeurs);
+                Arrays.sort(p2valeurs);
+                int valeur = Double.compare(-p1valeurs[p1valeurs.length-1], -p2valeurs[p2valeurs.length-1]);
+                if (valeur == 0){
+                    return Double.compare(-p1valeurs[p1valeurs.length-2], -p2valeurs[p2valeurs.length-2]);
+                }
+                return valeur;
+            }
+        });
+
         listeEspaceLibre = new ArrayList(tempListeEspaceLibre);
     }
     

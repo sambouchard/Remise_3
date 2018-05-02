@@ -64,6 +64,16 @@ public class Export extends JPanel {
         g2d.fill(blanc);
         int index = 0;
         int indextexte = 1;
+        String Titre;
+        if(!listeFeuilles.get(numerofeuille).isdouble){
+            Titre = "Feuille #" + Integer.toString(numerofeuille+1)+ ", 4\' x 8\' x " + Double.toString(Controleur.getInstance().getEtagere().getEpaisseurDouble()/2.54) + "\"" ;   
+        }
+        else{
+            Titre = "Feuille #" + Integer.toString(numerofeuille+1)+ ", 4\' x 8\' x " + Double.toString(Controleur.getInstance().getEtagere().getEpaisseurTriple()/2.54) + "\"" ;   
+        }
+        g2d.setColor(Color.BLACK);
+        g2d.drawString(Titre, (int)Math.round(fac*121.92), (int) g.getFontMetrics().getHeight());
+
         for(Rectangle2D rect: listeFeuilles.get(numerofeuille).listePieces){
             g2d.setColor(Color.BLACK);
             String label;
@@ -129,7 +139,7 @@ public class Export extends JPanel {
             boolean feuillesremplies = false;
             while(feuillesremplies == false){
 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(true);
                 listeFeuilles.add(feuille);
                 for(int i=0;i<2;i++){
                     for(Piece piece: listePerimetre){
@@ -166,7 +176,7 @@ public class Export extends JPanel {
             feuillesremplies = false;
             while(feuillesremplies == false){
 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(false);
                 listeFeuilles.add(feuille);
                 for(int i=0;i<2;i++){
                     for(Piece piece: listePieces){
@@ -202,7 +212,7 @@ public class Export extends JPanel {
             boolean feuillesremplies = false;
             while(feuillesremplies == false){
                 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(false);
                 listeFeuilles.add(feuille);
                 for(int i=0;i<2;i++){
                     for(Piece piece: listePieces){
@@ -273,7 +283,8 @@ public class Export extends JPanel {
         if (!Controleur.getInstance().getEtagere().isPerimetretriple()){
             //Pièces du périmètre les identifier par leur nom
             List<Piece> listePerimetre = new ArrayList();
-            for (Piece piece: listePieces){
+            List<Piece> listeTempPieces = new ArrayList(listePieces);            
+            for (Piece piece: listeTempPieces){
                 String nom = piece.getNom();
                 if(piece.getHauteur() == Controleur.getInstance().getEtagere().getEpaisseurDouble() || piece.getLargeur() == Controleur.getInstance().getEtagere().getEpaisseurDouble()){
                     listePerimetre.add(piece);
@@ -284,7 +295,7 @@ public class Export extends JPanel {
             boolean feuillesremplies = false;
             while(feuillesremplies == false){
 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(true);
                 listeFeuilles.add(feuille);
 
                 for(Piece piece: listePerimetre){
@@ -318,7 +329,7 @@ public class Export extends JPanel {
             feuillesremplies = false;
             while(feuillesremplies == false){
 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(false);
                 listeFeuilles.add(feuille);
 
                 for(Piece piece: listePieces){
@@ -352,7 +363,7 @@ public class Export extends JPanel {
             boolean feuillesremplies = false;
             while(feuillesremplies == false){
 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(false);
                 listeFeuilles.add(feuille);
 
                 for(Piece piece: listePieces){
