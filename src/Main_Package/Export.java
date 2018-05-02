@@ -64,6 +64,16 @@ public class Export extends JPanel {
         g2d.fill(blanc);
         int index = 0;
         int indextexte = 1;
+        String Titre;
+        if(!listeFeuilles.get(numerofeuille).isdouble){
+            Titre = "Feuille #" + Integer.toString(numerofeuille+1)+ ", 4\' x 8\' x " + Double.toString(Controleur.getInstance().getEtagere().getEpaisseurDouble()/2.54) + "\"" ;   
+        }
+        else{
+            Titre = "Feuille #" + Integer.toString(numerofeuille+1)+ ", 4\' x 8\' x " + Double.toString(Controleur.getInstance().getEtagere().getEpaisseurTriple()/2.54) + "\"" ;   
+        }
+        g2d.setColor(Color.BLACK);
+        g2d.drawString(Titre, (int)Math.round(fac*121.92), (int) g.getFontMetrics().getHeight());
+
         for(Rectangle2D rect: listeFeuilles.get(numerofeuille).listePieces){
             g2d.setColor(Color.BLACK);
             String label;
@@ -129,7 +139,7 @@ public class Export extends JPanel {
             boolean feuillesremplies = false;
             while(feuillesremplies == false){
 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(true);
                 listeFeuilles.add(feuille);
                 for(int i=0;i<2;i++){
                     for(Piece piece: listePerimetre){
@@ -166,7 +176,7 @@ public class Export extends JPanel {
             feuillesremplies = false;
             while(feuillesremplies == false){
 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(false);
                 listeFeuilles.add(feuille);
                 for(int i=0;i<2;i++){
                     for(Piece piece: listePieces){
@@ -202,7 +212,7 @@ public class Export extends JPanel {
             boolean feuillesremplies = false;
             while(feuillesremplies == false){
                 
-                Feuille feuille = new Feuille();
+                Feuille feuille = new Feuille(false);
                 listeFeuilles.add(feuille);
                 for(int i=0;i<2;i++){
                     for(Piece piece: listePieces){
@@ -231,6 +241,154 @@ public class Export extends JPanel {
                         feuillesremplies = true;
                         break;
                     }
+                }
+            }
+        }
+        Export export = new Export();
+        export.setBackground(Color.WHITE);
+        JFrame frame = new JFrame("Plan de coupe");
+        frame.setBackground(Color.WHITE);
+        frame.add(export);
+        frame.setSize( (int)Math.ceil(largeur*fac)+200, (int)Math.ceil(hauteur*fac));
+        //frame.setVisible(true);
+        
+        for (numerofeuille = 0;numerofeuille<listeFeuilles.size();numerofeuille++){
+            export.save(numerofeuille, file);
+        }
+        
+        
+    }
+    public static void genererPlanDeCoupe2(File file){
+        listeFeuilles.clear();
+        listePiecesAjoutees.clear();
+        List<Piece> listePieces = new ArrayList(Controleur.getInstance().getEtagere().getListe_piece());
+        
+        Collections.sort(listePieces, new Comparator<Piece>() {
+            @Override
+            public int compare(Piece p1, Piece p2) {
+                double[] p1valeurs = {p1.getHauteur(),p1.getLargeur(),p1.getProfondeur()};
+                double[] p2valeurs = {p2.getHauteur(),p2.getLargeur(),p2.getProfondeur()};
+                Arrays.sort(p1valeurs);
+                Arrays.sort(p2valeurs);
+                int valeur = Double.compare(-p1valeurs[p1valeurs.length-1], -p2valeurs[p2valeurs.length-1]);
+                if (valeur == 0){
+                    return Double.compare(-p1valeurs[p1valeurs.length-2], -p2valeurs[p2valeurs.length-2]);
+                }
+                return valeur;
+            }
+        });
+                   
+        
+        //Si périmètre double, on doit avoir deux épaisseurs distinctes pour le périmètre et pour le reste des pièces.
+        if (!Controleur.getInstance().getEtagere().isPerimetretriple()){
+            //Pièces du périmètre les identifier par leur nom
+            List<Piece> listePerimetre = new ArrayList();
+            List<Piece> listeTempPieces = new ArrayList(listePieces);            
+            for (Piece piece: listeTempPieces){
+                String nom = piece.getNom();
+                if(piece.getHauteur() == Controleur.getInstance().getEtagere().getEpaisseurDouble() || piece.getLargeur() == Controleur.getInstance().getEtagere().getEpaisseurDouble()){
+                    listePerimetre.add(piece);
+                    listePieces.remove(piece);
+                }
+            }
+            //Les pièces du périmètre double doivent être traitées séparément car leur épaisseur est différente.
+            boolean feuillesremplies = false;
+            while(feuillesremplies == false){
+
+                Feuille feuille = new Feuille(true);
+                listeFeuilles.add(feuille);
+
+                for(Piece piece: listePerimetre){
+
+                    double[] valeurs = {piece.getHauteur(),piece.getLargeur(),piece.getProfondeur()};
+                    Arrays.sort(valeurs);
+
+                    Rectangle2D.Double rect = new Rectangle2D.Double(0,0,valeurs[1],valeurs[2]);
+                    if(feuille.ajouter2(rect)){
+                        listePiecesAjoutees.add(piece);
+                    }
+                }
+
+                for(Piece piece:listePiecesAjoutees){
+                    listePerimetre.remove(piece);
+                }
+
+                for (Piece pieceajoute:listePiecesAjoutees){
+                    feuille.listepiecesphysiques.add(pieceajoute);
+                }
+
+                listePiecesAjoutees.clear();
+
+
+                if(listePerimetre.isEmpty()){
+                    feuillesremplies = true;
+                    break;
+                }
+            }            
+            //On traite ensuite les pièces normales.
+            feuillesremplies = false;
+            while(feuillesremplies == false){
+
+                Feuille feuille = new Feuille(false);
+                listeFeuilles.add(feuille);
+
+                for(Piece piece: listePieces){
+
+                    double[] valeurs = {piece.getHauteur(),piece.getLargeur(),piece.getProfondeur()};
+                    Arrays.sort(valeurs);
+
+                    Rectangle2D.Double rect = new Rectangle2D.Double(0,0,valeurs[1],valeurs[2]);
+                    if(feuille.ajouter2(rect)){
+                        listePiecesAjoutees.add(piece);
+                    }
+                }
+                
+                for(Piece piece:listePiecesAjoutees){
+                        listePieces.remove(piece);
+                    }
+
+                for (Piece pieceajoute:listePiecesAjoutees){
+                    feuille.listepiecesphysiques.add(pieceajoute);
+                }
+
+                listePiecesAjoutees.clear();
+
+                if(listePieces.isEmpty()){
+                    feuillesremplies = true;
+                    break;
+                }
+            }
+        }
+        else{//Pour les étagères au périmètre triple.
+            boolean feuillesremplies = false;
+            while(feuillesremplies == false){
+
+                Feuille feuille = new Feuille(false);
+                listeFeuilles.add(feuille);
+
+                for(Piece piece: listePieces){
+
+                    double[] valeurs = {piece.getHauteur(),piece.getLargeur(),piece.getProfondeur()};
+                    Arrays.sort(valeurs);
+
+                    Rectangle2D.Double rect = new Rectangle2D.Double(0,0,valeurs[1],valeurs[2]);
+                    if(feuille.ajouter2(rect)){
+                        listePiecesAjoutees.add(piece);
+                    }
+                }
+                for(Piece piece:listePiecesAjoutees){
+                        listePieces.remove(piece);
+                    }
+                
+                for (Piece pieceajoute:listePiecesAjoutees){
+                    feuille.listepiecesphysiques.add(pieceajoute);
+                }
+
+                listePiecesAjoutees.clear();
+
+                if(listePieces.isEmpty()){
+                    feuillesremplies = true;
+                    break;
                 }
             }
         }
