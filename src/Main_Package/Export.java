@@ -248,6 +248,149 @@ public class Export extends JPanel {
         
         
     }
+    public static void genererPlanDeCoupe2(File file){
+        listeFeuilles.clear();
+        listePiecesAjoutees.clear();
+        List<Piece> listePieces = new ArrayList(Controleur.getInstance().getEtagere().getListe_piece());
+        
+        Collections.sort(listePieces, new Comparator<Piece>() {
+            @Override
+            public int compare(Piece p1, Piece p2) {
+                double[] p1valeurs = {p1.getHauteur(),p1.getLargeur(),p1.getProfondeur()};
+                double[] p2valeurs = {p2.getHauteur(),p2.getLargeur(),p2.getProfondeur()};
+                Arrays.sort(p1valeurs);
+                Arrays.sort(p2valeurs);
+                return Double.compare(-p1valeurs[p1valeurs.length-1], -p2valeurs[p2valeurs.length-1]);
+            }
+        });
+                   
+        
+        //Si périmètre double, on doit avoir deux épaisseurs distinctes pour le périmètre et pour le reste des pièces.
+        if (!Controleur.getInstance().getEtagere().isPerimetretriple()){
+            //Pièces du périmètre les identifier par leur nom
+            List<Piece> listePerimetre = new ArrayList();
+            for (Piece piece: listePieces){
+                String nom = piece.getNom();
+                if(piece.getHauteur() == Controleur.getInstance().getEtagere().getEpaisseurDouble() || piece.getLargeur() == Controleur.getInstance().getEtagere().getEpaisseurDouble()){
+                    listePerimetre.add(piece);
+                    listePieces.remove(piece);
+                }
+            }
+            //Les pièces du périmètre double doivent être traitées séparément car leur épaisseur est différente.
+            boolean feuillesremplies = false;
+            while(feuillesremplies == false){
+
+                Feuille feuille = new Feuille();
+                listeFeuilles.add(feuille);
+
+                for(Piece piece: listePerimetre){
+
+                    double[] valeurs = {piece.getHauteur(),piece.getLargeur(),piece.getProfondeur()};
+                    Arrays.sort(valeurs);
+
+                    Rectangle2D.Double rect = new Rectangle2D.Double(0,0,valeurs[1],valeurs[2]);
+                    if(feuille.ajouter2(rect)){
+                        listePiecesAjoutees.add(piece);
+                    }
+                }
+
+                for(Piece piece:listePiecesAjoutees){
+                    listePerimetre.remove(piece);
+                }
+
+                for (Piece pieceajoute:listePiecesAjoutees){
+                    feuille.listepiecesphysiques.add(pieceajoute);
+                }
+
+                listePiecesAjoutees.clear();
+
+
+                if(listePerimetre.isEmpty()){
+                    feuillesremplies = true;
+                    break;
+                }
+            }            
+            //On traite ensuite les pièces normales.
+            feuillesremplies = false;
+            while(feuillesremplies == false){
+
+                Feuille feuille = new Feuille();
+                listeFeuilles.add(feuille);
+
+                for(Piece piece: listePieces){
+
+                    double[] valeurs = {piece.getHauteur(),piece.getLargeur(),piece.getProfondeur()};
+                    Arrays.sort(valeurs);
+
+                    Rectangle2D.Double rect = new Rectangle2D.Double(0,0,valeurs[1],valeurs[2]);
+                    if(feuille.ajouter2(rect)){
+                        listePiecesAjoutees.add(piece);
+                    }
+                }
+                
+                for(Piece piece:listePiecesAjoutees){
+                        listePieces.remove(piece);
+                    }
+
+                for (Piece pieceajoute:listePiecesAjoutees){
+                    feuille.listepiecesphysiques.add(pieceajoute);
+                }
+
+                listePiecesAjoutees.clear();
+
+                if(listePieces.isEmpty()){
+                    feuillesremplies = true;
+                    break;
+                }
+            }
+        }
+        else{//Pour les étagères au périmètre triple.
+            boolean feuillesremplies = false;
+            while(feuillesremplies == false){
+
+                Feuille feuille = new Feuille();
+                listeFeuilles.add(feuille);
+
+                for(Piece piece: listePieces){
+
+                    double[] valeurs = {piece.getHauteur(),piece.getLargeur(),piece.getProfondeur()};
+                    Arrays.sort(valeurs);
+
+                    Rectangle2D.Double rect = new Rectangle2D.Double(0,0,valeurs[1],valeurs[2]);
+                    if(feuille.ajouter2(rect)){
+                        listePiecesAjoutees.add(piece);
+                    }
+                }
+                for(Piece piece:listePiecesAjoutees){
+                        listePieces.remove(piece);
+                    }
+                
+                for (Piece pieceajoute:listePiecesAjoutees){
+                    feuille.listepiecesphysiques.add(pieceajoute);
+                }
+
+                listePiecesAjoutees.clear();
+
+                if(listePieces.isEmpty()){
+                    feuillesremplies = true;
+                    break;
+                }
+            }
+        }
+        Export export = new Export();
+        export.setBackground(Color.WHITE);
+        JFrame frame = new JFrame("Plan de coupe");
+        frame.setBackground(Color.WHITE);
+        frame.add(export);
+        frame.setSize( (int)Math.ceil(largeur*fac)+200, (int)Math.ceil(hauteur*fac));
+        //frame.setVisible(true);
+        
+        for (numerofeuille = 0;numerofeuille<listeFeuilles.size();numerofeuille++){
+            export.save(numerofeuille, file);
+        }
+        
+        
+    }
     
     
     public void save(int numero, File file){

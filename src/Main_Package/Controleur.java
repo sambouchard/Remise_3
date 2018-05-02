@@ -294,7 +294,7 @@ public class Controleur {
     }
     
     public void getPlanDeCoupe(File file){
-        Export.genererPlanDeCoupe(file);
+        Export.genererPlanDeCoupe2(file);
     }
     public void AjouteEtage(Etage etage, double NewY){
         

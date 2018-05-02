@@ -26,10 +26,12 @@ public class Feuille {
     public List<Rectangle2D> listeEspaceLibre = new ArrayList();
     public int indexactuel;
     public List<Piece> listepiecesphysiques = new ArrayList();
+    public List<Rectangle2D> tempListeEspaceLibre = new ArrayList();
 
     
-    public void Feuille(){
-        
+    public Feuille(){
+        Rectangle2D.Double vide = new Rectangle2D.Double(0,0,largeur,hauteur);
+        listeEspaceLibre.add(vide);
     }
     
     public boolean ajouter(Rectangle2D rect){
@@ -95,5 +97,64 @@ public class Feuille {
         return fits;
     }
     
+    public boolean ajouter2(Rectangle2D rect){
+        boolean fits = false;
+                
+        for (Rectangle2D libre: listeEspaceLibre){
+            if ((rect.getHeight()<=libre.getHeight() && rect.getWidth()<=libre.getWidth())){
+                fits = true;
+                Rectangle2D.Double plein = new Rectangle2D.Double(libre.getX(), libre.getY(), rect.getWidth(),rect.getHeight());
+                listePieces.add(plein);
+                this.espaceLibre(plein);
+                break;
+            }
+            else if((rect.getWidth()<=libre.getHeight() && rect.getHeight()<=libre.getWidth())){
+                fits = true;
+                Rectangle2D.Double plein = new Rectangle2D.Double(libre.getX(), libre.getY(),rect.getHeight(),rect.getWidth());
+                listePieces.add(plein);
+                this.espaceLibre(plein);                
+                break;
+            }
+            
+        }
+
+        return fits;
+    }
     
+    public void espaceLibre(Rectangle2D plein){
+        tempListeEspaceLibre.clear();
+        for (Rectangle2D libre: listeEspaceLibre){
+            Rectangle2D intersect = libre.createIntersection(plein);
+            if(intersect.getY()<0 || intersect.getX()<0 || intersect.getHeight()<0 || intersect.getWidth()<0){
+                tempListeEspaceLibre.add(libre);
+                continue;
+            }
+            else{
+                if (libre.getY()!=intersect.getY()){
+                    Rectangle2D libre1 = new Rectangle2D.Double(libre.getX(),libre.getY(),libre.getWidth(),intersect.getY()-libre.getY());
+                    tempListeEspaceLibre.add(libre1);
+                }
+                if (libre.getX()!=intersect.getX()){
+                    Rectangle2D libre2 = new Rectangle2D.Double(libre.getX(),libre.getY(),intersect.getX()-libre.getX(),libre.getHeight());
+                    tempListeEspaceLibre.add(libre2);
+                }
+                if(intersect.getMaxX()!= libre.getMaxX()){
+                    Rectangle2D libre3 = new Rectangle2D.Double(intersect.getMaxX(),libre.getY(),libre.getMaxX()-intersect.getMaxX(),libre.getHeight());
+                    tempListeEspaceLibre.add(libre3);
+                }
+                if(intersect.getMaxY()!=libre.getMaxY()){
+                    Rectangle2D libre4 = new Rectangle2D.Double(libre.getX(),intersect.getMaxY(),libre.getWidth(),libre.getMaxY()-intersect.getMaxY());
+                    tempListeEspaceLibre.add(libre4);
+                }
+            }
+        }
+        listeEspaceLibre = new ArrayList(tempListeEspaceLibre);
+    }
+    
+//    public static void main(String []argv){
+//        Rectangle2D libre = new Rectangle2D.Double(0,0,10,10);
+//        Rectangle2D libre2 = new Rectangle2D.Double(20,20,100,100);
+//        Rectangle2D intersect = libre.createIntersection(libre2);
+//        
+//    }
 }
