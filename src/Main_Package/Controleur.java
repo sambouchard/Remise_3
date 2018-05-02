@@ -10,11 +10,14 @@ import UI.GUI;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,7 +32,35 @@ public class Controleur {
     private static final Controleur instance = new Controleur();
     private Piece pieceSelectionner = null;
     private GUI Vue;
-
+    
+    private void didMutateEtagere() {
+        UndoRedoStore.addMutation(etagere);
+        this.afficheur.redraw();
+    }
+    
+    public void undo() {
+        try {
+            Etagere e = UndoRedoStore.undo();
+            this.etagere = e;
+        } catch (IndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Cannot Undo anymore!", "Whoops",
+                                    JOptionPane.ERROR_MESSAGE);
+        }
+       
+        this.afficheur.redraw();
+    }
+    
+    public void redo() {
+        try {
+            Etagere e = UndoRedoStore.redo();
+            this.etagere = e;
+        } catch(IndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Cannot Redo anymore!", "Whoops",
+                                    JOptionPane.ERROR_MESSAGE);
+        }
+        this.afficheur.redraw();
+    }
+    
     public Etage getEtageSelectionne() {
         return etageSelectionne;
     }
@@ -93,10 +124,6 @@ public class Controleur {
         return UndoEtagere;
     }
 
-    public void setUndoEtagere() {
-        Etagere newetaGere = this.etagere;
-        this.UndoEtagere = newetaGere;
-    }
     private Etagere UndoEtagere;
 
     public GUI getVue() {
@@ -138,7 +165,7 @@ public class Controleur {
      */
     public void setEtagere(Etagere etagere) {
         this.etagere = etagere;
-        this.afficheur.redraw();
+        didMutateEtagere();
     }
 
     public void updatevuImperiale() {
@@ -280,17 +307,19 @@ public class Controleur {
     public void setEtagereLargeur(double largeur) {
         getEtagere().setLargeur(largeur);
         etagere.GenererPieces();
+        didMutateEtagere();
     }
 
     public void setEtagereHauteur(double hauteur) {
-        setUndoEtagere();
         etagere.setHauteur(hauteur);
         etagere.GenererPieces();
+        didMutateEtagere();
     }
 
     public void setEtagereProfondeur(double profondeur) {
         getEtagere().setProfondeur(profondeur);
         etagere.GenererPieces();
+        didMutateEtagere();
     }
 
     /**
@@ -305,15 +334,6 @@ public class Controleur {
      */
     public void setAfficheur(AfficheurEtagere2D afficheur) {
         this.afficheur = afficheur;
-    }
-
-    public void undo() {
-        if (this.UndoEtagere != null) {
-            this.setEtagere(this.UndoEtagere);
-            afficheur.redraw();
-        } else {
-            System.out.println("Undo etagere nexiste pas");
-        }
     }
 
     public void sauvegarderEtagere() {
@@ -400,8 +420,7 @@ public class Controleur {
         etagere.setListeetages(newlistetage);
         etagere.GenererPieces();
         setAjouteetageMode(false);
-        afficheur.redraw();
-
+        didMutateEtagere();
     }
 
     public void AjouteCaisson(Caisson caisson, Etage etage, double NewX) {
@@ -430,7 +449,7 @@ public class Controleur {
         etage.setListecaissons(newlistCaisson);
         etagere.GenererPieces();
         setAjouteCaissonMode(false);
-        afficheur.redraw();
+        didMutateEtagere();
     }
 
     public void SupprimeMontantVertical() {
@@ -448,7 +467,7 @@ public class Controleur {
         MontantVerticalSelectionne.getEtageconteneur().setListecaissons(newlist);
         etagere.GenererPieces();
         setMontantVerticalSelectionne(null);
-        afficheur.redraw();
+        didMutateEtagere();
     }
 
     public void SupprimeMontantHorizontal() {
@@ -466,7 +485,45 @@ public class Controleur {
         this.etagere.setListeetages(newlistEtages);
         etagere.GenererPieces();
         setMontantEtageHorizontalSelectionne(null);
-        this.afficheur.redraw();
+        didMutateEtagere();
     }
-
+    
+    public void getSTL(){
+        STLExporter exporter = new STLExporter(etagere);
+        String modele = exporter.getSTL();
+        
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+        if (JFileChooser.APPROVE_OPTION == ack) {
+            try {
+                FileWriter writer = new FileWriter(explorer.getSelectedFile()+".stl");
+                writer.write(modele);
+                writer.close();
+            } catch (Exception ex) {
+                return;
+            }
+        }
+    }
+    
+    public void getIndividualSTL(){
+        STLExporter exporter = new STLExporter(etagere);
+        ArrayList<String> STLpieces = exporter.getPiecesSTLs();
+        
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+        
+        if (JFileChooser.APPROVE_OPTION == ack) {
+            try {
+                for (int i = 0; i< STLpieces.size();i++){
+                    int j = i+1;
+                    FileWriter writer = new FileWriter(explorer.getSelectedFile()+Integer.toString(j) + Controleur.getInstance().getEtagere().getListe_piece().get(i).getNom() + ".stl");
+                    writer.write(STLpieces.get(i));
+                    writer.close();
+                }
+            } catch (Exception ex) {
+                return;
+            }
+        }
+    }
+    
 }

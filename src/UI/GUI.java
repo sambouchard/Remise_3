@@ -104,8 +104,8 @@ public class GUI extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         exporterListePieces = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        STLEtagere = new javax.swing.JMenuItem();
+        STLPiecesIndividuelles = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -210,13 +210,6 @@ public class GUI extends javax.swing.JFrame {
         Undo_Buitton.setForeground(new java.awt.Color(255, 255, 255));
         Undo_Buitton.setText("Undo");
         Undo_Buitton.setActionCommand("Imperial ou metrique");
-        Undo_Buitton.setBorderPainted(false);
-        Undo_Buitton.setFocusPainted(false);
-        Undo_Buitton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Undo_BuittonMouseClicked(evt);
-            }
-        });
         Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Undo_BuittonActionPerformed(evt);
@@ -772,11 +765,21 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setText("Modèle 3D de l'étagère");
-        jMenu2.add(jMenuItem6);
+        STLEtagere.setText("Modèle 3D de l'étagère");
+        STLEtagere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                STLEtagereActionPerformed(evt);
+            }
+        });
+        jMenu2.add(STLEtagere);
 
-        jMenuItem7.setText("Modèle 3D des pièces");
-        jMenu2.add(jMenuItem7);
+        STLPiecesIndividuelles.setText("Modèle 3D des pièces");
+        STLPiecesIndividuelles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                STLPiecesIndividuellesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(STLPiecesIndividuelles);
 
         jMenuBar1.add(jMenu2);
 
@@ -843,11 +846,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteMontant_ButtonActionPerformed
 
     private void Redo_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Redo_ButtonActionPerformed
-        // TODO add your handling code here:
+        Controleur.getInstance().redo();
     }//GEN-LAST:event_Redo_ButtonActionPerformed
 
     private void Undo_BuittonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Undo_BuittonActionPerformed
-        // TODO add your handling code here:
+        Controleur.getInstance().undo();
     }//GEN-LAST:event_Undo_BuittonActionPerformed
 
     private void AddMontantVertical_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMontantVertical_buttonActionPerformed
@@ -1061,6 +1064,14 @@ public class GUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void STLEtagereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STLEtagereActionPerformed
+        Controleur.getInstance().getSTL();
+    }//GEN-LAST:event_STLEtagereActionPerformed
+
+    private void STLPiecesIndividuellesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STLPiecesIndividuellesActionPerformed
+        Controleur.getInstance().getIndividualSTL();
+    }//GEN-LAST:event_STLPiecesIndividuellesActionPerformed
+
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);
@@ -1140,6 +1151,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel Profondeur_Label;
     private javax.swing.JTextField Profondeur_TextField;
     private javax.swing.JButton Redo_Button;
+    private javax.swing.JMenuItem STLEtagere;
+    private javax.swing.JMenuItem STLPiecesIndividuelles;
     private javax.swing.JButton Undo_Buitton;
     private UI.AfficheurEtagere2D afficheur;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -1790,28 +1803,28 @@ public class GUI extends javax.swing.JFrame {
      * @return the jMenuItem6
      */
     public javax.swing.JMenuItem getjMenuItem6() {
-        return jMenuItem6;
+        return STLEtagere;
     }
 
     /**
      * @param jMenuItem6 the jMenuItem6 to set
      */
     public void setjMenuItem6(javax.swing.JMenuItem jMenuItem6) {
-        this.jMenuItem6 = jMenuItem6;
+        this.STLEtagere = jMenuItem6;
     }
 
     /**
      * @return the jMenuItem7
      */
     public javax.swing.JMenuItem getjMenuItem7() {
-        return jMenuItem7;
+        return STLPiecesIndividuelles;
     }
 
     /**
      * @param jMenuItem7 the jMenuItem7 to set
      */
     public void setjMenuItem7(javax.swing.JMenuItem jMenuItem7) {
-        this.jMenuItem7 = jMenuItem7;
+        this.STLPiecesIndividuelles = jMenuItem7;
     }
 
     /**
@@ -1869,13 +1882,8 @@ public class GUI extends javax.swing.JFrame {
     public void setjRadioButton4(javax.swing.JRadioButton jRadioButton4) {
         this.PerimatreTriple_Radio = jRadioButton4;
     }
-
-    /**
-     * @return the jScrollPane1
-     */
-   
-
     
-    
-    
+    public void enableRedoButton(boolean canRedo) {
+        Redo_Button.setEnabled(canRedo);
+    }
 }
