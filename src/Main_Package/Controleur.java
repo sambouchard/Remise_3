@@ -409,7 +409,7 @@ public class Controleur {
             try {
                 for (int i = 0; i< STLpieces.size();i++){
                     int j = i+1;
-                    FileWriter writer = new FileWriter(explorer.getSelectedFile()+Integer.toString(j)+ ".stl");
+                    FileWriter writer = new FileWriter(explorer.getSelectedFile()+Integer.toString(j) + Controleur.getInstance().getEtagere().getListe_piece().get(i).getNom() + ".stl");
                     writer.write(STLpieces.get(i));
                     writer.close();
                 }
