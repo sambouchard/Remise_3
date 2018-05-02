@@ -127,7 +127,7 @@ public class GUI extends javax.swing.JFrame {
         afficheur.setLayout(afficheurLayout);
         afficheurLayout.setHorizontalGroup(
             afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
+            .addGap(0, 793, Short.MAX_VALUE)
         );
         afficheurLayout.setVerticalGroup(
             afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,10 +156,11 @@ public class GUI extends javax.swing.JFrame {
         AddMontantHorizontal_button.setBackground(new java.awt.Color(3, 169, 244));
         AddMontantHorizontal_button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
         AddMontantHorizontal_button.setForeground(new java.awt.Color(255, 255, 255));
+        AddMontantHorizontal_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/horizontale.png"))); // NOI18N
         AddMontantHorizontal_button.setText("Horizontal");
         AddMontantHorizontal_button.setBorderPainted(false);
         AddMontantHorizontal_button.setFocusPainted(false);
-        AddMontantHorizontal_button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AddMontantHorizontal_button.setIconTextGap(6);
         AddMontantHorizontal_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddMontantHorizontal_buttonMouseClicked(evt);
@@ -174,9 +175,11 @@ public class GUI extends javax.swing.JFrame {
         AddMontantVertical_button.setBackground(new java.awt.Color(3, 169, 244));
         AddMontantVertical_button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
         AddMontantVertical_button.setForeground(new java.awt.Color(255, 255, 255));
+        AddMontantVertical_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/verticale.png"))); // NOI18N
         AddMontantVertical_button.setText("Verticale");
         AddMontantVertical_button.setBorderPainted(false);
         AddMontantVertical_button.setFocusPainted(false);
+        AddMontantVertical_button.setIconTextGap(6);
         AddMontantVertical_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddMontantVertical_buttonMouseClicked(evt);
@@ -191,9 +194,11 @@ public class GUI extends javax.swing.JFrame {
         DeleteMontant_Button.setBackground(new java.awt.Color(244, 67, 54));
         DeleteMontant_Button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
         DeleteMontant_Button.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteMontant_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/delete.png"))); // NOI18N
         DeleteMontant_Button.setText("Supprimer");
         DeleteMontant_Button.setBorderPainted(false);
         DeleteMontant_Button.setFocusPainted(false);
+        DeleteMontant_Button.setIconTextGap(6);
         DeleteMontant_Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeleteMontant_ButtonMouseClicked(evt);
@@ -208,8 +213,17 @@ public class GUI extends javax.swing.JFrame {
         Undo_Buitton.setBackground(new java.awt.Color(255, 87, 34));
         Undo_Buitton.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
         Undo_Buitton.setForeground(new java.awt.Color(255, 255, 255));
+        Undo_Buitton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/undo.png"))); // NOI18N
         Undo_Buitton.setText("Undo");
         Undo_Buitton.setActionCommand("Imperial ou metrique");
+        Undo_Buitton.setBorderPainted(false);
+        Undo_Buitton.setFocusPainted(false);
+        Undo_Buitton.setIconTextGap(6);
+        Undo_Buitton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Undo_BuittonMouseClicked(evt);
+            }
+        });
         Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Undo_BuittonActionPerformed(evt);
@@ -219,10 +233,12 @@ public class GUI extends javax.swing.JFrame {
         Redo_Button.setBackground(new java.awt.Color(255, 87, 34));
         Redo_Button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
         Redo_Button.setForeground(new java.awt.Color(255, 255, 255));
+        Redo_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/redo.png"))); // NOI18N
         Redo_Button.setText("Redo");
         Redo_Button.setActionCommand("Imperial ou metrique");
         Redo_Button.setBorderPainted(false);
         Redo_Button.setFocusPainted(false);
+        Redo_Button.setIconTextGap(6);
         Redo_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Redo_ButtonActionPerformed(evt);
@@ -301,6 +317,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         Profondeur_TextField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Profondeur_TextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Profondeur_TextFieldKeyPressed(evt);
+            }
+        });
 
         Profondeur_CMlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Profondeur_CMlabel.setText("Cm");
@@ -1072,6 +1093,13 @@ public class GUI extends javax.swing.JFrame {
         Controleur.getInstance().getIndividualSTL();
     }//GEN-LAST:event_STLPiecesIndividuellesActionPerformed
 
+    private void Profondeur_TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Profondeur_TextFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getProfondeur_TextField().getText()));
+            Controleur.getInstance().getAfficheur().redraw();
+        }
+    }//GEN-LAST:event_Profondeur_TextFieldKeyPressed
+
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
         popup2.setVisible(true);
@@ -1180,8 +1208,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
