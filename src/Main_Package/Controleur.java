@@ -46,7 +46,11 @@ public class Controleur {
             JOptionPane.showMessageDialog(null, "Cannot Undo anymore!", "Whoops",
                                     JOptionPane.ERROR_MESSAGE);
         }
-       
+        this.setCaissonSelectionne(null);
+        this.etageSelectionne = null;
+        this.montantEtageHorizontalSelectionne = null;
+        this.pieceSelectionner = null;
+        this.MontantVerticalSelectionne = null;
         this.afficheur.redraw();
     }
     

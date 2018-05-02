@@ -214,23 +214,30 @@ public class AfficheurEtagere2D extends JPanel {
 
         @Override
         public void mouseMoved(MouseEvent e) {
+            Point2D mouseInZoomedCoordSpace;
+             try {
+                mouseInZoomedCoordSpace = tx.inverseTransform(e.getPoint(), null);
+            } catch (NoninvertibleTransformException ex) {
+                Logger.getLogger(AfficheurEtagere2D.class.getName()).log(Level.SEVERE, null, ex);
+                mouseInZoomedCoordSpace = e.getPoint();
+            }
             if (Controleur.getInstance().getEtagere() != null) {
                 if (Controleur.getInstance().isAjouteetageMode()) {
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(e.getX(), e.getY(),
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY(),
                             Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(e.getX(), e.getY() + 0.5 * 2.5,
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY() + 0.5 * 2.5,
                             Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(e.getX(), e.getY() + 2 * (0.5 * 2.5),
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY() + 2 * (0.5 * 2.5),
                             Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
                     repaint();
 
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(e.getX(), e.getY(),
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY(),
                             0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4));
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(e.getX() + 0.5 * 2.5, e.getY() - 0.5 * 2.5,
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX() + 0.5 * 2.5, mouseInZoomedCoordSpace.getY() - 0.5 * 2.5,
                             0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4 + 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(e.getX() + 2 * (0.5 * 2.5), e.getY(),
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX() + 2 * (0.5 * 2.5), mouseInZoomedCoordSpace.getY(),
                             0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4));
                     repaint();
 
