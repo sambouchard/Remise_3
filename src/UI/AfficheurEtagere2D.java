@@ -94,33 +94,41 @@ public class AfficheurEtagere2D extends JPanel {
                     for(Piece piece : montant.getListe_pieces()){
                         if(piece.contains(pointInEtagereCoordSpace)){
                             Controleur.getInstance().setMontantVerticalSelectionne(montant);
+                            break;
                         }
+                       
                     }
                 }
                 for(MontantEtageHorizontal montant : Controleur.getInstance().getEtagere().getListeMontantHorizontal()){
                     for(Piece piece :montant.getListe_piece()){
                         if(piece.contains(pointInEtagereCoordSpace)){
                             Controleur.getInstance().setMontantEtageHorizontalSelectionne(montant);
+                            break;
                         }
                     }
                 }
                 for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                    if (piece.contains(pointInEtagereCoordSpace)) {
+                    if (piece.contains(pointInEtagereCoordSpace) && piece.getDrawingcoin().getCoord_z()==0) {
                         Controleur.getInstance().setPieceSelectionner(piece);
                         System.out.println(piece.getNom());
+                        break;
                     }
                 }
                 for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
                     if (etage.contains(pointInEtagereCoordSpace)) {
                         Controleur.getInstance().setEtageSelectionne(etage);
                         Controleur.getInstance().updatevue();
+                        break;
                     }
+                    
+                    
                 }
                 for(Etage etage : Controleur.getInstance().getEtagere().getListeetages()){
                     for(Caisson caisson : etage.getListecaissons()){
                         if(caisson.contains(pointInEtagereCoordSpace)){
                             Controleur.getInstance().setCaissonSelectionne(caisson);
                             Controleur.getInstance().updatevue();
+                            break;
                         }
                     }
                 }

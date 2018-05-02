@@ -1018,6 +1018,9 @@ public class GUI extends javax.swing.JFrame {
         else if(Controleur.getInstance().getMontantEtageHorizontalSelectionne() != null){
             Controleur.getInstance().SupprimeMontantHorizontal();
         }
+        else if(Controleur.getInstance().getEtageSelectionne() != null){
+            Controleur.getInstance().SupprimeEtage();
+        }
     }//GEN-LAST:event_DeleteMontant_ButtonMouseClicked
 
     private void ProfondeurPieceSelecrtionneFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
