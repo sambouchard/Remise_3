@@ -32,35 +32,35 @@ public class Controleur {
     private static final Controleur instance = new Controleur();
     private Piece pieceSelectionner = null;
     private GUI Vue;
-    
+
     private void didMutateEtagere() {
         UndoRedoStore.addMutation(etagere);
         this.afficheur.redraw();
     }
-    
+
     public void undo() {
         try {
             Etagere e = UndoRedoStore.undo();
             this.etagere = e;
         } catch (IndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(null, "Cannot Undo anymore!", "Whoops",
-                                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE);
         }
-       
+
         this.afficheur.redraw();
     }
-    
+
     public void redo() {
         try {
             Etagere e = UndoRedoStore.redo();
             this.etagere = e;
-        } catch(IndexOutOfBoundsException ex) {
+        } catch (IndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(null, "Cannot Redo anymore!", "Whoops",
-                                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE);
         }
         this.afficheur.redraw();
     }
-    
+
     public Etage getEtageSelectionne() {
         return etageSelectionne;
     }
@@ -294,10 +294,12 @@ public class Controleur {
     }
 
     public void setPieceSelectionner(Piece piece) {
-        pieceSelectionner = piece;
-        this.Vue.getLargeurPieceSelecrtionneField().setText(String.valueOf(piece.getLargeur()));
-        this.Vue.getHauteurPieceSelecrtionneField().setText(String.valueOf(piece.getHauteur()));
-        this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
+        if(piece != null){
+            pieceSelectionner = piece;
+            this.Vue.getLargeurPieceSelecrtionneField().setText(String.valueOf(piece.getLargeur()));
+            this.Vue.getHauteurPieceSelecrtionneField().setText(String.valueOf(piece.getHauteur()));
+            this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
+        }
     }
 
     /**
@@ -336,7 +338,7 @@ public class Controleur {
         this.afficheur = afficheur;
     }
 
-   /**
+    /**
      *
      * @return A string containing a formated list of all the Pieces, used to
      * export to txt
@@ -350,8 +352,8 @@ public class Controleur {
         }
         return out;
     }
-    
-    public void getPlanDeCoupe(File file){
+
+    public void getPlanDeCoupe(File file) {
         Export.genererPlanDeCoupe2(file);
     }
 
@@ -449,16 +451,67 @@ public class Controleur {
         setMontantEtageHorizontalSelectionne(null);
         didMutateEtagere();
     }
-    
-    public void getSTL(){
+
+    public void SupprimeEtage() {
+        if(etagere.getNb_etages()>1){
+            Etage[] newlist;
+            
+            if (etageSelectionne.getId() == 0) {
+                etagere.setNb_etages(etagere.getNb_etages() - 1);
+                newlist = new Etage[etagere.getNb_etages()];
+                etagere.getListeetages()[etageSelectionne.id + 1].setHauteur_rel(etageSelectionne.getHauteur_rel() + etagere.getListeetages()[etageSelectionne.id + 1].getHauteur_rel());
+                for (Etage etage : etagere.getListeetages()) {
+                    if (etage.getId() < etageSelectionne.getId()) {
+                        newlist[etage.getId()] = etage;
+                    } else if (etage.id > etageSelectionne.getId()) {
+                        newlist[etage.getId() - 1] = etage;
+                    }
+                }
+
+            } else if (etageSelectionne.id == etagere.getNb_etages() - 1) {
+                etagere.setNb_etages(etagere.getNb_etages() - 1);
+                newlist = new Etage[etagere.getNb_etages()];
+                etagere.getListeetages()[etageSelectionne.id - 1 ].setHauteur_rel(etageSelectionne.getHauteur_rel() + etagere.getListeetages()[etageSelectionne.id - 1].getHauteur_rel());
+                for (Etage etage : etagere.getListeetages()) {
+                    if (etage.getId() < etageSelectionne.getId()) {
+                        newlist[etage.getId()] = etage;
+                    } else if (etage.id > etageSelectionne.getId()) {
+                        newlist[etage.getId() - 1] = etage;
+                    }
+                }
+            } else {
+                etagere.setNb_etages(etagere.getNb_etages() - 1);
+                newlist = new Etage[etagere.getNb_etages()];
+                etagere.getListeetages()[etageSelectionne.id + 1].setHauteur_rel(etageSelectionne.getHauteur_rel()/2 + etagere.getListeetages()[etageSelectionne.id + 1].getHauteur_rel());
+                etagere.getListeetages()[etageSelectionne.id - 1].setHauteur_rel(etageSelectionne.getHauteur_rel()/2 + etagere.getListeetages()[etageSelectionne.id - 1].getHauteur_rel());
+                for (Etage etage : etagere.getListeetages()) {
+                    if (etage.getId() < etageSelectionne.getId()) {
+                        newlist[etage.getId()] = etage;
+                    } else if (etage.id > etageSelectionne.getId()) {
+                        newlist[etage.getId() - 1] = etage;
+                    }
+                }
+
+            }
+            this.etagere.setListeetages(newlist);
+            etagere.GenererPieces();
+            setEtageSelectionne(null);
+            setCaissonSelectionne(null);
+            updatevue();
+            didMutateEtagere();
+        }
+
+    }
+
+    public void getSTL() {
         STLExporter exporter = new STLExporter(etagere);
         String modele = exporter.getSTL();
-        
+
         JFileChooser explorer = new JFileChooser();
         int ack = explorer.showSaveDialog(null);
         if (JFileChooser.APPROVE_OPTION == ack) {
             try {
-                FileWriter writer = new FileWriter(explorer.getSelectedFile()+".stl");
+                FileWriter writer = new FileWriter(explorer.getSelectedFile() + ".stl");
                 writer.write(modele);
                 writer.close();
             } catch (Exception ex) {
@@ -466,19 +519,19 @@ public class Controleur {
             }
         }
     }
-    
-    public void getIndividualSTL(){
+
+    public void getIndividualSTL() {
         STLExporter exporter = new STLExporter(etagere);
         ArrayList<String> STLpieces = exporter.getPiecesSTLs();
-        
+
         JFileChooser explorer = new JFileChooser();
         int ack = explorer.showSaveDialog(null);
-        
+
         if (JFileChooser.APPROVE_OPTION == ack) {
             try {
-                for (int i = 0; i< STLpieces.size();i++){
-                    int j = i+1;
-                    FileWriter writer = new FileWriter(explorer.getSelectedFile()+Integer.toString(j) + Controleur.getInstance().getEtagere().getListe_piece().get(i).getNom() + ".stl");
+                for (int i = 0; i < STLpieces.size(); i++) {
+                    int j = i + 1;
+                    FileWriter writer = new FileWriter(explorer.getSelectedFile() + Integer.toString(j) + Controleur.getInstance().getEtagere().getListe_piece().get(i).getNom() + ".stl");
                     writer.write(STLpieces.get(i));
                     writer.close();
                 }
@@ -487,5 +540,5 @@ public class Controleur {
             }
         }
     }
-    
+
 }
