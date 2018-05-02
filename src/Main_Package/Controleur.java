@@ -182,9 +182,9 @@ public class Controleur {
     }
 
     public void updatevue() {
-        this.Vue.getHauteur_Textfield().setText(String.valueOf(this.etagere.getHauteur()));
-        this.Vue.getLargeur_TextField().setText(String.valueOf(this.etagere.getLargeur()));
-        this.Vue.getProfondeur_TextField().setText(String.valueOf(this.etagere.getProfondeur()));
+        this.Vue.getHauteur_Textfield().setText(String.format("%.2f", this.etagere.getHauteur()));
+        this.Vue.getLargeur_TextField().setText(String.format("%.2f", this.etagere.getLargeur()));
+        this.Vue.getProfondeur_TextField().setText(String.format("%.2f", this.etagere.getProfondeur()));
         if (getEtageSelectionne() != null) {
             this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(String.valueOf(BigDecimal.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel())
                     .setScale(3, RoundingMode.HALF_UP)
@@ -295,9 +295,15 @@ public class Controleur {
 
     public void setPieceSelectionner(Piece piece) {
         pieceSelectionner = piece;
-        this.Vue.getLargeurPieceSelecrtionneField().setText(String.valueOf(piece.getLargeur()));
-        this.Vue.getHauteurPieceSelecrtionneField().setText(String.valueOf(piece.getHauteur()));
-        this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
+        if (mesureMetrique) {
+            this.Vue.getLargeurPieceSelecrtionneField().setText(String.format("%.2f", piece.getLargeur()));
+            this.Vue.getHauteurPieceSelecrtionneField().setText(String.format("%.2f",piece.getHauteur()));
+            this.Vue.getProfondeurPieceSelecrtionneField().setText(String.format("%.2f",piece.getProfondeur()));
+        } else {
+            this.Vue.getLargeurPieceSelecrtionneField().setText(String.format("%.2f", piece.getLargeur() / 2.54));
+            this.Vue.getHauteurPieceSelecrtionneField().setText(String.format("%.2f",piece.getHauteur() / 2.54));
+            this.Vue.getProfondeurPieceSelecrtionneField().setText(String.format("%.2f",piece.getProfondeur() / 2.54));
+        }
     }
 
     /**

@@ -71,7 +71,10 @@ public class AfficheurEtagere2D extends JPanel {
     private final double scale;
     private Graphics2D g2d;
     private AffineTransform tx = new AffineTransform();
-
+    public static Color couleurCaisson = new Color(224, 224, 224);
+    public static Color couleurVert = new Color(139, 195, 74);
+    public static Color couleurRouge = new Color(244, 67, 54);
+    
     Movingadapter ma = new Movingadapter();
 
     public AfficheurEtagere2D() {
@@ -313,7 +316,7 @@ public class AfficheurEtagere2D extends JPanel {
         g2d = (Graphics2D) g;
         if (Controleur.getInstance().getEtagere() != null) {
             for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
-                g2d.setColor(Color.BLUE);
+                g2d.setColor(couleurCaisson);
                 for(Caisson caisson: etage.getListecaissons()){
                     g2d.fill(tx.createTransformedShape(caisson));
                 }
@@ -348,13 +351,13 @@ public class AfficheurEtagere2D extends JPanel {
                 g2d.draw(tx.createTransformedShape(RectFantomeHorizontal_3));
                 for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
                     if (etage.contains(this.RectFantomeHorizontal_1)) {
-                        g2d.setColor(Color.GREEN);
+                        g2d.setColor(couleurVert);
                         g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_1));
                         g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_2));
                         g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_3));
                         break;
                     } else {
-                        g2d.setColor(Color.RED);
+                        g2d.setColor(couleurRouge);
                         g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_1));
                         g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_2));
                         g2d.fill(tx.createTransformedShape(this.RectFantomeHorizontal_3));

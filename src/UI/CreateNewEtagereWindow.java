@@ -49,7 +49,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         Perimetredouble_radio = new javax.swing.JRadioButton();
         Perimetretriple_radio = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
@@ -142,16 +142,21 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         });
 
         Hauteur_label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Hauteur_label.setText("Cm");
+        Hauteur_label.setText("cm");
 
         Largeur_label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Largeur_label.setText("Cm");
+        Largeur_label.setText("cm");
 
         Profondeur_label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Profondeur_label.setText("Cm");
+        Profondeur_label.setText("cm");
 
-        CreateEtagereButton.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        CreateEtagereButton.setText("Créer Étagère");
+        CreateEtagereButton.setBackground(new java.awt.Color(76, 175, 80));
+        CreateEtagereButton.setFont(new java.awt.Font("Maison Neue", 1, 18)); // NOI18N
+        CreateEtagereButton.setForeground(new java.awt.Color(255, 255, 255));
+        CreateEtagereButton.setText("Créer");
+        CreateEtagereButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 0, true));
+        CreateEtagereButton.setBorderPainted(false);
+        CreateEtagereButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CreateEtagereButton.setEnabled(false);
         CreateEtagereButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -208,9 +213,9 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
                             .addComponent(Perimetretriple_radio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(52, 52, 52))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(CreateEtagereButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(141, 141, 141)
+                .addComponent(CreateEtagereButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,8 +245,8 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
                     .addComponent(Mesureimp_radio)
                     .addComponent(Perimetretriple_radio))
                 .addGap(18, 18, 18)
-                .addComponent(CreateEtagereButton)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(CreateEtagereButton, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -266,18 +271,18 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
 
     private void Mesuremetrique_radioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Mesuremetrique_radioItemStateChanged
         if (Mesuremetrique_radio.isSelected() == true) {
-            Largeur_label.setText("Cm");
-            Hauteur_label.setText("Cm");
-            Profondeur_label.setText("Cm");
+            Largeur_label.setText("cm");
+            Hauteur_label.setText("cm");
+            Profondeur_label.setText("cm");
             Controleur.getInstance().setMesureMetrique(true);
         }
     }//GEN-LAST:event_Mesuremetrique_radioItemStateChanged
 
     private void Mesureimp_radioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Mesureimp_radioItemStateChanged
         if (Mesureimp_radio.isSelected() == true) {
-            Largeur_label.setText("Po");
-            Hauteur_label.setText("Po");
-            Profondeur_label.setText("Po");
+            Largeur_label.setText("po");
+            Hauteur_label.setText("po");
+            Profondeur_label.setText("po");
             Controleur.getInstance().setMesureMetrique(false);
         }
     }//GEN-LAST:event_Mesureimp_radioItemStateChanged

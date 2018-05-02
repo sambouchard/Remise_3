@@ -736,14 +736,14 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(EpaisseurTriple_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EpaisseurTriple_Mesure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         Hauteur_Label.getAccessibleContext().setAccessibleDescription("");
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 234, 234)));
+        jMenuBar1.setBorder(null);
         jMenuBar1.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
 
         jMenu1.setText("Fichier");
@@ -778,6 +778,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(MenuCharger);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Quitter");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1063,7 +1064,11 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "The value you entered is too high, the maximum is " + Etagere.MAX_SIZE + " cm", "Whoops",
                                    JOptionPane.ERROR_MESSAGE);
             } else {
-                Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()));
+                if (Imperial_Button.isSelected()) {
+                    Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()) * 2.54);
+                } else {
+                    Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()));
+                }
                 Controleur.getInstance().getAfficheur().redraw();
             }
         }
@@ -1079,7 +1084,11 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "The value you entered is too high, the maximum is " + Etagere.MAX_SIZE + " cm", "Whoops",
                                    JOptionPane.ERROR_MESSAGE);
             } else {
-                Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()));
+                if (Imperial_Button.isSelected()) {
+                    Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()) * 2.54);
+                } else {
+                    Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()));
+                }
                 Controleur.getInstance().getAfficheur().redraw();
             }
         }
@@ -1122,6 +1131,7 @@ public class GUI extends javax.swing.JFrame {
             LPiece_Cmlabel.setText("Po");
             PPiece_Cmlabel.setText("Po");
             Controleur.getInstance().updatevuImperiale();
+            Controleur.getInstance().setMesureMetrique(false);
         }
     }//GEN-LAST:event_Imperial_ButtonStateChanged
 
@@ -1137,6 +1147,7 @@ public class GUI extends javax.swing.JFrame {
             HPiece_Cmlabel.setText("cm");
             LPiece_Cmlabel.setText("cm");
             PPiece_Cmlabel.setText("cm");
+            Controleur.getInstance().setMesureMetrique(true);
             Controleur.getInstance().updatevue();
         }
     }//GEN-LAST:event_Metrique_ButtonStateChanged
@@ -1159,7 +1170,11 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "The value you entered is too high, the maximum is " + Etagere.MAX_SIZE + " cm", "Whoops",
                                    JOptionPane.ERROR_MESSAGE);
             } else {
-                Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getProfondeur_TextField().getText()));
+                 if (Imperial_Button.isSelected()) {
+                    Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getProfondeur_TextField().getText()) * 2.54);
+                } else {
+                    Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getProfondeur_TextField().getText()));
+                }
                 Controleur.getInstance().getAfficheur().redraw();
             }
         }
