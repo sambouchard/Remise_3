@@ -64,6 +64,9 @@ public class UndoRedoStore {
     
     public static Etagere undo() {
         stackPointer -= 1;
+        if (stackPointer < 0) {
+            stackPointer = 0;
+        }
         return stack.get(stackPointer);
     }
     

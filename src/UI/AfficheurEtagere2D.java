@@ -148,7 +148,8 @@ public class AfficheurEtagere2D extends JPanel {
 
             @Override
             public void mouseReleased(MouseEvent me) {
-
+                Controleur.getInstance().setMontantEtageHorizontalSelectionne(null);
+                Controleur.getInstance().setMontantVerticalSelectionne(null);
             }
 
             @Override
@@ -201,36 +202,47 @@ public class AfficheurEtagere2D extends JPanel {
     }
 
     private class Movingadapter extends MouseAdapter {
-
-        private int x;
-
-        private int y;
+        private double prevDraggedX;
+        private double prevDraggedY;
 
         @Override
         public void mousePressed(MouseEvent e) {
-            x = e.getX();
-            y = e.getY();
+            Point2D p2;
+            try {
+                p2 = tx.inverseTransform(e.getPoint(), null);
+            } catch (NoninvertibleTransformException ex) {
+                return;
+            }
+            prevDraggedX = p2.getX();
+            prevDraggedY = p2.getY();
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
+            Point2D mouseInZoomedCoordSpace;
+             try {
+                mouseInZoomedCoordSpace = tx.inverseTransform(e.getPoint(), null);
+            } catch (NoninvertibleTransformException ex) {
+                Logger.getLogger(AfficheurEtagere2D.class.getName()).log(Level.SEVERE, null, ex);
+                mouseInZoomedCoordSpace = e.getPoint();
+            }
             if (Controleur.getInstance().getEtagere() != null) {
                 if (Controleur.getInstance().isAjouteetageMode()) {
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(e.getX(), e.getY(),
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_1(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY(),
                             Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(e.getX(), e.getY() + 0.5 * 2.5,
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_2(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY() + 0.5 * 2.5,
                             Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(e.getX(), e.getY() + 2 * (0.5 * 2.5),
+                    Controleur.getInstance().getAfficheur().setRectFantomeHorizontal_3(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY() + 2 * (0.5 * 2.5),
                             Controleur.getInstance().getEtagere().getLargeur()-20, 0.5 * 2.5));
                     repaint();
 
                 }
                 if (Controleur.getInstance().isAjouteCaissonMode()) {
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(e.getX(), e.getY(),
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_1(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX(), mouseInZoomedCoordSpace.getY(),
                             0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4));
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(e.getX() + 0.5 * 2.5, e.getY() - 0.5 * 2.5,
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_2(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX() + 0.5 * 2.5, mouseInZoomedCoordSpace.getY() - 0.5 * 2.5,
                             0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4 + 0.5 * 2.5));
-                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(e.getX() + 2 * (0.5 * 2.5), e.getY(),
+                    Controleur.getInstance().getAfficheur().setRectFantomeVertical_3(new Rectangle2D.Double(mouseInZoomedCoordSpace.getX() + 2 * (0.5 * 2.5), mouseInZoomedCoordSpace.getY(),
                             0.5 * 2.5, Controleur.getInstance().getEtagere().getHauteur()/4));
                     repaint();
 
@@ -241,17 +253,20 @@ public class AfficheurEtagere2D extends JPanel {
 
         @Override
         public void mouseDragged(MouseEvent e) {
-            int dx = e.getX() - x;
-            int dy = e.getY() - y;
-            if(Controleur.getInstance().getMontantVerticalSelectionne() == null){
+            Point2D p2;
+            try {
+                p2 = tx.inverseTransform(e.getPoint(), null);
+            } catch (NoninvertibleTransformException ex) {
+                return;
+            }
+            double dx = p2.getX() - prevDraggedX;
+            double dy = p2.getY() - prevDraggedY;
+            prevDraggedX = p2.getX();
+            prevDraggedY = p2.getY();
+            
+            if(Controleur.getInstance().getMontantVerticalSelectionne() == null && Controleur.getInstance().getMontantEtageHorizontalSelectionne() == null){
                 for (Piece piece : Controleur.getInstance().getEtagere().getListe_Piece_Etage_Horizontale()) {
-                    Point2D p1 = e.getPoint();
-                    Point2D p2 = null;
-                    try {
-                        p2 = tx.inverseTransform(p1, null);
-                    } catch (NoninvertibleTransformException ex) {
-                        return;
-                    }
+                    
                     if (piece.contains(p2)) {
                         piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy);
                         repaint();
@@ -259,26 +274,29 @@ public class AfficheurEtagere2D extends JPanel {
                     }
                 }
                 for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
-                    etage.x += dx/10;
-                    etage.y += dy/10;
+                    etage.x += dx;
+                    etage.y += dy;
                     for(Caisson caisson: etage.getListecaissons()){
-                        caisson.x += dx/10;
-                        caisson.y += dy/10;
+                        caisson.x += dx;
+                        caisson.y += dy;
                     }
                 }
                 for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
-                    piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx / 10);
-                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy / 10);
+                    piece.getDrawingcoin().setCoord_x(piece.getDrawingcoin().getCoord_x() + dx);
+                    piece.getDrawingcoin().setCoord_y(piece.getDrawingcoin().getCoord_y() + dy);
 
                 }
-            }
-            if(Controleur.getInstance().getMontantVerticalSelectionne() != null){
-                Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_gauche().setLargeurRel(Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_gauche().getLargeurRel()+dx/200);
-                Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_droite().setLargeurRel(Controleur.getInstance().getMontantVerticalSelectionne().getCaisson_droite().getLargeurRel()-dx/200);
+            } else {
+                if(Controleur.getInstance().getMontantVerticalSelectionne() != null){
+                    Controleur.getInstance().getMontantVerticalSelectionne().applyDx(dx); 
+                   
+                }
+                if (Controleur.getInstance().getMontantEtageHorizontalSelectionne() != null) {
+                    Controleur.getInstance().getMontantEtageHorizontalSelectionne().applyDy(dy);
+                }
                 Controleur.getInstance().getEtagere().GenererPieces();
                 Controleur.getInstance().getAfficheur().redraw();
             }
-
             Controleur.getInstance().getAfficheur().redraw();
 
         }

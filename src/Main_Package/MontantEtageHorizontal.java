@@ -57,4 +57,10 @@ public class MontantEtageHorizontal implements java.io.Serializable{
         this.Etage_dessous = Etage_dessous;
     }
     
+    public void applyDy(double dy) {
+        Double totalY = Etage_dessous.getHeight() + Etage_dessus.getHeight();
+        Double deltaRelatif = dy/totalY;
+        Etage_dessous.setHauteur_rel(Etage_dessous.getHauteur_rel() - deltaRelatif);
+        Etage_dessus.setHauteur_rel(Etage_dessus.getHauteur_rel() + deltaRelatif);
+    }
 }

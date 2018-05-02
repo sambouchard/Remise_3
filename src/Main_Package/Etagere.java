@@ -14,7 +14,7 @@ import java.util.Iterator;
  * @author SABOU350
  */
 public class Etagere implements java.io.Serializable {
-
+    public static double MAX_SIZE = 243.84; // in cm
     /**
      * @return the Liste_Piece_Etage_Horizontale
      */
