@@ -4,21 +4,18 @@ import Main_Package.Controleur;
 import java.awt.Color;
 import Main_Package.Etagere;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import javax.swing.InputVerifier;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
-import javax.swing.JRadioButton;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /*
@@ -39,7 +36,7 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(Color.WHITE); 
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,7 +181,7 @@ public class GUI extends javax.swing.JFrame {
         AddMontantVertical_button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
         AddMontantVertical_button.setForeground(new java.awt.Color(255, 255, 255));
         AddMontantVertical_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/verticale.png"))); // NOI18N
-        AddMontantVertical_button.setText("Verticale");
+        AddMontantVertical_button.setText("Vertical");
         AddMontantVertical_button.setBorderPainted(false);
         AddMontantVertical_button.setFocusPainted(false);
         AddMontantVertical_button.setIconTextGap(6);
@@ -227,11 +224,6 @@ public class GUI extends javax.swing.JFrame {
         Undo_Buitton.setBorderPainted(false);
         Undo_Buitton.setFocusPainted(false);
         Undo_Buitton.setIconTextGap(6);
-        Undo_Buitton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Undo_BuittonMouseClicked(evt);
-            }
-        });
         Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Undo_BuittonActionPerformed(evt);
@@ -289,6 +281,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel12.setText("Étagère");
 
         Hauteur_Textfield.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Hauteur_Textfield.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                Hauteur_TextfieldCaretUpdate(evt);
+            }
+        });
         Hauteur_Textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Hauteur_TextfieldActionPerformed(evt);
@@ -304,15 +301,20 @@ public class GUI extends javax.swing.JFrame {
         Hauteur_Label.setText("Hauteur");
 
         Hauteur_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Hauteur_Cmlabel.setText("Cm");
+        Hauteur_Cmlabel.setText("cm");
 
         Largeur_Label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Largeur_Label.setText("Largeur");
 
         Largeur_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Largeur_Cmlabel.setText("Cm");
+        Largeur_Cmlabel.setText("cm");
 
         Largeur_TextField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Largeur_TextField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                Largeur_TextFieldCaretUpdate(evt);
+            }
+        });
         Largeur_TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Largeur_TextFieldActionPerformed(evt);
@@ -325,6 +327,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         Profondeur_TextField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Profondeur_TextField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                Profondeur_TextFieldCaretUpdate(evt);
+            }
+        });
         Profondeur_TextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Profondeur_TextFieldKeyPressed(evt);
@@ -332,7 +339,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         Profondeur_CMlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        Profondeur_CMlabel.setText("Cm");
+        Profondeur_CMlabel.setText("cm");
 
         Profondeur_Label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Profondeur_Label.setText("Profondeur");
@@ -370,6 +377,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel10.setText("Épaisseur d'un panneau triple");
 
         EpaisseurTriple_Field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        EpaisseurTriple_Field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EpaisseurTriple_FieldKeyPressed(evt);
+            }
+        });
 
         EpaisseurTriple_Mesure.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         EpaisseurTriple_Mesure.setText("Po");
@@ -381,6 +393,11 @@ public class GUI extends javax.swing.JFrame {
         EpaisseurDouble_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EpaisseurDouble_FieldActionPerformed(evt);
+            }
+        });
+        EpaisseurDouble_Field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EpaisseurDouble_FieldKeyPressed(evt);
             }
         });
 
@@ -463,28 +480,36 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setText("Hauteur");
 
         PPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        PPiece_Cmlabel.setText("Cm");
+        PPiece_Cmlabel.setText("cm");
 
         HPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        HPiece_Cmlabel.setText("Cm");
+        HPiece_Cmlabel.setText("cm");
 
         jLabel3.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         jLabel3.setText("Largeur");
 
         LargeurPieceSelecrtionneField.setEditable(false);
         LargeurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        LargeurPieceSelecrtionneField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         LargeurPieceSelecrtionneField.setBorder(null);
 
         HauteurPieceSelecrtionneField.setEditable(false);
         HauteurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        HauteurPieceSelecrtionneField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         HauteurPieceSelecrtionneField.setToolTipText("");
         HauteurPieceSelecrtionneField.setBorder(null);
+        HauteurPieceSelecrtionneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HauteurPieceSelecrtionneFieldActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Maison Neue", 1, 14)); // NOI18N
         jLabel5.setText("Dimensions de la pièce sélectionnée");
 
         ProfondeurPieceSelecrtionneField.setEditable(false);
         ProfondeurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        ProfondeurPieceSelecrtionneField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         ProfondeurPieceSelecrtionneField.setBorder(null);
         ProfondeurPieceSelecrtionneField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -498,7 +523,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         LPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
-        LPiece_Cmlabel.setText("Cm");
+        LPiece_Cmlabel.setText("cm");
 
         jLabel4.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         jLabel4.setText("Profondeur");
@@ -549,26 +574,23 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ProfondeurPieceSelecrtionneField)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(PPiece_Cmlabel))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(HauteurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(HPiece_Cmlabel))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(LPiece_Cmlabel))))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(HauteurPieceSelecrtionneField)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HPiece_Cmlabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LPiece_Cmlabel))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
@@ -724,14 +746,14 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(EpaisseurTriple_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EpaisseurTriple_Mesure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         Hauteur_Label.getAccessibleContext().setAccessibleDescription("");
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 234, 234)));
+        jMenuBar1.setBorder(null);
         jMenuBar1.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
 
         jMenu1.setText("Fichier");
@@ -766,6 +788,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(MenuCharger);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Quitter");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -841,7 +864,16 @@ public class GUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    private boolean DoesValueGoOverThreshold(String inputValue) {
+        if (inputValue.length() == 0) {
+            return false;
+        }
+        Double value = Double.parseDouble(inputValue);
+        if (!Metrique_Button.isSelected()) {
+            value *= 2.54;
+        }
+        return (value > Etagere.MAX_SIZE);
+    }
     public JTextField getLargeurRelCaisson_Field() {
         return LargeurRelCaisson_Field;
     }
@@ -894,11 +926,6 @@ public class GUI extends javax.swing.JFrame {
              }
         });
     }//GEN-LAST:event_MenuBtnNouveauActionPerformed
-
-    private void Undo_BuittonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Undo_BuittonMouseClicked
-        Controleur.getInstance().undo();
-        System.out.println("UI.GUI.jButton22MouseClicked()");
-    }//GEN-LAST:event_Undo_BuittonMouseClicked
 
     private void MenuSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSauvegarderActionPerformed
         JFileChooser explorer = new JFileChooser();
@@ -1018,14 +1045,23 @@ public class GUI extends javax.swing.JFrame {
     private void jCheckBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox2ItemStateChanged
         if(jCheckBox2.isSelected()){
             Controleur.getInstance().setDepasse(true);
-        }
-        if(jCheckBox2.isSelected()){
+        } else {
             Controleur.getInstance().setDepasse(false);
         }
+        
+        Controleur.getInstance().getEtagere().GenererPieces();
+        Controleur.getInstance().getAfficheur().redraw();
     }//GEN-LAST:event_jCheckBox2ItemStateChanged
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()) {
+            Controleur.getInstance().getEtagere().setestferme(true);
+        } else {
+            Controleur.getInstance().getEtagere().setestferme(false);
+        }
+
+        Controleur.getInstance().getEtagere().GenererPieces();
+        Controleur.getInstance().getAfficheur().redraw();
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void LargeurRelCaisson_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LargeurRelCaisson_FieldKeyPressed
@@ -1045,9 +1081,18 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_HauteurRelEtage_FieldActionPerformed
 
     private void Hauteur_TextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()));
-            Controleur.getInstance().getAfficheur().redraw();
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (DoesValueGoOverThreshold(getHauteur_Textfield().getText())) {
+                JOptionPane.showMessageDialog(null, "The value you entered is too high, the maximum is " + Etagere.MAX_SIZE + " cm", "Whoops",
+                                   JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (Imperial_Button.isSelected()) {
+                    Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()) * 2.54);
+                } else {
+                    Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()));
+                }
+                Controleur.getInstance().getAfficheur().redraw();
+            }
         }
     }//GEN-LAST:event_Hauteur_TextfieldKeyPressed
 
@@ -1057,8 +1102,17 @@ public class GUI extends javax.swing.JFrame {
 
     private void Largeur_TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Largeur_TextFieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()));
-            Controleur.getInstance().getAfficheur().redraw();
+            if (DoesValueGoOverThreshold(getLargeur_TextField().getText())) {
+                JOptionPane.showMessageDialog(null, "The value you entered is too high, the maximum is " + Etagere.MAX_SIZE + " cm", "Whoops",
+                                   JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (Imperial_Button.isSelected()) {
+                    Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()) * 2.54);
+                } else {
+                    Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()));
+                }
+                Controleur.getInstance().getAfficheur().redraw();
+            }
         }
     }//GEN-LAST:event_Largeur_TextFieldKeyPressed
 
@@ -1099,6 +1153,7 @@ public class GUI extends javax.swing.JFrame {
             LPiece_Cmlabel.setText("Po");
             PPiece_Cmlabel.setText("Po");
             Controleur.getInstance().updatevuImperiale();
+            Controleur.getInstance().setMesureMetrique(false);
         }
     }//GEN-LAST:event_Imperial_ButtonStateChanged
 
@@ -1108,12 +1163,13 @@ public class GUI extends javax.swing.JFrame {
 
     private void Metrique_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Metrique_ButtonStateChanged
         if(Metrique_Button.isSelected()){
-            Hauteur_Cmlabel.setText("Cm");
-            Largeur_Cmlabel.setText("Cm");
-            Profondeur_CMlabel.setText("Cm");
-            HPiece_Cmlabel.setText("Cm");
-            LPiece_Cmlabel.setText("Cm");
-            PPiece_Cmlabel.setText("Cm");
+            Hauteur_Cmlabel.setText("cm");
+            Largeur_Cmlabel.setText("cm");
+            Profondeur_CMlabel.setText("cm");
+            HPiece_Cmlabel.setText("cm");
+            LPiece_Cmlabel.setText("cm");
+            PPiece_Cmlabel.setText("cm");
+            Controleur.getInstance().setMesureMetrique(true);
             Controleur.getInstance().updatevue();
         }
     }//GEN-LAST:event_Metrique_ButtonStateChanged
@@ -1132,10 +1188,59 @@ public class GUI extends javax.swing.JFrame {
 
     private void Profondeur_TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Profondeur_TextFieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getProfondeur_TextField().getText()));
-            Controleur.getInstance().getAfficheur().redraw();
+            if (DoesValueGoOverThreshold(getProfondeur_TextField().getText())) {
+                JOptionPane.showMessageDialog(null, "The value you entered is too high, the maximum is " + Etagere.MAX_SIZE + " cm", "Whoops",
+                                   JOptionPane.ERROR_MESSAGE);
+            } else {
+                 if (Imperial_Button.isSelected()) {
+                    Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getProfondeur_TextField().getText()) * 2.54);
+                } else {
+                    Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getProfondeur_TextField().getText()));
+                }
+                Controleur.getInstance().getAfficheur().redraw();
+            }
         }
     }//GEN-LAST:event_Profondeur_TextFieldKeyPressed
+
+    private void Hauteur_TextfieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldCaretUpdate
+        if(DoesValueGoOverThreshold(Hauteur_Textfield.getText())) {
+            Hauteur_Textfield.setBackground(Color.red);
+        } else {
+            Hauteur_Textfield.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_Hauteur_TextfieldCaretUpdate
+
+    private void Largeur_TextFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Largeur_TextFieldCaretUpdate
+        if(DoesValueGoOverThreshold(Hauteur_Textfield.getText())) {
+            Largeur_TextField.setBackground(Color.red);
+        } else {
+            Largeur_TextField.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_Largeur_TextFieldCaretUpdate
+
+    private void Profondeur_TextFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Profondeur_TextFieldCaretUpdate
+        if(DoesValueGoOverThreshold(Hauteur_Textfield.getText())) {
+            Profondeur_TextField.setBackground(Color.red);
+        } else {
+            Profondeur_TextField.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_Profondeur_TextFieldCaretUpdate
+
+    private void HauteurPieceSelecrtionneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HauteurPieceSelecrtionneFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HauteurPieceSelecrtionneFieldActionPerformed
+
+    private void EpaisseurDouble_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpaisseurDouble_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().getEtagere().setEpaisseurDouble(Double.parseDouble(EpaisseurDouble_Field.getText()));
+        }
+    }//GEN-LAST:event_EpaisseurDouble_FieldKeyPressed
+
+    private void EpaisseurTriple_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpaisseurTriple_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().getEtagere().setEpaisseurTriple(Double.parseDouble(EpaisseurTriple_Field.getText()));
+        }
+    }//GEN-LAST:event_EpaisseurTriple_FieldKeyPressed
 
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();

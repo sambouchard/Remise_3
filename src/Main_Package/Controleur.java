@@ -42,11 +42,15 @@ public class Controleur {
         try {
             Etagere e = UndoRedoStore.undo();
             this.etagere = e;
-        } catch (IndexOutOfBoundsException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Cannot Undo anymore!", "Whoops",
                     JOptionPane.ERROR_MESSAGE);
         }
-
+        this.setCaissonSelectionne(null);
+        this.etageSelectionne = null;
+        this.montantEtageHorizontalSelectionne = null;
+        this.pieceSelectionner = null;
+        this.MontantVerticalSelectionne = null;
         this.afficheur.redraw();
     }
 
@@ -54,7 +58,7 @@ public class Controleur {
         try {
             Etagere e = UndoRedoStore.redo();
             this.etagere = e;
-        } catch (IndexOutOfBoundsException ex) {
+        } catch(Exception ex) {
             JOptionPane.showMessageDialog(null, "Cannot Redo anymore!", "Whoops",
                     JOptionPane.ERROR_MESSAGE);
         }
@@ -169,21 +173,18 @@ public class Controleur {
     }
 
     public void updatevuImperiale() {
-        this.Vue.getHauteur_Textfield().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getHauteur() / 2.54)
-                .setScale(3, RoundingMode.HALF_UP)
-                .doubleValue()));
-        this.Vue.getLargeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getLargeur() / 2.54)
-                .setScale(3, RoundingMode.HALF_UP)
-                .doubleValue()));
-        this.Vue.getProfondeur_TextField().setText(String.valueOf(BigDecimal.valueOf(this.etagere.getProfondeur() / 2.54)
-                .setScale(3, RoundingMode.HALF_UP)
-                .doubleValue()));
+        this.Vue.getHauteur_Textfield().setText(String.format("%.2f", this.etagere.getHauteur() / 2.54));
+        this.Vue.getLargeur_TextField().setText(String.format("%.2f", this.etagere.getLargeur() / 2.54));
+        this.Vue.getProfondeur_TextField().setText(String.format("%.2f", this.etagere.getProfondeur() / 2.54));
+        this.Vue.getHauteurPieceSelecrtionneField().setText(String.format("%.2f", this.pieceSelectionner.getHauteur() / 2.54));
+        this.Vue.getLargeurPieceSelecrtionneField().setText(String.format("%.2f", this.pieceSelectionner.getLargeur() / 2.54));
+        this.Vue.getProfondeurPieceSelecrtionneField().setText(String.format("%.2f", this.pieceSelectionner.getProfondeur() / 2.54));
     }
 
     public void updatevue() {
-        this.Vue.getHauteur_Textfield().setText(String.valueOf(this.etagere.getHauteur()));
-        this.Vue.getLargeur_TextField().setText(String.valueOf(this.etagere.getLargeur()));
-        this.Vue.getProfondeur_TextField().setText(String.valueOf(this.etagere.getProfondeur()));
+        this.Vue.getHauteur_Textfield().setText(String.format("%.2f", this.etagere.getHauteur()));
+        this.Vue.getLargeur_TextField().setText(String.format("%.2f", this.etagere.getLargeur()));
+        this.Vue.getProfondeur_TextField().setText(String.format("%.2f", this.etagere.getProfondeur()));
         if (getEtageSelectionne() != null) {
             this.Vue.getHauteurRelEtage_Field().setText(String.valueOf(String.valueOf(BigDecimal.valueOf(Controleur.getInstance().getEtageSelectionne().getHauteur_rel())
                     .setScale(3, RoundingMode.HALF_UP)
@@ -209,7 +210,6 @@ public class Controleur {
                     etageSelectionne.getListecaissons()[CaissonSelectionne.getId() + 1].setLargeurRel(newLrelCaissondroit);
                     etagere.GenererPieces();
                     afficheur.redraw();
-
                 }
             } catch (Exception ex) {
                 System.out.println("error: e est negatif");
@@ -294,11 +294,15 @@ public class Controleur {
     }
 
     public void setPieceSelectionner(Piece piece) {
-        if(piece != null){
-            pieceSelectionner = piece;
-            this.Vue.getLargeurPieceSelecrtionneField().setText(String.valueOf(piece.getLargeur()));
-            this.Vue.getHauteurPieceSelecrtionneField().setText(String.valueOf(piece.getHauteur()));
-            this.Vue.getProfondeurPieceSelecrtionneField().setText(String.valueOf(piece.getProfondeur()));
+        pieceSelectionner = piece;
+        if (mesureMetrique) {
+            this.Vue.getLargeurPieceSelecrtionneField().setText(String.format("%.2f", piece.getLargeur()));
+            this.Vue.getHauteurPieceSelecrtionneField().setText(String.format("%.2f",piece.getHauteur()));
+            this.Vue.getProfondeurPieceSelecrtionneField().setText(String.format("%.2f",piece.getProfondeur()));
+        } else {
+            this.Vue.getLargeurPieceSelecrtionneField().setText(String.format("%.2f", piece.getLargeur() / 2.54));
+            this.Vue.getHauteurPieceSelecrtionneField().setText(String.format("%.2f",piece.getHauteur() / 2.54));
+            this.Vue.getProfondeurPieceSelecrtionneField().setText(String.format("%.2f",piece.getProfondeur() / 2.54));
         }
     }
 

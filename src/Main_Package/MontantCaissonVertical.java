@@ -57,4 +57,10 @@ public class MontantCaissonVertical implements java.io.Serializable{
     }
     
     
+    public void applyDx(double dx) {
+        double totalX = Caisson_gauche.getWidth() + Caisson_droite.getWidth();
+        double deltaRelatif = dx/totalX;
+        Caisson_gauche.setLargeurRel(Caisson_gauche.getLargeurRel() + deltaRelatif);
+        Caisson_droite.setLargeurRel(Caisson_droite.getLargeurRel() - deltaRelatif);
+    }
 }
