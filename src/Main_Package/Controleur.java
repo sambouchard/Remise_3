@@ -210,7 +210,6 @@ public class Controleur {
                     etageSelectionne.getListecaissons()[CaissonSelectionne.getId() + 1].setLargeurRel(newLrelCaissondroit);
                     etagere.GenererPieces();
                     afficheur.redraw();
-
                 }
             } catch (Exception ex) {
                 System.out.println("error: e est negatif");

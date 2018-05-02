@@ -488,6 +488,11 @@ public class GUI extends javax.swing.JFrame {
         HauteurPieceSelecrtionneField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         HauteurPieceSelecrtionneField.setToolTipText("");
         HauteurPieceSelecrtionneField.setBorder(null);
+        HauteurPieceSelecrtionneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HauteurPieceSelecrtionneFieldActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Maison Neue", 1, 14)); // NOI18N
         jLabel5.setText("Dimensions de la pièce sélectionnée");
@@ -568,15 +573,14 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(ProfondeurPieceSelecrtionneField)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(PPiece_Cmlabel))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(HauteurPieceSelecrtionneField)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(HPiece_Cmlabel))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(LPiece_Cmlabel)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(HauteurPieceSelecrtionneField)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HPiece_Cmlabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LPiece_Cmlabel))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
@@ -1184,6 +1188,10 @@ public class GUI extends javax.swing.JFrame {
             Profondeur_TextField.setBackground(Color.white);
         }
     }//GEN-LAST:event_Profondeur_TextFieldCaretUpdate
+
+    private void HauteurPieceSelecrtionneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HauteurPieceSelecrtionneFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HauteurPieceSelecrtionneFieldActionPerformed
 
     public static void promptCreerEtagere() {
         CreateNewEtagereWindow popup2 = new CreateNewEtagereWindow();
