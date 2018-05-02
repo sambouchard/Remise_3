@@ -117,7 +117,7 @@ public class AfficheurEtagere2D extends JPanel {
                 for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
                     if (etage.contains(pointInEtagereCoordSpace)) {
                         Controleur.getInstance().setEtageSelectionne(etage);
-                        Controleur.getInstance().updatevue();
+//                        Controleur.getInstance().updatevue();
                         break;
                     }
                     
@@ -127,7 +127,7 @@ public class AfficheurEtagere2D extends JPanel {
                     for(Caisson caisson : etage.getListecaissons()){
                         if(caisson.contains(pointInEtagereCoordSpace)){
                             Controleur.getInstance().setCaissonSelectionne(caisson);
-                            Controleur.getInstance().updatevue();
+//                            Controleur.getInstance().updatevue();
                             break;
                         }
                     }

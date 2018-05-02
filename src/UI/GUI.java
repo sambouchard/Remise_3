@@ -1233,12 +1233,16 @@ public class GUI extends javax.swing.JFrame {
     private void EpaisseurDouble_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpaisseurDouble_FieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             Controleur.getInstance().getEtagere().setEpaisseurDouble(Double.parseDouble(EpaisseurDouble_Field.getText()));
+            Controleur.getInstance().getEtagere().GenererPieces();
+            Controleur.getInstance().getAfficheur().redraw();
         }
     }//GEN-LAST:event_EpaisseurDouble_FieldKeyPressed
 
     private void EpaisseurTriple_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpaisseurTriple_FieldKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             Controleur.getInstance().getEtagere().setEpaisseurTriple(Double.parseDouble(EpaisseurTriple_Field.getText()));
+            Controleur.getInstance().getEtagere().GenererPieces();
+            Controleur.getInstance().getAfficheur().redraw();
         }
     }//GEN-LAST:event_EpaisseurTriple_FieldKeyPressed
 
