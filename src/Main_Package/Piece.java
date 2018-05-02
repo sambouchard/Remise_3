@@ -217,9 +217,9 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable {
     public String toStringImperial() {
         String out = new String();
          out += this.nom + ":\t" +
-                this.hauteur * IMPERIAL_SCALING_FACTOR + IMPERIAL_UNIT + " x " +
-                this.largeur * IMPERIAL_SCALING_FACTOR + IMPERIAL_UNIT + " x " +
-                this.profondeur * IMPERIAL_SCALING_FACTOR + IMPERIAL_UNIT;
+                String.format("%.2f",this.hauteur * IMPERIAL_SCALING_FACTOR) + IMPERIAL_UNIT + " x " +
+                String.format("%.2f",this.largeur * IMPERIAL_SCALING_FACTOR) + IMPERIAL_UNIT + " x " +
+                String.format("%.2f",this.profondeur * IMPERIAL_SCALING_FACTOR) + IMPERIAL_UNIT;
         return out;
     }
 }

@@ -6,6 +6,7 @@
 package UI;
 
 import Main_Package.Controleur;
+import Main_Package.Etagere;
 import java.awt.Color;
 
 /**
@@ -309,35 +310,56 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_Profondeur_fieldKeyTyped
 
     private void Profondeur_fieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Profondeur_fieldCaretUpdate
+        Profondeur_field.setBackground(Color.white);
         if (!(Hauteur_field.getText().equals("")) && !(Largeur_field.getText().equals("")) && !(Profondeur_field.getText().equals(""))) {
             CreateEtagereButton.setEnabled(true);
         } else {
             CreateEtagereButton.setEnabled(false);
         }
-
-// TODO add your handling code here:
+        if(DoesValueGoOverThreshold(Profondeur_field.getText())) {
+            Profondeur_field.setBackground(Color.red);
+            CreateEtagereButton.setEnabled(false);
+        }
     }//GEN-LAST:event_Profondeur_fieldCaretUpdate
 
     private void Largeur_fieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Largeur_fieldCaretUpdate
+        Largeur_field.setBackground(Color.white);
         if (!(Hauteur_field.getText().equals("")) && !(Largeur_field.getText().equals("")) && !(Profondeur_field.getText().equals(""))) {
             CreateEtagereButton.setEnabled(true);
         } else {
+            CreateEtagereButton.setEnabled(false);
+        }
+        if(DoesValueGoOverThreshold(Largeur_field.getText())) {
+            Largeur_field.setBackground(Color.red);
             CreateEtagereButton.setEnabled(false);
         }
     }//GEN-LAST:event_Largeur_fieldCaretUpdate
 
     private void Hauteur_fieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_Hauteur_fieldCaretUpdate
+        Hauteur_field.setBackground(Color.white);
         if (!(Hauteur_field.getText().equals("")) && !(Largeur_field.getText().equals("")) && !(Profondeur_field.getText().equals(""))) {
             CreateEtagereButton.setEnabled(true);
         } else {
             CreateEtagereButton.setEnabled(false);
-        }        // TODO add your handling code here:
+        }
+        if(DoesValueGoOverThreshold(Hauteur_field.getText())) {
+            Hauteur_field.setBackground(Color.red);
+            CreateEtagereButton.setEnabled(false);
+        }
     }//GEN-LAST:event_Hauteur_fieldCaretUpdate
-
+    private boolean DoesValueGoOverThreshold(String inputValue) {
+        if (inputValue.length() == 0) {
+            return false;
+        }
+        Double value = Double.parseDouble(inputValue);
+        if (!Mesuremetrique_radio.isSelected()) {
+            value *= 2.54;
+        }
+        return (value > Etagere.MAX_SIZE);
+    }
     private void CreateEtagereButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateEtagereButtonMouseClicked
-        if (CreateEtagereButton.isEnabled() == true) {
+        if (CreateEtagereButton.isEnabled()) {
             boolean isInMeters = Mesuremetrique_radio.isSelected();
-            System.out.println(isInMeters);
             Controleur.getInstance().setMesureMetrique(isInMeters);
             Controleur.getInstance().createNewEtagere(Double.parseDouble(this.Hauteur_field.getText()), Double.parseDouble(this.Largeur_field.getText()),
                     Double.parseDouble(this.Profondeur_field.getText()), 1, true, true, Perimetredouble_radio.isSelected());
