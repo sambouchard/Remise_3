@@ -150,6 +150,7 @@ public class Etagere implements java.io.Serializable {
         GenererPiecesEtages();
         GenerePiecesCaissonsVerticale();
         if (estferme) {
+            GenererPiecePanneauxArriere();
             retraitPourPanneauArriere();
         }
     }
@@ -668,6 +669,26 @@ public class Etagere implements java.io.Serializable {
                 } else {
                     piece.setProfondeur(piece.getProfondeur() - epaisseurDouble);
                 }
+            }
+        }
+    }
+
+    private void GenererPiecePanneauxArriere() {
+        double largeuraenlever;
+        double hauteuraenlever;
+        if(isPerimetretriple()){
+            largeuraenlever = 6*epaisseurTriple;
+            hauteuraenlever = 6*epaisseurTriple;
+        }
+        else{
+            largeuraenlever = 4*epaisseurDouble;
+            hauteuraenlever = 4*epaisseurDouble;
+        }
+        for(Etage etage: listeetages){
+            for(Caisson caisson: etage.getListecaissons()){
+               Piece newpiece = new Piece(etage.getHeight()+2*epaisseurTriple, caisson.getWidth()+2*epaisseurTriple, epaisseurTriple, "Piece arriere caisson " + caisson.getId() + " etage " + etage.getId());
+               newpiece.setDrawingcoin(new Coord_Coins(caisson.getX()-300-epaisseurTriple,caisson.getY()-epaisseurTriple-300,this.profondeur-epaisseurTriple));
+               Liste_piece.add(newpiece);
             }
         }
     }
