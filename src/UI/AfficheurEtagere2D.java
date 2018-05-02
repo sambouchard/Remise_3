@@ -12,6 +12,7 @@ package UI;
 import Main_Package.Caisson;
 import Main_Package.Controleur;
 import Main_Package.Coord_Coins;
+import Main_Package.MontantEtageHorizontal;
 import Main_Package.Etage;
 import Main_Package.MontantCaissonVertical;
 import Main_Package.Piece;
@@ -90,14 +91,20 @@ public class AfficheurEtagere2D extends JPanel {
                     for(Piece piece : montant.getListe_pieces()){
                         if(piece.contains(pointInEtagereCoordSpace)){
                             Controleur.getInstance().setMontantVerticalSelectionne(montant);
-                            System.out.println(montant.getCaisson_gauche().getId());
-                            System.out.println(montant.getCaisson_droite().getId());
+                        }
+                    }
+                }
+                for(MontantEtageHorizontal montant : Controleur.getInstance().getEtagere().getListeMontantHorizontal()){
+                    for(Piece piece :montant.getListe_piece()){
+                        if(piece.contains(pointInEtagereCoordSpace)){
+                            Controleur.getInstance().setMontantEtageHorizontalSelectionne(montant);
                         }
                     }
                 }
                 for (Piece piece : Controleur.getInstance().getEtagere().getListe_piece()) {
                     if (piece.contains(pointInEtagereCoordSpace)) {
                         Controleur.getInstance().setPieceSelectionner(piece);
+                        System.out.println(piece.getNom());
                     }
                 }
                 for (Etage etage : Controleur.getInstance().getEtagere().getListeetages()) {
@@ -293,6 +300,12 @@ public class AfficheurEtagere2D extends JPanel {
                     g2d.fill(tx.createTransformedShape(caisson));
                 }
 //                g2d.fill(tx.createTransformedShape(etage));
+            }
+            if(Controleur.getInstance().getMontantEtageHorizontalSelectionne() != null){
+                for(Piece piece: Controleur.getInstance().getMontantEtageHorizontalSelectionne().getListe_piece()){
+                    g2d.setColor(Color.RED);
+                    g2d.fill(tx.createTransformedShape(piece));
+                }
             }
             if(Controleur.getInstance().getMontantVerticalSelectionne()!= null){
                 for(Piece piece:Controleur.getInstance().getMontantVerticalSelectionne().getListe_pieces() ){
