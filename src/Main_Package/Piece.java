@@ -44,14 +44,14 @@ public class Piece extends Rectangle2D.Double implements java.io.Serializable {
      */
     public void setDrawingcoin(Coord_Coins newdrawingcoin) {
         this.drawingcoin = newdrawingcoin;
-        setCoinFondHautGauche(newdrawingcoin);
-        this.CoinFaceHautDroit = new Coord_Coins(this.CoinFondHautGauche.getCoord_x()+this.largeur, this.CoinFondHautGauche.getCoord_y(), 0);
-        this.CoinFaceBasGauche = new Coord_Coins(this.CoinFondHautGauche.getCoord_x(), this.CoinFondHautGauche.getCoord_y()+this.hauteur, 0);
-        this.CoinFaceBasDroit = new Coord_Coins(this.CoinFondHautGauche.getCoord_x()+this.largeur, this.CoinFondHautGauche.getCoord_y()+this.hauteur, 0);
-//        this.CoinFondHautGauche = new Coord_Coins(x, y, this.profondeur);
-//        this.CoinFondHautDroit = new Coord_Coins(x, y, this.profondeur);
-//        this.CoinFondBasGauche = new Coord_Coins(x, y, this.profondeur);
-//        this.CoinFondBasDroit = new Coord_Coins(x, y, this.profondeur);
+        this.CoinFaceHautGauche = new Coord_Coins(this.drawingcoin.getCoord_x(), this.drawingcoin.getCoord_y(), this.drawingcoin.getCoord_z());
+        this.CoinFaceHautDroit = new Coord_Coins(this.CoinFaceHautGauche.getCoord_x()+this.largeur, this.CoinFaceHautGauche.getCoord_y(), 0);
+        this.CoinFaceBasGauche = new Coord_Coins(this.CoinFaceHautGauche.getCoord_x(), this.CoinFaceHautGauche.getCoord_y()+this.hauteur, 0);
+        this.CoinFaceBasDroit = new Coord_Coins(this.CoinFaceHautGauche.getCoord_x()+this.largeur, this.CoinFaceHautGauche.getCoord_y()+this.hauteur, 0);
+        this.CoinFondHautGauche = new Coord_Coins(this.CoinFaceHautGauche.getCoord_x(), this.CoinFaceHautGauche.getCoord_y(), this.profondeur);
+        this.CoinFondHautDroit = new Coord_Coins(this.CoinFaceHautDroit.getCoord_x(), this.CoinFaceHautDroit.getCoord_y(), this.profondeur);
+        this.CoinFondBasGauche = new Coord_Coins(this.CoinFaceBasGauche.getCoord_x(), this.CoinFaceBasGauche.getCoord_y(), this.profondeur);
+        this.CoinFondBasDroit = new Coord_Coins(this.CoinFaceBasDroit.getCoord_x(), this.CoinFaceBasDroit.getCoord_y(), this.profondeur);
     }
     private double hauteur;
     private double largeur;

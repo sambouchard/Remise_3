@@ -5,13 +5,11 @@
         <group>
             <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/Etage.java</file>
             <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/UI/AfficheurEtagere2D.java</file>
-            <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/TestClass3D.java</file>
-            <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/MontantCaissonVertical.java</file>
-            <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/MontantEtageHorizontal.java</file>
+            <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/Piece.java</file>
             <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/Etagere.java</file>
+            <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/Export.java</file>
             <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/Main_Package/Controleur.java</file>
             <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/UI/GUI.java</file>
-            <file>file://fss.ulaval.ca/SI/FR/SABOU350/Desktop/Nouveau%20dossier%20(2)/Remise_3/src/UI/CreateNewEtagereWindow.java</file>
         </group>
     </open-files>
 </project-private>

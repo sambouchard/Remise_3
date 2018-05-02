@@ -1,149 +1,2000 @@
-solid test 
+solid Piece du bas 1
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 1.27 50.0 0.0
+       vertex 48.730000000000004 50.0 0.0
+       vertex 1.27 48.73 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 48.73 0.0
+       vertex 48.730000000000004 50.0 0.0
+       vertex 48.730000000000004 48.73 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 50.0 10.0
+       vertex 48.730000000000004 50.0 10.0
+       vertex 1.27 48.73 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 48.73 10.0
+       vertex 48.730000000000004 50.0 10.0
+       vertex 48.730000000000004 48.73 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 48.73 0.0
+       vertex 48.730000000000004 48.73 0.0
+       vertex 1.27 48.73 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 48.73 10.0
+       vertex 48.730000000000004 48.73 0.0
+       vertex 48.730000000000004 48.73 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 50.0 0.0
+       vertex 48.730000000000004 50.0 0.0
+       vertex 1.27 50.0 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 50.0 10.0
+       vertex 48.730000000000004 50.0 0.0
+       vertex 48.730000000000004 50.0 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 50.0 0.0
+       vertex 1.27 50.0 10.0
+       vertex 1.27 48.73 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 48.73 0.0
+       vertex 1.27 50.0 10.0
+       vertex 1.27 48.73 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 50.0 0.0
+       vertex 48.730000000000004 50.0 10.0
+       vertex 48.730000000000004 48.73 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 48.73 0.0
+       vertex 48.730000000000004 50.0 10.0
+       vertex 48.730000000000004 48.73 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece du haut1
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 0.0 1.27 0.0
+       vertex 50.0 1.27 0.0
+       vertex 0.0 0.0 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 0.0 0.0 0.0
+       vertex 50.0 1.27 0.0
+       vertex 50.0 0.0 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 0.0 1.27 10.0
+       vertex 50.0 1.27 10.0
+       vertex 0.0 0.0 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 0.0 0.0 10.0
+       vertex 50.0 1.27 10.0
+       vertex 50.0 0.0 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 0.0 0.0 0.0
+       vertex 50.0 0.0 0.0
+       vertex 0.0 0.0 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 0.0 0.0 10.0
+       vertex 50.0 0.0 0.0
+       vertex 50.0 0.0 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 0.0 1.27 0.0
+       vertex 50.0 1.27 0.0
+       vertex 0.0 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 0.0 1.27 10.0
+       vertex 50.0 1.27 0.0
+       vertex 50.0 1.27 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 0.0 1.27 0.0
+       vertex 0.0 1.27 10.0
+       vertex 0.0 0.0 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 0.0 0.0 0.0
+       vertex 0.0 1.27 10.0
+       vertex 0.0 0.0 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 50.0 1.27 0.0
+       vertex 50.0 1.27 10.0
+       vertex 50.0 0.0 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 50.0 0.0 0.0
+       vertex 50.0 1.27 10.0
+       vertex 50.0 0.0 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece du haut2
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 1.27 2.54 0.0
+       vertex 48.730000000000004 2.54 0.0
+       vertex 1.27 1.27 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 1.27 0.0
+       vertex 48.730000000000004 2.54 0.0
+       vertex 48.730000000000004 1.27 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 2.54 10.0
+       vertex 48.730000000000004 2.54 10.0
+       vertex 1.27 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 1.27 10.0
+       vertex 48.730000000000004 2.54 10.0
+       vertex 48.730000000000004 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 1.27 0.0
+       vertex 48.730000000000004 1.27 0.0
+       vertex 1.27 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 1.27 10.0
+       vertex 48.730000000000004 1.27 0.0
+       vertex 48.730000000000004 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 2.54 0.0
+       vertex 48.730000000000004 2.54 0.0
+       vertex 1.27 2.54 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 2.54 10.0
+       vertex 48.730000000000004 2.54 0.0
+       vertex 48.730000000000004 2.54 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 2.54 0.0
+       vertex 1.27 2.54 10.0
+       vertex 1.27 1.27 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 1.27 0.0
+       vertex 1.27 2.54 10.0
+       vertex 1.27 1.27 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 2.54 0.0
+       vertex 48.730000000000004 2.54 10.0
+       vertex 48.730000000000004 1.27 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 1.27 0.0
+       vertex 48.730000000000004 2.54 10.0
+       vertex 48.730000000000004 1.27 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece Haut du caisson 0 de l'etage 1
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 1.27 3.81 0.0
+       vertex 48.730000000000004 3.81 0.0
+       vertex 1.27 2.54 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 2.54 0.0
+       vertex 48.730000000000004 3.81 0.0
+       vertex 48.730000000000004 2.54 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 3.81 10.0
+       vertex 48.730000000000004 3.81 10.0
+       vertex 1.27 2.54 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 2.54 10.0
+       vertex 48.730000000000004 3.81 10.0
+       vertex 48.730000000000004 2.54 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 2.54 0.0
+       vertex 48.730000000000004 2.54 0.0
+       vertex 1.27 2.54 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 2.54 10.0
+       vertex 48.730000000000004 2.54 0.0
+       vertex 48.730000000000004 2.54 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 3.81 0.0
+       vertex 48.730000000000004 3.81 0.0
+       vertex 1.27 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 3.81 10.0
+       vertex 48.730000000000004 3.81 0.0
+       vertex 48.730000000000004 3.81 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 3.81 0.0
+       vertex 1.27 3.81 10.0
+       vertex 1.27 2.54 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 2.54 0.0
+       vertex 1.27 3.81 10.0
+       vertex 1.27 2.54 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 3.81 0.0
+       vertex 48.730000000000004 3.81 10.0
+       vertex 48.730000000000004 2.54 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 2.54 0.0
+       vertex 48.730000000000004 3.81 10.0
+       vertex 48.730000000000004 2.54 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece de gauche
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 0.0 50.0 0.0
+       vertex 1.27 50.0 0.0
+       vertex 0.0 1.27 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 0.0 1.27 0.0
+       vertex 1.27 50.0 0.0
+       vertex 1.27 1.27 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 0.0 50.0 10.0
+       vertex 1.27 50.0 10.0
+       vertex 0.0 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 0.0 1.27 10.0
+       vertex 1.27 50.0 10.0
+       vertex 1.27 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 0.0 1.27 0.0
+       vertex 1.27 1.27 0.0
+       vertex 0.0 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 0.0 1.27 10.0
+       vertex 1.27 1.27 0.0
+       vertex 1.27 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 0.0 50.0 0.0
+       vertex 1.27 50.0 0.0
+       vertex 0.0 50.0 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 0.0 50.0 10.0
+       vertex 1.27 50.0 0.0
+       vertex 1.27 50.0 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 0.0 50.0 0.0
+       vertex 0.0 50.0 10.0
+       vertex 0.0 1.27 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 0.0 1.27 0.0
+       vertex 0.0 50.0 10.0
+       vertex 0.0 1.27 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 50.0 0.0
+       vertex 1.27 50.0 10.0
+       vertex 1.27 1.27 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 1.27 0.0
+       vertex 1.27 50.0 10.0
+       vertex 1.27 1.27 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece de droite
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 48.73 50.0 0.0
+       vertex 50.0 50.0 0.0
+       vertex 48.73 1.27 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 48.73 1.27 0.0
+       vertex 50.0 50.0 0.0
+       vertex 50.0 1.27 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 48.73 50.0 10.0
+       vertex 50.0 50.0 10.0
+       vertex 48.73 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 48.73 1.27 10.0
+       vertex 50.0 50.0 10.0
+       vertex 50.0 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 48.73 1.27 0.0
+       vertex 50.0 1.27 0.0
+       vertex 48.73 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 48.73 1.27 10.0
+       vertex 50.0 1.27 0.0
+       vertex 50.0 1.27 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 48.73 50.0 0.0
+       vertex 50.0 50.0 0.0
+       vertex 48.73 50.0 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 48.73 50.0 10.0
+       vertex 50.0 50.0 0.0
+       vertex 50.0 50.0 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.73 50.0 0.0
+       vertex 48.73 50.0 10.0
+       vertex 48.73 1.27 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 48.73 1.27 0.0
+       vertex 48.73 50.0 10.0
+       vertex 48.73 1.27 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 50.0 50.0 0.0
+       vertex 50.0 50.0 10.0
+       vertex 50.0 1.27 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 50.0 1.27 0.0
+       vertex 50.0 50.0 10.0
+       vertex 50.0 1.27 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece Droite 1 Etage 0
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 47.46 15.396666666666668 0.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 47.46 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 47.46 3.81 0.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 48.730000000000004 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 47.46 15.396666666666668 10.0
+       vertex 48.730000000000004 15.396666666666668 10.0
+       vertex 47.46 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 47.46 3.81 10.0
+       vertex 48.730000000000004 15.396666666666668 10.0
+       vertex 48.730000000000004 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 47.46 3.81 0.0
+       vertex 48.730000000000004 3.81 0.0
+       vertex 47.46 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 47.46 3.81 10.0
+       vertex 48.730000000000004 3.81 0.0
+       vertex 48.730000000000004 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 47.46 15.396666666666668 0.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 47.46 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 47.46 15.396666666666668 10.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 48.730000000000004 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 47.46 15.396666666666668 0.0
+       vertex 47.46 15.396666666666668 10.0
+       vertex 47.46 3.81 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 47.46 3.81 0.0
+       vertex 47.46 15.396666666666668 10.0
+       vertex 47.46 3.81 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 48.730000000000004 15.396666666666668 10.0
+       vertex 48.730000000000004 3.81 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 3.81 0.0
+       vertex 48.730000000000004 15.396666666666668 10.0
+       vertex 48.730000000000004 3.81 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece Droite 2 Etage 0
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 46.19 15.396666666666668 0.0
+       vertex 47.46 15.396666666666668 0.0
+       vertex 46.19 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 46.19 3.81 0.0
+       vertex 47.46 15.396666666666668 0.0
+       vertex 47.46 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 46.19 15.396666666666668 10.0
+       vertex 47.46 15.396666666666668 10.0
+       vertex 46.19 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 46.19 3.81 10.0
+       vertex 47.46 15.396666666666668 10.0
+       vertex 47.46 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 46.19 3.81 0.0
+       vertex 47.46 3.81 0.0
+       vertex 46.19 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 46.19 3.81 10.0
+       vertex 47.46 3.81 0.0
+       vertex 47.46 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 46.19 15.396666666666668 0.0
+       vertex 47.46 15.396666666666668 0.0
+       vertex 46.19 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 46.19 15.396666666666668 10.0
+       vertex 47.46 15.396666666666668 0.0
+       vertex 47.46 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 46.19 15.396666666666668 0.0
+       vertex 46.19 15.396666666666668 10.0
+       vertex 46.19 3.81 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 46.19 3.81 0.0
+       vertex 46.19 15.396666666666668 10.0
+       vertex 46.19 3.81 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 47.46 15.396666666666668 0.0
+       vertex 47.46 15.396666666666668 10.0
+       vertex 47.46 3.81 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 47.46 3.81 0.0
+       vertex 47.46 15.396666666666668 10.0
+       vertex 47.46 3.81 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece gauche 1 Etage 0
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 1.27 15.396666666666668 0.0
+       vertex 2.54 15.396666666666668 0.0
+       vertex 1.27 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 3.81 0.0
+       vertex 2.54 15.396666666666668 0.0
+       vertex 2.54 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 15.396666666666668 10.0
+       vertex 2.54 15.396666666666668 10.0
+       vertex 1.27 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 3.81 10.0
+       vertex 2.54 15.396666666666668 10.0
+       vertex 2.54 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 3.81 0.0
+       vertex 2.54 3.81 0.0
+       vertex 1.27 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 3.81 10.0
+       vertex 2.54 3.81 0.0
+       vertex 2.54 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 15.396666666666668 0.0
+       vertex 2.54 15.396666666666668 0.0
+       vertex 1.27 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 15.396666666666668 10.0
+       vertex 2.54 15.396666666666668 0.0
+       vertex 2.54 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 15.396666666666668 0.0
+       vertex 1.27 15.396666666666668 10.0
+       vertex 1.27 3.81 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 3.81 0.0
+       vertex 1.27 15.396666666666668 10.0
+       vertex 1.27 3.81 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 2.54 15.396666666666668 0.0
+       vertex 2.54 15.396666666666668 10.0
+       vertex 2.54 3.81 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 2.54 3.81 0.0
+       vertex 2.54 15.396666666666668 10.0
+       vertex 2.54 3.81 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece gauche 2 Etage 0
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 2.54 15.396666666666668 0.0
+       vertex 3.81 15.396666666666668 0.0
+       vertex 2.54 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 2.54 3.81 0.0
+       vertex 3.81 15.396666666666668 0.0
+       vertex 3.81 3.81 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 2.54 15.396666666666668 10.0
+       vertex 3.81 15.396666666666668 10.0
+       vertex 2.54 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 2.54 3.81 10.0
+       vertex 3.81 15.396666666666668 10.0
+       vertex 3.81 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 2.54 3.81 0.0
+       vertex 3.81 3.81 0.0
+       vertex 2.54 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 2.54 3.81 10.0
+       vertex 3.81 3.81 0.0
+       vertex 3.81 3.81 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 2.54 15.396666666666668 0.0
+       vertex 3.81 15.396666666666668 0.0
+       vertex 2.54 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 2.54 15.396666666666668 10.0
+       vertex 3.81 15.396666666666668 0.0
+       vertex 3.81 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 2.54 15.396666666666668 0.0
+       vertex 2.54 15.396666666666668 10.0
+       vertex 2.54 3.81 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 2.54 3.81 0.0
+       vertex 2.54 15.396666666666668 10.0
+       vertex 2.54 3.81 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 3.81 15.396666666666668 0.0
+       vertex 3.81 15.396666666666668 10.0
+       vertex 3.81 3.81 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 3.81 3.81 0.0
+       vertex 3.81 15.396666666666668 10.0
+       vertex 3.81 3.81 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece bas Caisson 0 etage 0
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 1.27 16.666666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 1.27 15.396666666666668 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 15.396666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 16.666666666666668 10.0
+       vertex 48.730000000000004 16.666666666666668 10.0
+       vertex 1.27 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 15.396666666666668 10.0
+       vertex 48.730000000000004 16.666666666666668 10.0
+       vertex 48.730000000000004 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 15.396666666666668 0.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 1.27 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 15.396666666666668 10.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 48.730000000000004 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 16.666666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 1.27 16.666666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 16.666666666666668 10.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 16.666666666666668 0.0
+       vertex 1.27 16.666666666666668 10.0
+       vertex 1.27 15.396666666666668 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 15.396666666666668 0.0
+       vertex 1.27 16.666666666666668 10.0
+       vertex 1.27 15.396666666666668 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 10.0
+       vertex 48.730000000000004 15.396666666666668 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 15.396666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 10.0
+       vertex 48.730000000000004 15.396666666666668 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece milieu Montant 0
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 1.27 17.936666666666667 0.0
+       vertex 48.730000000000004 17.936666666666667 0.0
+       vertex 1.27 16.666666666666668 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 16.666666666666668 0.0
+       vertex 48.730000000000004 17.936666666666667 0.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 17.936666666666667 10.0
+       vertex 48.730000000000004 17.936666666666667 10.0
+       vertex 1.27 16.666666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 16.666666666666668 10.0
+       vertex 48.730000000000004 17.936666666666667 10.0
+       vertex 48.730000000000004 16.666666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 16.666666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 1.27 16.666666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 16.666666666666668 10.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 48.730000000000004 16.666666666666668 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 17.936666666666667 0.0
+       vertex 48.730000000000004 17.936666666666667 0.0
+       vertex 1.27 17.936666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 17.936666666666667 10.0
+       vertex 48.730000000000004 17.936666666666667 0.0
+       vertex 48.730000000000004 17.936666666666667 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 17.936666666666667 0.0
+       vertex 1.27 17.936666666666667 10.0
+       vertex 1.27 16.666666666666668 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 16.666666666666668 0.0
+       vertex 1.27 17.936666666666667 10.0
+       vertex 1.27 16.666666666666668 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 17.936666666666667 0.0
+       vertex 48.730000000000004 17.936666666666667 10.0
+       vertex 48.730000000000004 16.666666666666668 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 16.666666666666668 0.0
+       vertex 48.730000000000004 17.936666666666667 10.0
+       vertex 48.730000000000004 16.666666666666668 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece Droite 1 Etage 1
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 47.46 30.793333333333337 0.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 47.46 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 47.46 19.206666666666667 0.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 48.730000000000004 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 47.46 30.793333333333337 10.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+       vertex 47.46 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 47.46 19.206666666666667 10.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+       vertex 48.730000000000004 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 47.46 19.206666666666667 0.0
+       vertex 48.730000000000004 19.206666666666667 0.0
+       vertex 47.46 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 47.46 19.206666666666667 10.0
+       vertex 48.730000000000004 19.206666666666667 0.0
+       vertex 48.730000000000004 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 47.46 30.793333333333337 0.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 47.46 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 47.46 30.793333333333337 10.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 47.46 30.793333333333337 0.0
+       vertex 47.46 30.793333333333337 10.0
+       vertex 47.46 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 47.46 19.206666666666667 0.0
+       vertex 47.46 30.793333333333337 10.0
+       vertex 47.46 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+       vertex 48.730000000000004 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 19.206666666666667 0.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+       vertex 48.730000000000004 19.206666666666667 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece Droite 2 Etage 1
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 46.19 30.793333333333337 0.0
+       vertex 47.46 30.793333333333337 0.0
+       vertex 46.19 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 46.19 19.206666666666667 0.0
+       vertex 47.46 30.793333333333337 0.0
+       vertex 47.46 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 46.19 30.793333333333337 10.0
+       vertex 47.46 30.793333333333337 10.0
+       vertex 46.19 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 46.19 19.206666666666667 10.0
+       vertex 47.46 30.793333333333337 10.0
+       vertex 47.46 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 46.19 19.206666666666667 0.0
+       vertex 47.46 19.206666666666667 0.0
+       vertex 46.19 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 46.19 19.206666666666667 10.0
+       vertex 47.46 19.206666666666667 0.0
+       vertex 47.46 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 46.19 30.793333333333337 0.0
+       vertex 47.46 30.793333333333337 0.0
+       vertex 46.19 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 46.19 30.793333333333337 10.0
+       vertex 47.46 30.793333333333337 0.0
+       vertex 47.46 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 46.19 30.793333333333337 0.0
+       vertex 46.19 30.793333333333337 10.0
+       vertex 46.19 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 46.19 19.206666666666667 0.0
+       vertex 46.19 30.793333333333337 10.0
+       vertex 46.19 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 47.46 30.793333333333337 0.0
+       vertex 47.46 30.793333333333337 10.0
+       vertex 47.46 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 47.46 19.206666666666667 0.0
+       vertex 47.46 30.793333333333337 10.0
+       vertex 47.46 19.206666666666667 10.0
      endloop
    endfacet
 endsolid
 
-solid test 
+solid Piece gauche 1 Etage 1
    facet normal 0.000000 -1.000000 0.000000
      outer loop
-       vertex -1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 -1.000000
-       vertex 1.000000 -1.000000 1.000000
+       vertex 1.27 30.793333333333337 0.0
+       vertex 2.54 30.793333333333337 0.0
+       vertex 1.27 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 19.206666666666667 0.0
+       vertex 2.54 30.793333333333337 0.0
+       vertex 2.54 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 30.793333333333337 10.0
+       vertex 2.54 30.793333333333337 10.0
+       vertex 1.27 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 19.206666666666667 10.0
+       vertex 2.54 30.793333333333337 10.0
+       vertex 2.54 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 19.206666666666667 0.0
+       vertex 2.54 19.206666666666667 0.0
+       vertex 1.27 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 19.206666666666667 10.0
+       vertex 2.54 19.206666666666667 0.0
+       vertex 2.54 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 30.793333333333337 0.0
+       vertex 2.54 30.793333333333337 0.0
+       vertex 1.27 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 30.793333333333337 10.0
+       vertex 2.54 30.793333333333337 0.0
+       vertex 2.54 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 30.793333333333337 0.0
+       vertex 1.27 30.793333333333337 10.0
+       vertex 1.27 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 19.206666666666667 0.0
+       vertex 1.27 30.793333333333337 10.0
+       vertex 1.27 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 2.54 30.793333333333337 0.0
+       vertex 2.54 30.793333333333337 10.0
+       vertex 2.54 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 2.54 19.206666666666667 0.0
+       vertex 2.54 30.793333333333337 10.0
+       vertex 2.54 19.206666666666667 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece gauche 2 Etage 1
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 2.54 30.793333333333337 0.0
+       vertex 3.81 30.793333333333337 0.0
+       vertex 2.54 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 2.54 19.206666666666667 0.0
+       vertex 3.81 30.793333333333337 0.0
+       vertex 3.81 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 2.54 30.793333333333337 10.0
+       vertex 3.81 30.793333333333337 10.0
+       vertex 2.54 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 2.54 19.206666666666667 10.0
+       vertex 3.81 30.793333333333337 10.0
+       vertex 3.81 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 2.54 19.206666666666667 0.0
+       vertex 3.81 19.206666666666667 0.0
+       vertex 2.54 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 2.54 19.206666666666667 10.0
+       vertex 3.81 19.206666666666667 0.0
+       vertex 3.81 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 2.54 30.793333333333337 0.0
+       vertex 3.81 30.793333333333337 0.0
+       vertex 2.54 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 2.54 30.793333333333337 10.0
+       vertex 3.81 30.793333333333337 0.0
+       vertex 3.81 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 2.54 30.793333333333337 0.0
+       vertex 2.54 30.793333333333337 10.0
+       vertex 2.54 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 2.54 19.206666666666667 0.0
+       vertex 2.54 30.793333333333337 10.0
+       vertex 2.54 19.206666666666667 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 3.81 30.793333333333337 0.0
+       vertex 3.81 30.793333333333337 10.0
+       vertex 3.81 19.206666666666667 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 3.81 19.206666666666667 0.0
+       vertex 3.81 30.793333333333337 10.0
+       vertex 3.81 19.206666666666667 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece bas Caisson 0 etage 1
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 32.06333333333334 0.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 1.27 30.793333333333337 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 30.793333333333337 0.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 32.06333333333334 10.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+       vertex 1.27 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 30.793333333333337 10.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 30.793333333333337 0.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 1.27 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 30.793333333333337 10.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 32.06333333333334 0.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 1.27 32.06333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 32.06333333333334 10.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 32.06333333333334 0.0
+       vertex 1.27 32.06333333333334 10.0
+       vertex 1.27 30.793333333333337 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 30.793333333333337 0.0
+       vertex 1.27 32.06333333333334 10.0
+       vertex 1.27 30.793333333333337 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+       vertex 48.730000000000004 30.793333333333337 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 30.793333333333337 0.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+       vertex 48.730000000000004 30.793333333333337 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece milieu Montant 1
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 33.33333333333334 0.0
+       vertex 48.730000000000004 33.33333333333334 0.0
+       vertex 1.27 32.06333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 32.06333333333334 0.0
+       vertex 48.730000000000004 33.33333333333334 0.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 33.33333333333334 10.0
+       vertex 48.730000000000004 33.33333333333334 10.0
+       vertex 1.27 32.06333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 32.06333333333334 10.0
+       vertex 48.730000000000004 33.33333333333334 10.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 32.06333333333334 0.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 1.27 32.06333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 32.06333333333334 10.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 33.33333333333334 0.0
+       vertex 48.730000000000004 33.33333333333334 0.0
+       vertex 1.27 33.33333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 33.33333333333334 10.0
+       vertex 48.730000000000004 33.33333333333334 0.0
+       vertex 48.730000000000004 33.33333333333334 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 33.33333333333334 0.0
+       vertex 1.27 33.33333333333334 10.0
+       vertex 1.27 32.06333333333334 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 32.06333333333334 0.0
+       vertex 1.27 33.33333333333334 10.0
+       vertex 1.27 32.06333333333334 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 33.33333333333334 0.0
+       vertex 48.730000000000004 33.33333333333334 10.0
+       vertex 48.730000000000004 32.06333333333334 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 32.06333333333334 0.0
+       vertex 48.730000000000004 33.33333333333334 10.0
+       vertex 48.730000000000004 32.06333333333334 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece Droite 1 Etage 2
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 47.46 48.730000000000004 0.0
+       vertex 48.730000000000004 48.730000000000004 0.0
+       vertex 47.46 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 47.46 34.60333333333334 0.0
+       vertex 48.730000000000004 48.730000000000004 0.0
+       vertex 48.730000000000004 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 47.46 48.730000000000004 10.0
+       vertex 48.730000000000004 48.730000000000004 10.0
+       vertex 47.46 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 47.46 34.60333333333334 10.0
+       vertex 48.730000000000004 48.730000000000004 10.0
+       vertex 48.730000000000004 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 47.46 34.60333333333334 0.0
+       vertex 48.730000000000004 34.60333333333334 0.0
+       vertex 47.46 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 47.46 34.60333333333334 10.0
+       vertex 48.730000000000004 34.60333333333334 0.0
+       vertex 48.730000000000004 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 47.46 48.730000000000004 0.0
+       vertex 48.730000000000004 48.730000000000004 0.0
+       vertex 47.46 48.730000000000004 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 47.46 48.730000000000004 10.0
+       vertex 48.730000000000004 48.730000000000004 0.0
+       vertex 48.730000000000004 48.730000000000004 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 47.46 48.730000000000004 0.0
+       vertex 47.46 48.730000000000004 10.0
+       vertex 47.46 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 47.46 34.60333333333334 0.0
+       vertex 47.46 48.730000000000004 10.0
+       vertex 47.46 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 48.730000000000004 0.0
+       vertex 48.730000000000004 48.730000000000004 10.0
+       vertex 48.730000000000004 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 34.60333333333334 0.0
+       vertex 48.730000000000004 48.730000000000004 10.0
+       vertex 48.730000000000004 34.60333333333334 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece Droite 2 Etage 2
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 46.19 47.46000000000001 0.0
+       vertex 47.46 47.46000000000001 0.0
+       vertex 46.19 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 46.19 34.60333333333334 0.0
+       vertex 47.46 47.46000000000001 0.0
+       vertex 47.46 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 46.19 47.46000000000001 10.0
+       vertex 47.46 47.46000000000001 10.0
+       vertex 46.19 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 46.19 34.60333333333334 10.0
+       vertex 47.46 47.46000000000001 10.0
+       vertex 47.46 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 46.19 34.60333333333334 0.0
+       vertex 47.46 34.60333333333334 0.0
+       vertex 46.19 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 46.19 34.60333333333334 10.0
+       vertex 47.46 34.60333333333334 0.0
+       vertex 47.46 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 46.19 47.46000000000001 0.0
+       vertex 47.46 47.46000000000001 0.0
+       vertex 46.19 47.46000000000001 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 46.19 47.46000000000001 10.0
+       vertex 47.46 47.46000000000001 0.0
+       vertex 47.46 47.46000000000001 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 46.19 47.46000000000001 0.0
+       vertex 46.19 47.46000000000001 10.0
+       vertex 46.19 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 46.19 34.60333333333334 0.0
+       vertex 46.19 47.46000000000001 10.0
+       vertex 46.19 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 47.46 47.46000000000001 0.0
+       vertex 47.46 47.46000000000001 10.0
+       vertex 47.46 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 47.46 34.60333333333334 0.0
+       vertex 47.46 47.46000000000001 10.0
+       vertex 47.46 34.60333333333334 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece gauche 1 Etage 2
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 48.730000000000004 0.0
+       vertex 2.54 48.730000000000004 0.0
+       vertex 1.27 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 34.60333333333334 0.0
+       vertex 2.54 48.730000000000004 0.0
+       vertex 2.54 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 48.730000000000004 10.0
+       vertex 2.54 48.730000000000004 10.0
+       vertex 1.27 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 34.60333333333334 10.0
+       vertex 2.54 48.730000000000004 10.0
+       vertex 2.54 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 34.60333333333334 0.0
+       vertex 2.54 34.60333333333334 0.0
+       vertex 1.27 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 34.60333333333334 10.0
+       vertex 2.54 34.60333333333334 0.0
+       vertex 2.54 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 48.730000000000004 0.0
+       vertex 2.54 48.730000000000004 0.0
+       vertex 1.27 48.730000000000004 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 48.730000000000004 10.0
+       vertex 2.54 48.730000000000004 0.0
+       vertex 2.54 48.730000000000004 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 48.730000000000004 0.0
+       vertex 1.27 48.730000000000004 10.0
+       vertex 1.27 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 34.60333333333334 0.0
+       vertex 1.27 48.730000000000004 10.0
+       vertex 1.27 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 2.54 48.730000000000004 0.0
+       vertex 2.54 48.730000000000004 10.0
+       vertex 2.54 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 2.54 34.60333333333334 0.0
+       vertex 2.54 48.730000000000004 10.0
+       vertex 2.54 34.60333333333334 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece gauche 2 Etage 2
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 2.54 47.46000000000001 0.0
+       vertex 3.81 47.46000000000001 0.0
+       vertex 2.54 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 2.54 34.60333333333334 0.0
+       vertex 3.81 47.46000000000001 0.0
+       vertex 3.81 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 2.54 47.46000000000001 10.0
+       vertex 3.81 47.46000000000001 10.0
+       vertex 2.54 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 2.54 34.60333333333334 10.0
+       vertex 3.81 47.46000000000001 10.0
+       vertex 3.81 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 2.54 34.60333333333334 0.0
+       vertex 3.81 34.60333333333334 0.0
+       vertex 2.54 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 2.54 34.60333333333334 10.0
+       vertex 3.81 34.60333333333334 0.0
+       vertex 3.81 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 2.54 47.46000000000001 0.0
+       vertex 3.81 47.46000000000001 0.0
+       vertex 2.54 47.46000000000001 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 2.54 47.46000000000001 10.0
+       vertex 3.81 47.46000000000001 0.0
+       vertex 3.81 47.46000000000001 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 2.54 47.46000000000001 0.0
+       vertex 2.54 47.46000000000001 10.0
+       vertex 2.54 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 2.54 34.60333333333334 0.0
+       vertex 2.54 47.46000000000001 10.0
+       vertex 2.54 34.60333333333334 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 3.81 47.46000000000001 0.0
+       vertex 3.81 47.46000000000001 10.0
+       vertex 3.81 34.60333333333334 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 3.81 34.60333333333334 0.0
+       vertex 3.81 47.46000000000001 10.0
+       vertex 3.81 34.60333333333334 10.0
+     endloop
+   endfacet
+endsolid
+
+solid Piece bas Caisson 0 etage 2
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 47.46000000000001 0.0
+       vertex 48.730000000000004 47.46000000000001 0.0
+       vertex 1.27 46.190000000000005 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 -1.000000 0.000000
+     outer loop
+       vertex 1.27 46.190000000000005 0.0
+       vertex 48.730000000000004 47.46000000000001 0.0
+       vertex 48.730000000000004 46.190000000000005 0.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 47.46000000000001 10.0
+       vertex 48.730000000000004 47.46000000000001 10.0
+       vertex 1.27 46.190000000000005 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 1.000000 0.000000
+     outer loop
+       vertex 1.27 46.190000000000005 10.0
+       vertex 48.730000000000004 47.46000000000001 10.0
+       vertex 48.730000000000004 46.190000000000005 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 46.190000000000005 0.0
+       vertex 48.730000000000004 46.190000000000005 0.0
+       vertex 1.27 46.190000000000005 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 1.000000
+     outer loop
+       vertex 1.27 46.190000000000005 10.0
+       vertex 48.730000000000004 46.190000000000005 0.0
+       vertex 48.730000000000004 46.190000000000005 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 47.46000000000001 0.0
+       vertex 48.730000000000004 47.46000000000001 0.0
+       vertex 1.27 47.46000000000001 10.0
+     endloop
+   endfacet
+   facet normal 0.000000 0.000000 -1.000000
+     outer loop
+       vertex 1.27 47.46000000000001 10.0
+       vertex 48.730000000000004 47.46000000000001 0.0
+       vertex 48.730000000000004 47.46000000000001 10.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 0.000000
+     outer loop
+       vertex 1.27 47.46000000000001 0.0
+       vertex 1.27 47.46000000000001 10.0
+       vertex 1.27 46.190000000000005 0.0
+     endloop
+   endfacet
+   facet normal -1.000000 0.000000 .000000
+     outer loop
+       vertex 1.27 46.190000000000005 0.0
+       vertex 1.27 47.46000000000001 10.0
+       vertex 1.27 46.190000000000005 10.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 0.000000
+     outer loop
+       vertex 48.730000000000004 47.46000000000001 0.0
+       vertex 48.730000000000004 47.46000000000001 10.0
+       vertex 48.730000000000004 46.190000000000005 0.0
+     endloop
+   endfacet
+   facet normal 1.000000 0.000000 .000000
+     outer loop
+       vertex 48.730000000000004 46.190000000000005 0.0
+       vertex 48.730000000000004 47.46000000000001 10.0
+       vertex 48.730000000000004 46.190000000000005 10.0
      endloop
    endfacet
 endsolid

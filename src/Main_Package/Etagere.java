@@ -136,6 +136,8 @@ public class Etagere implements java.io.Serializable {
     public void GenererPieces() {
         Liste_piece.clear();
         Liste_Piece_Etage_Horizontale.clear();
+        ListeMontantVertical.clear();
+        Liste_Piece_Etage_Horizontale.clear();
         if (isPerimetretriple()) {
             GenererPiecePerimetreBasTriple();
             GenererPiecesPerimetreHautTriple();
@@ -372,7 +374,7 @@ public class Etagere implements java.io.Serializable {
                 xRef = epaisseurTriple;
 
                 double largeurdispo = this.getLargeur() - 6 * epaisseurTriple - (etage.getNb_Caisson() - 1) * 3 * epaisseurTriple;
-
+                
                 etage.setId(compteuretages);
                 etage.setX1(xRef);
                 etage.setX2(this.largeur - epaisseurTriple);
@@ -458,7 +460,7 @@ public class Etagere implements java.io.Serializable {
                             caisson.setId(compteur_caisson);
                             if(caisson.getId()==0){
                                 Piece piece = new Piece(epaisseurTriple, caisson.getLargeurRel()
-                                        * largeurdispo, profondeur, "Piece bas Caisson " + compteur_caisson + " etage " + compteuretages);
+                                        * largeurdispo+2*epaisseurTriple, profondeur, "Piece bas Caisson " + caisson.getId() + " etage " + etage.getId());
                                 piece.setDrawingcoin(new Coord_Coins(xRef, yRef + etage.getHauteur_rel() * hauteurdispo, 0));
                                 Liste_piece.add(piece);
                                 xRef += caisson.getLargeurRel() * largeurdispo + 3 * epaisseurTriple;
