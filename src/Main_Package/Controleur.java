@@ -10,11 +10,14 @@ import UI.GUI;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -377,4 +380,43 @@ public class Controleur {
         afficheur.redraw();
         didMutateEtagere();
     }
+    
+    public void getSTL(){
+        STLExporter exporter = new STLExporter(etagere);
+        String modele = exporter.getSTL();
+        
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+        if (JFileChooser.APPROVE_OPTION == ack) {
+            try {
+                FileWriter writer = new FileWriter(explorer.getSelectedFile()+".stl");
+                writer.write(modele);
+                writer.close();
+            } catch (Exception ex) {
+                return;
+            }
+        }
+    }
+    
+    public void getIndividualSTL(){
+        STLExporter exporter = new STLExporter(etagere);
+        ArrayList<String> STLpieces = exporter.getPiecesSTLs();
+        
+        JFileChooser explorer = new JFileChooser();
+        int ack = explorer.showSaveDialog(null);
+        
+        if (JFileChooser.APPROVE_OPTION == ack) {
+            try {
+                for (int i = 0; i< STLpieces.size();i++){
+                    int j = i+1;
+                    FileWriter writer = new FileWriter(explorer.getSelectedFile()+Integer.toString(j) + Controleur.getInstance().getEtagere().getListe_piece().get(i).getNom() + ".stl");
+                    writer.write(STLpieces.get(i));
+                    writer.close();
+                }
+            } catch (Exception ex) {
+                return;
+            }
+        }
+    }
+    
 }
