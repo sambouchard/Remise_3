@@ -57,5 +57,5 @@ public class Coord_Coins implements java.io.Serializable{
         this.coord_y = coord_y;
         this.coord_z = coord_z;
     }
-
+    
 }

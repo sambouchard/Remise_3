@@ -13,6 +13,13 @@ import Main_Package.Coord_Coins;
  */
 public class Vector3D extends AbstractXYZContainer {
     
+    public static Vector3D VEC_NORMAL_FACE = new Vector3D(0, 0, 1);
+    public static Vector3D VEC_NORMAL_FOND = new Vector3D(0, 0, -1);
+    public static Vector3D VEC_NORMAL_HAUT = new Vector3D(-1, 0, 0);
+    public static Vector3D VEC_NORMAL_BAS = new Vector3D(1, 0, 0);
+    public static Vector3D VEC_NORMAL_GAUCHE = new Vector3D(0, -1, 0);
+    public static Vector3D VEC_NORMAL_DROITE = new Vector3D(0, 1, 0);
+    
     public Vector3D() {
         super();
     }
@@ -23,6 +30,12 @@ public class Vector3D extends AbstractXYZContainer {
 
     public Vector3D(double x, double y, double z) {
         super(x, y, z);
+    }
+    
+    @Override
+    public String toString() {
+        String out = "(" + this.getX() + ", " + this.getY() + ", " + this.getZ() + ")";
+        return out;
     }
     
     /**
@@ -71,6 +84,13 @@ public class Vector3D extends AbstractXYZContainer {
         this.setZ(crossedZ);
     }
 
+    /**
+     *
+     * @return Returns inverse vector
+     */
+    public Vector3D invert() {
+        return new Vector3D(-this.getX(), -this.getY(), -this.getZ());
+    }
     /**
      *
      * @return String formatted for STL facet's normal vector 

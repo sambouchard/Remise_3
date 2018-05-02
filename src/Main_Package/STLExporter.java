@@ -50,4 +50,10 @@ public class STLExporter {
         }
         return stlStrList;
     }
+    
+    public static void main(String[] args) {
+        Etagere e = new Etagere(300, 300, 300, 1, true, true, true);
+       STLExporter exporter = new STLExporter(e);
+        System.out.println(exporter.getSTL());
+    }
 }

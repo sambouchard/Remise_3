@@ -5,8 +5,9 @@
  */
 package geo3D;
 
+import Main_Package.Coord_Coins;
 import Main_Package.Piece;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,7 +22,7 @@ public class RectangularPrism {
     private Point3D PtFondHautDroit;
     private Point3D PtFondBasDroit;
     private Point3D PtFondBasGauche;
-    private List<Triangle3D> triangleArray;
+    private ArrayList<Triangle3D> triangleArray = new ArrayList<>();
             
     public RectangularPrism() {
     }
@@ -40,6 +41,8 @@ public class RectangularPrism {
     
     
     public RectangularPrism(Piece p) {
+        System.out.println("Prisming piece " + p.getNom());
+        System.out.println("Point " + p.getCoinFaceHautGauche().getCoord_x());
         this.PtFaceHautGauche = new Point3D(p.getCoinFaceHautGauche());
         this.PtFaceHautDroit = new Point3D(p.getCoinFaceHautDroit());
         this.PtFaceBasDroit = new Point3D(p.getCoinFaceBasDroit());
@@ -51,7 +54,7 @@ public class RectangularPrism {
         generateListOfTriangles();
     }
     
-    public List<Triangle3D> getTriangleArray() {
+    public ArrayList<Triangle3D> getTriangleArray() {
         return this.triangleArray;
     }
     
@@ -75,21 +78,29 @@ public class RectangularPrism {
     
     private void generateListOfTriangles() { 
         // Face
-        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceHautGauche, PtFaceHautDroit, PtFaceBasGauche, PtFaceBasDroit));
+        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceHautGauche, PtFaceHautDroit, PtFaceBasGauche, PtFaceBasDroit, Vector3D.VEC_NORMAL_FACE));
         
         // Coter gauche
-        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceHautGauche, PtFondHautGauche, PtFaceBasGauche, PtFondBasGauche));
+        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceHautGauche, PtFondHautGauche, PtFaceBasGauche, PtFondBasGauche, Vector3D.VEC_NORMAL_GAUCHE));
         
         // Fond
-        addTriangles(Triangle3D.generateTrianglesFromPts(PtFondHautDroit, PtFondHautGauche, PtFondBasDroit, PtFondBasGauche));
+        addTriangles(Triangle3D.generateTrianglesFromPts(PtFondHautDroit, PtFondHautGauche, PtFondBasDroit, PtFondBasGauche, Vector3D.VEC_NORMAL_FOND));
         
         // Coter droite
-        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceHautDroit, PtFondHautDroit, PtFaceBasDroit, PtFondBasDroit));
+        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceHautDroit, PtFondHautDroit, PtFaceBasDroit, PtFondBasDroit, Vector3D.VEC_NORMAL_DROITE));
         
         // Haut
-        addTriangles(Triangle3D.generateTrianglesFromPts(PtFondHautGauche, PtFondHautDroit, PtFaceHautGauche, PtFaceHautDroit));
+        addTriangles(Triangle3D.generateTrianglesFromPts(PtFondHautGauche, PtFondHautDroit, PtFaceHautGauche, PtFaceHautDroit, Vector3D.VEC_NORMAL_HAUT));
         
         // Bas
-        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceBasGauche, PtFaceBasDroit, PtFondBasGauche, PtFondBasDroit));
+        addTriangles(Triangle3D.generateTrianglesFromPts(PtFaceBasGauche, PtFaceBasDroit, PtFondBasGauche, PtFondBasDroit, Vector3D.VEC_NORMAL_BAS));
+    }
+    
+    public static void main(String []argv) {
+        Piece p = new Piece(300, 100, 10, "Piece test");
+        p.setDrawingcoin(new Coord_Coins(10, 10, 10));
+        RectangularPrism prism = new RectangularPrism(p);
+        System.out.println(prism.getSTL());
+        System.out.println(prism.getTriangleArray().get(0).toString());
     }
 }

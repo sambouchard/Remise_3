@@ -18,7 +18,7 @@ abstract public class AbstractXYZContainer {
     private double x;
     private double y;
     private double z;
-    public static DecimalFormat STL_NUMBER_FORMATTER = new DecimalFormat("#.000000");
+    public static DecimalFormat STL_NUMBER_FORMATTER = new DecimalFormat("#0.000000");
     public static String STL_VALUE_SEPERATOR = " ";
     
     public AbstractXYZContainer() {};
