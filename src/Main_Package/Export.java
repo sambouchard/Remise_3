@@ -260,7 +260,11 @@ public class Export extends JPanel {
                 double[] p2valeurs = {p2.getHauteur(),p2.getLargeur(),p2.getProfondeur()};
                 Arrays.sort(p1valeurs);
                 Arrays.sort(p2valeurs);
-                return Double.compare(-p1valeurs[p1valeurs.length-1], -p2valeurs[p2valeurs.length-1]);
+                int valeur = Double.compare(-p1valeurs[p1valeurs.length-1], -p2valeurs[p2valeurs.length-1]);
+                if (valeur == 0){
+                    return Double.compare(-p1valeurs[p1valeurs.length-2], -p2valeurs[p2valeurs.length-2]);
+                }
+                return valeur;
             }
         });
                    
