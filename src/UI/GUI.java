@@ -181,7 +181,7 @@ public class GUI extends javax.swing.JFrame {
         AddMontantVertical_button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
         AddMontantVertical_button.setForeground(new java.awt.Color(255, 255, 255));
         AddMontantVertical_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/verticale.png"))); // NOI18N
-        AddMontantVertical_button.setText("Verticale");
+        AddMontantVertical_button.setText("Vertical");
         AddMontantVertical_button.setBorderPainted(false);
         AddMontantVertical_button.setFocusPainted(false);
         AddMontantVertical_button.setIconTextGap(6);
