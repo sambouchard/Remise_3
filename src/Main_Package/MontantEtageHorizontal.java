@@ -13,16 +13,48 @@ import java.util.List;
  * @author SABOU350
  */
 public class MontantEtageHorizontal implements java.io.Serializable{
-    private int IdEtage_dessus;
-    private int IdEtage_dessous;
+    private Etage Etage_dessus;
+    private Etage Etage_dessous;
     private List<Piece> Liste_piece = new ArrayList();
 
-    public MontantEtageHorizontal(int newidEtage_dessus, int newIdEtage_dessous) {
-        this.IdEtage_dessous = newIdEtage_dessous;
-        this.IdEtage_dessus = newidEtage_dessus;
+    public Etage getEtage_dessus() {
+        return Etage_dessus;
+    }
+
+    public void setEtage_dessus(Etage Etage_dessus) {
+        this.Etage_dessus = Etage_dessus;
+    }
+
+    public Etage getIdEtage_dessous() {
+        return Etage_dessous;
+    }
+
+    public void setEtage_dessous(int IdEtage_dessous) {
+        this.Etage_dessous = Etage_dessous;
+    }
+
+    public List<Piece> getListe_piece() {
+        return Liste_piece;
+    }
+
+    public void setListe_piece(List<Piece> Liste_piece) {
+        this.Liste_piece = Liste_piece;
+    }
+
+    public MontantEtageHorizontal(Etage Etage_dessus, Etage Etage_dessous) {
+        this.Etage_dessous = Etage_dessous;
+        this.Etage_dessus = Etage_dessus;
     }
     public void addPiece(Piece piece){
         this.Liste_piece.add(piece);
+    }
+
+    public Etage getEtage_dessous() {
+        return Etage_dessous;
+    }
+
+    public void setEtage_dessous(Etage Etage_dessous) {
+        this.Etage_dessous = Etage_dessous;
     }
     
 }

@@ -1,12 +1,16 @@
 package UI;
 
 import Main_Package.Controleur;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.FileWriter;
 import javax.swing.InputVerifier;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /*
@@ -25,6 +29,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        getContentPane().setBackground(Color.WHITE); 
     }
 
     /**
@@ -39,55 +44,63 @@ public class GUI extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jButton7 = new javax.swing.JButton();
-        AddMontantHorizontal_button = new javax.swing.JButton();
-        DeleteMontant_Button = new javax.swing.JButton();
-        HauteurPieceSelecrtionneField = new javax.swing.JTextField();
-        LargeurPieceSelecrtionneField = new javax.swing.JTextField();
-        ProfondeurPieceSelecrtionneField = new javax.swing.JTextField();
-        Undo_Buitton = new javax.swing.JButton();
-        Redo_Button = new javax.swing.JButton();
-        PerimetreDouble_Radio = new javax.swing.JRadioButton();
-        PerimatreTriple_Radio = new javax.swing.JRadioButton();
-        Metrique_Button = new javax.swing.JRadioButton();
-        Imperial_Button = new javax.swing.JRadioButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        AddMontantVertical_button = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         AfficheurContainer = new javax.swing.JPanel();
         afficheur = new UI.AfficheurEtagere2D();
-        jLabel1 = new javax.swing.JLabel();
-        Profondeur_Label = new javax.swing.JLabel();
-        Hauteur_Label = new javax.swing.JLabel();
-        Largeur_Label = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        AddMontantHorizontal_button = new javax.swing.JButton();
+        AddMontantVertical_button = new javax.swing.JButton();
+        DeleteMontant_Button = new javax.swing.JButton();
+        Undo_Buitton = new javax.swing.JButton();
+        Redo_Button = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         Hauteur_Textfield = new javax.swing.JTextField();
+        Hauteur_Label = new javax.swing.JLabel();
+        Hauteur_Cmlabel = new javax.swing.JLabel();
+        Largeur_Label = new javax.swing.JLabel();
+        Largeur_Cmlabel = new javax.swing.JLabel();
         Largeur_TextField = new javax.swing.JTextField();
         Profondeur_TextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        HPiece_Cmlabel = new javax.swing.JLabel();
-        LPiece_Cmlabel = new javax.swing.JLabel();
-        PPiece_Cmlabel = new javax.swing.JLabel();
-        Largeur_Cmlabel = new javax.swing.JLabel();
         Profondeur_CMlabel = new javax.swing.JLabel();
-        Hauteur_Cmlabel = new javax.swing.JLabel();
+        Profondeur_Label = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
+        EpaisseurTriple_Field = new javax.swing.JTextField();
+        EpaisseurTriple_Mesure = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        EpaisseurDouble_Field = new javax.swing.JTextField();
+        EpaisseurDouble_Mesure = new javax.swing.JLabel();
+        PerimatreTriple_Radio = new javax.swing.JRadioButton();
+        PerimetreDouble_Radio = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Metrique_Button = new javax.swing.JRadioButton();
+        Imperial_Button = new javax.swing.JRadioButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        PPiece_Cmlabel = new javax.swing.JLabel();
+        HPiece_Cmlabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        LargeurPieceSelecrtionneField = new javax.swing.JTextField();
+        HauteurPieceSelecrtionneField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        ProfondeurPieceSelecrtionneField = new javax.swing.JTextField();
+        LPiece_Cmlabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         HauteurRelEtage_Field = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         LargeurRelCaisson_Field = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuBtnNouveau = new javax.swing.JMenuItem();
         MenuSauvegarder = new javax.swing.JMenuItem();
         MenuCharger = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         exporterListePieces = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -98,176 +111,23 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("3Dtagère");
+        setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(MAXIMIZED_BOTH);
         setName("MainWindow"); // NOI18N
-
-        jButton7.setText("Perimetre triple ou double");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        AddMontantHorizontal_button.setText("Ajouter Montant Vertical");
-        AddMontantHorizontal_button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddMontantHorizontal_buttonMouseClicked(evt);
-            }
-        });
-        AddMontantHorizontal_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddMontantHorizontal_buttonActionPerformed(evt);
-            }
-        });
-
-        DeleteMontant_Button.setText("Supprimer");
-        DeleteMontant_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteMontant_ButtonActionPerformed(evt);
-            }
-        });
-
-        HauteurPieceSelecrtionneField.setToolTipText("");
-
-        ProfondeurPieceSelecrtionneField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProfondeurPieceSelecrtionneFieldActionPerformed(evt);
-            }
-        });
-        ProfondeurPieceSelecrtionneField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ProfondeurPieceSelecrtionneFieldKeyPressed(evt);
-            }
-        });
-
-        Undo_Buitton.setText("Undo");
-        Undo_Buitton.setActionCommand("Imperial ou metrique");
-        Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Undo_BuittonActionPerformed(evt);
-            }
-        });
-
-        Redo_Button.setText("Redo");
-        Redo_Button.setActionCommand("Imperial ou metrique");
-        Redo_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Redo_ButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(PerimetreDouble_Radio);
-        PerimetreDouble_Radio.setSelected(true);
-        PerimetreDouble_Radio.setText("Double");
-        PerimetreDouble_Radio.setToolTipText("");
-        PerimetreDouble_Radio.setActionCommand("");
-        PerimetreDouble_Radio.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                PerimetreDouble_RadioStateChanged(evt);
-            }
-        });
-        PerimetreDouble_Radio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PerimetreDouble_RadioActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(PerimatreTriple_Radio);
-        PerimatreTriple_Radio.setText("Triple");
-        PerimatreTriple_Radio.setToolTipText("");
-        PerimatreTriple_Radio.setActionCommand("");
-        PerimatreTriple_Radio.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                PerimatreTriple_RadioStateChanged(evt);
-            }
-        });
-        PerimatreTriple_Radio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PerimatreTriple_RadioActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(Metrique_Button);
-        Metrique_Button.setSelected(true);
-        Metrique_Button.setText("Métrique");
-        Metrique_Button.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                Metrique_ButtonStateChanged(evt);
-            }
-        });
-        Metrique_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Metrique_ButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(Imperial_Button);
-        Imperial_Button.setText("Impérial");
-        Imperial_Button.setToolTipText("");
-        Imperial_Button.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                Imperial_ButtonStateChanged(evt);
-            }
-        });
-        Imperial_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Imperial_ButtonActionPerformed(evt);
-            }
-        });
-
-        jCheckBox1.setText("Panneau de fond");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox2.setText("Dépasse");
-        jCheckBox2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCheckBox2ItemStateChanged(evt);
-            }
-        });
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Pièce 1", "Pièce 2" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        AddMontantVertical_button.setText("Horizontale");
-        AddMontantVertical_button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddMontantVertical_buttonMouseClicked(evt);
-            }
-        });
-        AddMontantVertical_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddMontantVertical_buttonActionPerformed(evt);
-            }
-        });
-
-        jTextPane1.setText("Liste de pièces");
-        jScrollPane2.setViewportView(jTextPane1);
+        setPreferredSize(new java.awt.Dimension(739, 500));
 
         AfficheurContainer.setBackground(new java.awt.Color(255, 255, 255));
-        AfficheurContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Controleur.getInstance().setAfficheur(afficheur);
-        afficheur.setBackground(new java.awt.Color(255, 255, 255));
+        afficheur.setBackground(new java.awt.Color(245, 245, 245));
+        afficheur.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
         javax.swing.GroupLayout afficheurLayout = new javax.swing.GroupLayout(afficheur);
         afficheur.setLayout(afficheurLayout);
         afficheurLayout.setHorizontalGroup(
             afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1141, Short.MAX_VALUE)
+            .addGap(0, 843, Short.MAX_VALUE)
         );
         afficheurLayout.setVerticalGroup(
             afficheurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,14 +151,120 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setText("Dimension de l'étagere");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        Profondeur_Label.setText("Profondeur");
+        AddMontantHorizontal_button.setBackground(new java.awt.Color(3, 169, 244));
+        AddMontantHorizontal_button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
+        AddMontantHorizontal_button.setForeground(new java.awt.Color(255, 255, 255));
+        AddMontantHorizontal_button.setText("Horizontal");
+        AddMontantHorizontal_button.setBorderPainted(false);
+        AddMontantHorizontal_button.setFocusPainted(false);
+        AddMontantHorizontal_button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        AddMontantHorizontal_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMontantHorizontal_buttonMouseClicked(evt);
+            }
+        });
+        AddMontantHorizontal_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddMontantHorizontal_buttonActionPerformed(evt);
+            }
+        });
 
-        Hauteur_Label.setText("Hauteur");
+        AddMontantVertical_button.setBackground(new java.awt.Color(3, 169, 244));
+        AddMontantVertical_button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
+        AddMontantVertical_button.setForeground(new java.awt.Color(255, 255, 255));
+        AddMontantVertical_button.setText("Verticale");
+        AddMontantVertical_button.setBorderPainted(false);
+        AddMontantVertical_button.setFocusPainted(false);
+        AddMontantVertical_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMontantVertical_buttonMouseClicked(evt);
+            }
+        });
+        AddMontantVertical_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddMontantVertical_buttonActionPerformed(evt);
+            }
+        });
 
-        Largeur_Label.setText("Largeur");
+        DeleteMontant_Button.setBackground(new java.awt.Color(244, 67, 54));
+        DeleteMontant_Button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
+        DeleteMontant_Button.setForeground(new java.awt.Color(255, 255, 255));
+        DeleteMontant_Button.setText("Supprimer");
+        DeleteMontant_Button.setBorderPainted(false);
+        DeleteMontant_Button.setFocusPainted(false);
+        DeleteMontant_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DeleteMontant_ButtonMouseClicked(evt);
+            }
+        });
+        DeleteMontant_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteMontant_ButtonActionPerformed(evt);
+            }
+        });
 
+        Undo_Buitton.setBackground(new java.awt.Color(255, 87, 34));
+        Undo_Buitton.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
+        Undo_Buitton.setForeground(new java.awt.Color(255, 255, 255));
+        Undo_Buitton.setText("Undo");
+        Undo_Buitton.setActionCommand("Imperial ou metrique");
+        Undo_Buitton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Undo_BuittonActionPerformed(evt);
+            }
+        });
+
+        Redo_Button.setBackground(new java.awt.Color(255, 87, 34));
+        Redo_Button.setFont(new java.awt.Font("PT Sans", 1, 14)); // NOI18N
+        Redo_Button.setForeground(new java.awt.Color(255, 255, 255));
+        Redo_Button.setText("Redo");
+        Redo_Button.setActionCommand("Imperial ou metrique");
+        Redo_Button.setBorderPainted(false);
+        Redo_Button.setFocusPainted(false);
+        Redo_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Redo_ButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(AddMontantHorizontal_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Undo_Buitton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Redo_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(AddMontantHorizontal_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(Undo_Buitton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(Redo_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel12.setFont(new java.awt.Font("Maison Neue", 1, 24)); // NOI18N
+        jLabel12.setText("Étagère");
+
+        Hauteur_Textfield.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Hauteur_Textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Hauteur_TextfieldActionPerformed(evt);
@@ -310,6 +276,19 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        Hauteur_Label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Hauteur_Label.setText("Hauteur");
+
+        Hauteur_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Hauteur_Cmlabel.setText("Cm");
+
+        Largeur_Label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Largeur_Label.setText("Largeur");
+
+        Largeur_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Largeur_Cmlabel.setText("Cm");
+
+        Largeur_TextField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Largeur_TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Largeur_TextFieldActionPerformed(evt);
@@ -321,28 +300,187 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Hauteur");
+        Profondeur_TextField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
 
-        jLabel3.setText("Largeur");
-
-        jLabel4.setText("Profondeur");
-
-        jLabel5.setText("Dimensions de la pièce sélectionnée");
-
-        HPiece_Cmlabel.setText("Cm");
-
-        LPiece_Cmlabel.setText("Cm");
-
-        PPiece_Cmlabel.setText("Cm");
-
-        Largeur_Cmlabel.setText("Cm");
-
+        Profondeur_CMlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Profondeur_CMlabel.setText("Cm");
 
-        Hauteur_Cmlabel.setText("Cm");
+        Profondeur_Label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Profondeur_Label.setText("Profondeur");
 
-        jLabel6.setText("Hauteur Relative Étage Sélectionnée");
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Maison Neue", 1, 14)); // NOI18N
+        jLabel9.setText("Épaisseur du périmètre");
+        jLabel9.setToolTipText("");
 
+        jLabel13.setFont(new java.awt.Font("Maison Neue", 1, 14)); // NOI18N
+        jLabel13.setText("Options");
+
+        jCheckBox1.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jCheckBox1.setText("Panneau de fond");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jCheckBox2.setText("Dépasse");
+        jCheckBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox2ItemStateChanged(evt);
+            }
+        });
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jLabel10.setText("Épaisseur d'un panneau triple");
+
+        EpaisseurTriple_Field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+
+        EpaisseurTriple_Mesure.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        EpaisseurTriple_Mesure.setText("Po");
+
+        jLabel11.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jLabel11.setText("Épaisseur d'un panneau double");
+
+        EpaisseurDouble_Field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        EpaisseurDouble_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EpaisseurDouble_FieldActionPerformed(evt);
+            }
+        });
+
+        EpaisseurDouble_Mesure.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        EpaisseurDouble_Mesure.setText("Po");
+
+        buttonGroup1.add(PerimatreTriple_Radio);
+        PerimatreTriple_Radio.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        PerimatreTriple_Radio.setText("Triple");
+        PerimatreTriple_Radio.setToolTipText("");
+        PerimatreTriple_Radio.setActionCommand("");
+        PerimatreTriple_Radio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                PerimatreTriple_RadioStateChanged(evt);
+            }
+        });
+        PerimatreTriple_Radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerimatreTriple_RadioActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(PerimetreDouble_Radio);
+        PerimetreDouble_Radio.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        PerimetreDouble_Radio.setSelected(true);
+        PerimetreDouble_Radio.setText("Double");
+        PerimetreDouble_Radio.setToolTipText("");
+        PerimetreDouble_Radio.setActionCommand("");
+        PerimetreDouble_Radio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                PerimetreDouble_RadioStateChanged(evt);
+            }
+        });
+        PerimetreDouble_Radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerimetreDouble_RadioActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Maison Neue", 1, 14)); // NOI18N
+        jLabel1.setText("Dimensions");
+
+        jLabel7.setFont(new java.awt.Font("Maison Neue", 1, 14)); // NOI18N
+        jLabel7.setText("Unités");
+        jLabel7.setToolTipText("");
+
+        buttonGroup2.add(Metrique_Button);
+        Metrique_Button.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Metrique_Button.setSelected(true);
+        Metrique_Button.setText("Métrique");
+        Metrique_Button.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Metrique_ButtonStateChanged(evt);
+            }
+        });
+        Metrique_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Metrique_ButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(Imperial_Button);
+        Imperial_Button.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        Imperial_Button.setText("Impérial");
+        Imperial_Button.setToolTipText("");
+        Imperial_Button.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Imperial_ButtonStateChanged(evt);
+            }
+        });
+        Imperial_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Imperial_ButtonActionPerformed(evt);
+            }
+        });
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jLabel2.setText("Hauteur");
+
+        PPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        PPiece_Cmlabel.setText("Cm");
+
+        HPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        HPiece_Cmlabel.setText("Cm");
+
+        jLabel3.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jLabel3.setText("Largeur");
+
+        LargeurPieceSelecrtionneField.setEditable(false);
+        LargeurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        LargeurPieceSelecrtionneField.setBorder(null);
+
+        HauteurPieceSelecrtionneField.setEditable(false);
+        HauteurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        HauteurPieceSelecrtionneField.setToolTipText("");
+        HauteurPieceSelecrtionneField.setBorder(null);
+
+        jLabel5.setFont(new java.awt.Font("Maison Neue", 1, 14)); // NOI18N
+        jLabel5.setText("Dimensions de la pièce sélectionnée");
+
+        ProfondeurPieceSelecrtionneField.setEditable(false);
+        ProfondeurPieceSelecrtionneField.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        ProfondeurPieceSelecrtionneField.setBorder(null);
+        ProfondeurPieceSelecrtionneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfondeurPieceSelecrtionneFieldActionPerformed(evt);
+            }
+        });
+        ProfondeurPieceSelecrtionneField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ProfondeurPieceSelecrtionneFieldKeyPressed(evt);
+            }
+        });
+
+        LPiece_Cmlabel.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        LPiece_Cmlabel.setText("Cm");
+
+        jLabel4.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jLabel4.setText("Profondeur");
+
+        jLabel14.setFont(new java.awt.Font("Maison Neue", 1, 24)); // NOI18N
+        jLabel14.setText("Sélection");
+
+        jLabel6.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jLabel6.setText("Hauteur relative de l'étage");
+
+        HauteurRelEtage_Field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         HauteurRelEtage_Field.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         HauteurRelEtage_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,15 +493,223 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("%");
+        jLabel8.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        jLabel8.setText("Largeur relative du caisson");
 
-        jLabel8.setText("Largeur relative Caisson sélectionné");
+        LargeurRelCaisson_Field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
+        LargeurRelCaisson_Field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LargeurRelCaisson_FieldKeyPressed(evt);
+            }
+        });
 
-        jLabel9.setText("%");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel14)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PPiece_Cmlabel))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(HauteurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(HPiece_Cmlabel))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LPiece_Cmlabel))))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(HauteurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HPiece_Cmlabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(LPiece_Cmlabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(PPiece_Cmlabel)))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel13))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(Metrique_Button)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Imperial_Button))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(PerimatreTriple_Radio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PerimetreDouble_Radio))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Hauteur_Label)
+                                    .addComponent(Largeur_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Profondeur_Label))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(Hauteur_Textfield)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Profondeur_CMlabel))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(Largeur_TextField)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Hauteur_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(Profondeur_TextField)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Largeur_Cmlabel))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(EpaisseurTriple_Field)
+                                    .addComponent(EpaisseurDouble_Field))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EpaisseurDouble_Mesure)
+                                    .addComponent(EpaisseurTriple_Mesure, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PerimatreTriple_Radio)
+                    .addComponent(PerimetreDouble_Radio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Hauteur_Label)
+                    .addComponent(Hauteur_Textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Profondeur_CMlabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Largeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hauteur_Cmlabel)
+                    .addComponent(Largeur_Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Profondeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Profondeur_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Largeur_Cmlabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Metrique_Button)
+                    .addComponent(Imperial_Button))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EpaisseurDouble_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EpaisseurDouble_Mesure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EpaisseurTriple_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EpaisseurTriple_Mesure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        Hauteur_Label.getAccessibleContext().setAccessibleDescription("");
+
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 234, 234)));
+        jMenuBar1.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
 
         jMenu1.setText("Fichier");
 
-        MenuBtnNouveau.setText("Nouveau");
+        MenuBtnNouveau.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        MenuBtnNouveau.setText("Nouvelle Etagere...");
+        MenuBtnNouveau.setToolTipText("");
         MenuBtnNouveau.setActionCommand("");
         MenuBtnNouveau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,6 +718,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(MenuBtnNouveau);
 
+        MenuSauvegarder.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         MenuSauvegarder.setText("Sauvegarder");
         MenuSauvegarder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,13 +727,23 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(MenuSauvegarder);
 
-        MenuCharger.setText("Charger");
+        MenuCharger.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        MenuCharger.setText("Ouvrir...");
+        MenuCharger.setToolTipText("");
         MenuCharger.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuChargerActionPerformed(evt);
             }
         });
         jMenu1.add(MenuCharger);
+
+        jMenuItem2.setText("Quitter");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -434,199 +791,35 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Redo_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(Undo_Buitton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(AddMontantHorizontal_button, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(37, 37, 37)
-                .addComponent(AfficheurContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AfficheurContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(Largeur_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Hauteur_Label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
-                                    .addComponent(Profondeur_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Profondeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Hauteur_Textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Largeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Largeur_Cmlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap(12, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Profondeur_CMlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap(8, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Hauteur_Cmlabel)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(HauteurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(HPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LPiece_Cmlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Metrique_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(PerimatreTriple_Radio, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Imperial_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(PerimetreDouble_Radio))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7))
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(269, 269, 269)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1323, Short.MAX_VALUE)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(PerimatreTriple_Radio)
-                                    .addComponent(Metrique_Button))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Imperial_Button)
-                                    .addComponent(PerimetreDouble_Radio))
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel1)
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Hauteur_Label)
-                                    .addComponent(Hauteur_Textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Hauteur_Cmlabel))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(Largeur_Label)
-                                            .addComponent(Largeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(Largeur_Cmlabel)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Profondeur_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Profondeur_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Profondeur_CMlabel))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(HauteurRelEtage_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LargeurRelCaisson_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addGap(59, 59, 59)
-                                .addComponent(jCheckBox1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox2)
-                                .addGap(19, 19, 19)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 943, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(HauteurPieceSelecrtionneField)
-                                        .addComponent(HPiece_Cmlabel)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LargeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(LPiece_Cmlabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ProfondeurPieceSelecrtionneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(PPiece_Cmlabel)))
-                            .addComponent(AfficheurContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(AddMontantHorizontal_button, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(AddMontantVertical_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(DeleteMontant_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(Undo_Buitton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(480, 480, 480)
-                                .addComponent(Redo_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(31, 31, 31))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(609, 609, 609)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AfficheurContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
-
-        Hauteur_Label.getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public JTextField getLargeurRelCaisson_Field() {
+        return LargeurRelCaisson_Field;
+    }
+
+    public void setLargeurRelCaisson_Field(JTextField LargeurRelCaisson_Field) {
+        this.LargeurRelCaisson_Field = LargeurRelCaisson_Field;
+    }
 
     public JTextField getHauteurRelEtage_Field() {
         return HauteurRelEtage_Field;
@@ -644,10 +837,6 @@ public class GUI extends javax.swing.JFrame {
         this.Hauteur_Label = Hauteur_Label;
     }
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void AddMontantHorizontal_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMontantHorizontal_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AddMontantHorizontal_buttonActionPerformed
@@ -664,30 +853,6 @@ public class GUI extends javax.swing.JFrame {
         Controleur.getInstance().undo();
     }//GEN-LAST:event_Undo_BuittonActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void Metrique_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Metrique_ButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Metrique_ButtonActionPerformed
-
-    private void Imperial_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Imperial_ButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Imperial_ButtonActionPerformed
-
-    private void PerimetreDouble_RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerimetreDouble_RadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PerimetreDouble_RadioActionPerformed
-
-    private void PerimatreTriple_RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerimatreTriple_RadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PerimatreTriple_RadioActionPerformed
-
     private void AddMontantVertical_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMontantVertical_buttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AddMontantVertical_buttonActionPerformed
@@ -701,71 +866,10 @@ public class GUI extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_MenuBtnNouveauActionPerformed
 
-    private void Largeur_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Largeur_TextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Largeur_TextFieldActionPerformed
-
-    private void Hauteur_TextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Hauteur_TextfieldActionPerformed
-
-    private void ProfondeurPieceSelecrtionneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfondeurPieceSelecrtionneFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldActionPerformed
-
-    private void jCheckBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox2ItemStateChanged
-        if(jCheckBox2.isSelected()){
-            Controleur.getInstance().setDepasse(true);
-        }
-        if(jCheckBox2.isSelected()){
-            Controleur.getInstance().setDepasse(false);        
-        }
-    }//GEN-LAST:event_jCheckBox2ItemStateChanged
-
-    private void Hauteur_TextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()));
-            Controleur.getInstance().getAfficheur().redraw();
-        }
-    }//GEN-LAST:event_Hauteur_TextfieldKeyPressed
-
-    private void Largeur_TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Largeur_TextFieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()));
-            Controleur.getInstance().getAfficheur().redraw();
-        }
-    }//GEN-LAST:event_Largeur_TextFieldKeyPressed
-
-    private void ProfondeurPieceSelecrtionneFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getLargeur_TextField().getText()));
-            Controleur.getInstance().getAfficheur().redraw();
-        }
-    }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
-
-    private void Metrique_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Metrique_ButtonStateChanged
-        if(Metrique_Button.isSelected()){
-            Hauteur_Cmlabel.setText("Cm");
-            Largeur_Cmlabel.setText("Cm");
-            Profondeur_CMlabel.setText("Cm");
-            HPiece_Cmlabel.setText("Cm");
-            LPiece_Cmlabel.setText("Cm");
-            PPiece_Cmlabel.setText("Cm");
-            Controleur.getInstance().updatevue();
-        }
-    }//GEN-LAST:event_Metrique_ButtonStateChanged
-
-    private void Imperial_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Imperial_ButtonStateChanged
-        if(Imperial_Button.isSelected()){
-            Hauteur_Cmlabel.setText("Po");
-            Largeur_Cmlabel.setText("Po");
-            Profondeur_CMlabel.setText("Po");
-            HPiece_Cmlabel.setText("Po");
-            LPiece_Cmlabel.setText("Po");
-            PPiece_Cmlabel.setText("Po");
-            Controleur.getInstance().updatevuImperiale();
-        }
-    }//GEN-LAST:event_Imperial_ButtonStateChanged
+    private void Undo_BuittonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Undo_BuittonMouseClicked
+        Controleur.getInstance().undo();
+        System.out.println("UI.GUI.jButton22MouseClicked()");
+    }//GEN-LAST:event_Undo_BuittonMouseClicked
 
     private void MenuSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSauvegarderActionPerformed
         Controleur.getInstance().sauvegarderEtagere();
@@ -806,7 +910,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
     private void AddMontantHorizontal_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMontantHorizontal_buttonMouseClicked
         Controleur.getInstance().setAjouteetageMode(true);
-        if(Controleur.getInstance().isAjouteCaissonMode()){
+        if(Controleur.getInstance().isAjouteCaissonMode() == true){
             Controleur.getInstance().setAjouteCaissonMode(false);
             
         }
@@ -825,9 +929,88 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddMontantVertical_buttonMouseClicked
 
+    private void DeleteMontant_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteMontant_ButtonMouseClicked
+        if(Controleur.getInstance().getMontantVerticalSelectionne() != null){
+            Controleur.getInstance().SupprimeMontantVertical();
+        }
+        else if(Controleur.getInstance().getMontantEtageHorizontalSelectionne() != null){
+            Controleur.getInstance().SupprimeMontantHorizontal();
+        }
+    }//GEN-LAST:event_DeleteMontant_ButtonMouseClicked
+
+    private void ProfondeurPieceSelecrtionneFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setEtagereProfondeur(Double.parseDouble(getLargeur_TextField().getText()));
+            Controleur.getInstance().getAfficheur().redraw();
+        }
+    }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldKeyPressed
+
+    private void ProfondeurPieceSelecrtionneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfondeurPieceSelecrtionneFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProfondeurPieceSelecrtionneFieldActionPerformed
+
+    private void EpaisseurDouble_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EpaisseurDouble_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EpaisseurDouble_FieldActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox2ItemStateChanged
+        if(jCheckBox2.isSelected()){
+            Controleur.getInstance().setDepasse(true);
+        }
+        if(jCheckBox2.isSelected()){
+            Controleur.getInstance().setDepasse(false);
+        }
+    }//GEN-LAST:event_jCheckBox2ItemStateChanged
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void LargeurRelCaisson_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LargeurRelCaisson_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setLrelativeCaissonSelectionne(Double.parseDouble(LargeurRelCaisson_Field.getText()));
+        }
+    }//GEN-LAST:event_LargeurRelCaisson_FieldKeyPressed
+
+    private void HauteurRelEtage_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HauteurRelEtage_FieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setHrelativeEtageSelectionnee(Double.parseDouble(HauteurRelEtage_Field.getText()));
+        }
+    }//GEN-LAST:event_HauteurRelEtage_FieldKeyPressed
+
     private void HauteurRelEtage_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HauteurRelEtage_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HauteurRelEtage_FieldActionPerformed
+
+    private void Hauteur_TextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setEtagereHauteur(Double.parseDouble(getHauteur_Textfield().getText()));
+            Controleur.getInstance().getAfficheur().redraw();
+        }
+    }//GEN-LAST:event_Hauteur_TextfieldKeyPressed
+
+    private void Hauteur_TextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hauteur_TextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hauteur_TextfieldActionPerformed
+
+    private void Largeur_TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Largeur_TextFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Controleur.getInstance().setEtagereLargeur(Double.parseDouble(getLargeur_TextField().getText()));
+            Controleur.getInstance().getAfficheur().redraw();
+        }
+    }//GEN-LAST:event_Largeur_TextFieldKeyPressed
+
+    private void Largeur_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Largeur_TextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Largeur_TextFieldActionPerformed
+
+    private void PerimatreTriple_RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerimatreTriple_RadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PerimatreTriple_RadioActionPerformed
 
     private void PerimatreTriple_RadioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PerimatreTriple_RadioStateChanged
         if(PerimatreTriple_Radio.isSelected()){
@@ -835,18 +1018,51 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PerimatreTriple_RadioStateChanged
 
+    private void PerimetreDouble_RadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerimetreDouble_RadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PerimetreDouble_RadioActionPerformed
+
     private void PerimetreDouble_RadioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PerimetreDouble_RadioStateChanged
         if(PerimetreDouble_Radio.isSelected()){
             Controleur.getInstance().setTriple(false);
         }
     }//GEN-LAST:event_PerimetreDouble_RadioStateChanged
 
-    private void HauteurRelEtage_FieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HauteurRelEtage_FieldKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Controleur.getInstance().setHrelativeEtageSelectionnee(Double.parseDouble(HauteurRelEtage_Field.getText()));
-            System.out.println("UI.GUI.HauteurRelEtage_FieldKeyPressed()");
+    private void Imperial_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Imperial_ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Imperial_ButtonActionPerformed
+
+    private void Imperial_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Imperial_ButtonStateChanged
+        if(Imperial_Button.isSelected()){
+            Hauteur_Cmlabel.setText("Po");
+            Largeur_Cmlabel.setText("Po");
+            Profondeur_CMlabel.setText("Po");
+            HPiece_Cmlabel.setText("Po");
+            LPiece_Cmlabel.setText("Po");
+            PPiece_Cmlabel.setText("Po");
+            Controleur.getInstance().updatevuImperiale();
         }
-    }//GEN-LAST:event_HauteurRelEtage_FieldKeyPressed
+    }//GEN-LAST:event_Imperial_ButtonStateChanged
+
+    private void Metrique_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Metrique_ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Metrique_ButtonActionPerformed
+
+    private void Metrique_ButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Metrique_ButtonStateChanged
+        if(Metrique_Button.isSelected()){
+            Hauteur_Cmlabel.setText("Cm");
+            Largeur_Cmlabel.setText("Cm");
+            Profondeur_CMlabel.setText("Cm");
+            HPiece_Cmlabel.setText("Cm");
+            LPiece_Cmlabel.setText("Cm");
+            PPiece_Cmlabel.setText("Cm");
+            Controleur.getInstance().updatevue();
+        }
+    }//GEN-LAST:event_Metrique_ButtonStateChanged
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void STLEtagereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STLEtagereActionPerformed
         Controleur.getInstance().getSTL();
@@ -906,6 +1122,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton AddMontantVertical_button;
     private javax.swing.JPanel AfficheurContainer;
     private javax.swing.JButton DeleteMontant_Button;
+    private javax.swing.JTextField EpaisseurDouble_Field;
+    private javax.swing.JLabel EpaisseurDouble_Mesure;
+    private javax.swing.JTextField EpaisseurTriple_Field;
+    private javax.swing.JLabel EpaisseurTriple_Mesure;
     private javax.swing.JLabel HPiece_Cmlabel;
     private javax.swing.JTextField HauteurPieceSelecrtionneField;
     private javax.swing.JTextField HauteurRelEtage_Field;
@@ -938,10 +1158,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JMenuItem exporterListePieces;
-    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -950,19 +1174,269 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
     public JTextField getHauteur_Textfield() {
         return Hauteur_Textfield;
+    }
+
+    public JButton getAddMontantHorizontal_button() {
+        return AddMontantHorizontal_button;
+    }
+
+    public void setAddMontantHorizontal_button(JButton AddMontantHorizontal_button) {
+        this.AddMontantHorizontal_button = AddMontantHorizontal_button;
+    }
+
+    public JButton getAddMontantVertical_button() {
+        return AddMontantVertical_button;
+    }
+
+    public void setAddMontantVertical_button(JButton AddMontantVertical_button) {
+        this.AddMontantVertical_button = AddMontantVertical_button;
+    }
+
+    public JButton getDeleteMontant_Button() {
+        return DeleteMontant_Button;
+    }
+
+    public void setDeleteMontant_Button(JButton DeleteMontant_Button) {
+        this.DeleteMontant_Button = DeleteMontant_Button;
+    }
+
+    public JTextField getEpaisseurDouble_Field() {
+        return EpaisseurDouble_Field;
+    }
+
+    public void setEpaisseurDouble_Field(JTextField EpaisseurDouble_Field) {
+        this.EpaisseurDouble_Field = EpaisseurDouble_Field;
+    }
+
+    public JLabel getEpaisseurDouble_Mesure() {
+        return EpaisseurDouble_Mesure;
+    }
+
+    public void setEpaisseurDouble_Mesure(JLabel EpaisseurDouble_Mesure) {
+        this.EpaisseurDouble_Mesure = EpaisseurDouble_Mesure;
+    }
+
+    public JTextField getEpaisseurTriple_Field() {
+        return EpaisseurTriple_Field;
+    }
+
+    public void setEpaisseurTriple_Field(JTextField EpaisseurTriple_Field) {
+        this.EpaisseurTriple_Field = EpaisseurTriple_Field;
+    }
+
+    public JLabel getEpaisseurTriple_Mesure() {
+        return EpaisseurTriple_Mesure;
+    }
+
+    public void setEpaisseurTriple_Mesure(JLabel EpaisseurTriple_Mesure) {
+        this.EpaisseurTriple_Mesure = EpaisseurTriple_Mesure;
+    }
+
+    public JLabel getHPiece_Cmlabel() {
+        return HPiece_Cmlabel;
+    }
+
+    public void setHPiece_Cmlabel(JLabel HPiece_Cmlabel) {
+        this.HPiece_Cmlabel = HPiece_Cmlabel;
+    }
+
+    public JLabel getHauteur_Cmlabel() {
+        return Hauteur_Cmlabel;
+    }
+
+    public void setHauteur_Cmlabel(JLabel Hauteur_Cmlabel) {
+        this.Hauteur_Cmlabel = Hauteur_Cmlabel;
+    }
+
+    public JRadioButton getImperial_Button() {
+        return Imperial_Button;
+    }
+
+    public void setImperial_Button(JRadioButton Imperial_Button) {
+        this.Imperial_Button = Imperial_Button;
+    }
+
+    public JLabel getLPiece_Cmlabel() {
+        return LPiece_Cmlabel;
+    }
+
+    public void setLPiece_Cmlabel(JLabel LPiece_Cmlabel) {
+        this.LPiece_Cmlabel = LPiece_Cmlabel;
+    }
+
+    public JLabel getLargeur_Cmlabel() {
+        return Largeur_Cmlabel;
+    }
+
+    public void setLargeur_Cmlabel(JLabel Largeur_Cmlabel) {
+        this.Largeur_Cmlabel = Largeur_Cmlabel;
+    }
+
+    public JMenuItem getMenuCharger() {
+        return MenuCharger;
+    }
+
+    public void setMenuCharger(JMenuItem MenuCharger) {
+        this.MenuCharger = MenuCharger;
+    }
+
+    public JMenuItem getMenuSauvegarder() {
+        return MenuSauvegarder;
+    }
+
+    public void setMenuSauvegarder(JMenuItem MenuSauvegarder) {
+        this.MenuSauvegarder = MenuSauvegarder;
+    }
+
+    public JRadioButton getMetrique_Button() {
+        return Metrique_Button;
+    }
+
+    public void setMetrique_Button(JRadioButton Metrique_Button) {
+        this.Metrique_Button = Metrique_Button;
+    }
+
+    public JLabel getPPiece_Cmlabel() {
+        return PPiece_Cmlabel;
+    }
+
+    public void setPPiece_Cmlabel(JLabel PPiece_Cmlabel) {
+        this.PPiece_Cmlabel = PPiece_Cmlabel;
+    }
+
+    public JRadioButton getPerimatreTriple_Radio() {
+        return PerimatreTriple_Radio;
+    }
+
+    public void setPerimatreTriple_Radio(JRadioButton PerimatreTriple_Radio) {
+        this.PerimatreTriple_Radio = PerimatreTriple_Radio;
+    }
+
+    public JRadioButton getPerimetreDouble_Radio() {
+        return PerimetreDouble_Radio;
+    }
+
+    public void setPerimetreDouble_Radio(JRadioButton PerimetreDouble_Radio) {
+        this.PerimetreDouble_Radio = PerimetreDouble_Radio;
+    }
+
+    public JLabel getProfondeur_CMlabel() {
+        return Profondeur_CMlabel;
+    }
+
+    public void setProfondeur_CMlabel(JLabel Profondeur_CMlabel) {
+        this.Profondeur_CMlabel = Profondeur_CMlabel;
+    }
+
+    public JButton getRedo_Button() {
+        return Redo_Button;
+    }
+
+    public void setRedo_Button(JButton Redo_Button) {
+        this.Redo_Button = Redo_Button;
+    }
+
+    public JButton getUndo_Buitton() {
+        return Undo_Buitton;
+    }
+
+    public void setUndo_Buitton(JButton Undo_Buitton) {
+        this.Undo_Buitton = Undo_Buitton;
+    }
+
+    public AfficheurEtagere2D getAfficheur() {
+        return afficheur;
+    }
+
+    public void setAfficheur(AfficheurEtagere2D afficheur) {
+        this.afficheur = afficheur;
+    }
+
+    public JMenuItem getExporterListePieces() {
+        return exporterListePieces;
+    }
+
+    public void setExporterListePieces(JMenuItem exporterListePieces) {
+        this.exporterListePieces = exporterListePieces;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public void setjLabel11(JLabel jLabel11) {
+        this.jLabel11 = jLabel11;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
     }
     
 
@@ -1168,19 +1642,6 @@ public class GUI extends javax.swing.JFrame {
         this.AddMontantVertical_button = jButton6;
     }
 
-    /**
-     * @return the jButton7
-     */
-    public javax.swing.JButton getjButton7() {
-        return jButton7;
-    }
-
-    /**
-     * @param jButton7 the jButton7 to set
-     */
-    public void setjButton7(javax.swing.JButton jButton7) {
-        this.jButton7 = jButton7;
-    }
 
     /**
      * @return the jButton8
@@ -1238,19 +1699,7 @@ public class GUI extends javax.swing.JFrame {
         this.jLabel1 = jLabel1;
     }
 
-    /**
-     * @return the jList1
-     */
-    public javax.swing.JList<String> getjList1() {
-        return jList1;
-    }
-
-    /**
-     * @param jList1 the jList1 to set
-     */
-    public void setjList1(javax.swing.JList<String> jList1) {
-        this.jList1 = jList1;
-    }
+    
 
     /**
      * @return the jMenu1
@@ -1432,54 +1881,6 @@ public class GUI extends javax.swing.JFrame {
      */
     public void setjRadioButton4(javax.swing.JRadioButton jRadioButton4) {
         this.PerimatreTriple_Radio = jRadioButton4;
-    }
-
-    /**
-     * @return the jScrollPane1
-     */
-    public javax.swing.JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    /**
-     * @param jScrollPane1 the jScrollPane1 to set
-     */
-    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
-
-    /**
-     * @return the jScrollPane2
-     */
-    public javax.swing.JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    /**
-     * @param jScrollPane2 the jScrollPane2 to set
-     */
-    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
-        this.jScrollPane2 = jScrollPane2;
-    }
-
-   
-
-    /**
-     * @return the jTextPane1
-     */
-    public javax.swing.JTextPane getjTextPane1() {
-        return jTextPane1;
-    }
-
-    /**
-     * @param jTextPane1 the jTextPane1 to set
-     */
-    public void setjTextPane1(javax.swing.JTextPane jTextPane1) {
-        this.jTextPane1 = jTextPane1;
-    }
-
-    public void enableUndoButton(boolean canUndo) {
-        Undo_Buitton.setEnabled(canUndo);
     }
     
     public void enableRedoButton(boolean canRedo) {

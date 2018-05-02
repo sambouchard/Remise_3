@@ -6,6 +6,7 @@
 package UI;
 
 import Main_Package.Controleur;
+import java.awt.Color;
 
 /**
  *
@@ -18,6 +19,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
      */
     public CreateNewEtagereWindow() {
         initComponents();
+        getContentPane().setBackground(Color.WHITE); 
     }
 
     /**
@@ -47,13 +49,18 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         Perimetretriple_radio = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         jLabel1.setText("Hauteur");
 
+        jLabel2.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         jLabel2.setText("Largeur");
 
+        jLabel3.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         jLabel3.setText("Profondeur");
 
+        Hauteur_field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Hauteur_field.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 Hauteur_fieldCaretUpdate(evt);
@@ -70,6 +77,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             }
         });
 
+        Largeur_field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Largeur_field.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 Largeur_fieldCaretUpdate(evt);
@@ -86,6 +94,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             }
         });
 
+        Profondeur_field.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Profondeur_field.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 Profondeur_fieldCaretUpdate(evt);
@@ -103,6 +112,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         });
 
         buttonGroup2.add(Mesuremetrique_radio);
+        Mesuremetrique_radio.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Mesuremetrique_radio.setSelected(true);
         Mesuremetrique_radio.setText("Mesure métrique");
         Mesuremetrique_radio.addItemListener(new java.awt.event.ItemListener() {
@@ -117,6 +127,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         });
 
         buttonGroup2.add(Mesureimp_radio);
+        Mesureimp_radio.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Mesureimp_radio.setText("Mesure impériale");
         Mesureimp_radio.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -129,12 +140,16 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
             }
         });
 
+        Hauteur_label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Hauteur_label.setText("Cm");
 
+        Largeur_label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Largeur_label.setText("Cm");
 
+        Profondeur_label.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Profondeur_label.setText("Cm");
 
+        CreateEtagereButton.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         CreateEtagereButton.setText("Créer Étagère");
         CreateEtagereButton.setEnabled(false);
         CreateEtagereButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,6 +159,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         });
 
         group_perimetre.add(Perimetredouble_radio);
+        Perimetredouble_radio.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Perimetredouble_radio.setSelected(true);
         Perimetredouble_radio.setLabel("Périmètre triple");
         Perimetredouble_radio.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +169,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
         });
 
         group_perimetre.add(Perimetretriple_radio);
+        Perimetretriple_radio.setFont(new java.awt.Font("Maison Neue", 0, 14)); // NOI18N
         Perimetretriple_radio.setLabel("Périmetre double");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,7 +184,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(Mesuremetrique_radio)
                     .addComponent(Mesureimp_radio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -223,7 +240,7 @@ public class CreateNewEtagereWindow extends javax.swing.JFrame {
                     .addComponent(Perimetretriple_radio))
                 .addGap(18, 18, 18)
                 .addComponent(CreateEtagereButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
